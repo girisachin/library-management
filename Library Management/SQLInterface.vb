@@ -307,5 +307,30 @@ Public Class SQLInterface
 		con.Close()
 		Return False
 
-	End Function
+    End Function
+
+
+    Public Shared Sub PopulateSearchBooksTable(ByVal bookid As String, ByVal isbn As String, ByVal bookname As String, ByVal genre As String, ByVal author As String)
+
+        Try
+            con.Open()
+
+            With cmd
+                .Connection = con
+                .CommandText = "SELECT * FROM books where Id like '%" & bookid & "%' and isbn like '%" & isbn & "%' and name like '%" & bookname & "%' and genre like '%" & genre & "%' and author like '%" & author & "%' "
+            End With
+            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+            da.SelectCommand = cmd
+            Dim dt As DataTable = New DataTable
+            da.Fill(dt)
+            Dim bs As BindingSource = New BindingSource()
+            bs.DataSource = dt
+            BookList.SearchbookGrid.DataSource = bs
+        Catch ex As Exception
+            GetServer.ShowDialog()
+            Environment.Exit(0)
+        End Try
+        con.Close()
+    End Sub
+
 End Class

@@ -124,7 +124,6 @@ Class MyClose : Inherits Control
 	End Sub
 	Protected Overrides Sub OnClick(e As EventArgs)
 		MyBase.OnClick(e)
-		Environment.Exit(0)
 	End Sub
 
 	Protected Overrides Sub OnResize(e As EventArgs)
