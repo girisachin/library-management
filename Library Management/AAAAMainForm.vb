@@ -229,6 +229,15 @@ Public Class AAAAMainForm
     End Sub
     Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
         Dim bookid As String = BrowseBooksDataGrid.CurrentRow.Cells(0).Value.ToString
+        If GLogin.BooksIssued < 10 Then
+            For i As Integer = 1 To 10
+                If String.IsNullOrEmpty(GLogin.books(i, 0)) = True Then
+                    GLogin.books(i, 0) = bookid
+
+                    Exit For
+                End If
+            Next
+        End If
         ' Todo: Issue Book Here using bookid
     End Sub
     Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles BrowseBooksDataGrid.CellMouseEnter

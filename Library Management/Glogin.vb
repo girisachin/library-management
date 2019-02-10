@@ -11,9 +11,15 @@
 	Public Shared LoggedIn As Boolean = False
 	Public Shared Salt As String = ""
 	Public Shared TempSalt As String = ""
-	Public Shared TempHash As String = ""
-	'Public Shared ParentForm As String = ""
-	Public Shared Sub LogOut()
+    Public Shared TempHash As String = ""
+
+    Public Shared due_array(10) As Integer
+    Public Shared books(10, 10) As String    '1ST INDEX CONTAINS BOOKID AND 2ND INDEX CONTAINS DATE.
+
+
+
+    'Public Shared ParentForm As String = ""
+    Public Shared Sub LogOut()
 		Username = ""
 		Fullname = ""
 		UnhashedPassword = ""
