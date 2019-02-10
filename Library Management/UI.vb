@@ -1,5 +1,5 @@
 ﻿Imports System.Drawing.Drawing2D, System.ComponentModel, System.Windows.Forms
-Module Helpers
+Module FaltuVariables
 	Friend G As Graphics, B As Bitmap
 	Friend NearSF As New StringFormat() With {.Alignment = StringAlignment.Near, .LineAlignment = StringAlignment.Near}
 	Friend CenterSF As New StringFormat() With {.Alignment = StringAlignment.Center, .LineAlignment = StringAlignment.Center}
@@ -21,7 +21,8 @@ Module Helpers
 	Friend Color15 As Color = Color.FromArgb(97, 185, 186)
 	Friend Color16 As Color = Color.FromArgb(25, 27, 29)
 	Friend Color17 As Color = Color.FromArgb(45, 45, 48)
-	End Module
+	Friend Color18 As Color = Color.FromArgb(35, 37, 39)
+End Module
 
 Enum MouseState As Byte
 	None = 0
@@ -81,7 +82,7 @@ Class FormSkin : Inherits ContainerControl
 			'  Base
 			.FillRectangle(New SolidBrush(Color1), Base)
 			'  Header
-			.FillRectangle(New SolidBrush(Color2), Header)
+			.FillRectangle(New SolidBrush(Color18), Header)
 			'  Logo
 			.FillRectangle(New SolidBrush(Color3), New Rectangle(8, 16, 4, 18))
 			.FillRectangle(New SolidBrush(Color4), New Rectangle(16, 16, 4, 18))
@@ -101,9 +102,6 @@ Class MyClose : Inherits Control
 
 	Private State As MouseState = MouseState.None
 	Private x As Integer
-
-
-
 	Protected Overrides Sub OnMouseEnter(e As EventArgs)
 		MyBase.OnMouseEnter(e)
 		State = MouseState.Over : Invalidate()
@@ -154,90 +152,7 @@ Class MyClose : Inherits Control
 			'  Base
 			.FillRectangle(New SolidBrush(Color3), Base)
 			'  X
-			.DrawString("r", Font, New SolidBrush(Color4), New Rectangle(0, 0, Width, Height), CenterSF)
-			'  Hover/down
-			Select Case State
-				Case MouseState.Over
-					.FillRectangle(New SolidBrush(Color.FromArgb(30, Color.White)), Base)
-				Case MouseState.Down
-					.FillRectangle(New SolidBrush(Color.FromArgb(30, Color.Black)), Base)
-			End Select
-		End With
-		MyBase.OnPaint(e)
-		G.Dispose()
-		e.Graphics.InterpolationMode = 7
-		e.Graphics.DrawImageUnscaled(B, 0, 0)
-		B.Dispose()
-	End Sub
-End Class
-Class MyMax : Inherits Control
-
-	Private State As MouseState = MouseState.None
-	Private x As Integer
-
-
-
-	Protected Overrides Sub OnMouseEnter(e As EventArgs)
-		MyBase.OnMouseEnter(e)
-		State = MouseState.Over : Invalidate()
-	End Sub
-	Protected Overrides Sub OnMouseDown(e As MouseEventArgs)
-		MyBase.OnMouseDown(e)
-		State = MouseState.Down : Invalidate()
-	End Sub
-	Protected Overrides Sub OnMouseLeave(e As EventArgs)
-		MyBase.OnMouseLeave(e)
-		State = MouseState.None : Invalidate()
-	End Sub
-	Protected Overrides Sub OnMouseUp(e As MouseEventArgs)
-		MyBase.OnMouseUp(e)
-		State = MouseState.Over : Invalidate()
-	End Sub
-	Protected Overrides Sub OnMouseMove(e As MouseEventArgs)
-		MyBase.OnMouseMove(e)
-		x = e.X : Invalidate()
-	End Sub
-	Protected Overrides Sub OnClick(e As EventArgs)
-		MyBase.OnClick(e)
-		Select Case FindForm.WindowState
-			Case FormWindowState.Maximized
-				FindForm.WindowState = FormWindowState.Normal
-			Case FormWindowState.Normal
-				FindForm.WindowState = FormWindowState.Maximized
-		End Select
-	End Sub
-
-	Protected Overrides Sub OnResize(e As EventArgs)
-		MyBase.OnResize(e)
-		Size = New Size(18, 18)
-	End Sub
-
-	Sub New()
-		SetStyle(ControlStyles.AllPaintingInWmPaint Or ControlStyles.UserPaint Or
-				 ControlStyles.ResizeRedraw Or ControlStyles.OptimizedDoubleBuffer, True)
-		DoubleBuffered = True
-		BackColor = Color.White
-		Size = New Size(18, 18)
-		Anchor = AnchorStyles.Top Or AnchorStyles.Right
-		Font = New Font("Marlett", 12)
-	End Sub
-	Protected Overrides Sub OnPaint(e As PaintEventArgs)
-		Dim B As New Bitmap(Width, Height)
-		Dim G As Graphics = Graphics.FromImage(B)
-		Dim Base As New Rectangle(0, 0, Width, Height)
-		With G
-			.SmoothingMode = 2
-			.PixelOffsetMode = 2
-			.TextRenderingHint = 5
-			.Clear(BackColor)
-			'  Base
-			.FillRectangle(New SolidBrush(Color7), Base)
-			'  Maximize
-			If FindForm.WindowState = FormWindowState.Maximized Then
-				.DrawString("1", Font, New SolidBrush(Color4), New Rectangle(1, 1, Width, Height), CenterSF)
-			ElseIf FindForm.WindowState = FormWindowState.Normal Then
-				.DrawString("2", Font, New SolidBrush(Color4), New Rectangle(1, 1, Width, Height), CenterSF)
-			End If
+			.DrawString("r", Font, New SolidBrush(Color4), New Rectangle(0, 0, Width - 1, Height), CenterSF)
 			'  Hover/down
 			Select Case State
 				Case MouseState.Over
@@ -257,9 +172,6 @@ Class MyMini : Inherits Control
 
 	Private State As MouseState = MouseState.None
 	Private x As Integer
-
-
-
 	Protected Overrides Sub OnMouseEnter(e As EventArgs)
 		MyBase.OnMouseEnter(e)
 		State = MouseState.Over : Invalidate()
@@ -853,13 +765,9 @@ Class MyAlertBox : Inherits Control
 	End Sub
 End Class
 Class MyComboBox : Inherits Windows.Forms.ComboBox
-
 	Private W, H As Integer
 	Private _StartIndex As Integer = 0
 	Private x, y As Integer
-
-
-
 	Private State As MouseState = MouseState.None
 	Protected Overrides Sub OnMouseDown(e As MouseEventArgs)
 		MyBase.OnMouseDown(e)
@@ -1066,12 +974,12 @@ Class MyContextMenuStrip : Inherits ContextMenuStrip
 		End Property
 		Public Overrides ReadOnly Property MenuBorder() As Color
 			Get
-				Return Color2
+				Return Color5
 			End Get
 		End Property
 		Public Overrides ReadOnly Property MenuItemBorder() As Color
 			Get
-				Return Color2
+				Return Color5
 			End Get
 		End Property
 		Public Overrides ReadOnly Property MenuItemSelected() As Color
@@ -1123,9 +1031,9 @@ Class MyStatusBar : Inherits Control
 			.SmoothingMode = 2
 			.PixelOffsetMode = 2
 			.TextRenderingHint = 5
-			.Clear(Color2)
+			.Clear(Color18)
 			'  Base
-			.FillRectangle(New SolidBrush(Color2), Base)
+			.FillRectangle(New SolidBrush(Color18), Base)
 			'  Text
 			.DrawString(Text, Font, Brushes.White, New Rectangle(10, 4, W, H), NearSF)
 			'  Rectangle

@@ -118,6 +118,7 @@
     <Compile Include="UI.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Validation.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AAAAMainForm.resx">
