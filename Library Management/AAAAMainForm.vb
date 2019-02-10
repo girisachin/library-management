@@ -226,8 +226,8 @@ Public Class AAAAMainForm
 		Clipboard.SetText(s)
 	End Sub
 	Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
-		' Todo: Issue Book Here using bookid
 		Dim bookid As String = BrowseBooksDataGrid.CurrentRow.Cells(0).Value.ToString
+		' Todo: Issue Book Here using bookid
 	End Sub
 	Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles BrowseBooksDataGrid.CellMouseEnter
 		BrowseBooksDataGrid.ClearSelection()
@@ -527,6 +527,10 @@ Public Class AAAAMainForm
 			Exit Sub
 		End If
 		Alert("Success", "Book Added")
+	End Sub
+
+	Private Sub TabControlMain_TabIndexChanged(sender As Object, e As EventArgs) Handles TabControlMain.TabIndexChanged
+
 	End Sub
 End Class
 

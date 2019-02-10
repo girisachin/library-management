@@ -187,6 +187,8 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel5 = New Library_Management.MyLabel()
 		Me.LoginPasswordTextBox = New Library_Management.MyTextBox()
 		Me.AAAACloseButtonMain = New Library_Management.MyClose()
+		Me.SearchBookGenreTextBox = New Library_Management.MyTextBox()
+		Me.MyLabel25 = New Library_Management.MyLabel()
 		Me.AAAAMainFormSkin.SuspendLayout()
 		Me.TabControlMain.SuspendLayout()
 		Me.SearchBooksTab.SuspendLayout()
@@ -308,11 +310,13 @@ Partial Class AAAAMainForm
 		Me.SearchBooksTab.Controls.Add(Me.AlertBox1)
 		Me.SearchBooksTab.Controls.Add(Me.SearchBookButton)
 		Me.SearchBooksTab.Controls.Add(Me.AAAAALabel11)
+		Me.SearchBooksTab.Controls.Add(Me.MyLabel25)
 		Me.SearchBooksTab.Controls.Add(Me.AAAAALabel10)
 		Me.SearchBooksTab.Controls.Add(Me.AAAAALabel3)
 		Me.SearchBooksTab.Controls.Add(Me.AAAAALabel2)
 		Me.SearchBooksTab.Controls.Add(Me.AAAAALabel9)
 		Me.SearchBooksTab.Controls.Add(Me.SearchBookAuthorTextBox)
+		Me.SearchBooksTab.Controls.Add(Me.SearchBookGenreTextBox)
 		Me.SearchBooksTab.Controls.Add(Me.SearchBookNameTextBox)
 		Me.SearchBooksTab.Controls.Add(Me.SearchBookIDTextBox)
 		Me.SearchBooksTab.Controls.Add(Me.SearchBookISBNTextBox)
@@ -353,7 +357,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel11.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel11.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAAAALabel11.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel11.Location = New System.Drawing.Point(229, 236)
+		Me.AAAAALabel11.Location = New System.Drawing.Point(229, 234)
 		Me.AAAAALabel11.Name = "AAAAALabel11"
 		Me.AAAAALabel11.Size = New System.Drawing.Size(58, 21)
 		Me.AAAAALabel11.TabIndex = 1
@@ -365,7 +369,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel10.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel10.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAAAALabel10.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel10.Location = New System.Drawing.Point(229, 186)
+		Me.AAAAALabel10.Location = New System.Drawing.Point(229, 160)
 		Me.AAAAALabel10.Name = "AAAAALabel10"
 		Me.AAAAALabel10.Size = New System.Drawing.Size(87, 21)
 		Me.AAAAALabel10.TabIndex = 1
@@ -401,7 +405,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel9.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel9.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.AAAAALabel9.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel9.Location = New System.Drawing.Point(229, 136)
+		Me.AAAAALabel9.Location = New System.Drawing.Point(229, 123)
 		Me.AAAAALabel9.Name = "AAAAALabel9"
 		Me.AAAAALabel9.Size = New System.Drawing.Size(69, 21)
 		Me.AAAAALabel9.TabIndex = 1
@@ -410,7 +414,7 @@ Partial Class AAAAMainForm
 		'SearchBookAuthorTextBox
 		'
 		Me.SearchBookAuthorTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SearchBookAuthorTextBox.Location = New System.Drawing.Point(373, 232)
+		Me.SearchBookAuthorTextBox.Location = New System.Drawing.Point(373, 230)
 		Me.SearchBookAuthorTextBox.MaxLength = 32767
 		Me.SearchBookAuthorTextBox.Multiline = False
 		Me.SearchBookAuthorTextBox.Name = "SearchBookAuthorTextBox"
@@ -423,7 +427,7 @@ Partial Class AAAAMainForm
 		'SearchBookNameTextBox
 		'
 		Me.SearchBookNameTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SearchBookNameTextBox.Location = New System.Drawing.Point(373, 182)
+		Me.SearchBookNameTextBox.Location = New System.Drawing.Point(373, 156)
 		Me.SearchBookNameTextBox.MaxLength = 32767
 		Me.SearchBookNameTextBox.Multiline = False
 		Me.SearchBookNameTextBox.Name = "SearchBookNameTextBox"
@@ -449,7 +453,7 @@ Partial Class AAAAMainForm
 		'SearchBookISBNTextBox
 		'
 		Me.SearchBookISBNTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SearchBookISBNTextBox.Location = New System.Drawing.Point(373, 132)
+		Me.SearchBookISBNTextBox.Location = New System.Drawing.Point(373, 119)
 		Me.SearchBookISBNTextBox.MaxLength = 20
 		Me.SearchBookISBNTextBox.Multiline = False
 		Me.SearchBookISBNTextBox.Name = "SearchBookISBNTextBox"
@@ -2367,6 +2371,31 @@ Partial Class AAAAMainForm
 		Me.AAAACloseButtonMain.TabIndex = 0
 		Me.AAAACloseButtonMain.Text = "MyClose1"
 		'
+		'SearchBookGenreTextBox
+		'
+		Me.SearchBookGenreTextBox.BackColor = System.Drawing.Color.Transparent
+		Me.SearchBookGenreTextBox.Location = New System.Drawing.Point(373, 193)
+		Me.SearchBookGenreTextBox.MaxLength = 32767
+		Me.SearchBookGenreTextBox.Multiline = False
+		Me.SearchBookGenreTextBox.Name = "SearchBookGenreTextBox"
+		Me.SearchBookGenreTextBox.ReadOnly = False
+		Me.SearchBookGenreTextBox.Size = New System.Drawing.Size(238, 29)
+		Me.SearchBookGenreTextBox.TabIndex = 0
+		Me.SearchBookGenreTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.SearchBookGenreTextBox.UseSystemPasswordChar = False
+		'
+		'MyLabel25
+		'
+		Me.MyLabel25.AutoSize = True
+		Me.MyLabel25.BackColor = System.Drawing.Color.Transparent
+		Me.MyLabel25.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.MyLabel25.ForeColor = System.Drawing.Color.White
+		Me.MyLabel25.Location = New System.Drawing.Point(229, 197)
+		Me.MyLabel25.Name = "MyLabel25"
+		Me.MyLabel25.Size = New System.Drawing.Size(52, 21)
+		Me.MyLabel25.TabIndex = 1
+		Me.MyLabel25.Text = "Genre"
+		'
 		'AAAAMainForm
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2589,4 +2618,6 @@ Partial Class AAAAMainForm
 	Friend WithEvents MyLabel23 As MyLabel
 	Friend WithEvents AdminAddAccDropDown As MyComboBox
 	Friend WithEvents MyLabel24 As MyLabel
+	Friend WithEvents MyLabel25 As MyLabel
+	Friend WithEvents SearchBookGenreTextBox As MyTextBox
 End Class
