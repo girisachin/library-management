@@ -37,11 +37,13 @@ Partial Class AAAAMainForm
 		Me.AlertBox1 = New Library_Management.MyAlertBox()
 		Me.SearchBookButton = New Library_Management.MyButton()
 		Me.AAAAALabel11 = New Library_Management.MyLabel()
+		Me.MyLabel25 = New Library_Management.MyLabel()
 		Me.AAAAALabel10 = New Library_Management.MyLabel()
 		Me.AAAAALabel3 = New Library_Management.MyLabel()
 		Me.AAAAALabel2 = New Library_Management.MyLabel()
 		Me.AAAAALabel9 = New Library_Management.MyLabel()
 		Me.SearchBookAuthorTextBox = New Library_Management.MyTextBox()
+		Me.SearchBookGenreTextBox = New Library_Management.MyTextBox()
 		Me.SearchBookNameTextBox = New Library_Management.MyTextBox()
 		Me.SearchBookIDTextBox = New Library_Management.MyTextBox()
 		Me.SearchBookISBNTextBox = New Library_Management.MyTextBox()
@@ -187,8 +189,6 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel5 = New Library_Management.MyLabel()
 		Me.LoginPasswordTextBox = New Library_Management.MyTextBox()
 		Me.AAAACloseButtonMain = New Library_Management.MyClose()
-		Me.SearchBookGenreTextBox = New Library_Management.MyTextBox()
-		Me.MyLabel25 = New Library_Management.MyLabel()
 		Me.AAAAMainFormSkin.SuspendLayout()
 		Me.TabControlMain.SuspendLayout()
 		Me.SearchBooksTab.SuspendLayout()
@@ -363,6 +363,18 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel11.TabIndex = 1
 		Me.AAAAALabel11.Text = "Author"
 		'
+		'MyLabel25
+		'
+		Me.MyLabel25.AutoSize = True
+		Me.MyLabel25.BackColor = System.Drawing.Color.Transparent
+		Me.MyLabel25.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.MyLabel25.ForeColor = System.Drawing.Color.White
+		Me.MyLabel25.Location = New System.Drawing.Point(229, 197)
+		Me.MyLabel25.Name = "MyLabel25"
+		Me.MyLabel25.Size = New System.Drawing.Size(52, 21)
+		Me.MyLabel25.TabIndex = 1
+		Me.MyLabel25.Text = "Genre"
+		'
 		'AAAAALabel10
 		'
 		Me.AAAAALabel10.AutoSize = True
@@ -423,6 +435,19 @@ Partial Class AAAAMainForm
 		Me.SearchBookAuthorTextBox.TabIndex = 0
 		Me.SearchBookAuthorTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.SearchBookAuthorTextBox.UseSystemPasswordChar = False
+		'
+		'SearchBookGenreTextBox
+		'
+		Me.SearchBookGenreTextBox.BackColor = System.Drawing.Color.Transparent
+		Me.SearchBookGenreTextBox.Location = New System.Drawing.Point(373, 193)
+		Me.SearchBookGenreTextBox.MaxLength = 32767
+		Me.SearchBookGenreTextBox.Multiline = False
+		Me.SearchBookGenreTextBox.Name = "SearchBookGenreTextBox"
+		Me.SearchBookGenreTextBox.ReadOnly = False
+		Me.SearchBookGenreTextBox.Size = New System.Drawing.Size(238, 29)
+		Me.SearchBookGenreTextBox.TabIndex = 0
+		Me.SearchBookGenreTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.SearchBookGenreTextBox.UseSystemPasswordChar = False
 		'
 		'SearchBookNameTextBox
 		'
@@ -2370,31 +2395,6 @@ Partial Class AAAAMainForm
 		Me.AAAACloseButtonMain.Size = New System.Drawing.Size(18, 18)
 		Me.AAAACloseButtonMain.TabIndex = 0
 		Me.AAAACloseButtonMain.Text = "MyClose1"
-		'
-		'SearchBookGenreTextBox
-		'
-		Me.SearchBookGenreTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SearchBookGenreTextBox.Location = New System.Drawing.Point(373, 193)
-		Me.SearchBookGenreTextBox.MaxLength = 32767
-		Me.SearchBookGenreTextBox.Multiline = False
-		Me.SearchBookGenreTextBox.Name = "SearchBookGenreTextBox"
-		Me.SearchBookGenreTextBox.ReadOnly = False
-		Me.SearchBookGenreTextBox.Size = New System.Drawing.Size(238, 29)
-		Me.SearchBookGenreTextBox.TabIndex = 0
-		Me.SearchBookGenreTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-		Me.SearchBookGenreTextBox.UseSystemPasswordChar = False
-		'
-		'MyLabel25
-		'
-		Me.MyLabel25.AutoSize = True
-		Me.MyLabel25.BackColor = System.Drawing.Color.Transparent
-		Me.MyLabel25.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.MyLabel25.ForeColor = System.Drawing.Color.White
-		Me.MyLabel25.Location = New System.Drawing.Point(229, 197)
-		Me.MyLabel25.Name = "MyLabel25"
-		Me.MyLabel25.Size = New System.Drawing.Size(52, 21)
-		Me.MyLabel25.TabIndex = 1
-		Me.MyLabel25.Text = "Genre"
 		'
 		'AAAAMainForm
 		'
