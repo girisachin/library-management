@@ -164,7 +164,7 @@ Public Class AAAAMainForm
 		DisablePage(IssueBookTab)
 		IssueBookSearchDropDown.SelectedIndex = 0
 		ReturnBookSearchDropDown.SelectedIndex = 0
-		SQLInterface.PopulateBrowseBooksTable()
+		'SQLInterface.PopulateBrowseBooksTable()
 		BrowseBooksDataGrid.ClearSelection()
 		AdminAddAccDropDown.SelectedIndex = 0
 		StatusBar.Text = "Not Logged In"
@@ -540,14 +540,12 @@ Public Class AAAAMainForm
 		SQLInterface.PopulateBrowseBooksTable()
 		BrowseBooksDataGrid.ClearSelection()
 		AdminAddAccDropDown.SelectedIndex = 0
-		If e.TabPage.Name = "SearchBooksTab" Then
-			Console.WriteLine("yes search")
-		ElseIf e.TabPage.name = "LoginSignupTab" Then
-			Console.WriteLine("yes login")
-		ElseIf e.TabPage.name = "BrowseBooksTab" Then
-			Console.WriteLine("yes browse")
+		If e.TabPage.Name = "LoginSignupTab" Then
+
+		ElseIf e.TabPage.Name = "BrowseBooksTab" Then
+			SQLInterface.PopulateBrowseBooksTable()
 		End If
-		Console.WriteLine(e.TabPage.Name.ToString)
+		'e.TabPage.Name
 	End Sub
 End Class
 

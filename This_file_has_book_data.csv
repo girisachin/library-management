@@ -1,6 +1,19 @@
-ID,Name,Publication,ISBN,Edition,Left,Copies
-1,"Introduction to Automata Theory, Languages and Computation",Pearson,9788131720479,3,88,25
-2,"An Inroduction to Game Theory","Oxford University Press",9780195681581,1,88,35
-3,"Computer Orginization & Architecture","PHI learning",9788120329621,7,88,56
-4,"Intoduction to Algorithm","MIT Press",9788120340077,3,88,65
-5,"Software engineering:A Practitioner's Apprach","Mc Graw Hill",9780071267823,8,88,54
+"ID";"Name";"Author";"ISBN";"Genre";"Left";"Copies"
+1;"Introduction to Automata Theory, Languages and Computation";"Pearson";"9788131720479";"3";25;88
+2;"An Inroduction to Game Theory";"Oxford University Press";"9780195681581";"1";35;88
+3;"Computer Orginization & Architecture";"PHI learning";"9788120329621";"7";56;88
+4;"Intoduction to Algorithm";"MIT Press";"9788120340077";"3";65;88
+5;"Software engineering:A Practitioner's Apprach";"Mc Graw Hill";"9780071267823";"8";54;88
+12;"1";"1";"1111111111";"1";1;1
+13;"1";"1";"1111111111";"1";1;1
+14;"q";"q";"2222222222";"q";1;1
+15;"q";"q";"2222222222";"q";1;1
+16;"q";"q";"2222222222";"q";1;1
+17;"q";"q";"2222222222";"q";1;1
+18;"q";"q";"2222222222";"q";1;1
+19;"q";"q";"2222222222";"q";1;1
+20;"q";"q";"2222222222";"q";1;1
+21;"q";"q";"2222222222";"q";1;1
+25;"q";"q";"2222222222";"q";1;1
+26;"f";"f";"3333333333";"f";3;3
+27;"5";"5";"1111111111";"5";5;5
