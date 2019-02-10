@@ -90,6 +90,10 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel20 = New Library_Management.MyLabel()
 		Me.AAAAALabel21 = New Library_Management.MyLabel()
 		Me.AASummaryGroupBox = New Library_Management.MyGroupBox()
+		Me.MyTextBox3 = New Library_Management.MyTextBox()
+		Me.MyTextBox4 = New Library_Management.MyTextBox()
+		Me.MyLabel28 = New Library_Management.MyLabel()
+		Me.MyLabel29 = New Library_Management.MyLabel()
 		Me.SummaryViewIssuedBooks = New Library_Management.MyButton()
 		Me.SummaryBooksIssuedTextBox = New Library_Management.MyTextBox()
 		Me.SummaryDueTextBox = New Library_Management.MyTextBox()
@@ -189,10 +193,6 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel5 = New Library_Management.MyLabel()
 		Me.LoginPasswordTextBox = New Library_Management.MyTextBox()
 		Me.AAAACloseButtonMain = New Library_Management.MyClose()
-		Me.MyTextBox3 = New Library_Management.MyTextBox()
-		Me.MyTextBox4 = New Library_Management.MyTextBox()
-		Me.MyLabel28 = New Library_Management.MyLabel()
-		Me.MyLabel29 = New Library_Management.MyLabel()
 		Me.AAAAMainFormSkin.SuspendLayout()
 		Me.TabControlMain.SuspendLayout()
 		Me.SearchBooksTab.SuspendLayout()
@@ -326,7 +326,7 @@ Partial Class AAAAMainForm
 		Me.SearchBooksTab.Controls.Add(Me.SearchBookISBNTextBox)
 		Me.SearchBooksTab.Location = New System.Drawing.Point(4, 44)
 		Me.SearchBooksTab.Name = "SearchBooksTab"
-		Me.SearchBooksTab.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+		Me.SearchBooksTab.Padding = New System.Windows.Forms.Padding(3)
 		Me.SearchBooksTab.Size = New System.Drawing.Size(824, 489)
 		Me.SearchBooksTab.TabIndex = 0
 		Me.SearchBooksTab.Text = "Search Books"
@@ -499,7 +499,7 @@ Partial Class AAAAMainForm
 		Me.BrowseBooksTab.Controls.Add(Me.BrowseBooksDataGrid)
 		Me.BrowseBooksTab.Location = New System.Drawing.Point(4, 44)
 		Me.BrowseBooksTab.Name = "BrowseBooksTab"
-		Me.BrowseBooksTab.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+		Me.BrowseBooksTab.Padding = New System.Windows.Forms.Padding(3)
 		Me.BrowseBooksTab.Size = New System.Drawing.Size(824, 489)
 		Me.BrowseBooksTab.TabIndex = 1
 		Me.BrowseBooksTab.Text = "Browse Books"
@@ -634,7 +634,7 @@ Partial Class AAAAMainForm
 		Me.IssueBookTab.Controls.Add(Me.AAIssueGroupBox)
 		Me.IssueBookTab.Location = New System.Drawing.Point(4, 44)
 		Me.IssueBookTab.Name = "IssueBookTab"
-		Me.IssueBookTab.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+		Me.IssueBookTab.Padding = New System.Windows.Forms.Padding(3)
 		Me.IssueBookTab.Size = New System.Drawing.Size(824, 489)
 		Me.IssueBookTab.TabIndex = 2
 		Me.IssueBookTab.Text = "Issue/Return Book"
@@ -793,7 +793,7 @@ Partial Class AAAAMainForm
 		Me.SummaryTab.Controls.Add(Me.AASummaryGroupBox)
 		Me.SummaryTab.Location = New System.Drawing.Point(4, 44)
 		Me.SummaryTab.Name = "SummaryTab"
-		Me.SummaryTab.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+		Me.SummaryTab.Padding = New System.Windows.Forms.Padding(3)
 		Me.SummaryTab.Size = New System.Drawing.Size(824, 489)
 		Me.SummaryTab.TabIndex = 6
 		Me.SummaryTab.Text = "DashBoard"
@@ -1104,6 +1104,58 @@ Partial Class AAAAMainForm
 		Me.AASummaryGroupBox.TabIndex = 1
 		Me.AASummaryGroupBox.Text = "Summary"
 		'
+		'MyTextBox3
+		'
+		Me.MyTextBox3.BackColor = System.Drawing.Color.Transparent
+		Me.MyTextBox3.Enabled = False
+		Me.MyTextBox3.Location = New System.Drawing.Point(565, 118)
+		Me.MyTextBox3.MaxLength = 32767
+		Me.MyTextBox3.Multiline = False
+		Me.MyTextBox3.Name = "MyTextBox3"
+		Me.MyTextBox3.ReadOnly = False
+		Me.MyTextBox3.Size = New System.Drawing.Size(227, 29)
+		Me.MyTextBox3.TabIndex = 5
+		Me.MyTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.MyTextBox3.UseSystemPasswordChar = False
+		'
+		'MyTextBox4
+		'
+		Me.MyTextBox4.BackColor = System.Drawing.Color.Transparent
+		Me.MyTextBox4.Enabled = False
+		Me.MyTextBox4.Location = New System.Drawing.Point(565, 82)
+		Me.MyTextBox4.MaxLength = 32767
+		Me.MyTextBox4.Multiline = False
+		Me.MyTextBox4.Name = "MyTextBox4"
+		Me.MyTextBox4.ReadOnly = False
+		Me.MyTextBox4.Size = New System.Drawing.Size(227, 29)
+		Me.MyTextBox4.TabIndex = 6
+		Me.MyTextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.MyTextBox4.UseSystemPasswordChar = False
+		'
+		'MyLabel28
+		'
+		Me.MyLabel28.AutoSize = True
+		Me.MyLabel28.BackColor = System.Drawing.Color.Transparent
+		Me.MyLabel28.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.MyLabel28.ForeColor = System.Drawing.Color.White
+		Me.MyLabel28.Location = New System.Drawing.Point(480, 86)
+		Me.MyLabel28.Name = "MyLabel28"
+		Me.MyLabel28.Size = New System.Drawing.Size(81, 21)
+		Me.MyLabel28.TabIndex = 3
+		Me.MyLabel28.Text = "Username"
+		'
+		'MyLabel29
+		'
+		Me.MyLabel29.AutoSize = True
+		Me.MyLabel29.BackColor = System.Drawing.Color.Transparent
+		Me.MyLabel29.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.MyLabel29.ForeColor = System.Drawing.Color.White
+		Me.MyLabel29.Location = New System.Drawing.Point(480, 122)
+		Me.MyLabel29.Name = "MyLabel29"
+		Me.MyLabel29.Size = New System.Drawing.Size(74, 21)
+		Me.MyLabel29.TabIndex = 4
+		Me.MyLabel29.Text = "Fullname"
+		'
 		'SummaryViewIssuedBooks
 		'
 		Me.SummaryViewIssuedBooks.BackColor = System.Drawing.Color.Transparent
@@ -1173,7 +1225,7 @@ Partial Class AAAAMainForm
 		Me.AdminOptionsTab.Controls.Add(Me.AdminTabControl)
 		Me.AdminOptionsTab.Location = New System.Drawing.Point(4, 44)
 		Me.AdminOptionsTab.Name = "AdminOptionsTab"
-		Me.AdminOptionsTab.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+		Me.AdminOptionsTab.Padding = New System.Windows.Forms.Padding(3)
 		Me.AdminOptionsTab.Size = New System.Drawing.Size(824, 489)
 		Me.AdminOptionsTab.TabIndex = 5
 		Me.AdminOptionsTab.Text = "Admin Options"
@@ -1203,7 +1255,7 @@ Partial Class AAAAMainForm
 		Me.TabPage1.Controls.Add(Me.MyGroupBox2)
 		Me.TabPage1.Location = New System.Drawing.Point(4, 44)
 		Me.TabPage1.Name = "TabPage1"
-		Me.TabPage1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+		Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
 		Me.TabPage1.Size = New System.Drawing.Size(810, 435)
 		Me.TabPage1.TabIndex = 0
 		Me.TabPage1.Text = "User Management"
@@ -1287,7 +1339,7 @@ Partial Class AAAAMainForm
 		Me.MyGroupBox1.Font = New System.Drawing.Font("Segoe UI", 16.0!)
 		Me.MyGroupBox1.Location = New System.Drawing.Point(4, 3)
 		Me.MyGroupBox1.Name = "MyGroupBox1"
-		Me.MyGroupBox1.Size = New System.Drawing.Size(406, 273)
+		Me.MyGroupBox1.Size = New System.Drawing.Size(392, 273)
 		Me.MyGroupBox1.TabIndex = 6
 		Me.MyGroupBox1.Text = "Add Account"
 		'
@@ -1447,7 +1499,7 @@ Partial Class AAAAMainForm
 		Me.MyGroupBox2.Font = New System.Drawing.Font("Segoe UI", 16.0!)
 		Me.MyGroupBox2.Location = New System.Drawing.Point(421, 3)
 		Me.MyGroupBox2.Name = "MyGroupBox2"
-		Me.MyGroupBox2.Size = New System.Drawing.Size(406, 304)
+		Me.MyGroupBox2.Size = New System.Drawing.Size(388, 304)
 		Me.MyGroupBox2.TabIndex = 6
 		Me.MyGroupBox2.Text = "Edit Account"
 		'
@@ -1596,7 +1648,7 @@ Partial Class AAAAMainForm
 		Me.TabPage2.Controls.Add(Me.MyGroupBox4)
 		Me.TabPage2.Location = New System.Drawing.Point(4, 44)
 		Me.TabPage2.Name = "TabPage2"
-		Me.TabPage2.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+		Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
 		Me.TabPage2.Size = New System.Drawing.Size(810, 435)
 		Me.TabPage2.TabIndex = 1
 		Me.TabPage2.Text = "Books Management"
@@ -2014,7 +2066,7 @@ Partial Class AAAAMainForm
 		Me.TabPage3.Controls.Add(Me.AdminMySQLQueryTextBox)
 		Me.TabPage3.Location = New System.Drawing.Point(4, 44)
 		Me.TabPage3.Name = "TabPage3"
-		Me.TabPage3.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+		Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
 		Me.TabPage3.Size = New System.Drawing.Size(810, 435)
 		Me.TabPage3.TabIndex = 2
 		Me.TabPage3.Text = "MySQL"
@@ -2093,7 +2145,7 @@ Partial Class AAAAMainForm
 		Me.LoginSignupTab.Controls.Add(Me.AALoginGroupBox)
 		Me.LoginSignupTab.Location = New System.Drawing.Point(4, 44)
 		Me.LoginSignupTab.Name = "LoginSignupTab"
-		Me.LoginSignupTab.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+		Me.LoginSignupTab.Padding = New System.Windows.Forms.Padding(3)
 		Me.LoginSignupTab.Size = New System.Drawing.Size(824, 489)
 		Me.LoginSignupTab.TabIndex = 4
 		Me.LoginSignupTab.Text = "Login/Signup"
@@ -2404,58 +2456,6 @@ Partial Class AAAAMainForm
 		Me.AAAACloseButtonMain.Size = New System.Drawing.Size(18, 18)
 		Me.AAAACloseButtonMain.TabIndex = 0
 		Me.AAAACloseButtonMain.Text = "MyClose1"
-		'
-		'MyTextBox3
-		'
-		Me.MyTextBox3.BackColor = System.Drawing.Color.Transparent
-		Me.MyTextBox3.Enabled = False
-		Me.MyTextBox3.Location = New System.Drawing.Point(565, 118)
-		Me.MyTextBox3.MaxLength = 32767
-		Me.MyTextBox3.Multiline = False
-		Me.MyTextBox3.Name = "MyTextBox3"
-		Me.MyTextBox3.ReadOnly = False
-		Me.MyTextBox3.Size = New System.Drawing.Size(227, 29)
-		Me.MyTextBox3.TabIndex = 5
-		Me.MyTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-		Me.MyTextBox3.UseSystemPasswordChar = False
-		'
-		'MyTextBox4
-		'
-		Me.MyTextBox4.BackColor = System.Drawing.Color.Transparent
-		Me.MyTextBox4.Enabled = False
-		Me.MyTextBox4.Location = New System.Drawing.Point(565, 82)
-		Me.MyTextBox4.MaxLength = 32767
-		Me.MyTextBox4.Multiline = False
-		Me.MyTextBox4.Name = "MyTextBox4"
-		Me.MyTextBox4.ReadOnly = False
-		Me.MyTextBox4.Size = New System.Drawing.Size(227, 29)
-		Me.MyTextBox4.TabIndex = 6
-		Me.MyTextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-		Me.MyTextBox4.UseSystemPasswordChar = False
-		'
-		'MyLabel28
-		'
-		Me.MyLabel28.AutoSize = True
-		Me.MyLabel28.BackColor = System.Drawing.Color.Transparent
-		Me.MyLabel28.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.MyLabel28.ForeColor = System.Drawing.Color.White
-		Me.MyLabel28.Location = New System.Drawing.Point(480, 86)
-		Me.MyLabel28.Name = "MyLabel28"
-		Me.MyLabel28.Size = New System.Drawing.Size(81, 21)
-		Me.MyLabel28.TabIndex = 3
-		Me.MyLabel28.Text = "Username"
-		'
-		'MyLabel29
-		'
-		Me.MyLabel29.AutoSize = True
-		Me.MyLabel29.BackColor = System.Drawing.Color.Transparent
-		Me.MyLabel29.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.MyLabel29.ForeColor = System.Drawing.Color.White
-		Me.MyLabel29.Location = New System.Drawing.Point(480, 122)
-		Me.MyLabel29.Name = "MyLabel29"
-		Me.MyLabel29.Size = New System.Drawing.Size(74, 21)
-		Me.MyLabel29.TabIndex = 4
-		Me.MyLabel29.Text = "Fullname"
 		'
 		'AAAAMainForm
 		'

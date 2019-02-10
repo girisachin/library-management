@@ -558,5 +558,6 @@ Public Class AAAAMainForm
 	Private Sub AAAACloseButtonMain_Click(sender As Object, e As EventArgs) Handles AAAACloseButtonMain.Click
 		Environment.Exit(0)
 	End Sub
+
 End Class
 
