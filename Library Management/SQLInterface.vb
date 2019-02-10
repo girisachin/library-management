@@ -6,8 +6,6 @@ Public Class SQLInterface
 	Public Shared cmd As New MySqlCommand
 	'SET A CLASS THAT SERVES AS THE BRIDGE BETWEEN A DATASET AND Library_Management FOR SAVING AND RETRIEVING DATA.
 	Public Shared da As New MySqlDataAdapter
-	'SET A CLASS THAT CONSISTS SPECIFIC TABLE IN THE Library_Management
-	Public Shared dt As New DataTable
 	Public Shared result As Integer
 
 	Public Shared Function Login() As Boolean
@@ -23,7 +21,7 @@ Public Class SQLInterface
 			End With
 			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
 			da.SelectCommand = cmd
-			dt = New DataTable
+			Dim dt As DataTable = New DataTable
 			da.Fill(dt)
 			'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
 			Dim maxrow As Integer = dt.Rows.Count
@@ -59,28 +57,7 @@ Public Class SQLInterface
 
 	Public Shared Function Register() As Boolean
 		' Function will return status of query ( because we may need it in our parent form)
-		Dim maxrow As Integer = 1
-		Try
-			con.Open()
-			With cmd
-				.Connection = con
-				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & GLogin.Username & "'"
-			End With
-			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
-			da.SelectCommand = cmd
-			dt = New DataTable
-			da.Fill(dt)
-			'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
-			maxrow = dt.Rows.Count
-		Catch ex As Exception
-			Msg.Err("SQL Error2: " + ex.Message)
-		End Try
-		con.Close()
 
-		If maxrow <> 0 Then
-			Alert("Error", "Username already Taken")
-			Return False
-		End If
 
 		Try
 			'OPENING THE CONNECTION
@@ -115,7 +92,7 @@ Public Class SQLInterface
 			con.Open()
 			With cmd
 				.Connection = con
-				.CommandText = "UPDATE users SET Username ='" + NewUsername + "', Name ='" + NewFullname + "', AccType ='" + NewAccType + "' WHERE username='" + GLogin.Username + "'"
+				.CommandText = "UPDATE users SET Username ='" + NewUsername + "', Name ='" + NewFullname + "', AccType ='" + NewAccType + "' WHERE Username='" + GLogin.Username + "'"
 			End With
 
 			result = cmd.ExecuteNonQuery
@@ -142,7 +119,7 @@ Public Class SQLInterface
 			con.Open()
 			With cmd
 				.Connection = con
-				.CommandText = "UPDATE user SET Password='" & GLogin.PasswordHash & "', Salt='" & GLogin.Salt & "' where Username='" + GLogin.Username + "'"
+				.CommandText = "UPDATE users SET Pass='" & GLogin.PasswordHash & "', Salt='" & GLogin.Salt & "' WHERE BiNARY Username='" + GLogin.Username + "'"
 			End With
 
 			result = cmd.ExecuteNonQuery
@@ -169,6 +146,7 @@ Public Class SQLInterface
 			End With
 			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
 			da.SelectCommand = cmd
+			Dim dt As DataTable = New DataTable
 			da.Fill(dt)
 			Dim bs As BindingSource = New BindingSource()
 			bs.DataSource = dt
@@ -179,4 +157,32 @@ Public Class SQLInterface
 		End Try
 		con.Close()
 	End Sub
+	Public Shared Function DoesUsernameExists(ByVal Str As String) As Boolean
+		Dim maxrow As Integer = 1
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & Str & "'"
+			End With
+			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+			da.SelectCommand = cmd
+			Dim dt As DataTable = New DataTable
+			da.Fill(dt)
+			'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
+			maxrow = dt.Rows.Count
+		Catch ex As Exception
+
+			Msg.Err("SQL Error2: " + ex.Message)
+
+		End Try
+		con.Close()
+
+		If maxrow <> 0 Then
+			Alert("Error", "Username already Taken")
+			Return False
+		End If
+
+		Return True
+	End Function
 End Class

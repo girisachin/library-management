@@ -81,16 +81,6 @@ Public Class AAAAMainForm
 			GLogin.LogOut()
 			Exit Sub
 		End If
-		If Len(LoginUsernameTextBox.Text) < 4 Then
-			Alert("Warning", "Use atleast 4 digits in username")
-			GLogin.LogOut()
-			Exit Sub
-		End If
-		If Len(LoginPasswordTextBox.Text) < 6 Then
-			Alert("Warning", "Use atleast 6 digits in password")
-			GLogin.LogOut()
-			Exit Sub
-		End If
 		GLogin.LogOut()
 		GLogin.Username = LoginUsernameTextBox.Text
 		GLogin.UnhashedPassword = LoginPasswordTextBox.Text 'CheckOldPassword(PasswordTextBox.Text)
@@ -132,7 +122,6 @@ Public Class AAAAMainForm
 			GLogin.LogOut()
 			Exit Sub
 		End If
-		GLogin.Username = SignupUsernameTextBox.Text
 		If ValidateFullname(SignupFullnameTextBox.Text) = False Then
 			Alert("Warning", "Use only alphanumerics( a-z or A-Z ) or space")
 			GLogin.LogOut()
@@ -148,9 +137,15 @@ Public Class AAAAMainForm
 			GLogin.LogOut()
 			Exit Sub
 		End If
+		If SQLInterface.DoesUsernameExists(SignupUsernameTextBox.Text) Then
+			Alert("Warning", "Username already exists")
+			Exit Sub
+		End If
+		GLogin.Username = SignupUsernameTextBox.Text
 		GLogin.Fullname = SignupFullnameTextBox.Text
 		GLogin.PasswordHash = EncryptNewPassword(Encrypt_Sha512(SignupPasswordTextBox.Text))
 		GLogin.AccType = SignupDropDownBox.Text
+
 		SQLInterface.Register()
 		SignupPasswordTextBox.Text = ""
 		SignupConfirmPasswordTextBox.Text = ""
@@ -357,6 +352,10 @@ Public Class AAAAMainForm
 			Alert("Warning", "Use only alphanumerics or space")
 			Exit Sub
 		End If
+		If SQLInterface.DoesUsernameExists(SummaryUsernameTextBox.Text) Then
+			Alert("Warning", "Username already exists")
+			Exit Sub
+		End If
 		' TODO: Admin register function
 	End Sub
 	Private Sub AdminEditAccButton_Click(sender As Object, e As EventArgs) Handles AdminEditAccButton.Click
@@ -379,6 +378,75 @@ Public Class AAAAMainForm
 			Exit Sub
 		End If
 		' TODO: Admin Update function
+	End Sub
+
+	Private Sub SummaryEditProfileButton_Click(sender As Object, e As EventArgs) Handles SummaryEditProfileButton.Click
+		If ValidateUsername(SummaryUsernameTextBox.Text) = False Then
+			Alert("Warning", "Use only Alphanumerics and unerscores in username")
+			Exit Sub
+		End If
+		Console.WriteLine("1")
+
+		If ValidateFullname(SummaryFullnameTextBox.Text) = False Then
+			Alert("Warning", "Use only Alphanumerics and space in fullname")
+			Exit Sub
+		End If
+		Console.WriteLine("2")
+		If GLogin.AccType <> "Admin" Then
+			If Len(SummaryUsernameTextBox.Text) < 4 Then
+				Alert("Warning", "Use atleast 4 digits in username")
+				Exit Sub
+			End If
+			If Len(SummaryFullnameTextBox.Text) < 6 Then
+				Alert("Warning", "Use atleast 6 digits in password")
+				Exit Sub
+			End If
+		End If
+		Console.WriteLine("3")
+
+		If SQLInterface.DoesUsernameExists(SummaryUsernameTextBox.Text) = False Then
+			Alert("Warning", "Username already exists")
+			Exit Sub
+		End If
+		Console.WriteLine("4")
+
+		If SQLInterface.EditProfileData(SummaryUsernameTextBox.Text, SummaryFullnameTextBox.Text, SummaryProfileDropDownBox.Text) = False Then
+			Alert("Error", "Edit Profile Failed")
+			Exit Sub
+		End If
+		Console.WriteLine("5")
+
+		Alert("Success", "Profile Edited Successfully")
+	End Sub
+
+	Private Sub SummaryChangePasswordButton_Click(sender As Object, e As EventArgs) Handles SummaryChangePasswordButton.Click
+		If SummaryNewPasswordTextBox.Text <> SummaryConfirmPasswordTextBox.Text Then
+			Alert("Warning", "New Passwords do not match. Try Again")
+			SummaryNewPasswordTextBox.Text = ""
+			SummaryConfirmPasswordTextBox.Text = ""
+			Exit Sub
+		End If
+		If Len(SummaryConfirmPasswordTextBox.Text) < 6 Then
+			Alert("Warning", "Use atleast 6 digits in password")
+		End If
+		GLogin.TempHash = GLogin.PasswordHash
+		GLogin.TempSalt = GLogin.Salt
+		If GLogin.TempHash = Encrypt_Sha512(GLogin.Salt + Encrypt_Sha512(SummaryOldPasswordTextbox.Text) + "d5eba9b008f69bd56e") Then
+			GLogin.PasswordHash = SHA512.EncryptNewPassword(Encrypt_Sha512(SummaryNewPasswordTextBox.Text))
+			If SQLInterface.ChangePassword() = True Then
+				Alert("Success", "password changed successfully")
+			Else
+				Alert("Error", "error changing password")
+				GLogin.PasswordHash = GLogin.TempHash
+				GLogin.Salt = GLogin.TempSalt
+			End If
+		Else
+			Alert("Error", "Old Password is incorrect. Try Again")
+			SummaryOldPasswordTextbox.Text = ""
+			SummaryNewPasswordTextBox.Text = ""
+			SummaryConfirmPasswordTextBox.Text = ""
+		End If
+		GLogin.LoggedIn = True
 	End Sub
 
 End Class
