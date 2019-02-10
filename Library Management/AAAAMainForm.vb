@@ -86,7 +86,7 @@ Public Class AAAAMainForm
 		GLogin.Username = LoginUsernameTextBox.Text
 		GLogin.UnhashedPassword = LoginPasswordTextBox.Text 'CheckOldPassword(PasswordTextBox.Text)
 		If SQLInterface.Login() = True Then
-			StatusBar.Text = "Logged in as " + GLogin.AccType + " - " + GLogin.Fullname
+			StatusBar.Text = "Logged in as " + GLogin.Username + "(" + GLogin.AccType + ")"
 			Alert("Success", "Logged In !")
 			DisablePage(LoginSignupTab)
 			EnablePage(IssueBookTab)
@@ -438,7 +438,7 @@ Public Class AAAAMainForm
 			Alert("Error", "Edit Profile Failed")
 			Exit Sub
 		End If
-		StatusBar.Text = "Logged in as " + GLogin.AccType + " - " + GLogin.Username
+		StatusBar.Text = "Logged in as " + GLogin.Username + "(" + GLogin.AccType + ")"
 		Alert("Success", "Profile Edited Successfully")
 	End Sub
 	Private Sub SummaryChangePasswordButton_Click(sender As Object, e As EventArgs) Handles SummaryChangePasswordButton.Click
