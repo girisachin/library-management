@@ -155,8 +155,7 @@ Public Class SQLInterface
 			bs.DataSource = dt
 			AAAAMainForm.BrowseBooksDataGrid.DataSource = bs
 		Catch ex As Exception
-			GetServer.ShowDialog()
-			Environment.Exit(0)
+			Msg.Err("SQL Error6: " + ex.Message)
 		End Try
 		con.Close()
 	End Sub
@@ -271,7 +270,7 @@ Public Class SQLInterface
 			'HOLDS THE DATA TO BE EXECUTED
 			cmd.Connection = con
 			cmd.CommandText = "INSERT INTO books(Name,Author,ISBN,Genre,Copies,`Left`) " & "VALUES ('" & Name & "','" & Author & "','" & ISBN & "','" & Genre & "'," & copies & "," + copies + ")"
-			Console.WriteLine(cmd.CommandText)
+			'Console.WriteLine(cmd.CommandText)
 			'EXECUTE THE DATA
 			result = cmd.ExecuteNonQuery
 			'CHECKING IF THE DATA HAS BEEN EXECUTED OR NOT
@@ -325,15 +324,32 @@ Public Class SQLInterface
             da.Fill(dt)
             Dim bs As BindingSource = New BindingSource()
             bs.DataSource = dt
-            BookList.SearchbookGrid.DataSource = bs
+            BookList.SearchBookDataGrid.DataSource = bs
         Catch ex As Exception
-            GetServer.ShowDialog()
-            Environment.Exit(0)
-        End Try
+			Msg.Err("SQL Error6: " + ex.Message)
+		End Try
         con.Close()
     End Sub
-
-    Public Shared Sub loadissuedbooks(ByRef books(,) As String)
+	Public Shared Function GetSysDateTime() As Boolean
+		Dim res As Integer = -1
+		Try
+			con.Open()
+			cmd.Connection = con
+			cmd.CommandText = "SELECT 1 FROM DUAL"
+			da.SelectCommand = cmd
+			Dim dt As DataTable = New DataTable
+			da.Fill(dt)
+			res = dt.Rows.Count
+			con.Close()
+		Catch ex As MySqlException
+			Return False
+		End Try
+		If res = 1 Then
+			Return True
+		End If
+		Return False
+	End Function
+	   Public Shared Sub loadissuedbooks(ByRef books(,) As String)
         Dim bookinfo() As String
         Try
             con.Open()
@@ -393,8 +409,5 @@ Public Class SQLInterface
         End Try
 
     End Sub
-
-
-
 
 End Class
