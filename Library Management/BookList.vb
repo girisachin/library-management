@@ -15,4 +15,8 @@
     Private Sub MyClose1_Click(sender As Object, e As EventArgs) Handles MyClose1.Click
         Me.Close()
     End Sub
+
+    Private Sub MyMini1_Click(sender As Object, e As EventArgs) Handles MyMini1.Click
+
+    End Sub
 End Class
