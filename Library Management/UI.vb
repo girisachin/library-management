@@ -318,10 +318,9 @@ End Class
 	Private W, H As Integer
 	Private State As MouseState = MouseState.None
 	Private WithEvents TB As Windows.Forms.TextBox
-
-
-
 	Private _TextAlign As HorizontalAlignment = HorizontalAlignment.Left
+
+
 	<Category("Options")>
 	Property TextAlign() As HorizontalAlignment
 		Get

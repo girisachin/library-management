@@ -3,32 +3,32 @@ Public Class AAAAMainForm
 	Private HiddenPages As List(Of TabPage) = New List(Of TabPage)
 	Public Sub AlertFunction(ByVal status As String, ByVal str As String)
 		If status = "Success" Then
-			AlertBox1.ShowControl(MyAlertBox._Kind.Success, str, 4000)
-			AlertBox2.ShowControl(MyAlertBox._Kind.Success, str, 4000)
-			AlertBox3.ShowControl(MyAlertBox._Kind.Success, str, 4000)
-			AlertBox4.ShowControl(MyAlertBox._Kind.Success, str, 4000)
-			AlertBox5.ShowControl(MyAlertBox._Kind.Success, str, 4000)
-			AlertBox6.ShowControl(MyAlertBox._Kind.Success, str, 4000)
-			AlertBox7.ShowControl(MyAlertBox._Kind.Success, str, 4000)
-			AlertBox8.ShowControl(MyAlertBox._Kind.Success, str, 4000)
+			AlertBox1.ShowControl(MyAlertBox._Kind.Success, str, 2000)
+			AlertBox2.ShowControl(MyAlertBox._Kind.Success, str, 2000)
+			AlertBox3.ShowControl(MyAlertBox._Kind.Success, str, 2000)
+			AlertBox4.ShowControl(MyAlertBox._Kind.Success, str, 2000)
+			AlertBox5.ShowControl(MyAlertBox._Kind.Success, str, 2000)
+			AlertBox6.ShowControl(MyAlertBox._Kind.Success, str, 2000)
+			AlertBox7.ShowControl(MyAlertBox._Kind.Success, str, 2000)
+			AlertBox8.ShowControl(MyAlertBox._Kind.Success, str, 2000)
 		ElseIf status = "Warning" Then
-			AlertBox1.ShowControl(MyAlertBox._Kind.Info, str, 4000)
-			AlertBox2.ShowControl(MyAlertBox._Kind.Info, str, 4000)
-			AlertBox3.ShowControl(MyAlertBox._Kind.Info, str, 4000)
-			AlertBox4.ShowControl(MyAlertBox._Kind.Info, str, 4000)
-			AlertBox5.ShowControl(MyAlertBox._Kind.Info, str, 4000)
-			AlertBox6.ShowControl(MyAlertBox._Kind.Info, str, 4000)
-			AlertBox7.ShowControl(MyAlertBox._Kind.Info, str, 4000)
-			AlertBox8.ShowControl(MyAlertBox._Kind.Info, str, 4000)
+			AlertBox1.ShowControl(MyAlertBox._Kind.Info, str, 2000)
+			AlertBox2.ShowControl(MyAlertBox._Kind.Info, str, 2000)
+			AlertBox3.ShowControl(MyAlertBox._Kind.Info, str, 2000)
+			AlertBox4.ShowControl(MyAlertBox._Kind.Info, str, 2000)
+			AlertBox5.ShowControl(MyAlertBox._Kind.Info, str, 2000)
+			AlertBox6.ShowControl(MyAlertBox._Kind.Info, str, 2000)
+			AlertBox7.ShowControl(MyAlertBox._Kind.Info, str, 2000)
+			AlertBox8.ShowControl(MyAlertBox._Kind.Info, str, 2000)
 		Else
-			AlertBox1.ShowControl(MyAlertBox._Kind.Error, str, 4000)
-			AlertBox2.ShowControl(MyAlertBox._Kind.Error, str, 4000)
-			AlertBox3.ShowControl(MyAlertBox._Kind.Error, str, 4000)
-			AlertBox4.ShowControl(MyAlertBox._Kind.Error, str, 4000)
-			AlertBox5.ShowControl(MyAlertBox._Kind.Error, str, 4000)
-			AlertBox6.ShowControl(MyAlertBox._Kind.Error, str, 4000)
-			AlertBox7.ShowControl(MyAlertBox._Kind.Error, str, 4000)
-			AlertBox8.ShowControl(MyAlertBox._Kind.Error, str, 4000)
+			AlertBox1.ShowControl(MyAlertBox._Kind.Error, str, 2000)
+			AlertBox2.ShowControl(MyAlertBox._Kind.Error, str, 2000)
+			AlertBox3.ShowControl(MyAlertBox._Kind.Error, str, 2000)
+			AlertBox4.ShowControl(MyAlertBox._Kind.Error, str, 2000)
+			AlertBox5.ShowControl(MyAlertBox._Kind.Error, str, 2000)
+			AlertBox6.ShowControl(MyAlertBox._Kind.Error, str, 2000)
+			AlertBox7.ShowControl(MyAlertBox._Kind.Error, str, 2000)
+			AlertBox8.ShowControl(MyAlertBox._Kind.Error, str, 2000)
 		End If
 	End Sub
 	Private Sub EnablePage(ByVal Page As TabPage)
@@ -117,6 +117,9 @@ Public Class AAAAMainForm
 			SignupConfirmPasswordTextBox.Text = ""
 			Exit Sub
 		End If
+		If Len(SignupFullnameTextBox.Text.Trim) <> 0 Then
+			Alert("Error", "Check Your Fullname")
+		End If
 		If ValidateUsername(SignupUsernameTextBox.Text) = False Then
 			Alert("Warning", "Use only alphanumerics( a-z or A-Z ) or underscores( _ )")
 			GLogin.LogOut()
@@ -164,8 +167,6 @@ Public Class AAAAMainForm
 		DisablePage(IssueBookTab)
 		IssueBookSearchDropDown.SelectedIndex = 0
 		ReturnBookSearchDropDown.SelectedIndex = 0
-		'SQLInterface.PopulateBrowseBooksTable()
-		BrowseBooksDataGrid.ClearSelection()
 		AdminAddAccDropDown.SelectedIndex = 0
 		StatusBar.Text = "Not Logged In"
 	End Sub
@@ -530,20 +531,9 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub TabControlMain_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlMain.Selected
-		SignupDropDownBox.SelectedIndex = 0
-		AAAALogoutButton.Visible = False
-		DisablePage(AdminOptionsTab)
-		DisablePage(SummaryTab)
-		DisablePage(IssueBookTab)
-		IssueBookSearchDropDown.SelectedIndex = 0
-		ReturnBookSearchDropDown.SelectedIndex = 0
-		SQLInterface.PopulateBrowseBooksTable()
-		BrowseBooksDataGrid.ClearSelection()
-		AdminAddAccDropDown.SelectedIndex = 0
-		If e.TabPage.Name = "LoginSignupTab" Then
-
-		ElseIf e.TabPage.Name = "BrowseBooksTab" Then
+		If e.TabPage.Name = "BrowseBooksTab" Then
 			SQLInterface.PopulateBrowseBooksTable()
+			BrowseBooksDataGrid.ClearSelection()
 		End If
 		'e.TabPage.Name
 	End Sub

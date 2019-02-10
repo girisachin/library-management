@@ -189,6 +189,10 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel5 = New Library_Management.MyLabel()
 		Me.LoginPasswordTextBox = New Library_Management.MyTextBox()
 		Me.AAAACloseButtonMain = New Library_Management.MyClose()
+		Me.MyTextBox1 = New Library_Management.MyTextBox()
+		Me.MyTextBox2 = New Library_Management.MyTextBox()
+		Me.MyLabel26 = New Library_Management.MyLabel()
+		Me.MyLabel27 = New Library_Management.MyLabel()
 		Me.AAAAMainFormSkin.SuspendLayout()
 		Me.TabControlMain.SuspendLayout()
 		Me.SearchBooksTab.SuspendLayout()
@@ -237,7 +241,7 @@ Partial Class AAAAMainForm
 		Me.AAAAMainFormSkin.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAAAMainFormSkin.Location = New System.Drawing.Point(0, 0)
 		Me.AAAAMainFormSkin.Name = "AAAAMainFormSkin"
-		Me.AAAAMainFormSkin.Size = New System.Drawing.Size(848, 550)
+		Me.AAAAMainFormSkin.Size = New System.Drawing.Size(830, 624)
 		Me.AAAAMainFormSkin.TabIndex = 0
 		Me.AAAAMainFormSkin.Text = "Library Management System"
 		'
@@ -246,7 +250,7 @@ Partial Class AAAAMainForm
 		Me.AAAAMiniButtonMain.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.AAAAMiniButtonMain.BackColor = System.Drawing.Color.White
 		Me.AAAAMiniButtonMain.Font = New System.Drawing.Font("Marlett", 12.0!)
-		Me.AAAAMiniButtonMain.Location = New System.Drawing.Point(790, 13)
+		Me.AAAAMiniButtonMain.Location = New System.Drawing.Point(772, 13)
 		Me.AAAAMiniButtonMain.Name = "AAAAMiniButtonMain"
 		Me.AAAAMiniButtonMain.Size = New System.Drawing.Size(18, 18)
 		Me.AAAAMiniButtonMain.TabIndex = 5
@@ -257,7 +261,7 @@ Partial Class AAAAMainForm
 		Me.AAAALogoutButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
 		Me.AAAALogoutButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AAAALogoutButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.AAAALogoutButton.Location = New System.Drawing.Point(238, 516)
+		Me.AAAALogoutButton.Location = New System.Drawing.Point(228, 591)
 		Me.AAAALogoutButton.Name = "AAAALogoutButton"
 		Me.AAAALogoutButton.Size = New System.Drawing.Size(88, 27)
 		Me.AAAALogoutButton.TabIndex = 4
@@ -268,7 +272,7 @@ Partial Class AAAAMainForm
 		Me.AAAAExitButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
 		Me.AAAAExitButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AAAAExitButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.AAAAExitButton.Location = New System.Drawing.Point(543, 516)
+		Me.AAAAExitButton.Location = New System.Drawing.Point(534, 591)
 		Me.AAAAExitButton.Name = "AAAAExitButton"
 		Me.AAAAExitButton.Size = New System.Drawing.Size(68, 27)
 		Me.AAAAExitButton.TabIndex = 4
@@ -279,9 +283,9 @@ Partial Class AAAAMainForm
 		Me.StatusBar.Dock = System.Windows.Forms.DockStyle.Bottom
 		Me.StatusBar.Font = New System.Drawing.Font("Segoe UI", 8.0!)
 		Me.StatusBar.ForeColor = System.Drawing.Color.White
-		Me.StatusBar.Location = New System.Drawing.Point(0, 510)
+		Me.StatusBar.Location = New System.Drawing.Point(0, 584)
 		Me.StatusBar.Name = "StatusBar"
-		Me.StatusBar.Size = New System.Drawing.Size(848, 40)
+		Me.StatusBar.Size = New System.Drawing.Size(830, 40)
 		Me.StatusBar.TabIndex = 3
 		Me.StatusBar.Text = "Not Logged In"
 		'
@@ -299,7 +303,7 @@ Partial Class AAAAMainForm
 		Me.TabControlMain.Multiline = True
 		Me.TabControlMain.Name = "TabControlMain"
 		Me.TabControlMain.SelectedIndex = 0
-		Me.TabControlMain.Size = New System.Drawing.Size(848, 464)
+		Me.TabControlMain.Size = New System.Drawing.Size(830, 538)
 		Me.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
 		Me.TabControlMain.TabIndex = 2
 		Me.TabControlMain.Tag = ""
@@ -323,7 +327,7 @@ Partial Class AAAAMainForm
 		Me.SearchBooksTab.Location = New System.Drawing.Point(4, 44)
 		Me.SearchBooksTab.Name = "SearchBooksTab"
 		Me.SearchBooksTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.SearchBooksTab.Size = New System.Drawing.Size(840, 416)
+		Me.SearchBooksTab.Size = New System.Drawing.Size(822, 490)
 		Me.SearchBooksTab.TabIndex = 0
 		Me.SearchBooksTab.Text = "Search Books"
 		'
@@ -333,9 +337,9 @@ Partial Class AAAAMainForm
 		Me.AlertBox1.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox1.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox1.Location = New System.Drawing.Point(13, 360)
+		Me.AlertBox1.Location = New System.Drawing.Point(10, 441)
 		Me.AlertBox1.Name = "AlertBox1"
-		Me.AlertBox1.Size = New System.Drawing.Size(814, 42)
+		Me.AlertBox1.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox1.TabIndex = 3
 		Me.AlertBox1.Text = "AlertBox"
 		Me.AlertBox1.Visible = False
@@ -345,7 +349,7 @@ Partial Class AAAAMainForm
 		Me.SearchBookButton.BackColor = System.Drawing.Color.Transparent
 		Me.SearchBookButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.SearchBookButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.SearchBookButton.Location = New System.Drawing.Point(332, 277)
+		Me.SearchBookButton.Location = New System.Drawing.Point(323, 305)
 		Me.SearchBookButton.Name = "SearchBookButton"
 		Me.SearchBookButton.Size = New System.Drawing.Size(176, 53)
 		Me.SearchBookButton.TabIndex = 2
@@ -357,7 +361,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel11.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel11.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAAAALabel11.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel11.Location = New System.Drawing.Point(229, 234)
+		Me.AAAAALabel11.Location = New System.Drawing.Point(220, 262)
 		Me.AAAAALabel11.Name = "AAAAALabel11"
 		Me.AAAAALabel11.Size = New System.Drawing.Size(58, 21)
 		Me.AAAAALabel11.TabIndex = 1
@@ -369,7 +373,7 @@ Partial Class AAAAMainForm
 		Me.MyLabel25.BackColor = System.Drawing.Color.Transparent
 		Me.MyLabel25.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.MyLabel25.ForeColor = System.Drawing.Color.White
-		Me.MyLabel25.Location = New System.Drawing.Point(229, 197)
+		Me.MyLabel25.Location = New System.Drawing.Point(220, 225)
 		Me.MyLabel25.Name = "MyLabel25"
 		Me.MyLabel25.Size = New System.Drawing.Size(52, 21)
 		Me.MyLabel25.TabIndex = 1
@@ -381,7 +385,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel10.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel10.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAAAALabel10.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel10.Location = New System.Drawing.Point(229, 160)
+		Me.AAAAALabel10.Location = New System.Drawing.Point(220, 188)
 		Me.AAAAALabel10.Name = "AAAAALabel10"
 		Me.AAAAALabel10.Size = New System.Drawing.Size(87, 21)
 		Me.AAAAALabel10.TabIndex = 1
@@ -393,7 +397,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel3.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel3.Font = New System.Drawing.Font("Segoe UI", 16.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.AAAAALabel3.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel3.Location = New System.Drawing.Point(287, 38)
+		Me.AAAAALabel3.Location = New System.Drawing.Point(278, 66)
 		Me.AAAAALabel3.Name = "AAAAALabel3"
 		Me.AAAAALabel3.Size = New System.Drawing.Size(267, 30)
 		Me.AAAAALabel3.TabIndex = 1
@@ -405,7 +409,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel2.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.AAAAALabel2.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel2.Location = New System.Drawing.Point(229, 86)
+		Me.AAAAALabel2.Location = New System.Drawing.Point(220, 114)
 		Me.AAAAALabel2.Name = "AAAAALabel2"
 		Me.AAAAALabel2.Size = New System.Drawing.Size(60, 21)
 		Me.AAAAALabel2.TabIndex = 1
@@ -417,7 +421,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel9.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel9.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.AAAAALabel9.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel9.Location = New System.Drawing.Point(229, 123)
+		Me.AAAAALabel9.Location = New System.Drawing.Point(220, 151)
 		Me.AAAAALabel9.Name = "AAAAALabel9"
 		Me.AAAAALabel9.Size = New System.Drawing.Size(69, 21)
 		Me.AAAAALabel9.TabIndex = 1
@@ -426,7 +430,7 @@ Partial Class AAAAMainForm
 		'SearchBookAuthorTextBox
 		'
 		Me.SearchBookAuthorTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SearchBookAuthorTextBox.Location = New System.Drawing.Point(373, 230)
+		Me.SearchBookAuthorTextBox.Location = New System.Drawing.Point(364, 258)
 		Me.SearchBookAuthorTextBox.MaxLength = 32767
 		Me.SearchBookAuthorTextBox.Multiline = False
 		Me.SearchBookAuthorTextBox.Name = "SearchBookAuthorTextBox"
@@ -439,7 +443,7 @@ Partial Class AAAAMainForm
 		'SearchBookGenreTextBox
 		'
 		Me.SearchBookGenreTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SearchBookGenreTextBox.Location = New System.Drawing.Point(373, 193)
+		Me.SearchBookGenreTextBox.Location = New System.Drawing.Point(364, 221)
 		Me.SearchBookGenreTextBox.MaxLength = 32767
 		Me.SearchBookGenreTextBox.Multiline = False
 		Me.SearchBookGenreTextBox.Name = "SearchBookGenreTextBox"
@@ -452,7 +456,7 @@ Partial Class AAAAMainForm
 		'SearchBookNameTextBox
 		'
 		Me.SearchBookNameTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SearchBookNameTextBox.Location = New System.Drawing.Point(373, 156)
+		Me.SearchBookNameTextBox.Location = New System.Drawing.Point(364, 184)
 		Me.SearchBookNameTextBox.MaxLength = 32767
 		Me.SearchBookNameTextBox.Multiline = False
 		Me.SearchBookNameTextBox.Name = "SearchBookNameTextBox"
@@ -465,7 +469,7 @@ Partial Class AAAAMainForm
 		'SearchBookIDTextBox
 		'
 		Me.SearchBookIDTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SearchBookIDTextBox.Location = New System.Drawing.Point(373, 82)
+		Me.SearchBookIDTextBox.Location = New System.Drawing.Point(364, 110)
 		Me.SearchBookIDTextBox.MaxLength = 32767
 		Me.SearchBookIDTextBox.Multiline = False
 		Me.SearchBookIDTextBox.Name = "SearchBookIDTextBox"
@@ -478,7 +482,7 @@ Partial Class AAAAMainForm
 		'SearchBookISBNTextBox
 		'
 		Me.SearchBookISBNTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SearchBookISBNTextBox.Location = New System.Drawing.Point(373, 119)
+		Me.SearchBookISBNTextBox.Location = New System.Drawing.Point(364, 147)
 		Me.SearchBookISBNTextBox.MaxLength = 20
 		Me.SearchBookISBNTextBox.Multiline = False
 		Me.SearchBookISBNTextBox.Name = "SearchBookISBNTextBox"
@@ -496,7 +500,7 @@ Partial Class AAAAMainForm
 		Me.BrowseBooksTab.Location = New System.Drawing.Point(4, 44)
 		Me.BrowseBooksTab.Name = "BrowseBooksTab"
 		Me.BrowseBooksTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.BrowseBooksTab.Size = New System.Drawing.Size(840, 416)
+		Me.BrowseBooksTab.Size = New System.Drawing.Size(822, 490)
 		Me.BrowseBooksTab.TabIndex = 1
 		Me.BrowseBooksTab.Text = "Browse Books"
 		'
@@ -506,9 +510,9 @@ Partial Class AAAAMainForm
 		Me.AlertBox2.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox2.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox2.Location = New System.Drawing.Point(13, 360)
+		Me.AlertBox2.Location = New System.Drawing.Point(10, 441)
 		Me.AlertBox2.Name = "AlertBox2"
-		Me.AlertBox2.Size = New System.Drawing.Size(814, 42)
+		Me.AlertBox2.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox2.TabIndex = 4
 		Me.AlertBox2.Text = "AlertBox"
 		Me.AlertBox2.Visible = False
@@ -584,7 +588,7 @@ Partial Class AAAAMainForm
 		Me.BrowseBooksDataGrid.ShowCellErrors = False
 		Me.BrowseBooksDataGrid.ShowEditingIcon = False
 		Me.BrowseBooksDataGrid.ShowRowErrors = False
-		Me.BrowseBooksDataGrid.Size = New System.Drawing.Size(834, 410)
+		Me.BrowseBooksDataGrid.Size = New System.Drawing.Size(816, 484)
 		Me.BrowseBooksDataGrid.TabIndex = 0
 		'
 		'BrowseBooksContextMenu
@@ -630,7 +634,7 @@ Partial Class AAAAMainForm
 		Me.IssueBookTab.Location = New System.Drawing.Point(4, 44)
 		Me.IssueBookTab.Name = "IssueBookTab"
 		Me.IssueBookTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.IssueBookTab.Size = New System.Drawing.Size(840, 416)
+		Me.IssueBookTab.Size = New System.Drawing.Size(822, 490)
 		Me.IssueBookTab.TabIndex = 2
 		Me.IssueBookTab.Text = "Issue/Return Book"
 		'
@@ -640,9 +644,9 @@ Partial Class AAAAMainForm
 		Me.AlertBox3.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox3.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox3.Location = New System.Drawing.Point(13, 360)
+		Me.AlertBox3.Location = New System.Drawing.Point(10, 441)
 		Me.AlertBox3.Name = "AlertBox3"
-		Me.AlertBox3.Size = New System.Drawing.Size(814, 42)
+		Me.AlertBox3.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox3.TabIndex = 6
 		Me.AlertBox3.Text = "AlertBox"
 		Me.AlertBox3.Visible = False
@@ -789,7 +793,7 @@ Partial Class AAAAMainForm
 		Me.SummaryTab.Location = New System.Drawing.Point(4, 44)
 		Me.SummaryTab.Name = "SummaryTab"
 		Me.SummaryTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.SummaryTab.Size = New System.Drawing.Size(840, 416)
+		Me.SummaryTab.Size = New System.Drawing.Size(822, 490)
 		Me.SummaryTab.TabIndex = 6
 		Me.SummaryTab.Text = "DashBoard"
 		'
@@ -799,9 +803,9 @@ Partial Class AAAAMainForm
 		Me.AlertBox4.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox4.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox4.Location = New System.Drawing.Point(13, 360)
+		Me.AlertBox4.Location = New System.Drawing.Point(10, 441)
 		Me.AlertBox4.Name = "AlertBox4"
-		Me.AlertBox4.Size = New System.Drawing.Size(814, 42)
+		Me.AlertBox4.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox4.TabIndex = 5
 		Me.AlertBox4.Text = "AlertBox"
 		Me.AlertBox4.Visible = False
@@ -821,9 +825,9 @@ Partial Class AAAAMainForm
 		Me.AASummaryChangePasswordGroupBox.Controls.Add(Me.AAAAALabel16)
 		Me.AASummaryChangePasswordGroupBox.Controls.Add(Me.SummaryNewPasswordTextBox)
 		Me.AASummaryChangePasswordGroupBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.AASummaryChangePasswordGroupBox.Location = New System.Drawing.Point(423, 0)
+		Me.AASummaryChangePasswordGroupBox.Location = New System.Drawing.Point(413, 226)
 		Me.AASummaryChangePasswordGroupBox.Name = "AASummaryChangePasswordGroupBox"
-		Me.AASummaryChangePasswordGroupBox.Size = New System.Drawing.Size(419, 218)
+		Me.AASummaryChangePasswordGroupBox.Size = New System.Drawing.Size(409, 218)
 		Me.AASummaryChangePasswordGroupBox.TabIndex = 2
 		Me.AASummaryChangePasswordGroupBox.Text = "Change Password"
 		'
@@ -985,9 +989,9 @@ Partial Class AAAAMainForm
 		Me.AAAProfileGroupBox.Controls.Add(Me.AAAAALabel20)
 		Me.AAAProfileGroupBox.Controls.Add(Me.AAAAALabel21)
 		Me.AAAProfileGroupBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.AAAProfileGroupBox.Location = New System.Drawing.Point(0, 0)
+		Me.AAAProfileGroupBox.Location = New System.Drawing.Point(3, 226)
 		Me.AAAProfileGroupBox.Name = "AAAProfileGroupBox"
-		Me.AAAProfileGroupBox.Size = New System.Drawing.Size(419, 218)
+		Me.AAAProfileGroupBox.Size = New System.Drawing.Size(409, 218)
 		Me.AAAProfileGroupBox.TabIndex = 1
 		Me.AAAProfileGroupBox.Text = "Profile"
 		'
@@ -1083,15 +1087,19 @@ Partial Class AAAAMainForm
 		'AASummaryGroupBox
 		'
 		Me.AASummaryGroupBox.BackColor = System.Drawing.Color.Transparent
+		Me.AASummaryGroupBox.Controls.Add(Me.MyTextBox1)
+		Me.AASummaryGroupBox.Controls.Add(Me.MyTextBox2)
+		Me.AASummaryGroupBox.Controls.Add(Me.MyLabel26)
+		Me.AASummaryGroupBox.Controls.Add(Me.MyLabel27)
 		Me.AASummaryGroupBox.Controls.Add(Me.SummaryViewIssuedBooks)
 		Me.AASummaryGroupBox.Controls.Add(Me.SummaryBooksIssuedTextBox)
 		Me.AASummaryGroupBox.Controls.Add(Me.SummaryDueTextBox)
 		Me.AASummaryGroupBox.Controls.Add(Me.AAAAALabel13)
 		Me.AASummaryGroupBox.Controls.Add(Me.AAAAALabel14)
 		Me.AASummaryGroupBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.AASummaryGroupBox.Location = New System.Drawing.Point(0, 224)
+		Me.AASummaryGroupBox.Location = New System.Drawing.Point(3, 6)
 		Me.AASummaryGroupBox.Name = "AASummaryGroupBox"
-		Me.AASummaryGroupBox.Size = New System.Drawing.Size(840, 189)
+		Me.AASummaryGroupBox.Size = New System.Drawing.Size(813, 189)
 		Me.AASummaryGroupBox.TabIndex = 1
 		Me.AASummaryGroupBox.Text = "Summary"
 		'
@@ -1100,7 +1108,7 @@ Partial Class AAAAMainForm
 		Me.SummaryViewIssuedBooks.BackColor = System.Drawing.Color.Transparent
 		Me.SummaryViewIssuedBooks.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.SummaryViewIssuedBooks.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.SummaryViewIssuedBooks.Location = New System.Drawing.Point(551, 89)
+		Me.SummaryViewIssuedBooks.Location = New System.Drawing.Point(625, 62)
 		Me.SummaryViewIssuedBooks.Name = "SummaryViewIssuedBooks"
 		Me.SummaryViewIssuedBooks.Size = New System.Drawing.Size(176, 45)
 		Me.SummaryViewIssuedBooks.TabIndex = 2
@@ -1110,7 +1118,7 @@ Partial Class AAAAMainForm
 		'
 		Me.SummaryBooksIssuedTextBox.BackColor = System.Drawing.Color.Transparent
 		Me.SummaryBooksIssuedTextBox.Enabled = False
-		Me.SummaryBooksIssuedTextBox.Location = New System.Drawing.Point(225, 118)
+		Me.SummaryBooksIssuedTextBox.Location = New System.Drawing.Point(369, 131)
 		Me.SummaryBooksIssuedTextBox.MaxLength = 32767
 		Me.SummaryBooksIssuedTextBox.Multiline = False
 		Me.SummaryBooksIssuedTextBox.Name = "SummaryBooksIssuedTextBox"
@@ -1124,7 +1132,7 @@ Partial Class AAAAMainForm
 		'
 		Me.SummaryDueTextBox.BackColor = System.Drawing.Color.Transparent
 		Me.SummaryDueTextBox.Enabled = False
-		Me.SummaryDueTextBox.Location = New System.Drawing.Point(225, 82)
+		Me.SummaryDueTextBox.Location = New System.Drawing.Point(369, 95)
 		Me.SummaryDueTextBox.MaxLength = 32767
 		Me.SummaryDueTextBox.Multiline = False
 		Me.SummaryDueTextBox.Name = "SummaryDueTextBox"
@@ -1140,7 +1148,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel13.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel13.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAAAALabel13.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel13.Location = New System.Drawing.Point(32, 86)
+		Me.AAAAALabel13.Location = New System.Drawing.Point(176, 99)
 		Me.AAAAALabel13.Name = "AAAAALabel13"
 		Me.AAAAALabel13.Size = New System.Drawing.Size(133, 21)
 		Me.AAAAALabel13.TabIndex = 0
@@ -1152,7 +1160,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel14.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel14.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAAAALabel14.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel14.Location = New System.Drawing.Point(32, 122)
+		Me.AAAAALabel14.Location = New System.Drawing.Point(176, 135)
 		Me.AAAAALabel14.Name = "AAAAALabel14"
 		Me.AAAAALabel14.Size = New System.Drawing.Size(180, 21)
 		Me.AAAAALabel14.TabIndex = 0
@@ -1165,7 +1173,7 @@ Partial Class AAAAMainForm
 		Me.AdminOptionsTab.Location = New System.Drawing.Point(4, 44)
 		Me.AdminOptionsTab.Name = "AdminOptionsTab"
 		Me.AdminOptionsTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.AdminOptionsTab.Size = New System.Drawing.Size(840, 416)
+		Me.AdminOptionsTab.Size = New System.Drawing.Size(822, 490)
 		Me.AdminOptionsTab.TabIndex = 5
 		Me.AdminOptionsTab.Text = "Admin Options"
 		'
@@ -1181,7 +1189,7 @@ Partial Class AAAAMainForm
 		Me.AdminTabControl.Multiline = True
 		Me.AdminTabControl.Name = "AdminTabControl"
 		Me.AdminTabControl.SelectedIndex = 0
-		Me.AdminTabControl.Size = New System.Drawing.Size(834, 410)
+		Me.AdminTabControl.Size = New System.Drawing.Size(816, 484)
 		Me.AdminTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
 		Me.AdminTabControl.TabIndex = 6
 		'
@@ -1195,7 +1203,7 @@ Partial Class AAAAMainForm
 		Me.TabPage1.Location = New System.Drawing.Point(4, 44)
 		Me.TabPage1.Name = "TabPage1"
 		Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-		Me.TabPage1.Size = New System.Drawing.Size(826, 362)
+		Me.TabPage1.Size = New System.Drawing.Size(808, 436)
 		Me.TabPage1.TabIndex = 0
 		Me.TabPage1.Text = "User Management"
 		'
@@ -1205,9 +1213,9 @@ Partial Class AAAAMainForm
 		Me.AlertBox5.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox5.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox5.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox5.Location = New System.Drawing.Point(6, 313)
+		Me.AlertBox5.Location = New System.Drawing.Point(3, 394)
 		Me.AlertBox5.Name = "AlertBox5"
-		Me.AlertBox5.Size = New System.Drawing.Size(814, 42)
+		Me.AlertBox5.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox5.TabIndex = 5
 		Me.AlertBox5.Text = "AlertBox"
 		Me.AlertBox5.Visible = False
@@ -1438,7 +1446,7 @@ Partial Class AAAAMainForm
 		Me.MyGroupBox2.Font = New System.Drawing.Font("Segoe UI", 16.0!)
 		Me.MyGroupBox2.Location = New System.Drawing.Point(421, 3)
 		Me.MyGroupBox2.Name = "MyGroupBox2"
-		Me.MyGroupBox2.Size = New System.Drawing.Size(406, 304)
+		Me.MyGroupBox2.Size = New System.Drawing.Size(387, 304)
 		Me.MyGroupBox2.TabIndex = 6
 		Me.MyGroupBox2.Text = "Edit Account"
 		'
@@ -1461,7 +1469,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditAccNewPasswordTextBox.Multiline = False
 		Me.AdminEditAccNewPasswordTextBox.Name = "AdminEditAccNewPasswordTextBox"
 		Me.AdminEditAccNewPasswordTextBox.ReadOnly = False
-		Me.AdminEditAccNewPasswordTextBox.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditAccNewPasswordTextBox.Size = New System.Drawing.Size(219, 29)
 		Me.AdminEditAccNewPasswordTextBox.TabIndex = 1
 		Me.AdminEditAccNewPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditAccNewPasswordTextBox.UseSystemPasswordChar = False
@@ -1474,7 +1482,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditAccNewFullnameTextBox.Multiline = False
 		Me.AdminEditAccNewFullnameTextBox.Name = "AdminEditAccNewFullnameTextBox"
 		Me.AdminEditAccNewFullnameTextBox.ReadOnly = False
-		Me.AdminEditAccNewFullnameTextBox.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditAccNewFullnameTextBox.Size = New System.Drawing.Size(219, 29)
 		Me.AdminEditAccNewFullnameTextBox.TabIndex = 1
 		Me.AdminEditAccNewFullnameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditAccNewFullnameTextBox.UseSystemPasswordChar = False
@@ -1511,7 +1519,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditAccConfirmPasswordTextBox.Multiline = False
 		Me.AdminEditAccConfirmPasswordTextBox.Name = "AdminEditAccConfirmPasswordTextBox"
 		Me.AdminEditAccConfirmPasswordTextBox.ReadOnly = False
-		Me.AdminEditAccConfirmPasswordTextBox.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditAccConfirmPasswordTextBox.Size = New System.Drawing.Size(219, 29)
 		Me.AdminEditAccConfirmPasswordTextBox.TabIndex = 1
 		Me.AdminEditAccConfirmPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditAccConfirmPasswordTextBox.UseSystemPasswordChar = False
@@ -1548,7 +1556,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditAccOldUsernameTextBox.Multiline = False
 		Me.AdminEditAccOldUsernameTextBox.Name = "AdminEditAccOldUsernameTextBox"
 		Me.AdminEditAccOldUsernameTextBox.ReadOnly = False
-		Me.AdminEditAccOldUsernameTextBox.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditAccOldUsernameTextBox.Size = New System.Drawing.Size(219, 29)
 		Me.AdminEditAccOldUsernameTextBox.TabIndex = 1
 		Me.AdminEditAccOldUsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditAccOldUsernameTextBox.UseSystemPasswordChar = False
@@ -1561,7 +1569,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditAccNewUsernameTextBox.Multiline = False
 		Me.AdminEditAccNewUsernameTextBox.Name = "AdminEditAccNewUsernameTextBox"
 		Me.AdminEditAccNewUsernameTextBox.ReadOnly = False
-		Me.AdminEditAccNewUsernameTextBox.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditAccNewUsernameTextBox.Size = New System.Drawing.Size(219, 29)
 		Me.AdminEditAccNewUsernameTextBox.TabIndex = 1
 		Me.AdminEditAccNewUsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditAccNewUsernameTextBox.UseSystemPasswordChar = False
@@ -1588,7 +1596,7 @@ Partial Class AAAAMainForm
 		Me.TabPage2.Location = New System.Drawing.Point(4, 44)
 		Me.TabPage2.Name = "TabPage2"
 		Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-		Me.TabPage2.Size = New System.Drawing.Size(826, 362)
+		Me.TabPage2.Size = New System.Drawing.Size(808, 436)
 		Me.TabPage2.TabIndex = 1
 		Me.TabPage2.Text = "Books Management"
 		'
@@ -1598,9 +1606,9 @@ Partial Class AAAAMainForm
 		Me.AlertBox7.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox7.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox7.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox7.Location = New System.Drawing.Point(6, 313)
+		Me.AlertBox7.Location = New System.Drawing.Point(3, 394)
 		Me.AlertBox7.Name = "AlertBox7"
-		Me.AlertBox7.Size = New System.Drawing.Size(814, 42)
+		Me.AlertBox7.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox7.TabIndex = 6
 		Me.AlertBox7.Text = "AlertBox"
 		Me.AlertBox7.Visible = False
@@ -1673,7 +1681,7 @@ Partial Class AAAAMainForm
 		Me.MyGroupBox3.Font = New System.Drawing.Font("Segoe UI", 16.0!)
 		Me.MyGroupBox3.Location = New System.Drawing.Point(416, 4)
 		Me.MyGroupBox3.Name = "MyGroupBox3"
-		Me.MyGroupBox3.Size = New System.Drawing.Size(406, 351)
+		Me.MyGroupBox3.Size = New System.Drawing.Size(392, 351)
 		Me.MyGroupBox3.TabIndex = 7
 		Me.MyGroupBox3.Text = "Edit BookInfo"
 		'
@@ -1685,7 +1693,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditBookName.Multiline = False
 		Me.AdminEditBookName.Name = "AdminEditBookName"
 		Me.AdminEditBookName.ReadOnly = False
-		Me.AdminEditBookName.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditBookName.Size = New System.Drawing.Size(227, 29)
 		Me.AdminEditBookName.TabIndex = 8
 		Me.AdminEditBookName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditBookName.UseSystemPasswordChar = False
@@ -1698,7 +1706,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditBookGenreTextBox.Multiline = False
 		Me.AdminEditBookGenreTextBox.Name = "AdminEditBookGenreTextBox"
 		Me.AdminEditBookGenreTextBox.ReadOnly = False
-		Me.AdminEditBookGenreTextBox.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditBookGenreTextBox.Size = New System.Drawing.Size(227, 29)
 		Me.AdminEditBookGenreTextBox.TabIndex = 9
 		Me.AdminEditBookGenreTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditBookGenreTextBox.UseSystemPasswordChar = False
@@ -1711,7 +1719,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditBookCopies.Multiline = False
 		Me.AdminEditBookCopies.Name = "AdminEditBookCopies"
 		Me.AdminEditBookCopies.ReadOnly = False
-		Me.AdminEditBookCopies.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditBookCopies.Size = New System.Drawing.Size(227, 29)
 		Me.AdminEditBookCopies.TabIndex = 9
 		Me.AdminEditBookCopies.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditBookCopies.UseSystemPasswordChar = False
@@ -1736,7 +1744,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditBookAuthor.Multiline = False
 		Me.AdminEditBookAuthor.Name = "AdminEditBookAuthor"
 		Me.AdminEditBookAuthor.ReadOnly = False
-		Me.AdminEditBookAuthor.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditBookAuthor.Size = New System.Drawing.Size(227, 29)
 		Me.AdminEditBookAuthor.TabIndex = 11
 		Me.AdminEditBookAuthor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditBookAuthor.UseSystemPasswordChar = False
@@ -1761,7 +1769,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditBookID.Multiline = False
 		Me.AdminEditBookID.Name = "AdminEditBookID"
 		Me.AdminEditBookID.ReadOnly = False
-		Me.AdminEditBookID.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditBookID.Size = New System.Drawing.Size(227, 29)
 		Me.AdminEditBookID.TabIndex = 12
 		Me.AdminEditBookID.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditBookID.UseSystemPasswordChar = False
@@ -1774,7 +1782,7 @@ Partial Class AAAAMainForm
 		Me.AdminEditBookISBN.Multiline = False
 		Me.AdminEditBookISBN.Name = "AdminEditBookISBN"
 		Me.AdminEditBookISBN.ReadOnly = False
-		Me.AdminEditBookISBN.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditBookISBN.Size = New System.Drawing.Size(227, 29)
 		Me.AdminEditBookISBN.TabIndex = 12
 		Me.AdminEditBookISBN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditBookISBN.UseSystemPasswordChar = False
@@ -2006,7 +2014,7 @@ Partial Class AAAAMainForm
 		Me.TabPage3.Location = New System.Drawing.Point(4, 44)
 		Me.TabPage3.Name = "TabPage3"
 		Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-		Me.TabPage3.Size = New System.Drawing.Size(826, 362)
+		Me.TabPage3.Size = New System.Drawing.Size(808, 436)
 		Me.TabPage3.TabIndex = 2
 		Me.TabPage3.Text = "MySQL"
 		'
@@ -2016,9 +2024,9 @@ Partial Class AAAAMainForm
 		Me.AlertBox8.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox8.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox8.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox8.Location = New System.Drawing.Point(6, 313)
+		Me.AlertBox8.Location = New System.Drawing.Point(3, 394)
 		Me.AlertBox8.Name = "AlertBox8"
-		Me.AlertBox8.Size = New System.Drawing.Size(814, 42)
+		Me.AlertBox8.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox8.TabIndex = 6
 		Me.AlertBox8.Text = "AlertBox"
 		Me.AlertBox8.Visible = False
@@ -2029,9 +2037,9 @@ Partial Class AAAAMainForm
 		Me.Admin.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.Admin.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.Admin.HideSelection = False
-		Me.Admin.Location = New System.Drawing.Point(39, 84)
+		Me.Admin.Location = New System.Drawing.Point(6, 84)
 		Me.Admin.Name = "Admin"
-		Me.Admin.Size = New System.Drawing.Size(762, 261)
+		Me.Admin.Size = New System.Drawing.Size(795, 304)
 		Me.Admin.TabIndex = 10
 		Me.Admin.Text = ""
 		Me.Admin.WordWrap = False
@@ -2066,12 +2074,12 @@ Partial Class AAAAMainForm
 		'AdminMySQLQueryTextBox
 		'
 		Me.AdminMySQLQueryTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.AdminMySQLQueryTextBox.Location = New System.Drawing.Point(39, 19)
+		Me.AdminMySQLQueryTextBox.Location = New System.Drawing.Point(6, 19)
 		Me.AdminMySQLQueryTextBox.MaxLength = 32767
 		Me.AdminMySQLQueryTextBox.Multiline = False
 		Me.AdminMySQLQueryTextBox.Name = "AdminMySQLQueryTextBox"
 		Me.AdminMySQLQueryTextBox.ReadOnly = False
-		Me.AdminMySQLQueryTextBox.Size = New System.Drawing.Size(762, 29)
+		Me.AdminMySQLQueryTextBox.Size = New System.Drawing.Size(795, 29)
 		Me.AdminMySQLQueryTextBox.TabIndex = 7
 		Me.AdminMySQLQueryTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminMySQLQueryTextBox.UseSystemPasswordChar = False
@@ -2085,7 +2093,7 @@ Partial Class AAAAMainForm
 		Me.LoginSignupTab.Location = New System.Drawing.Point(4, 44)
 		Me.LoginSignupTab.Name = "LoginSignupTab"
 		Me.LoginSignupTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.LoginSignupTab.Size = New System.Drawing.Size(840, 416)
+		Me.LoginSignupTab.Size = New System.Drawing.Size(822, 490)
 		Me.LoginSignupTab.TabIndex = 4
 		Me.LoginSignupTab.Text = "Login/Signup"
 		'
@@ -2095,9 +2103,9 @@ Partial Class AAAAMainForm
 		Me.AlertBox6.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox6.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox6.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox6.Location = New System.Drawing.Point(13, 360)
+		Me.AlertBox6.Location = New System.Drawing.Point(10, 441)
 		Me.AlertBox6.Name = "AlertBox6"
-		Me.AlertBox6.Size = New System.Drawing.Size(814, 42)
+		Me.AlertBox6.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox6.TabIndex = 5
 		Me.AlertBox6.Text = "AlertBox"
 		Me.AlertBox6.Visible = False
@@ -2119,9 +2127,9 @@ Partial Class AAAAMainForm
 		Me.AASignupGroupBox.Controls.Add(Me.SignupFullnameTextBox)
 		Me.AASignupGroupBox.Controls.Add(Me.SignupUsernameTextBox)
 		Me.AASignupGroupBox.Font = New System.Drawing.Font("Segoe UI", 16.0!)
-		Me.AASignupGroupBox.Location = New System.Drawing.Point(445, 6)
+		Me.AASignupGroupBox.Location = New System.Drawing.Point(435, 44)
 		Me.AASignupGroupBox.Name = "AASignupGroupBox"
-		Me.AASignupGroupBox.Size = New System.Drawing.Size(387, 348)
+		Me.AASignupGroupBox.Size = New System.Drawing.Size(388, 389)
 		Me.AASignupGroupBox.TabIndex = 4
 		Me.AASignupGroupBox.Text = "Signup"
 		'
@@ -2131,7 +2139,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel12.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel12.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAAAALabel12.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel12.Location = New System.Drawing.Point(86, 281)
+		Me.AAAAALabel12.Location = New System.Drawing.Point(87, 292)
 		Me.AAAAALabel12.Name = "AAAAALabel12"
 		Me.AAAAALabel12.Size = New System.Drawing.Size(74, 21)
 		Me.AAAAALabel12.TabIndex = 5
@@ -2148,7 +2156,7 @@ Partial Class AAAAMainForm
 		Me.SignupDropDownBox.FormattingEnabled = True
 		Me.SignupDropDownBox.ItemHeight = 18
 		Me.SignupDropDownBox.Items.AddRange(New Object() {"Student", "Teacher", "Admin"})
-		Me.SignupDropDownBox.Location = New System.Drawing.Point(166, 279)
+		Me.SignupDropDownBox.Location = New System.Drawing.Point(167, 290)
 		Me.SignupDropDownBox.Name = "SignupDropDownBox"
 		Me.SignupDropDownBox.Size = New System.Drawing.Size(135, 24)
 		Me.SignupDropDownBox.TabIndex = 4
@@ -2159,7 +2167,7 @@ Partial Class AAAAMainForm
 		Me.AAASignupConfirmPasswordPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.AAASignupConfirmPasswordPicture.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AAASignupConfirmPasswordPicture.Image = Global.Library_Management.My.Resources.Resources.hide
-		Me.AAASignupConfirmPasswordPicture.Location = New System.Drawing.Point(272, 243)
+		Me.AAASignupConfirmPasswordPicture.Location = New System.Drawing.Point(273, 254)
 		Me.AAASignupConfirmPasswordPicture.Name = "AAASignupConfirmPasswordPicture"
 		Me.AAASignupConfirmPasswordPicture.Size = New System.Drawing.Size(29, 29)
 		Me.AAASignupConfirmPasswordPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -2172,7 +2180,7 @@ Partial Class AAAAMainForm
 		Me.AAASignupPasswordPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.AAASignupPasswordPicture.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AAASignupPasswordPicture.Image = Global.Library_Management.My.Resources.Resources.hide
-		Me.AAASignupPasswordPicture.Location = New System.Drawing.Point(272, 189)
+		Me.AAASignupPasswordPicture.Location = New System.Drawing.Point(273, 200)
 		Me.AAASignupPasswordPicture.Margin = New System.Windows.Forms.Padding(0)
 		Me.AAASignupPasswordPicture.Name = "AAASignupPasswordPicture"
 		Me.AAASignupPasswordPicture.Size = New System.Drawing.Size(29, 29)
@@ -2186,7 +2194,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel4.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel4.Font = New System.Drawing.Font("Segoe UI", 8.0!)
 		Me.AAAAALabel4.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel4.Location = New System.Drawing.Point(85, 62)
+		Me.AAAAALabel4.Location = New System.Drawing.Point(86, 73)
 		Me.AAAAALabel4.Name = "AAAAALabel4"
 		Me.AAAAALabel4.Size = New System.Drawing.Size(58, 13)
 		Me.AAAAALabel4.TabIndex = 1
@@ -2195,7 +2203,7 @@ Partial Class AAAAMainForm
 		'SignupConfirmPasswordTextBox
 		'
 		Me.SignupConfirmPasswordTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SignupConfirmPasswordTextBox.Location = New System.Drawing.Point(85, 243)
+		Me.SignupConfirmPasswordTextBox.Location = New System.Drawing.Point(86, 254)
 		Me.SignupConfirmPasswordTextBox.Margin = New System.Windows.Forms.Padding(3, 3, 0, 3)
 		Me.SignupConfirmPasswordTextBox.MaxLength = 32767
 		Me.SignupConfirmPasswordTextBox.Multiline = False
@@ -2212,7 +2220,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel6.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel6.Font = New System.Drawing.Font("Segoe UI", 8.0!)
 		Me.AAAAALabel6.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel6.Location = New System.Drawing.Point(85, 170)
+		Me.AAAAALabel6.Location = New System.Drawing.Point(86, 181)
 		Me.AAAAALabel6.Name = "AAAAALabel6"
 		Me.AAAAALabel6.Size = New System.Drawing.Size(56, 13)
 		Me.AAAAALabel6.TabIndex = 1
@@ -2223,7 +2231,7 @@ Partial Class AAAAMainForm
 		Me.SignupButton.BackColor = System.Drawing.Color.Transparent
 		Me.SignupButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.SignupButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.SignupButton.Location = New System.Drawing.Point(141, 317)
+		Me.SignupButton.Location = New System.Drawing.Point(142, 328)
 		Me.SignupButton.Name = "SignupButton"
 		Me.SignupButton.Size = New System.Drawing.Size(104, 31)
 		Me.SignupButton.TabIndex = 0
@@ -2232,7 +2240,7 @@ Partial Class AAAAMainForm
 		'SignupPasswordTextBox
 		'
 		Me.SignupPasswordTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SignupPasswordTextBox.Location = New System.Drawing.Point(85, 189)
+		Me.SignupPasswordTextBox.Location = New System.Drawing.Point(86, 200)
 		Me.SignupPasswordTextBox.Margin = New System.Windows.Forms.Padding(3, 3, 0, 3)
 		Me.SignupPasswordTextBox.MaxLength = 32767
 		Me.SignupPasswordTextBox.Multiline = False
@@ -2249,7 +2257,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel8.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel8.Font = New System.Drawing.Font("Segoe UI", 8.0!)
 		Me.AAAAALabel8.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel8.Location = New System.Drawing.Point(85, 116)
+		Me.AAAAALabel8.Location = New System.Drawing.Point(86, 127)
 		Me.AAAAALabel8.Name = "AAAAALabel8"
 		Me.AAAAALabel8.Size = New System.Drawing.Size(54, 13)
 		Me.AAAAALabel8.TabIndex = 1
@@ -2261,7 +2269,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel7.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel7.Font = New System.Drawing.Font("Segoe UI", 8.0!)
 		Me.AAAAALabel7.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel7.Location = New System.Drawing.Point(85, 224)
+		Me.AAAAALabel7.Location = New System.Drawing.Point(86, 235)
 		Me.AAAAALabel7.Name = "AAAAALabel7"
 		Me.AAAAALabel7.Size = New System.Drawing.Size(100, 13)
 		Me.AAAAALabel7.TabIndex = 1
@@ -2270,7 +2278,7 @@ Partial Class AAAAMainForm
 		'SignupFullnameTextBox
 		'
 		Me.SignupFullnameTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SignupFullnameTextBox.Location = New System.Drawing.Point(85, 135)
+		Me.SignupFullnameTextBox.Location = New System.Drawing.Point(86, 146)
 		Me.SignupFullnameTextBox.MaxLength = 32767
 		Me.SignupFullnameTextBox.Multiline = False
 		Me.SignupFullnameTextBox.Name = "SignupFullnameTextBox"
@@ -2283,7 +2291,7 @@ Partial Class AAAAMainForm
 		'SignupUsernameTextBox
 		'
 		Me.SignupUsernameTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.SignupUsernameTextBox.Location = New System.Drawing.Point(85, 81)
+		Me.SignupUsernameTextBox.Location = New System.Drawing.Point(86, 92)
 		Me.SignupUsernameTextBox.MaxLength = 32767
 		Me.SignupUsernameTextBox.Multiline = False
 		Me.SignupUsernameTextBox.Name = "SignupUsernameTextBox"
@@ -2303,9 +2311,9 @@ Partial Class AAAAMainForm
 		Me.AALoginGroupBox.Controls.Add(Me.AAAAALabel5)
 		Me.AALoginGroupBox.Controls.Add(Me.LoginPasswordTextBox)
 		Me.AALoginGroupBox.Font = New System.Drawing.Font("Segoe UI", 16.0!)
-		Me.AALoginGroupBox.Location = New System.Drawing.Point(8, 6)
+		Me.AALoginGroupBox.Location = New System.Drawing.Point(0, 44)
 		Me.AALoginGroupBox.Name = "AALoginGroupBox"
-		Me.AALoginGroupBox.Size = New System.Drawing.Size(388, 392)
+		Me.AALoginGroupBox.Size = New System.Drawing.Size(388, 389)
 		Me.AALoginGroupBox.TabIndex = 3
 		Me.AALoginGroupBox.Text = "Login"
 		'
@@ -2315,7 +2323,7 @@ Partial Class AAAAMainForm
 		Me.AAALoginPasswordPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
 		Me.AAALoginPasswordPicture.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AAALoginPasswordPicture.Image = Global.Library_Management.My.Resources.Resources.hide
-		Me.AAALoginPasswordPicture.Location = New System.Drawing.Point(273, 206)
+		Me.AAALoginPasswordPicture.Location = New System.Drawing.Point(273, 226)
 		Me.AAALoginPasswordPicture.Margin = New System.Windows.Forms.Padding(0)
 		Me.AAALoginPasswordPicture.Name = "AAALoginPasswordPicture"
 		Me.AAALoginPasswordPicture.Size = New System.Drawing.Size(29, 29)
@@ -2326,7 +2334,7 @@ Partial Class AAAAMainForm
 		'LoginUsernameTextBox
 		'
 		Me.LoginUsernameTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.LoginUsernameTextBox.Location = New System.Drawing.Point(86, 138)
+		Me.LoginUsernameTextBox.Location = New System.Drawing.Point(86, 158)
 		Me.LoginUsernameTextBox.MaxLength = 32767
 		Me.LoginUsernameTextBox.Multiline = False
 		Me.LoginUsernameTextBox.Name = "LoginUsernameTextBox"
@@ -2341,7 +2349,7 @@ Partial Class AAAAMainForm
 		Me.LoginButton.BackColor = System.Drawing.Color.Transparent
 		Me.LoginButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.LoginButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.LoginButton.Location = New System.Drawing.Point(142, 248)
+		Me.LoginButton.Location = New System.Drawing.Point(142, 268)
 		Me.LoginButton.Name = "LoginButton"
 		Me.LoginButton.Size = New System.Drawing.Size(99, 29)
 		Me.LoginButton.TabIndex = 0
@@ -2353,7 +2361,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel1.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel1.Font = New System.Drawing.Font("Segoe UI", 8.0!)
 		Me.AAAAALabel1.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel1.Location = New System.Drawing.Point(86, 115)
+		Me.AAAAALabel1.Location = New System.Drawing.Point(86, 135)
 		Me.AAAAALabel1.Name = "AAAAALabel1"
 		Me.AAAAALabel1.Size = New System.Drawing.Size(58, 13)
 		Me.AAAAALabel1.TabIndex = 1
@@ -2365,7 +2373,7 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel5.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel5.Font = New System.Drawing.Font("Segoe UI", 8.0!)
 		Me.AAAAALabel5.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel5.Location = New System.Drawing.Point(86, 183)
+		Me.AAAAALabel5.Location = New System.Drawing.Point(86, 203)
 		Me.AAAAALabel5.Name = "AAAAALabel5"
 		Me.AAAAALabel5.Size = New System.Drawing.Size(56, 13)
 		Me.AAAAALabel5.TabIndex = 1
@@ -2374,7 +2382,7 @@ Partial Class AAAAMainForm
 		'LoginPasswordTextBox
 		'
 		Me.LoginPasswordTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.LoginPasswordTextBox.Location = New System.Drawing.Point(86, 206)
+		Me.LoginPasswordTextBox.Location = New System.Drawing.Point(86, 226)
 		Me.LoginPasswordTextBox.Margin = New System.Windows.Forms.Padding(3, 3, 0, 3)
 		Me.LoginPasswordTextBox.MaxLength = 32767
 		Me.LoginPasswordTextBox.Multiline = False
@@ -2390,17 +2398,69 @@ Partial Class AAAAMainForm
 		Me.AAAACloseButtonMain.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.AAAACloseButtonMain.BackColor = System.Drawing.Color.White
 		Me.AAAACloseButtonMain.Font = New System.Drawing.Font("Marlett", 10.0!)
-		Me.AAAACloseButtonMain.Location = New System.Drawing.Point(814, 13)
+		Me.AAAACloseButtonMain.Location = New System.Drawing.Point(796, 13)
 		Me.AAAACloseButtonMain.Name = "AAAACloseButtonMain"
 		Me.AAAACloseButtonMain.Size = New System.Drawing.Size(18, 18)
 		Me.AAAACloseButtonMain.TabIndex = 0
 		Me.AAAACloseButtonMain.Text = "MyClose1"
 		'
+		'MyTextBox1
+		'
+		Me.MyTextBox1.BackColor = System.Drawing.Color.Transparent
+		Me.MyTextBox1.Enabled = False
+		Me.MyTextBox1.Location = New System.Drawing.Point(369, 60)
+		Me.MyTextBox1.MaxLength = 32767
+		Me.MyTextBox1.Multiline = False
+		Me.MyTextBox1.Name = "MyTextBox1"
+		Me.MyTextBox1.ReadOnly = False
+		Me.MyTextBox1.Size = New System.Drawing.Size(174, 29)
+		Me.MyTextBox1.TabIndex = 5
+		Me.MyTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.MyTextBox1.UseSystemPasswordChar = False
+		'
+		'MyTextBox2
+		'
+		Me.MyTextBox2.BackColor = System.Drawing.Color.Transparent
+		Me.MyTextBox2.Enabled = False
+		Me.MyTextBox2.Location = New System.Drawing.Point(369, 24)
+		Me.MyTextBox2.MaxLength = 32767
+		Me.MyTextBox2.Multiline = False
+		Me.MyTextBox2.Name = "MyTextBox2"
+		Me.MyTextBox2.ReadOnly = False
+		Me.MyTextBox2.Size = New System.Drawing.Size(174, 29)
+		Me.MyTextBox2.TabIndex = 6
+		Me.MyTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+		Me.MyTextBox2.UseSystemPasswordChar = False
+		'
+		'MyLabel26
+		'
+		Me.MyLabel26.AutoSize = True
+		Me.MyLabel26.BackColor = System.Drawing.Color.Transparent
+		Me.MyLabel26.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.MyLabel26.ForeColor = System.Drawing.Color.White
+		Me.MyLabel26.Location = New System.Drawing.Point(176, 28)
+		Me.MyLabel26.Name = "MyLabel26"
+		Me.MyLabel26.Size = New System.Drawing.Size(138, 21)
+		Me.MyLabel26.TabIndex = 3
+		Me.MyLabel26.Text = "Current Username"
+		'
+		'MyLabel27
+		'
+		Me.MyLabel27.AutoSize = True
+		Me.MyLabel27.BackColor = System.Drawing.Color.Transparent
+		Me.MyLabel27.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.MyLabel27.ForeColor = System.Drawing.Color.White
+		Me.MyLabel27.Location = New System.Drawing.Point(176, 64)
+		Me.MyLabel27.Name = "MyLabel27"
+		Me.MyLabel27.Size = New System.Drawing.Size(131, 21)
+		Me.MyLabel27.TabIndex = 4
+		Me.MyLabel27.Text = "Current Fullname"
+		'
 		'AAAAMainForm
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.ClientSize = New System.Drawing.Size(848, 550)
+		Me.ClientSize = New System.Drawing.Size(830, 624)
 		Me.Controls.Add(Me.AAAAMainFormSkin)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
 		Me.Name = "AAAAMainForm"
@@ -2620,4 +2680,8 @@ Partial Class AAAAMainForm
 	Friend WithEvents MyLabel24 As MyLabel
 	Friend WithEvents MyLabel25 As MyLabel
 	Friend WithEvents SearchBookGenreTextBox As MyTextBox
+	Friend WithEvents MyTextBox1 As MyTextBox
+	Friend WithEvents MyTextBox2 As MyTextBox
+	Friend WithEvents MyLabel26 As MyLabel
+	Friend WithEvents MyLabel27 As MyLabel
 End Class
