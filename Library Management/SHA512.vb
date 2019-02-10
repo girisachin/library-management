@@ -29,6 +29,19 @@ Module SHA512
 		Next
 		Return Encrypt_Sha512(GLogin.Salt + PasswordHash + "d5eba9b008f69bd56e")
 	End Function
+	Public Function AdminEncryptNewPassword(ByVal PasswordHash As String) As String
+		Dim Charset As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-"
+		Dim Chars() As Char = Charset.ToCharArray
+		Dim bytes() As Byte
+		ReDim bytes(10)
+		Dim RNGObj As Security.Cryptography.RNGCryptoServiceProvider = New Security.Cryptography.RNGCryptoServiceProvider()
+		RNGObj.GetBytes(bytes)
+		GAdmin.Salt = ""
+		For Each b As Byte In bytes
+			GAdmin.Salt = GAdmin.Salt + Chars.ElementAt(b Mod 64).ToString
+		Next
+		Return Encrypt_Sha512(GAdmin.Salt + PasswordHash + "d5eba9b008f69bd56e")
+	End Function
 
 	Public Function CheckOldPassword(ByVal PasswordHash As String) As String
 		If GLogin.LoggedIn = True Then

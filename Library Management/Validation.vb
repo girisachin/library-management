@@ -48,6 +48,9 @@
 	Public Function ValidateBookAuthor(ByVal Str As String) As Boolean
 		Return ValidateBookname(Str)
 	End Function
+	Public Function ValidateBookGenre(ByVal Str As String) As Boolean
+		Return ValidateBookname(Str)
+	End Function
 	Public Function ValidateInteger(ByVal Str As String) As Boolean
 		For Each C As Char In Str
 			If AscW("0") <= AscW(C) AndAlso AscW(C) <= AscW("9") Then

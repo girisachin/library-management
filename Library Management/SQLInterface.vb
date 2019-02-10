@@ -6,7 +6,6 @@ Public Class SQLInterface
 	Public Shared cmd As New MySqlCommand
 	'SET A CLASS THAT SERVES AS THE BRIDGE BETWEEN A DATASET AND Library_Management FOR SAVING AND RETRIEVING DATA.
 	Public Shared da As New MySqlDataAdapter
-	Public Shared result As Integer
 
 	Public Shared Function Login() As Boolean
 		' Function will return status of query ( because we may need it in our parent form)
@@ -57,7 +56,7 @@ Public Class SQLInterface
 
 	Public Shared Function Register() As Boolean
 		' Function will return status of query ( because we may need it in our parent form)
-
+		Dim result As Integer = -1
 
 		Try
 			'OPENING THE CONNECTION
@@ -88,6 +87,8 @@ Public Class SQLInterface
 	End Function
 
 	Public Shared Function EditProfileData(ByVal NewUsername As String, ByVal NewFullname As String, ByVal NewAccType As String) As Boolean
+		Dim result As Integer = -1
+
 		Try
 			con.Open()
 			With cmd
@@ -115,6 +116,8 @@ Public Class SQLInterface
 	End Function
 
 	Public Shared Function ChangePassword() As Boolean
+		Dim result As Integer = -1
+
 		Try
 			con.Open()
 			With cmd
@@ -158,7 +161,7 @@ Public Class SQLInterface
 		con.Close()
 	End Sub
 	Public Shared Function DoesUsernameExists(ByVal Str As String) As Boolean
-		Dim maxrow As Integer = 1
+		Dim maxrow As Integer = -1
 		Try
 			con.Open()
 			With cmd
@@ -173,16 +176,136 @@ Public Class SQLInterface
 			maxrow = dt.Rows.Count
 		Catch ex As Exception
 
-			Msg.Err("SQL Error2: " + ex.Message)
+			Msg.Err("SQL Error6: " + ex.Message)
 
 		End Try
 		con.Close()
 
-		If maxrow <> 0 Then
-			Alert("Error", "Username already Taken")
+		If maxrow <> 0 And maxrow <> -1 Then
+			Return True
+		End If
+		Return False
+	End Function
+	Public Shared Function DoesBookIDExists(ByVal Str As String) As Boolean
+		Dim maxrow As Integer = -1
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "SELECT * FROM books WHERE ID ='" & Str & "'"
+			End With
+			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+			da.SelectCommand = cmd
+			Dim dt As DataTable = New DataTable
+			da.Fill(dt)
+			'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
+			maxrow = dt.Rows.Count
+		Catch ex As Exception
+
+			Msg.Err("SQL Error6: " + ex.Message)
+
+		End Try
+		con.Close()
+
+		If maxrow <> 0 And maxrow <> -1 Then
+			Return True
+		End If
+		Return False
+	End Function
+	Public Shared Function AdminDeleteAccount(ByVal Username As String) As Boolean
+		Dim maxrow As Integer = -100
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "DELETE FROM users WHERE Username = '" + Username + "'"
+			End With
+			'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
+			maxrow = cmd.ExecuteNonQuery
+			If maxrow = 1 Then
+				con.Close()
+				Return True
+			Else
+				Return False
+			End If
+		Catch ex As Exception
+			Msg.Err("SQL Error6: " + ex.Message)
+		End Try
+		con.Close()
+		Return False
+	End Function
+	Public Shared Function AdminRegister() As Boolean
+		' Function will return status of query ( because we may need it in our parent form)
+		Dim result As Integer = -1
+
+
+		Try
+			'OPENING THE CONNECTION
+			con.Open()
+			'HOLDS THE DATA TO BE EXECUTED
+
+
+			cmd.Connection = con
+			cmd.CommandText = "INSERT INTO users(Name,Username,Pass,Salt,AccType)" & "VALUES ('" & GAdmin.Fullname & "','" & GAdmin.Username & "','" & GAdmin.PasswordHash & "','" & GAdmin.Salt & "','" & GAdmin.AccType & "')"
+
+			'EXECUTE THE DATA
+			result = cmd.ExecuteNonQuery
+			'CHECKING IF THE DATA HAS BEEN EXECUTED OR NOT
+			con.Close()
+		Catch ex As Exception
+			Msg.Err("SQL Error3: " + ex.Message)
+		End Try
+		If result > 0 Then
+			Return True
+		Else
 			Return False
 		End If
+	End Function
+	Public Shared Function AdminAddBookInfo(ByVal Name As String, ByVal Author As String, ByVal ISBN As String, ByVal Genre As String, ByVal copies As String) As Boolean
+		' Function will return status of query ( because we may need it in our parent form)
+		Dim result As Integer = -1
 
-		Return True
+		Try
+			'OPENING THE CONNECTION
+			con.Open()
+			'HOLDS THE DATA TO BE EXECUTED
+			cmd.Connection = con
+			cmd.CommandText = "INSERT INTO books(Name,Author,ISBN,Genre,Copies,`Left`) " & "VALUES ('" & Name & "','" & Author & "','" & ISBN & "','" & Genre & "'," & copies & "," + copies + ")"
+			Console.WriteLine(cmd.CommandText)
+			'EXECUTE THE DATA
+			result = cmd.ExecuteNonQuery
+			'CHECKING IF THE DATA HAS BEEN EXECUTED OR NOT
+			con.Close()
+		Catch ex As Exception
+			Msg.Err("SQL Error3: " + ex.Message)
+		End Try
+		If result > 0 Then
+			Return True
+		Else
+			Return False
+		End If
+	End Function
+	Public Shared Function AdminDeleteBook(ByVal Bookid As String) As Boolean
+		Dim maxrow As Integer = -100
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "DELETE FROM books WHERE ID = '" + Bookid + "'"
+			End With
+			'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
+			maxrow = cmd.ExecuteNonQuery
+			If maxrow = 1 Then
+				con.Close()
+				Return True
+			Else
+				Return False
+			End If
+		Catch ex As Exception
+			Msg.Err("SQL Error6: " + ex.Message)
+		End Try
+		con.Close()
+		Return False
+
 	End Function
 End Class

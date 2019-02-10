@@ -137,7 +137,7 @@ Public Class AAAAMainForm
 			GLogin.LogOut()
 			Exit Sub
 		End If
-		If SQLInterface.DoesUsernameExists(SignupUsernameTextBox.Text) Then
+		If SQLInterface.DoesUsernameExists(SignupUsernameTextBox.Text) = True Then
 			Alert("Warning", "Username already exists")
 			Exit Sub
 		End If
@@ -146,11 +146,15 @@ Public Class AAAAMainForm
 		GLogin.PasswordHash = EncryptNewPassword(Encrypt_Sha512(SignupPasswordTextBox.Text))
 		GLogin.AccType = SignupDropDownBox.Text
 
-		SQLInterface.Register()
-		SignupPasswordTextBox.Text = ""
-		SignupConfirmPasswordTextBox.Text = ""
-		SignupUsernameTextBox.Text = ""
-		SignupFullnameTextBox.Text = ""
+		If SQLInterface.Register() = True Then
+			SignupPasswordTextBox.Text = ""
+			SignupConfirmPasswordTextBox.Text = ""
+			SignupUsernameTextBox.Text = ""
+			SignupFullnameTextBox.Text = ""
+			Alert("Success", "Signup Successful")
+		Else
+			Alert("Error", "Could not register")
+		End If
 	End Sub
 	Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles Me.Load
 		SignupDropDownBox.SelectedIndex = 0
@@ -158,10 +162,12 @@ Public Class AAAAMainForm
 		DisablePage(AdminOptionsTab)
 		DisablePage(SummaryTab)
 		DisablePage(IssueBookTab)
+		IssueBookSearchDropDown.SelectedIndex = 0
 		ReturnBookSearchDropDown.SelectedIndex = 0
 		SQLInterface.PopulateBrowseBooksTable()
 		StatusBar.Text = "Not Logged In"
 		BrowseBooksDataGrid.ClearSelection()
+		AdminAddAccDropDown.SelectedIndex = 0
 	End Sub
 	Private Sub LogoutButton_Click(sender As Object, e As EventArgs) Handles AAAALogoutButton.Click
 		LoginUsernameTextBox.Text = ""
@@ -247,8 +253,8 @@ Public Class AAAAMainForm
 			Alert("Warning", "Enter 10 digit or 13 digit ISBN only")
 			Exit Sub
 		End If
-		If ValidateISBN(BookISBN) = False AndAlso BookISBN <> "" Then
-			Alert("Warning", "ISBN Checksum Incorrect")
+		If ValidateInteger(BookISBN) = False AndAlso BookISBN <> "" Then
+			Alert("Warning", "Incorrect ISBN ( Only Numbers Allowed )")
 			Exit Sub
 		End If
 		If ValidateBookname(BookName) = False AndAlso BookName <> "" Then
@@ -352,11 +358,25 @@ Public Class AAAAMainForm
 			Alert("Warning", "Use only alphanumerics or space")
 			Exit Sub
 		End If
-		If SQLInterface.DoesUsernameExists(SummaryUsernameTextBox.Text) Then
+		If SQLInterface.DoesUsernameExists(AdminAddAccUsernameTextBox.Text) = True Then
 			Alert("Warning", "Username already exists")
 			Exit Sub
 		End If
-		' TODO: Admin register function
+
+		GAdmin.Username = AdminAddAccUsernameTextBox.Text
+		GAdmin.Fullname = AdminAddAccFullnameTextBox.Text
+		GAdmin.PasswordHash = AdminEncryptNewPassword(Encrypt_Sha512(AdminAddAccPasswordTextBox.Text))
+		GAdmin.AccType = AdminAddAccDropDown.Text
+
+		If SQLInterface.AdminRegister() = True Then
+			AdminAddAccPasswordTextBox.Text = ""
+			AdminAddAccConfirmPasswordTextBox.Text = ""
+			AdminAddAccUsernameTextBox.Text = ""
+			AdminAddAccFullnameTextBox.Text = ""
+			Alert("Success", "Account successfuffy created")
+		Else
+			Alert("Error", "Could not create Account")
+		End If
 	End Sub
 	Private Sub AdminEditAccButton_Click(sender As Object, e As EventArgs) Handles AdminEditAccButton.Click
 		If AdminAddAccPasswordTextBox.Text <> AdminAddAccConfirmPasswordTextBox.Text Then
@@ -385,13 +405,11 @@ Public Class AAAAMainForm
 			Alert("Warning", "Use only Alphanumerics and unerscores in username")
 			Exit Sub
 		End If
-		Console.WriteLine("1")
 
 		If ValidateFullname(SummaryFullnameTextBox.Text) = False Then
 			Alert("Warning", "Use only Alphanumerics and space in fullname")
 			Exit Sub
 		End If
-		Console.WriteLine("2")
 		If GLogin.AccType <> "Admin" Then
 			If Len(SummaryUsernameTextBox.Text) < 4 Then
 				Alert("Warning", "Use atleast 4 digits in username")
@@ -402,20 +420,17 @@ Public Class AAAAMainForm
 				Exit Sub
 			End If
 		End If
-		Console.WriteLine("3")
 
-		If SQLInterface.DoesUsernameExists(SummaryUsernameTextBox.Text) = False Then
+		If SQLInterface.DoesUsernameExists(SummaryUsernameTextBox.Text) = True Then
 			Alert("Warning", "Username already exists")
 			Exit Sub
 		End If
-		Console.WriteLine("4")
 
 		If SQLInterface.EditProfileData(SummaryUsernameTextBox.Text, SummaryFullnameTextBox.Text, SummaryProfileDropDownBox.Text) = False Then
 			Alert("Error", "Edit Profile Failed")
 			Exit Sub
 		End If
-		Console.WriteLine("5")
-
+		StatusBar.Text = "Logged in as " + GLogin.AccType + " - " + GLogin.Username
 		Alert("Success", "Profile Edited Successfully")
 	End Sub
 
@@ -428,6 +443,7 @@ Public Class AAAAMainForm
 		End If
 		If Len(SummaryConfirmPasswordTextBox.Text) < 6 Then
 			Alert("Warning", "Use atleast 6 digits in password")
+			Exit Sub
 		End If
 		GLogin.TempHash = GLogin.PasswordHash
 		GLogin.TempSalt = GLogin.Salt
@@ -449,5 +465,68 @@ Public Class AAAAMainForm
 		GLogin.LoggedIn = True
 	End Sub
 
+	Private Sub AdminDeleteAccButton_Click(sender As Object, e As EventArgs) Handles AdminDeleteAccButton.Click
+		If ValidateUsername(AdminDeleteAccUsernameTextBox.Text) = False Then
+			Alert("Warning", "Use only alphanumerics and underscore in username to delete")
+			Exit Sub
+		End If
+		If SQLInterface.DoesUsernameExists(AdminDeleteAccUsernameTextBox.Text) = False Then
+			Alert("Error", "Username does not exists")
+			Exit Sub
+		End If
+		If SQLInterface.AdminDeleteAccount(AdminDeleteAccUsernameTextBox.Text) = False Then
+			Alert("Error", "Could not delete account. Try Again Later")
+			Exit Sub
+		End If
+		Alert("Success", "Account Deleted Successfully")
+	End Sub
+
+	Private Sub AdminRemoveBookButton_Click(sender As Object, e As EventArgs) Handles AdminRemoveBookButton.Click
+		If ValidateInteger(AdminRemoveBookIDTextBox.Text) = False Then
+			Alert("Warning", "Use only alphanumerics and underscore in bookid to delete")
+			Exit Sub
+		End If
+		If SQLInterface.DoesBookIDExists(AdminRemoveBookIDTextBox.Text) = False Then
+			Alert("Error", "Book does not exist")
+			Exit Sub
+		End If
+		If SQLInterface.AdminDeleteBook(AdminRemoveBookIDTextBox.Text) = False Then
+			Alert("Error", "Could not delete book. Try Again Later")
+			Exit Sub
+		End If
+		Alert("Success", "Book Deleted Successfully")
+	End Sub
+
+	Private Sub AdminAddBookButton_Click(sender As Object, e As EventArgs) Handles AdminAddBookButton.Click
+		If ValidateInteger(AdminAddBookISBN.Text) = False Then
+			Alert("Warning", "Use ony 10 or 13 digit integers in ISBN")
+			Exit Sub
+		End If
+		If ValidateISBN(AdminAddBookISBN.Text) = False Then
+			Alert("Warning", "ISBN checksum failed")
+			Exit Sub
+		End If
+		If AdminAddBookName.Text = "" Or ValidateBookname(AdminAddBookName.Text) = False Then
+			Alert("Warning", "Use some alphanumerics or space in book name")
+			Exit Sub
+		End If
+		If AdminAddBookAuthor.Text = "" Or ValidateBookAuthor(AdminAddBookAuthor.Text) = False Then
+			Alert("Warning", "Use some alphanumerics or space in book author")
+			Exit Sub
+		End If
+		If AdminAddBookGenre.Text = "" Or ValidateBookGenre(AdminAddBookGenre.Text) = False Then
+			Alert("Warning", "Use some alphanumerics or space in book genre")
+			Exit Sub
+		End If
+		If ValidateInteger(AdminAddBookCopies.Text) = False Or AdminAddBookCopies.Text = "" Then
+			Alert("Warning", "Use integers in book name")
+			Exit Sub
+		End If
+		If SQLInterface.AdminAddBookInfo(AdminAddBookName.Text, AdminAddBookAuthor.Text, AdminAddBookISBN.Text, AdminAddBookGenre.Text, AdminAddBookCopies.Text) = False Then
+			Alert("Error", "Can not add book")
+			Exit Sub
+		End If
+		Alert("Success", "Book Added")
+	End Sub
 End Class
 

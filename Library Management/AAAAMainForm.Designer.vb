@@ -96,10 +96,11 @@ Partial Class AAAAMainForm
 		Me.AdminOptionsTab = New System.Windows.Forms.TabPage()
 		Me.AdminTabControl = New Library_Management.MyTabControl()
 		Me.TabPage1 = New System.Windows.Forms.TabPage()
+		Me.AlertBox5 = New Library_Management.MyAlertBox()
 		Me.MyGroupBox5 = New Library_Management.MyGroupBox()
-		Me.MyButton1 = New Library_Management.MyButton()
+		Me.AdminDeleteAccButton = New Library_Management.MyButton()
 		Me.MyLabel13 = New Library_Management.MyLabel()
-		Me.MyTextBox1 = New Library_Management.MyTextBox()
+		Me.AdminDeleteAccUsernameTextBox = New Library_Management.MyTextBox()
 		Me.MyGroupBox1 = New Library_Management.MyGroupBox()
 		Me.AdminAddAccDropDown = New Library_Management.MyComboBox()
 		Me.AdminAddAccButton = New Library_Management.MyButton()
@@ -124,7 +125,6 @@ Partial Class AAAAMainForm
 		Me.AdminEditAccOldUsernameTextBox = New Library_Management.MyTextBox()
 		Me.AdminEditAccNewUsernameTextBox = New Library_Management.MyTextBox()
 		Me.MyLabel9 = New Library_Management.MyLabel()
-		Me.AlertBox5 = New Library_Management.MyAlertBox()
 		Me.TabPage2 = New System.Windows.Forms.TabPage()
 		Me.AlertBox7 = New Library_Management.MyAlertBox()
 		Me.MyGroupBox6 = New Library_Management.MyGroupBox()
@@ -133,7 +133,7 @@ Partial Class AAAAMainForm
 		Me.MyLabel17 = New Library_Management.MyLabel()
 		Me.MyGroupBox3 = New Library_Management.MyGroupBox()
 		Me.AdminEditBookName = New Library_Management.MyTextBox()
-		Me.MyTextBox2 = New Library_Management.MyTextBox()
+		Me.AdminEditBookGenreTextBox = New Library_Management.MyTextBox()
 		Me.AdminEditBookCopies = New Library_Management.MyTextBox()
 		Me.MyLabel22 = New Library_Management.MyLabel()
 		Me.AdminEditBookAuthor = New Library_Management.MyTextBox()
@@ -146,10 +146,10 @@ Partial Class AAAAMainForm
 		Me.MyLabel15 = New Library_Management.MyLabel()
 		Me.MyButton3 = New Library_Management.MyButton()
 		Me.MyGroupBox4 = New Library_Management.MyGroupBox()
-		Me.MyButton4 = New Library_Management.MyButton()
+		Me.AdminAddBookButton = New Library_Management.MyButton()
 		Me.AdminAddBookName = New Library_Management.MyTextBox()
-		Me.MyTextBox3 = New Library_Management.MyTextBox()
 		Me.AdminAddBookCopies = New Library_Management.MyTextBox()
+		Me.AdminAddBookGenre = New Library_Management.MyTextBox()
 		Me.MyLabel23 = New Library_Management.MyLabel()
 		Me.AdminAddBookAuthor = New Library_Management.MyTextBox()
 		Me.MyLabel20 = New Library_Management.MyLabel()
@@ -1159,10 +1159,10 @@ Partial Class AAAAMainForm
 		'TabPage1
 		'
 		Me.TabPage1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		Me.TabPage1.Controls.Add(Me.AlertBox5)
 		Me.TabPage1.Controls.Add(Me.MyGroupBox5)
 		Me.TabPage1.Controls.Add(Me.MyGroupBox1)
 		Me.TabPage1.Controls.Add(Me.MyGroupBox2)
-		Me.TabPage1.Controls.Add(Me.AlertBox5)
 		Me.TabPage1.Location = New System.Drawing.Point(4, 44)
 		Me.TabPage1.Name = "TabPage1"
 		Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -1170,12 +1170,25 @@ Partial Class AAAAMainForm
 		Me.TabPage1.TabIndex = 0
 		Me.TabPage1.Text = "User Management"
 		'
+		'AlertBox5
+		'
+		Me.AlertBox5.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		Me.AlertBox5.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.AlertBox5.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		Me.AlertBox5.Kind = Library_Management.MyAlertBox._Kind.Success
+		Me.AlertBox5.Location = New System.Drawing.Point(6, 313)
+		Me.AlertBox5.Name = "AlertBox5"
+		Me.AlertBox5.Size = New System.Drawing.Size(814, 42)
+		Me.AlertBox5.TabIndex = 5
+		Me.AlertBox5.Text = "AlertBox"
+		Me.AlertBox5.Visible = False
+		'
 		'MyGroupBox5
 		'
 		Me.MyGroupBox5.BackColor = System.Drawing.Color.Transparent
-		Me.MyGroupBox5.Controls.Add(Me.MyButton1)
+		Me.MyGroupBox5.Controls.Add(Me.AdminDeleteAccButton)
 		Me.MyGroupBox5.Controls.Add(Me.MyLabel13)
-		Me.MyGroupBox5.Controls.Add(Me.MyTextBox1)
+		Me.MyGroupBox5.Controls.Add(Me.AdminDeleteAccUsernameTextBox)
 		Me.MyGroupBox5.Font = New System.Drawing.Font("Segoe UI", 16.0!)
 		Me.MyGroupBox5.Location = New System.Drawing.Point(0, 282)
 		Me.MyGroupBox5.Name = "MyGroupBox5"
@@ -1183,16 +1196,16 @@ Partial Class AAAAMainForm
 		Me.MyGroupBox5.TabIndex = 7
 		Me.MyGroupBox5.Text = "Delete Account"
 		'
-		'MyButton1
+		'AdminDeleteAccButton
 		'
-		Me.MyButton1.BackColor = System.Drawing.Color.Transparent
-		Me.MyButton1.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.MyButton1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.MyButton1.Location = New System.Drawing.Point(306, 51)
-		Me.MyButton1.Name = "MyButton1"
-		Me.MyButton1.Size = New System.Drawing.Size(106, 29)
-		Me.MyButton1.TabIndex = 2
-		Me.MyButton1.Text = "Delete"
+		Me.AdminDeleteAccButton.BackColor = System.Drawing.Color.Transparent
+		Me.AdminDeleteAccButton.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.AdminDeleteAccButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.AdminDeleteAccButton.Location = New System.Drawing.Point(306, 51)
+		Me.AdminDeleteAccButton.Name = "AdminDeleteAccButton"
+		Me.AdminDeleteAccButton.Size = New System.Drawing.Size(106, 29)
+		Me.AdminDeleteAccButton.TabIndex = 2
+		Me.AdminDeleteAccButton.Text = "Delete"
 		'
 		'MyLabel13
 		'
@@ -1206,19 +1219,18 @@ Partial Class AAAAMainForm
 		Me.MyLabel13.TabIndex = 1
 		Me.MyLabel13.Text = "Username"
 		'
-		'MyTextBox1
+		'AdminDeleteAccUsernameTextBox
 		'
-		Me.MyTextBox1.BackColor = System.Drawing.Color.Transparent
-		Me.MyTextBox1.Location = New System.Drawing.Point(98, 51)
-		Me.MyTextBox1.MaxLength = 32767
-		Me.MyTextBox1.Multiline = False
-		Me.MyTextBox1.Name = "MyTextBox1"
-		Me.MyTextBox1.ReadOnly = False
-		Me.MyTextBox1.Size = New System.Drawing.Size(201, 29)
-		Me.MyTextBox1.TabIndex = 0
-		Me.MyTextBox1.Text = "MyTextBox1"
-		Me.MyTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-		Me.MyTextBox1.UseSystemPasswordChar = False
+		Me.AdminDeleteAccUsernameTextBox.BackColor = System.Drawing.Color.Transparent
+		Me.AdminDeleteAccUsernameTextBox.Location = New System.Drawing.Point(98, 51)
+		Me.AdminDeleteAccUsernameTextBox.MaxLength = 32767
+		Me.AdminDeleteAccUsernameTextBox.Multiline = False
+		Me.AdminDeleteAccUsernameTextBox.Name = "AdminDeleteAccUsernameTextBox"
+		Me.AdminDeleteAccUsernameTextBox.ReadOnly = False
+		Me.AdminDeleteAccUsernameTextBox.Size = New System.Drawing.Size(201, 29)
+		Me.AdminDeleteAccUsernameTextBox.TabIndex = 0
+		Me.AdminDeleteAccUsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.AdminDeleteAccUsernameTextBox.UseSystemPasswordChar = False
 		'
 		'MyGroupBox1
 		'
@@ -1537,19 +1549,6 @@ Partial Class AAAAMainForm
 		Me.MyLabel9.TabIndex = 0
 		Me.MyLabel9.Text = "Confirm Password"
 		'
-		'AlertBox5
-		'
-		Me.AlertBox5.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		Me.AlertBox5.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.AlertBox5.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		Me.AlertBox5.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox5.Location = New System.Drawing.Point(6, 313)
-		Me.AlertBox5.Name = "AlertBox5"
-		Me.AlertBox5.Size = New System.Drawing.Size(814, 42)
-		Me.AlertBox5.TabIndex = 5
-		Me.AlertBox5.Text = "AlertBox"
-		Me.AlertBox5.Visible = False
-		'
 		'TabPage2
 		'
 		Me.TabPage2.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
@@ -1630,7 +1629,7 @@ Partial Class AAAAMainForm
 		'
 		Me.MyGroupBox3.BackColor = System.Drawing.Color.Transparent
 		Me.MyGroupBox3.Controls.Add(Me.AdminEditBookName)
-		Me.MyGroupBox3.Controls.Add(Me.MyTextBox2)
+		Me.MyGroupBox3.Controls.Add(Me.AdminEditBookGenreTextBox)
 		Me.MyGroupBox3.Controls.Add(Me.AdminEditBookCopies)
 		Me.MyGroupBox3.Controls.Add(Me.MyLabel22)
 		Me.MyGroupBox3.Controls.Add(Me.AdminEditBookAuthor)
@@ -1662,18 +1661,18 @@ Partial Class AAAAMainForm
 		Me.AdminEditBookName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminEditBookName.UseSystemPasswordChar = False
 		'
-		'MyTextBox2
+		'AdminEditBookGenreTextBox
 		'
-		Me.MyTextBox2.BackColor = System.Drawing.Color.Transparent
-		Me.MyTextBox2.Location = New System.Drawing.Point(159, 208)
-		Me.MyTextBox2.MaxLength = 32767
-		Me.MyTextBox2.Multiline = False
-		Me.MyTextBox2.Name = "MyTextBox2"
-		Me.MyTextBox2.ReadOnly = False
-		Me.MyTextBox2.Size = New System.Drawing.Size(232, 29)
-		Me.MyTextBox2.TabIndex = 9
-		Me.MyTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-		Me.MyTextBox2.UseSystemPasswordChar = False
+		Me.AdminEditBookGenreTextBox.BackColor = System.Drawing.Color.Transparent
+		Me.AdminEditBookGenreTextBox.Location = New System.Drawing.Point(159, 208)
+		Me.AdminEditBookGenreTextBox.MaxLength = 32767
+		Me.AdminEditBookGenreTextBox.Multiline = False
+		Me.AdminEditBookGenreTextBox.Name = "AdminEditBookGenreTextBox"
+		Me.AdminEditBookGenreTextBox.ReadOnly = False
+		Me.AdminEditBookGenreTextBox.Size = New System.Drawing.Size(232, 29)
+		Me.AdminEditBookGenreTextBox.TabIndex = 9
+		Me.AdminEditBookGenreTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.AdminEditBookGenreTextBox.UseSystemPasswordChar = False
 		'
 		'AdminEditBookCopies
 		'
@@ -1771,9 +1770,9 @@ Partial Class AAAAMainForm
 		Me.MyLabel21.ForeColor = System.Drawing.Color.White
 		Me.MyLabel21.Location = New System.Drawing.Point(15, 72)
 		Me.MyLabel21.Name = "MyLabel21"
-		Me.MyLabel21.Size = New System.Drawing.Size(93, 21)
+		Me.MyLabel21.Size = New System.Drawing.Size(64, 21)
 		Me.MyLabel21.TabIndex = 7
-		Me.MyLabel21.Text = "Old Book ID"
+		Me.MyLabel21.Text = "Book ID"
 		'
 		'MyLabel14
 		'
@@ -1804,7 +1803,7 @@ Partial Class AAAAMainForm
 		Me.MyButton3.BackColor = System.Drawing.Color.Transparent
 		Me.MyButton3.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.MyButton3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.MyButton3.Location = New System.Drawing.Point(100, 281)
+		Me.MyButton3.Location = New System.Drawing.Point(100, 286)
 		Me.MyButton3.Name = "MyButton3"
 		Me.MyButton3.Size = New System.Drawing.Size(206, 53)
 		Me.MyButton3.TabIndex = 2
@@ -1813,10 +1812,10 @@ Partial Class AAAAMainForm
 		'MyGroupBox4
 		'
 		Me.MyGroupBox4.BackColor = System.Drawing.Color.Transparent
-		Me.MyGroupBox4.Controls.Add(Me.MyButton4)
+		Me.MyGroupBox4.Controls.Add(Me.AdminAddBookButton)
 		Me.MyGroupBox4.Controls.Add(Me.AdminAddBookName)
-		Me.MyGroupBox4.Controls.Add(Me.MyTextBox3)
 		Me.MyGroupBox4.Controls.Add(Me.AdminAddBookCopies)
+		Me.MyGroupBox4.Controls.Add(Me.AdminAddBookGenre)
 		Me.MyGroupBox4.Controls.Add(Me.MyLabel23)
 		Me.MyGroupBox4.Controls.Add(Me.AdminAddBookAuthor)
 		Me.MyGroupBox4.Controls.Add(Me.MyLabel20)
@@ -1831,16 +1830,16 @@ Partial Class AAAAMainForm
 		Me.MyGroupBox4.TabIndex = 8
 		Me.MyGroupBox4.Text = "Add Book"
 		'
-		'MyButton4
+		'AdminAddBookButton
 		'
-		Me.MyButton4.BackColor = System.Drawing.Color.Transparent
-		Me.MyButton4.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.MyButton4.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.MyButton4.Location = New System.Drawing.Point(132, 224)
-		Me.MyButton4.Name = "MyButton4"
-		Me.MyButton4.Size = New System.Drawing.Size(145, 43)
-		Me.MyButton4.TabIndex = 2
-		Me.MyButton4.Text = "Add Book"
+		Me.AdminAddBookButton.BackColor = System.Drawing.Color.Transparent
+		Me.AdminAddBookButton.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.AdminAddBookButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.AdminAddBookButton.Location = New System.Drawing.Point(132, 224)
+		Me.AdminAddBookButton.Name = "AdminAddBookButton"
+		Me.AdminAddBookButton.Size = New System.Drawing.Size(145, 43)
+		Me.AdminAddBookButton.TabIndex = 2
+		Me.AdminAddBookButton.Text = "Add Book"
 		'
 		'AdminAddBookName
 		'
@@ -1855,23 +1854,10 @@ Partial Class AAAAMainForm
 		Me.AdminAddBookName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminAddBookName.UseSystemPasswordChar = False
 		'
-		'MyTextBox3
-		'
-		Me.MyTextBox3.BackColor = System.Drawing.Color.Transparent
-		Me.MyTextBox3.Location = New System.Drawing.Point(159, 189)
-		Me.MyTextBox3.MaxLength = 32767
-		Me.MyTextBox3.Multiline = False
-		Me.MyTextBox3.Name = "MyTextBox3"
-		Me.MyTextBox3.ReadOnly = False
-		Me.MyTextBox3.Size = New System.Drawing.Size(232, 29)
-		Me.MyTextBox3.TabIndex = 1
-		Me.MyTextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-		Me.MyTextBox3.UseSystemPasswordChar = False
-		'
 		'AdminAddBookCopies
 		'
 		Me.AdminAddBookCopies.BackColor = System.Drawing.Color.Transparent
-		Me.AdminAddBookCopies.Location = New System.Drawing.Point(159, 154)
+		Me.AdminAddBookCopies.Location = New System.Drawing.Point(159, 189)
 		Me.AdminAddBookCopies.MaxLength = 32767
 		Me.AdminAddBookCopies.Multiline = False
 		Me.AdminAddBookCopies.Name = "AdminAddBookCopies"
@@ -1880,6 +1866,19 @@ Partial Class AAAAMainForm
 		Me.AdminAddBookCopies.TabIndex = 1
 		Me.AdminAddBookCopies.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.AdminAddBookCopies.UseSystemPasswordChar = False
+		'
+		'AdminAddBookGenre
+		'
+		Me.AdminAddBookGenre.BackColor = System.Drawing.Color.Transparent
+		Me.AdminAddBookGenre.Location = New System.Drawing.Point(159, 154)
+		Me.AdminAddBookGenre.MaxLength = 32767
+		Me.AdminAddBookGenre.Multiline = False
+		Me.AdminAddBookGenre.Name = "AdminAddBookGenre"
+		Me.AdminAddBookGenre.ReadOnly = False
+		Me.AdminAddBookGenre.Size = New System.Drawing.Size(232, 29)
+		Me.AdminAddBookGenre.TabIndex = 1
+		Me.AdminAddBookGenre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.AdminAddBookGenre.UseSystemPasswordChar = False
 		'
 		'MyLabel23
 		'
@@ -2563,9 +2562,9 @@ Partial Class AAAAMainForm
 	Friend WithEvents MyLabel15 As MyLabel
 	Friend WithEvents MyButton3 As MyButton
 	Friend WithEvents MyGroupBox4 As MyGroupBox
-	Friend WithEvents MyButton4 As MyButton
+	Friend WithEvents AdminAddBookButton As MyButton
 	Friend WithEvents AdminAddBookName As MyTextBox
-	Friend WithEvents AdminAddBookCopies As MyTextBox
+	Friend WithEvents AdminAddBookGenre As MyTextBox
 	Friend WithEvents AdminAddBookAuthor As MyTextBox
 	Friend WithEvents MyLabel20 As MyLabel
 	Friend WithEvents AdminAddBookISBN As MyTextBox
@@ -2577,16 +2576,16 @@ Partial Class AAAAMainForm
 	Friend WithEvents AdminMySQLQueryType As MyComboBox
 	Friend WithEvents Admin As RichTextBox
 	Friend WithEvents MyGroupBox5 As MyGroupBox
-	Friend WithEvents MyButton1 As MyButton
+	Friend WithEvents AdminDeleteAccButton As MyButton
 	Friend WithEvents MyLabel13 As MyLabel
-	Friend WithEvents MyTextBox1 As MyTextBox
+	Friend WithEvents AdminDeleteAccUsernameTextBox As MyTextBox
 	Friend WithEvents MyGroupBox6 As MyGroupBox
 	Friend WithEvents AdminRemoveBookIDTextBox As MyTextBox
 	Friend WithEvents AdminRemoveBookButton As MyButton
 	Friend WithEvents MyLabel17 As MyLabel
-	Friend WithEvents MyTextBox2 As MyTextBox
+	Friend WithEvents AdminEditBookGenreTextBox As MyTextBox
 	Friend WithEvents MyLabel22 As MyLabel
-	Friend WithEvents MyTextBox3 As MyTextBox
+	Friend WithEvents AdminAddBookCopies As MyTextBox
 	Friend WithEvents MyLabel23 As MyLabel
 	Friend WithEvents AdminAddAccDropDown As MyComboBox
 	Friend WithEvents MyLabel24 As MyLabel
