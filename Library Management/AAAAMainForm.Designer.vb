@@ -22,16 +22,16 @@ Partial Class AAAAMainForm
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()>
 	Private Sub InitializeComponent()
-		Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Me.AAAAMainFormSkin = New Library_Management.FormSkin()
 		Me.AAAAMiniButtonMain = New Library_Management.MyMini()
 		Me.AAAALogoutButton = New Library_Management.MyButton()
@@ -168,7 +168,7 @@ Partial Class AAAAMainForm
 		Me.MyLabel16 = New Library_Management.MyLabel()
 		Me.MyLabel18 = New Library_Management.MyLabel()
 		Me.MyLabel19 = New Library_Management.MyLabel()
-		Me.ShowUsersTab = New System.Windows.Forms.TabPage()
+		Me.ApprovalsTab = New System.Windows.Forms.TabPage()
 		Me.AlertBox8 = New Library_Management.MyAlertBox()
 		Me.AdminUsersInfoDataGrid = New System.Windows.Forms.DataGridView()
 		Me.AdminUserInfoContextMenu = New Library_Management.MyContextMenuStrip()
@@ -226,7 +226,7 @@ Partial Class AAAAMainForm
 		Me.MyGroupBox6.SuspendLayout()
 		Me.MyGroupBox3.SuspendLayout()
 		Me.MyGroupBox4.SuspendLayout()
-		Me.ShowUsersTab.SuspendLayout()
+		Me.ApprovalsTab.SuspendLayout()
 		CType(Me.AdminUsersInfoDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.AdminUserInfoContextMenu.SuspendLayout()
 		Me.LoginSignupTab.SuspendLayout()
@@ -530,60 +530,60 @@ Partial Class AAAAMainForm
 		'
 		Me.BrowseBooksDataGrid.AllowUserToAddRows = False
 		Me.BrowseBooksDataGrid.AllowUserToDeleteRows = False
-		DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+		DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
 		Me.BrowseBooksDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
 		Me.BrowseBooksDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
 		Me.BrowseBooksDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
 		Me.BrowseBooksDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.BrowseBooksDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
 		Me.BrowseBooksDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-		DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-		DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-		DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+		DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+		DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
 		Me.BrowseBooksDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
 		Me.BrowseBooksDataGrid.ContextMenuStrip = Me.BrowseBooksContextMenu
 		Me.BrowseBooksDataGrid.Cursor = System.Windows.Forms.Cursors.Default
-		DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-		DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.DefaultCellStyle = DataGridViewCellStyle13
+		DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.DefaultCellStyle = DataGridViewCellStyle3
 		Me.BrowseBooksDataGrid.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.BrowseBooksDataGrid.GridColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer))
 		Me.BrowseBooksDataGrid.Location = New System.Drawing.Point(3, 3)
 		Me.BrowseBooksDataGrid.Name = "BrowseBooksDataGrid"
-		DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+		DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
 		Me.BrowseBooksDataGrid.RowHeadersVisible = False
-		DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		DataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle15
+		DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle5
 		Me.BrowseBooksDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
 		Me.BrowseBooksDataGrid.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
 		Me.BrowseBooksDataGrid.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 10.0!)
@@ -1209,7 +1209,7 @@ Partial Class AAAAMainForm
 		'
 		Me.AdminTabControl.Controls.Add(Me.TabPage1)
 		Me.AdminTabControl.Controls.Add(Me.TabPage2)
-		Me.AdminTabControl.Controls.Add(Me.ShowUsersTab)
+		Me.AdminTabControl.Controls.Add(Me.ApprovalsTab)
 		Me.AdminTabControl.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.AdminTabControl.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AdminTabControl.ItemSize = New System.Drawing.Size(120, 40)
@@ -2061,17 +2061,17 @@ Partial Class AAAAMainForm
 		Me.MyLabel19.TabIndex = 0
 		Me.MyLabel19.Text = "ISBN"
 		'
-		'ShowUsersTab
+		'ApprovalsTab
 		'
-		Me.ShowUsersTab.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		Me.ShowUsersTab.Controls.Add(Me.AlertBox8)
-		Me.ShowUsersTab.Controls.Add(Me.AdminUsersInfoDataGrid)
-		Me.ShowUsersTab.Location = New System.Drawing.Point(4, 44)
-		Me.ShowUsersTab.Name = "ShowUsersTab"
-		Me.ShowUsersTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.ShowUsersTab.Size = New System.Drawing.Size(810, 435)
-		Me.ShowUsersTab.TabIndex = 2
-		Me.ShowUsersTab.Text = "Users Info"
+		Me.ApprovalsTab.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		Me.ApprovalsTab.Controls.Add(Me.AlertBox8)
+		Me.ApprovalsTab.Controls.Add(Me.AdminUsersInfoDataGrid)
+		Me.ApprovalsTab.Location = New System.Drawing.Point(4, 44)
+		Me.ApprovalsTab.Name = "ApprovalsTab"
+		Me.ApprovalsTab.Padding = New System.Windows.Forms.Padding(3)
+		Me.ApprovalsTab.Size = New System.Drawing.Size(810, 435)
+		Me.ApprovalsTab.TabIndex = 2
+		Me.ApprovalsTab.Text = "Approvals"
 		'
 		'AlertBox8
 		'
@@ -2090,60 +2090,60 @@ Partial Class AAAAMainForm
 		'
 		Me.AdminUsersInfoDataGrid.AllowUserToAddRows = False
 		Me.AdminUsersInfoDataGrid.AllowUserToDeleteRows = False
-		DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminUsersInfoDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+		DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminUsersInfoDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
 		Me.AdminUsersInfoDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
 		Me.AdminUsersInfoDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
 		Me.AdminUsersInfoDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
 		Me.AdminUsersInfoDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.AdminUsersInfoDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
 		Me.AdminUsersInfoDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-		DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-		DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-		DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminUsersInfoDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+		DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+		DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminUsersInfoDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
 		Me.AdminUsersInfoDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
 		Me.AdminUsersInfoDataGrid.ContextMenuStrip = Me.AdminUserInfoContextMenu
 		Me.AdminUsersInfoDataGrid.Cursor = System.Windows.Forms.Cursors.Default
-		DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-		DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminUsersInfoDataGrid.DefaultCellStyle = DataGridViewCellStyle3
+		DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminUsersInfoDataGrid.DefaultCellStyle = DataGridViewCellStyle8
 		Me.AdminUsersInfoDataGrid.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.AdminUsersInfoDataGrid.GridColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer))
 		Me.AdminUsersInfoDataGrid.Location = New System.Drawing.Point(3, 3)
 		Me.AdminUsersInfoDataGrid.Name = "AdminUsersInfoDataGrid"
-		DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminUsersInfoDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+		DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminUsersInfoDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
 		Me.AdminUsersInfoDataGrid.RowHeadersVisible = False
-		DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminUsersInfoDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle5
+		DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminUsersInfoDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle10
 		Me.AdminUsersInfoDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
 		Me.AdminUsersInfoDataGrid.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
 		Me.AdminUsersInfoDataGrid.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 10.0!)
@@ -2174,25 +2174,25 @@ Partial Class AAAAMainForm
 		'EditAccountToolStrip
 		'
 		Me.EditAccountToolStrip.Name = "EditAccountToolStrip"
-		Me.EditAccountToolStrip.Size = New System.Drawing.Size(180, 22)
+		Me.EditAccountToolStrip.Size = New System.Drawing.Size(168, 22)
 		Me.EditAccountToolStrip.Text = "Edit User Info"
 		'
 		'CopyBookNameToolStrip1
 		'
 		Me.CopyBookNameToolStrip1.Name = "CopyBookNameToolStrip1"
-		Me.CopyBookNameToolStrip1.Size = New System.Drawing.Size(180, 22)
+		Me.CopyBookNameToolStrip1.Size = New System.Drawing.Size(168, 22)
 		Me.CopyBookNameToolStrip1.Text = "Copy UserName"
 		'
 		'CopyISBNNumberToolStrip1
 		'
 		Me.CopyISBNNumberToolStrip1.Name = "CopyISBNNumberToolStrip1"
-		Me.CopyISBNNumberToolStrip1.Size = New System.Drawing.Size(180, 22)
+		Me.CopyISBNNumberToolStrip1.Size = New System.Drawing.Size(168, 22)
 		Me.CopyISBNNumberToolStrip1.Text = "Copy Full Name"
 		'
 		'CopyBookIDToolStrip1
 		'
 		Me.CopyBookIDToolStrip1.Name = "CopyBookIDToolStrip1"
-		Me.CopyBookIDToolStrip1.Size = New System.Drawing.Size(180, 22)
+		Me.CopyBookIDToolStrip1.Size = New System.Drawing.Size(168, 22)
 		Me.CopyBookIDToolStrip1.Text = "Copy Due Amount"
 		'
 		'LoginSignupTab
@@ -2564,7 +2564,7 @@ Partial Class AAAAMainForm
 		Me.MyGroupBox3.PerformLayout()
 		Me.MyGroupBox4.ResumeLayout(False)
 		Me.MyGroupBox4.PerformLayout()
-		Me.ShowUsersTab.ResumeLayout(False)
+		Me.ApprovalsTab.ResumeLayout(False)
 		CType(Me.AdminUsersInfoDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.AdminUserInfoContextMenu.ResumeLayout(False)
 		Me.LoginSignupTab.ResumeLayout(False)
@@ -2647,7 +2647,7 @@ Partial Class AAAAMainForm
 	Friend WithEvents TabPage1 As TabPage
 	Friend WithEvents AlertBox5 As MyAlertBox
 	Friend WithEvents TabPage2 As TabPage
-	Friend WithEvents ShowUsersTab As TabPage
+	Friend WithEvents ApprovalsTab As TabPage
 	Friend WithEvents LoginSignupTab As TabPage
 	Friend WithEvents AlertBox6 As MyAlertBox
 	Friend WithEvents AASignupGroupBox As MyGroupBox
