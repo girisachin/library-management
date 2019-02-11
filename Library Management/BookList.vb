@@ -26,6 +26,11 @@
 			Alert("Warning", "LogIn To Continue")
 			Exit Sub
 		End If
+		If GLogin.BooksIssued = 7 AndAlso GLogin.AccType = "Student" Then
+			Alert("Warning", "Can not issue more than 7 books")
+		ElseIf GLogin.BooksIssued = 10 Then
+			Alert("Warning", "Can not issue more than 10 books")
+		End If
 		IssueBookByID(bookid)
 
         SQLInterface.PopulateSearchBooksTable(AAAAMainForm.SearchBookIDTextBox.Text, AAAAMainForm.SearchBookISBNTextBox.Text, AAAAMainForm.SearchBookNameTextBox.Text, AAAAMainForm.SearchBookGenreTextBox.Text, AAAAMainForm.SearchBookAuthorTextBox.Text)
@@ -40,4 +45,6 @@
 			SearchBookDataGrid.ClearSelection()
 		End If
 	End Sub
+
+
 End Class

@@ -220,6 +220,11 @@ Public Class AAAAMainForm
 			TabControlMain.SelectedTab = LoginSignupTab
 			Alert("Warning", "Please Login to continue")
 		End If
+		If GLogin.BooksIssued = 7 AndAlso GLogin.AccType = "Student" Then
+			Alert("Warning", "Can not issue more than 7 books")
+		ElseIf GLogin.BooksIssued = 10 Then
+			Alert("Warning", "Can not issue more than 10 books")
+		End If
 		Dim bookid As String = BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(0).Value.ToString
 		If Convert.ToUInt64(BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(5).Value) <= 0 Then
 			Alert("Error", "Book not available for issue")
@@ -549,36 +554,33 @@ Public Class AAAAMainForm
 		End If
 		Alert("Success", "Book Added")
 	End Sub
-    Private Sub TabControlMain_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlMain.Selected
-        '      SignupDropDownBox.SelectedIndex = 0
-        '      AAAALogoutButton.Visible = False
-        ''DisablePage(AdminOptionsTab)
-        ''DisablePage(SummaryTab)
-        ''DisablePage(IssueBookTab)
-        'IssueBookSearchDropDown.SelectedIndex = 0
-        '      ReturnBookSearchDropDown.SelectedIndex = 0
-        '      SQLInterface.PopulateBrowseBooksTable()
-        '      BrowseBooksDataGrid.ClearSelection()
-        '      AdminAddAccDropDown.SelectedIndex = 0
-        If e.TabPage.Name = "LoginSignupTab" Then
-        ElseIf e.TabPage.Name = "SummaryTab" Then
-            MyTextBox3.Text = GLogin.Fullname
-            MyTextBox4.Text = GLogin.Username
-            'CalculateDue()
-            'SummaryDueTextBox.Text = GLogin.Due.ToString
-            'SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
-            updateDueIssueText()
+	Private Sub TabControlMain_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlMain.Selected
+		'      SignupDropDownBox.SelectedIndex = 0
+		'      AAAALogoutButton.Visible = False
+		''DisablePage(AdminOptionsTab)
+		''DisablePage(SummaryTab)
+		''DisablePage(IssueBookTab)
+		'IssueBookSearchDropDown.SelectedIndex = 0
+		'      ReturnBookSearchDropDown.SelectedIndex = 0
+		'      SQLInterface.PopulateBrowseBooksTable()
+		'      BrowseBooksDataGrid.ClearSelection()
+		'      AdminAddAccDropDown.SelectedIndex = 0
+		If e.TabPage.Name = "LoginSignupTab" Then
+		ElseIf e.TabPage.Name = "SummaryTab" Then
+			MyTextBox3.Text = GLogin.Fullname
+			MyTextBox4.Text = GLogin.Username
+			'CalculateDue()
+			'SummaryDueTextBox.Text = GLogin.Due.ToString
+			'SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
+			updateDueIssueText()
 
-        ElseIf e.TabPage.Name = "BrowseBooksTab" Then
-            BrowseBooksDataGrid.ClearSelection()
-            SQLInterface.PopulateBrowseBooksTable()
-        End If
-        'e.TabPage.Name
-    End Sub
-
-
-
-    Private Sub AAAALogoutButton_Click(sender As Object, e As EventArgs) Handles AAAALogoutButton.Click
+		ElseIf e.TabPage.Name = "BrowseBooksTab" Then
+			BrowseBooksDataGrid.ClearSelection()
+			SQLInterface.PopulateBrowseBooksTable()
+		End If
+		'e.TabPage.Name
+	End Sub
+	Private Sub AAAALogoutButton_Click(sender As Object, e As EventArgs) Handles AAAALogoutButton.Click
 		If GLogin.AccType = "Admin" Then
 			DisablePage(AdminOptionsTab)
 		End If
@@ -594,7 +596,6 @@ Public Class AAAAMainForm
 		SummaryUsernameTextBox.Text = ""
 		SummaryProfileDropDownBox.SelectedIndex = 0
 	End Sub
-
 	Private Sub SummaryViewIssuedBooks_Click(sender As Object, e As EventArgs) Handles SummaryViewIssuedBooks.Click
 		If GLogin.BooksIssued = 0 Then
 			Alert("Warning", "No Books Issued")
@@ -602,7 +603,6 @@ Public Class AAAAMainForm
 			IssuedBooks.Show()
 		End If
 	End Sub
-
 	Private Sub AdminEditBookButton_Click(sender As Object, e As EventArgs) Handles AdminEditBookButton.Click
 		If ValidateInteger(AdminEditBookID.Text) = False Then
 			Alert("Warning", "Use integers in Book ID")
@@ -648,6 +648,14 @@ Public Class AAAAMainForm
 			Exit Sub
 		End If
 		Alert("Success", "Book Edited Successfully")
+	End Sub
+
+	Private Sub EditAccountToolStrip_Click(sender As Object, e As EventArgs) Handles EditAccountToolStrip.Click
+
+	End Sub
+
+	Private Sub CopyBookIDToolStrip1_Click(sender As Object, e As EventArgs) Handles CopyBookIDToolStrip1.Click
+
 	End Sub
 End Class
 
