@@ -1,0 +1,101 @@
+"ID";"Name";"Author";"ISBN";"Genre";"Left";"Copies"
+1;"Introduction to Automata Theory, Languages and Computation";"John E. Hopcroft, Rajeev Motwani and Jeffrey D. Ullman";"9788131720479";"Computer Science";50;50
+2;"An Inroduction to Game Theory";"Martin J. Osborne";"9780195128963";"Economics";50;50
+3;"Computer Orginization & Architecture";"William Stallings";"9781285415420";"Computer Science";50;50
+4;"Intoduction to Algorithm";"Thomas H. Cormen, Charles E. Leiserson and Ronald ";"9780262033848";"Algorithm";50;50
+5;"Software engineering:A Practitioner's Apprach";"Roger, S Pressman";"9780071002325";"Computer Science";50;50
+6;"Computer access for people with disabilities : a human factors approach";"Richard C. Simpson";"9781466553712";"Computer Science";50;50
+7;"Computer architecture : pipelined and parallel processor design";"Michael J. Flynn";"9788173191008";"Computer Science";50;50
+8;"Computer age statistical inference : algorithms evidence and data science";"Bradley Efron and Trevor Hastie";"9781107149892";"Computer";50;50
+9;"Algorithm-architecture matching for signal and image processing : best paper from ";"Grogniat Guy";"9789048199648";"Algorithm";50;50
+10;"Algorithm design";"John Kleinberg and Eva Tardos";"9788131703106";"Algorithm";50;50
+11;"Algorithm engineering and experimentation : Proceedings";"Adam L. Buchsbaum ";"3540425608";"Algorithm";50;50
+12;"Algorithm engineering for integral and dynamic problems";"";"9056993283";"Algorithm";50;50
+13;"Algorithm theory- SWAT 2008";"Joachim Gudmundsson";"9783540699002";"Algorithm";50;50
+14;"Computer and communication security : Proceedings ";"ACM SIGSAC";"1581131488";"Computer";50;50
+15;"Computer Security and Industrial CryptographyState of the Art and Evolution";"Leuven";"3540573410";"Computer";50;50
+16;"Computerized engine controls";"Steve V. Hatch";"9781418011390";"Computer";50;50
+17;"Computerized tomography for scientists and engineers";"Munshi, Prabhat";"8188342703";"Computer";50;50
+18;"Computers : an introduction to hardware and software design";"Larry L. Wear";"0071009949";"Computer";50;50
+19;"Computers and games - CG 2006";"H. Jaap van den Herik, Paolo Ciancarini";"9783540755371";"Computer";50;50
+20;"Computers and games : Proceedings";"Tony Marsland and Ian Frank";"3540430806";"Computer";50;50
+21;"Database and expert systems applications : Proceedings";"Heinrich C. Mayr";"3540425276";"Database";50;50
+22;"Engineering mechanics";"Manoj K. Harbola";"9781439854297";"Mechanics";50;50
+23;"Feedback control system";"Charles L. Phillips and Royce D. Harbor";"0471821675";"System";50;50
+24;"complete guide to DB2 universal database";"Don Chamberlin";"1558604820";"Database";50;50
+25;"First course in database systems";"Jeffrey D. Ullman and Jennifer Widom";"0138876479";"Database";50;50
+26;"guide to the SQL standards : a user's guide to the standard database language ";"C.J. Date and Hugh Darwen";"0201964260";"Database";50;50
+27;"Access database design and programming";"Steven Roman";"1565922972";"Database";50;50
+28;"Active database systems : triggers and rules for advanced database processing";"Jennifer Widom and Stefano Ceri";"1558603042";"Database";50;50
+29;"Active, real-time, and temporal database systems : Proceedings ";"Sten F. Andler ";"3540656499";"Database";50;50
+30;"Advanced concepts in operating systems : distributed, database and multiprocessor ";"Singhal, Mukesh";"0071136932";"Database";50;50
+31;"Advanced database systems";"Carlo Zaniolo";"9781558604438";"Database";50;50
+32;"Advanced database systems";"Nabil R. Adam and Bharat K. Bhargava";"3540575073";"Database";50;50
+33;"Advanced database systems : Proceedings";"P.M.D. Gray and R.J. Lucas";"3540556931";"Database";50;50
+34;"Advances in database technology-EDBT'96 : Proceedings";"P. Apers, M. Bouzeghoub ";"3540610572";"Database";50;50
+35;"Statistical physics of fields";"Mehran Kardar";"9780521873413";"Physics";50;50
+36;"Physics around us : how and why things work";"Ernest M. Henley and J. Gregory ";"9789814350631";"Physics";50;50
+37;"Introduction to nuclear and particle physics";"A. Das and T. Ferbel";"9788120347380";"Physics";50;50
+38;"Introductory course of particle physics";"Palash B. Pal";"9781482216981";"Physics";50;50
+39;"Quantum Physics";"Florian Scheck";"9783642345623";"Physics";50;50
+40;"Mathematical physics";"Shigeji Fujita and Salvador V. Godoy";"9783527408085";"Physics";50;50
+41;"Monte Carlo simulation in statistical physics : an introduction";"Kurt ";"9783642031625";"Physics";50;50
+42;"Physics and philosophy : selected essays";"Henry Margenau";"9027709017";"Physics";50;50
+43;"introduction to geometrical physics";"R. Aldrovandi and J.G. Pereira";"9810222327";"Physics";50;50
+44;"Nanoscience : the science of the small in physics, engineering, chemistry, biology and medicine";"Schaefer, Hans-Echardt";"9783642105586";"Physics";50;50
+45;"Classical mechanics illustrated by modern physics : 42 problems with solutions";"Guery-Odelin, David";"9781848164796";"Physics";50;50
+46;"C++ for C programming";"Ira Phol";"9780805331592";"C++";50;50
+47;"Visual C++ : a developer's guide";"Alex Leavens";"9788170294757";"C++";50;50
+48;"Windows programming with borland C++ : covers through version 4.0";"Oualline, Steve";"9788170294740";"C++";50;50
+49;"C++ programming language";"Stroustrup, Bjarne";"8178081261";"C++";50;50
+50;"Object- oriented programming in turbo C++ ";"Robert Lafore";"9788185623221";"C++";50;50
+51;"To The Last Bullet";"Vinita Kamte";"9780917256141";"Biography";50;50
+52;"Wings of Fire : An Autobiography of Abdul Kalam ";"Arun Tiwari";"8173711461";"Biography";50;50
+53;"The Blue Umbrella";"Ruskin Bond";"9788171673407";"Story";50;50
+54;"The Stroy of My Life";"Helen Kelar";"9780451531568";"Biography";50;50
+55;"The Giver";"Lois Lowry";"9780440237686";"Science Fiction";50;50
+56;"CINDRELLA";"Checkerboard Press";"9780689814747";"Fairy Tale";50;50
+57;"Fragments of Horror";"Juinji Ito";"1421580799";"Horror";50;50
+58;"It";"Stephen King";"0670813028";"Horror";50;50
+59;"Dracula";"Bram Stoker";"9781503261389";"Horror";50;50
+60;"A Journy to the Center of the Earth";"Jules Verne";"0553213970";"Science Fiction";50;50
+61;"Mission of Gravity";"Hal Clement";"0045316223";"Science Fiction";50;50
+62;"Red Mars";"Kim Stanley Robinson";"9780553560732";"Science Fiction";50;50
+63;"Snow White";"Aarne Thompson";"1845770773";"Fairy Tales";50;50
+64;"Hansel and Gretel ";"Arthur Rackham";"0863156231";"Fairy Tales";50;50
+65;"The Diary of Young Girl";"Anne Frank";"9780553296983";"Autobiography";50;50
+66;"A Little  History of the World";"Ernst Gombrich";"9782754101967";"History";50;50
+67;"Glimpses of World History";"Jawaharlal Nehru";"0195613236";"History";50;50
+68;"Development as Freedom";"Amartya Sen";"9780198297581";"Economics";50;50
+69;"Poverty and Famines";"Amartya Sen";"0198284632";"Economics";50;50
+70;"The World Is Flat";"Thomas Friedman";"9780374292881";"Economics";50;50
+71;"Alice's Adventures in Wonderland";"Lewis Carroll";"0486275434";"Story";50;50
+72;"The Jungle Book";"Rudyard Kipling";"1503332543";"Story";50;50
+73;"Goodnight Moon";"Margaret Wise Brown";"230764843";"Story";50;50
+74;"The Cat in the Hat";"Dr. Seuss";"9780717260591";"Story";50;50
+75;"The Wonder That Was India";"Arthur Llewellyn Basham";"0812290278";"Cultural";50;50
+76;"The Argumentative Indian";"Amartya Sen";"0374105839";"Cultural";50;50
+77;"Tribal culture of India";"Madhu Rani";"8178352192";"Cultural";50;50
+78;"Tribes of North-East India: Biological and Cultural Perspectives";"Sarthak Sengupta";"8121204631";"Cultural";50;50
+79;"I Am Malala";"Malala Yousafzai";"9780316377560";"Autobiography";50;50
+80;"Milk and honey";"Rupi Kaur";"9781449474256";"Poetry";50;50
+81;"The Sun and Her Flowers";"Rupi Kaur";"1471165825";"Poetry";50;50
+82;"The Princess Saves Herself In This One";"Amanda Lovelace";"1532913680";"Poetry";50;50
+83;"Pillow Thoughts";"Courtney Peppernell";"1539170381";"Poetry";50;50
+84;"Where the Sidewalk Ends";"Shel Silverstein";"0060256672";"Poetry";50;50
+85;"The Flame";"Leonard Cohen";"0374156069";"Poetry";50;50
+86;"Treasure Island";"Robert Louis Stevenson";"9788172344764";"Adventure";50;50
+87;"Adventures of Huckleberry Finn";"Mark Twain";"9780486280615";"Adventure";50;50
+88;"Harry Potter and the Philosopher's Stone";"J. K. Rowling";"9781408855652";"Adventure";50;50
+89;"Around the World in Eighty Days";"Jules Verne";"9780746070314";"Adventure";50;50
+90;"King Solomon's Mines";"H. Rider Haggard";"9780141439525";"Adventure";50;50
+91;"The Girl on the Train";"Paula Hawkins";"9780857522320";"Thriller";50;50
+92;"Watching You";"Lisa Jewell";"1501190075";"Thriller";50;50
+93;"The Outsider";"Stephen King";"1508252211";"Thriller";50;50
+94;"Behind Closed Doors";"B. A. Paris";"1848454120";"Thriller";50;50
+95;"The Crucible";"Arthur Miller";"9780142437339";"Drama";50;50
+96;"Hamlet";"William Shakespeare";"9781420922530";"Drama";50;50
+97;"The Glass Menagerie";"Tennessee Williams";"9780811214049";"Drama";50;50
+98;"Outlander";"Diana Gabaldon";"9780440212560";"Romance";50;50
+99;"One Day in December";"Josie Silver";"9780525574682";"Romance";50;50
+100;"Every Breath";"Nicholas Sparks";"9781538728529";"Romance";50;50
