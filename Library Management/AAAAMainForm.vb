@@ -221,7 +221,8 @@ Public Class AAAAMainForm
 			Alert("Error", "Book not available for issue")
 			Exit Sub
 		End If
-		IssueBookByID(bookid)
+        IssueBookByID(bookid)
+        SQLInterface.PopulateBrowseBooksTable()
         ' Todo: Issue Book Here using bookid
     End Sub
     Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles BrowseBooksDataGrid.CellMouseEnter
@@ -304,53 +305,17 @@ Public Class AAAAMainForm
 			Exit Sub
 		End If
 
-		' TODO: Search using BookID here and issue the book
-		IssueBookByID(IssueBookInfoTextBox.Text)
+        ' TODO: Search using BookID here and issue the book
+        IssueBookByID(IssueBookInfoTextBox.Text)
+        updateDueIssueText()
 
-	End Sub
-	Private Sub ReturnButton_Click(sender As Object, e As EventArgs) Handles ReturnButton.Click
-		If GLogin.BooksIssued = 0 Then
-			Alert("Error", "No books Issued")
-			Exit Sub
-		End If
-		If ValidateInteger(ReturnBookInfoTextBox.Text) = False Then
-			Alert("Warning", "Use only integers in book ID")
-			Exit Sub
-		End If
-		Dim BookFound As Boolean = True
-		Dim i As Integer
-		Dim diff As Long
-		For i = 1 To 10
-			If GLogin.books(i, 0) = ReturnBookInfoTextBox.Text Then
-				diff = DateAndTime.DateDiff("s", GLogin.books(i, 1), DateAndTime.Now())
-				GLogin.books(i, 0) = ""
-				GLogin.books(i, 1) = ""
-				GLogin.BooksIssued -= 1
-				BookFound = True
-				Exit For
-			End If
-		Next
-		If diff > 4 Then
-			GLogin.Due += Convert.ToInt32(diff.ToString)
-			SummaryDueTextBox.Text = GLogin.Due
-		End If
-		If BookFound = False Then 'if not in list of books issued
-			Alert("Error", "You did not issued this book in the first place")
-			Exit Sub
-		End If
-		Dim result As Boolean = SQLInterface.ReturnBook(ReturnBookInfoTextBox.Text)
-		If result = False Then ' some due added by late submission of this book
-			Exit Sub
-		End If
-		If result = True Then
-			If diff <= 0 Then
-				Alert("Success", "Book was Returned Successfully")
-			Else
-				Alert("Warning", "Book Returned Late. Due =" + Convert.ToInt32(diff.ToString).ToString)
-			End If
-		End If
-	End Sub
-	Private Sub AdminAddAccButton_Click(sender As Object, e As EventArgs) Handles AdminAddAccButton.Click
+    End Sub
+    Private Sub ReturnButton_Click(sender As Object, e As EventArgs) Handles ReturnButton.Click
+
+        ReturnBookByID(ReturnBookInfoTextBox.Text)
+
+    End Sub
+    Private Sub AdminAddAccButton_Click(sender As Object, e As EventArgs) Handles AdminAddAccButton.Click
 		If AdminAddAccPasswordTextBox.Text <> AdminAddAccConfirmPasswordTextBox.Text Then
 			Alert("Error", "Passwords do not match! Enter passwords again carefully!")
 			AdminAddAccPasswordTextBox.Text = ""
@@ -534,31 +499,36 @@ Public Class AAAAMainForm
 		End If
 		Alert("Success", "Book Added")
 	End Sub
-	Private Sub TabControlMain_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlMain.Selected
-		'      SignupDropDownBox.SelectedIndex = 0
-		'      AAAALogoutButton.Visible = False
-		''DisablePage(AdminOptionsTab)
-		''DisablePage(SummaryTab)
-		''DisablePage(IssueBookTab)
-		'IssueBookSearchDropDown.SelectedIndex = 0
-		'      ReturnBookSearchDropDown.SelectedIndex = 0
-		'      SQLInterface.PopulateBrowseBooksTable()
-		'      BrowseBooksDataGrid.ClearSelection()
-		'      AdminAddAccDropDown.SelectedIndex = 0
-		If e.TabPage.Name = "LoginSignupTab" Then
+    Private Sub TabControlMain_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlMain.Selected
+        '      SignupDropDownBox.SelectedIndex = 0
+        '      AAAALogoutButton.Visible = False
+        ''DisablePage(AdminOptionsTab)
+        ''DisablePage(SummaryTab)
+        ''DisablePage(IssueBookTab)
+        'IssueBookSearchDropDown.SelectedIndex = 0
+        '      ReturnBookSearchDropDown.SelectedIndex = 0
+        '      SQLInterface.PopulateBrowseBooksTable()
+        '      BrowseBooksDataGrid.ClearSelection()
+        '      AdminAddAccDropDown.SelectedIndex = 0
+        If e.TabPage.Name = "LoginSignupTab" Then
         ElseIf e.TabPage.Name = "SummaryTab" Then
-			MyTextBox3.Text = GLogin.Fullname
-			MyTextBox4.Text = GLogin.Username
-            CalculateDue()
-            SummaryDueTextBox.Text = GLogin.Due.ToString
-            SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
-		ElseIf e.TabPage.Name = "BrowseBooksTab" Then
-			BrowseBooksDataGrid.ClearSelection()
-			SQLInterface.PopulateBrowseBooksTable()
-		End If
-		'e.TabPage.Name
-	End Sub
-	Private Sub AAAALogoutButton_Click(sender As Object, e As EventArgs) Handles AAAALogoutButton.Click
+            MyTextBox3.Text = GLogin.Fullname
+            MyTextBox4.Text = GLogin.Username
+            'CalculateDue()
+            'SummaryDueTextBox.Text = GLogin.Due.ToString
+            'SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
+            updateDueIssueText()
+
+        ElseIf e.TabPage.Name = "BrowseBooksTab" Then
+            BrowseBooksDataGrid.ClearSelection()
+            SQLInterface.PopulateBrowseBooksTable()
+        End If
+        'e.TabPage.Name
+    End Sub
+
+
+
+    Private Sub AAAALogoutButton_Click(sender As Object, e As EventArgs) Handles AAAALogoutButton.Click
 		If GLogin.AccType = "Admin" Then
 			DisablePage(AdminOptionsTab)
 		End If
