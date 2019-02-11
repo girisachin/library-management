@@ -22,11 +22,16 @@ Partial Class AAAAMainForm
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()>
 	Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.AAAAMainFormSkin = New Library_Management.FormSkin()
         Me.AAAAMiniButtonMain = New Library_Management.MyMini()
         Me.AAAALogoutButton = New Library_Management.MyButton()
@@ -118,6 +123,8 @@ Partial Class AAAAMainForm
         Me.MyLabel3 = New Library_Management.MyLabel()
         Me.MyLabel2 = New Library_Management.MyLabel()
         Me.MyGroupBox2 = New Library_Management.MyGroupBox()
+        Me.AdminEditAccTypeDropDown = New Library_Management.MyComboBox()
+        Me.MyLabel30 = New Library_Management.MyLabel()
         Me.AdminEditAccButton = New Library_Management.MyButton()
         Me.AdminEditAccNewPasswordTextBox = New Library_Management.MyTextBox()
         Me.AdminEditAccNewFullnameTextBox = New Library_Management.MyTextBox()
@@ -148,7 +155,7 @@ Partial Class AAAAMainForm
         Me.MyLabel21 = New Library_Management.MyLabel()
         Me.MyLabel14 = New Library_Management.MyLabel()
         Me.MyLabel15 = New Library_Management.MyLabel()
-        Me.MyButton3 = New Library_Management.MyButton()
+        Me.AdminEditBookButton = New Library_Management.MyButton()
         Me.MyGroupBox4 = New Library_Management.MyGroupBox()
         Me.AdminAddBookButton = New Library_Management.MyButton()
         Me.AdminAddBookName = New Library_Management.MyTextBox()
@@ -161,12 +168,14 @@ Partial Class AAAAMainForm
         Me.MyLabel16 = New Library_Management.MyLabel()
         Me.MyLabel18 = New Library_Management.MyLabel()
         Me.MyLabel19 = New Library_Management.MyLabel()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.ApprovalsTab = New System.Windows.Forms.TabPage()
+        Me.AdminApprovalContextMenu = New Library_Management.MyContextMenuStrip()
+        Me.ApproveToolStrip = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DisapproveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CopyUserNameToolStrip1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CopyFullNameToolStrip1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AlertBox8 = New Library_Management.MyAlertBox()
-        Me.Admin = New System.Windows.Forms.RichTextBox()
-        Me.AdminMySQLExecuteButton = New Library_Management.MyButton()
-        Me.AdminMySQLQueryType = New Library_Management.MyComboBox()
-        Me.AdminMySQLQueryTextBox = New Library_Management.MyTextBox()
+        Me.AdminApprovalDataGrid = New System.Windows.Forms.DataGridView()
         Me.LoginSignupTab = New System.Windows.Forms.TabPage()
         Me.AlertBox6 = New Library_Management.MyAlertBox()
         Me.AASignupGroupBox = New Library_Management.MyGroupBox()
@@ -217,7 +226,9 @@ Partial Class AAAAMainForm
         Me.MyGroupBox6.SuspendLayout()
         Me.MyGroupBox3.SuspendLayout()
         Me.MyGroupBox4.SuspendLayout()
-        Me.TabPage3.SuspendLayout()
+        Me.ApprovalsTab.SuspendLayout()
+        Me.AdminApprovalContextMenu.SuspendLayout()
+        CType(Me.AdminApprovalDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.LoginSignupTab.SuspendLayout()
         Me.AASignupGroupBox.SuspendLayout()
         CType(Me.AAASignupConfirmPasswordPicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -265,7 +276,7 @@ Partial Class AAAAMainForm
         Me.AAAALogoutButton.Margin = New System.Windows.Forms.Padding(4)
         Me.AAAALogoutButton.Name = "AAAALogoutButton"
         Me.AAAALogoutButton.Size = New System.Drawing.Size(132, 40)
-        Me.AAAALogoutButton.TabIndex = 4
+        Me.AAAALogoutButton.TabIndex = 0
         Me.AAAALogoutButton.Text = "Logout"
         '
         'AAAAExitButton
@@ -277,7 +288,7 @@ Partial Class AAAAMainForm
         Me.AAAAExitButton.Margin = New System.Windows.Forms.Padding(4)
         Me.AAAAExitButton.Name = "AAAAExitButton"
         Me.AAAAExitButton.Size = New System.Drawing.Size(102, 40)
-        Me.AAAAExitButton.TabIndex = 4
+        Me.AAAAExitButton.TabIndex = 1
         Me.AAAAExitButton.Text = "Exit"
         '
         'StatusBar
@@ -308,7 +319,8 @@ Partial Class AAAAMainForm
         Me.TabControlMain.Name = "TabControlMain"
         Me.TabControlMain.SelectedIndex = 0
         Me.TabControlMain.Size = New System.Drawing.Size(1248, 806)
-        Me.TabControlMain.TabIndex = 2
+        Me.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
+        Me.TabControlMain.TabIndex = 0
         Me.TabControlMain.Tag = ""
         '
         'SearchBooksTab
@@ -358,7 +370,7 @@ Partial Class AAAAMainForm
         Me.SearchBookButton.Margin = New System.Windows.Forms.Padding(4)
         Me.SearchBookButton.Name = "SearchBookButton"
         Me.SearchBookButton.Size = New System.Drawing.Size(264, 80)
-        Me.SearchBookButton.TabIndex = 2
+        Me.SearchBookButton.TabIndex = 5
         Me.SearchBookButton.Text = "Search"
         '
         'AAAAALabel11
@@ -371,7 +383,7 @@ Partial Class AAAAMainForm
         Me.AAAAALabel11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.AAAAALabel11.Name = "AAAAALabel11"
         Me.AAAAALabel11.Size = New System.Drawing.Size(88, 32)
-        Me.AAAAALabel11.TabIndex = 1
+        Me.AAAAALabel11.TabIndex = 6
         Me.AAAAALabel11.Text = "Author"
         '
         'MyLabel25
@@ -384,7 +396,7 @@ Partial Class AAAAMainForm
         Me.MyLabel25.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MyLabel25.Name = "MyLabel25"
         Me.MyLabel25.Size = New System.Drawing.Size(79, 32)
-        Me.MyLabel25.TabIndex = 1
+        Me.MyLabel25.TabIndex = 7
         Me.MyLabel25.Text = "Genre"
         '
         'AAAAALabel10
@@ -397,7 +409,7 @@ Partial Class AAAAMainForm
         Me.AAAAALabel10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.AAAAALabel10.Name = "AAAAALabel10"
         Me.AAAAALabel10.Size = New System.Drawing.Size(133, 32)
-        Me.AAAAALabel10.TabIndex = 1
+        Me.AAAAALabel10.TabIndex = 8
         Me.AAAAALabel10.Text = "BookName"
         '
         'AAAAALabel3
@@ -423,7 +435,7 @@ Partial Class AAAAMainForm
         Me.AAAAALabel2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.AAAAALabel2.Name = "AAAAALabel2"
         Me.AAAAALabel2.Size = New System.Drawing.Size(92, 32)
-        Me.AAAAALabel2.TabIndex = 1
+        Me.AAAAALabel2.TabIndex = 10
         Me.AAAAALabel2.Text = "BookID"
         '
         'AAAAALabel9
@@ -436,7 +448,7 @@ Partial Class AAAAMainForm
         Me.AAAAALabel9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.AAAAALabel9.Name = "AAAAALabel9"
         Me.AAAAALabel9.Size = New System.Drawing.Size(105, 32)
-        Me.AAAAALabel9.TabIndex = 1
+        Me.AAAAALabel9.TabIndex = 9
         Me.AAAAALabel9.Text = "ISBN No"
         '
         'SearchBookAuthorTextBox
@@ -449,7 +461,7 @@ Partial Class AAAAMainForm
         Me.SearchBookAuthorTextBox.Name = "SearchBookAuthorTextBox"
         Me.SearchBookAuthorTextBox.ReadOnly = False
         Me.SearchBookAuthorTextBox.Size = New System.Drawing.Size(357, 38)
-        Me.SearchBookAuthorTextBox.TabIndex = 0
+        Me.SearchBookAuthorTextBox.TabIndex = 4
         Me.SearchBookAuthorTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SearchBookAuthorTextBox.UseSystemPasswordChar = False
         '
@@ -463,7 +475,7 @@ Partial Class AAAAMainForm
         Me.SearchBookGenreTextBox.Name = "SearchBookGenreTextBox"
         Me.SearchBookGenreTextBox.ReadOnly = False
         Me.SearchBookGenreTextBox.Size = New System.Drawing.Size(357, 38)
-        Me.SearchBookGenreTextBox.TabIndex = 0
+        Me.SearchBookGenreTextBox.TabIndex = 3
         Me.SearchBookGenreTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SearchBookGenreTextBox.UseSystemPasswordChar = False
         '
@@ -477,7 +489,7 @@ Partial Class AAAAMainForm
         Me.SearchBookNameTextBox.Name = "SearchBookNameTextBox"
         Me.SearchBookNameTextBox.ReadOnly = False
         Me.SearchBookNameTextBox.Size = New System.Drawing.Size(357, 38)
-        Me.SearchBookNameTextBox.TabIndex = 0
+        Me.SearchBookNameTextBox.TabIndex = 2
         Me.SearchBookNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SearchBookNameTextBox.UseSystemPasswordChar = False
         '
@@ -505,7 +517,7 @@ Partial Class AAAAMainForm
         Me.SearchBookISBNTextBox.Name = "SearchBookISBNTextBox"
         Me.SearchBookISBNTextBox.ReadOnly = False
         Me.SearchBookISBNTextBox.Size = New System.Drawing.Size(357, 38)
-        Me.SearchBookISBNTextBox.TabIndex = 0
+        Me.SearchBookISBNTextBox.TabIndex = 1
         Me.SearchBookISBNTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SearchBookISBNTextBox.UseSystemPasswordChar = False
         '
@@ -540,61 +552,61 @@ Partial Class AAAAMainForm
         '
         Me.BrowseBooksDataGrid.AllowUserToAddRows = False
         Me.BrowseBooksDataGrid.AllowUserToDeleteRows = False
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.BrowseBooksDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        DataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.BrowseBooksDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
         Me.BrowseBooksDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.BrowseBooksDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
         Me.BrowseBooksDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
         Me.BrowseBooksDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.BrowseBooksDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
         Me.BrowseBooksDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.BrowseBooksDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.BrowseBooksDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
         Me.BrowseBooksDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.BrowseBooksDataGrid.ContextMenuStrip = Me.BrowseBooksContextMenu
         Me.BrowseBooksDataGrid.Cursor = System.Windows.Forms.Cursors.Default
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.BrowseBooksDataGrid.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        DataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.BrowseBooksDataGrid.DefaultCellStyle = DataGridViewCellStyle13
         Me.BrowseBooksDataGrid.Dock = System.Windows.Forms.DockStyle.Fill
         Me.BrowseBooksDataGrid.GridColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer))
         Me.BrowseBooksDataGrid.Location = New System.Drawing.Point(4, 4)
         Me.BrowseBooksDataGrid.Margin = New System.Windows.Forms.Padding(4)
         Me.BrowseBooksDataGrid.Name = "BrowseBooksDataGrid"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.BrowseBooksDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.BrowseBooksDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
         Me.BrowseBooksDataGrid.RowHeadersVisible = False
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.BrowseBooksDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.BrowseBooksDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle15
         Me.BrowseBooksDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         Me.BrowseBooksDataGrid.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
         Me.BrowseBooksDataGrid.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 10.0!)
@@ -698,7 +710,7 @@ Partial Class AAAAMainForm
         Me.ReturnBookInfoTextBox.Name = "ReturnBookInfoTextBox"
         Me.ReturnBookInfoTextBox.ReadOnly = False
         Me.ReturnBookInfoTextBox.Size = New System.Drawing.Size(302, 38)
-        Me.ReturnBookInfoTextBox.TabIndex = 2
+        Me.ReturnBookInfoTextBox.TabIndex = 0
         Me.ReturnBookInfoTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.ReturnBookInfoTextBox.UseSystemPasswordChar = False
         '
@@ -724,7 +736,7 @@ Partial Class AAAAMainForm
         Me.ReturnButton.Margin = New System.Windows.Forms.Padding(4)
         Me.ReturnButton.Name = "ReturnButton"
         Me.ReturnButton.Size = New System.Drawing.Size(243, 72)
-        Me.ReturnButton.TabIndex = 3
+        Me.ReturnButton.TabIndex = 1
         Me.ReturnButton.Text = "Return Book"
         '
         'AAIssueGroupBox
@@ -751,7 +763,7 @@ Partial Class AAAAMainForm
         Me.IssueBookInfoTextBox.Name = "IssueBookInfoTextBox"
         Me.IssueBookInfoTextBox.ReadOnly = False
         Me.IssueBookInfoTextBox.Size = New System.Drawing.Size(302, 38)
-        Me.IssueBookInfoTextBox.TabIndex = 2
+        Me.IssueBookInfoTextBox.TabIndex = 0
         Me.IssueBookInfoTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.IssueBookInfoTextBox.UseSystemPasswordChar = False
         '
@@ -777,7 +789,7 @@ Partial Class AAAAMainForm
         Me.IssueButton.Margin = New System.Windows.Forms.Padding(4)
         Me.IssueButton.Name = "IssueButton"
         Me.IssueButton.Size = New System.Drawing.Size(243, 72)
-        Me.IssueButton.TabIndex = 3
+        Me.IssueButton.TabIndex = 1
         Me.IssueButton.Text = "Issue Book"
         '
         'SummaryTab
@@ -854,7 +866,7 @@ Partial Class AAAAMainForm
         Me.SummaryChangePasswordButton.Margin = New System.Windows.Forms.Padding(4)
         Me.SummaryChangePasswordButton.Name = "SummaryChangePasswordButton"
         Me.SummaryChangePasswordButton.Size = New System.Drawing.Size(244, 63)
-        Me.SummaryChangePasswordButton.TabIndex = 2
+        Me.SummaryChangePasswordButton.TabIndex = 3
         Me.SummaryChangePasswordButton.Text = "Change Password"
         '
         'AAASummaryConfirmPasswordPicture
@@ -926,7 +938,7 @@ Partial Class AAAAMainForm
         Me.SummaryConfirmPasswordTextBox.Name = "SummaryConfirmPasswordTextBox"
         Me.SummaryConfirmPasswordTextBox.ReadOnly = False
         Me.SummaryConfirmPasswordTextBox.Size = New System.Drawing.Size(249, 38)
-        Me.SummaryConfirmPasswordTextBox.TabIndex = 0
+        Me.SummaryConfirmPasswordTextBox.TabIndex = 2
         Me.SummaryConfirmPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SummaryConfirmPasswordTextBox.UseSystemPasswordChar = True
         '
@@ -979,7 +991,7 @@ Partial Class AAAAMainForm
         Me.SummaryNewPasswordTextBox.Name = "SummaryNewPasswordTextBox"
         Me.SummaryNewPasswordTextBox.ReadOnly = False
         Me.SummaryNewPasswordTextBox.Size = New System.Drawing.Size(249, 38)
-        Me.SummaryNewPasswordTextBox.TabIndex = 0
+        Me.SummaryNewPasswordTextBox.TabIndex = 1
         Me.SummaryNewPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SummaryNewPasswordTextBox.UseSystemPasswordChar = True
         '
@@ -1029,7 +1041,7 @@ Partial Class AAAAMainForm
         Me.SummaryProfileDropDownBox.Margin = New System.Windows.Forms.Padding(4)
         Me.SummaryProfileDropDownBox.Name = "SummaryProfileDropDownBox"
         Me.SummaryProfileDropDownBox.Size = New System.Drawing.Size(306, 24)
-        Me.SummaryProfileDropDownBox.TabIndex = 4
+        Me.SummaryProfileDropDownBox.TabIndex = 2
         '
         'SummaryFullnameTextBox
         '
@@ -1054,7 +1066,7 @@ Partial Class AAAAMainForm
         Me.SummaryEditProfileButton.Margin = New System.Windows.Forms.Padding(4)
         Me.SummaryEditProfileButton.Name = "SummaryEditProfileButton"
         Me.SummaryEditProfileButton.Size = New System.Drawing.Size(244, 63)
-        Me.SummaryEditProfileButton.TabIndex = 2
+        Me.SummaryEditProfileButton.TabIndex = 3
         Me.SummaryEditProfileButton.Text = "Save Changes"
         '
         'SummaryUsernameTextBox
@@ -1067,7 +1079,7 @@ Partial Class AAAAMainForm
         Me.SummaryUsernameTextBox.Name = "SummaryUsernameTextBox"
         Me.SummaryUsernameTextBox.ReadOnly = False
         Me.SummaryUsernameTextBox.Size = New System.Drawing.Size(308, 38)
-        Me.SummaryUsernameTextBox.TabIndex = 1
+        Me.SummaryUsernameTextBox.TabIndex = 0
         Me.SummaryUsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SummaryUsernameTextBox.UseSystemPasswordChar = False
         '
@@ -1257,7 +1269,7 @@ Partial Class AAAAMainForm
         '
         Me.AdminTabControl.Controls.Add(Me.TabPage1)
         Me.AdminTabControl.Controls.Add(Me.TabPage2)
-        Me.AdminTabControl.Controls.Add(Me.TabPage3)
+        Me.AdminTabControl.Controls.Add(Me.ApprovalsTab)
         Me.AdminTabControl.Dock = System.Windows.Forms.DockStyle.Fill
         Me.AdminTabControl.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.AdminTabControl.ItemSize = New System.Drawing.Size(120, 40)
@@ -1322,7 +1334,7 @@ Partial Class AAAAMainForm
         Me.AdminDeleteAccButton.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminDeleteAccButton.Name = "AdminDeleteAccButton"
         Me.AdminDeleteAccButton.Size = New System.Drawing.Size(159, 44)
-        Me.AdminDeleteAccButton.TabIndex = 2
+        Me.AdminDeleteAccButton.TabIndex = 1
         Me.AdminDeleteAccButton.Text = "Delete"
         '
         'MyLabel13
@@ -1389,7 +1401,7 @@ Partial Class AAAAMainForm
         Me.AdminAddAccDropDown.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminAddAccDropDown.Name = "AdminAddAccDropDown"
         Me.AdminAddAccDropDown.Size = New System.Drawing.Size(346, 24)
-        Me.AdminAddAccDropDown.TabIndex = 3
+        Me.AdminAddAccDropDown.TabIndex = 4
         '
         'AdminAddAccButton
         '
@@ -1400,7 +1412,7 @@ Partial Class AAAAMainForm
         Me.AdminAddAccButton.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminAddAccButton.Name = "AdminAddAccButton"
         Me.AdminAddAccButton.Size = New System.Drawing.Size(218, 64)
-        Me.AdminAddAccButton.TabIndex = 2
+        Me.AdminAddAccButton.TabIndex = 5
         Me.AdminAddAccButton.Text = "Add Account"
         '
         'AdminAddAccFullnameTextBox
@@ -1427,7 +1439,7 @@ Partial Class AAAAMainForm
         Me.AdminAddAccConfirmPasswordTextBox.Name = "AdminAddAccConfirmPasswordTextBox"
         Me.AdminAddAccConfirmPasswordTextBox.ReadOnly = False
         Me.AdminAddAccConfirmPasswordTextBox.Size = New System.Drawing.Size(348, 38)
-        Me.AdminAddAccConfirmPasswordTextBox.TabIndex = 1
+        Me.AdminAddAccConfirmPasswordTextBox.TabIndex = 3
         Me.AdminAddAccConfirmPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminAddAccConfirmPasswordTextBox.UseSystemPasswordChar = False
         '
@@ -1441,7 +1453,7 @@ Partial Class AAAAMainForm
         Me.AdminAddAccPasswordTextBox.Name = "AdminAddAccPasswordTextBox"
         Me.AdminAddAccPasswordTextBox.ReadOnly = False
         Me.AdminAddAccPasswordTextBox.Size = New System.Drawing.Size(348, 38)
-        Me.AdminAddAccPasswordTextBox.TabIndex = 1
+        Me.AdminAddAccPasswordTextBox.TabIndex = 2
         Me.AdminAddAccPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminAddAccPasswordTextBox.UseSystemPasswordChar = False
         '
@@ -1455,7 +1467,7 @@ Partial Class AAAAMainForm
         Me.AdminAddAccUsernameTextBox.Name = "AdminAddAccUsernameTextBox"
         Me.AdminAddAccUsernameTextBox.ReadOnly = False
         Me.AdminAddAccUsernameTextBox.Size = New System.Drawing.Size(348, 38)
-        Me.AdminAddAccUsernameTextBox.TabIndex = 1
+        Me.AdminAddAccUsernameTextBox.TabIndex = 0
         Me.AdminAddAccUsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminAddAccUsernameTextBox.UseSystemPasswordChar = False
         '
@@ -1527,6 +1539,8 @@ Partial Class AAAAMainForm
         'MyGroupBox2
         '
         Me.MyGroupBox2.BackColor = System.Drawing.Color.Transparent
+        Me.MyGroupBox2.Controls.Add(Me.AdminEditAccTypeDropDown)
+        Me.MyGroupBox2.Controls.Add(Me.MyLabel30)
         Me.MyGroupBox2.Controls.Add(Me.AdminEditAccButton)
         Me.MyGroupBox2.Controls.Add(Me.AdminEditAccNewPasswordTextBox)
         Me.MyGroupBox2.Controls.Add(Me.AdminEditAccNewFullnameTextBox)
@@ -1546,43 +1560,73 @@ Partial Class AAAAMainForm
         Me.MyGroupBox2.TabIndex = 6
         Me.MyGroupBox2.Text = "Edit Account"
         '
+        'AdminEditAccTypeDropDown
+        '
+        Me.AdminEditAccTypeDropDown.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(48, Byte), Integer))
+        Me.AdminEditAccTypeDropDown.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.AdminEditAccTypeDropDown.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.AdminEditAccTypeDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.AdminEditAccTypeDropDown.Font = New System.Drawing.Font("Segoe UI", 8.0!)
+        Me.AdminEditAccTypeDropDown.ForeColor = System.Drawing.Color.White
+        Me.AdminEditAccTypeDropDown.FormattingEnabled = True
+        Me.AdminEditAccTypeDropDown.ItemHeight = 18
+        Me.AdminEditAccTypeDropDown.Items.AddRange(New Object() {"Student", "Teacher", "Admin"})
+        Me.AdminEditAccTypeDropDown.Location = New System.Drawing.Point(225, 334)
+        Me.AdminEditAccTypeDropDown.Margin = New System.Windows.Forms.Padding(4)
+        Me.AdminEditAccTypeDropDown.Name = "AdminEditAccTypeDropDown"
+        Me.AdminEditAccTypeDropDown.Size = New System.Drawing.Size(346, 24)
+        Me.AdminEditAccTypeDropDown.TabIndex = 5
+        '
+        'MyLabel30
+        '
+        Me.MyLabel30.AutoSize = True
+        Me.MyLabel30.BackColor = System.Drawing.Color.Transparent
+        Me.MyLabel30.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.MyLabel30.ForeColor = System.Drawing.Color.White
+        Me.MyLabel30.Location = New System.Drawing.Point(9, 338)
+        Me.MyLabel30.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.MyLabel30.Name = "MyLabel30"
+        Me.MyLabel30.Size = New System.Drawing.Size(160, 32)
+        Me.MyLabel30.TabIndex = 4
+        Me.MyLabel30.Text = "Account Type"
+        '
         'AdminEditAccButton
         '
         Me.AdminEditAccButton.BackColor = System.Drawing.Color.Transparent
         Me.AdminEditAccButton.Cursor = System.Windows.Forms.Cursors.Hand
         Me.AdminEditAccButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.AdminEditAccButton.Location = New System.Drawing.Point(196, 370)
+        Me.AdminEditAccButton.Location = New System.Drawing.Point(183, 380)
         Me.AdminEditAccButton.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminEditAccButton.Name = "AdminEditAccButton"
         Me.AdminEditAccButton.Size = New System.Drawing.Size(218, 64)
-        Me.AdminEditAccButton.TabIndex = 2
+        Me.AdminEditAccButton.TabIndex = 6
         Me.AdminEditAccButton.Text = "Edit Existing Account"
         '
         'AdminEditAccNewPasswordTextBox
         '
         Me.AdminEditAccNewPasswordTextBox.BackColor = System.Drawing.Color.Transparent
-        Me.AdminEditAccNewPasswordTextBox.Location = New System.Drawing.Point(243, 264)
+        Me.AdminEditAccNewPasswordTextBox.Location = New System.Drawing.Point(225, 230)
         Me.AdminEditAccNewPasswordTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminEditAccNewPasswordTextBox.MaxLength = 32767
         Me.AdminEditAccNewPasswordTextBox.Multiline = False
         Me.AdminEditAccNewPasswordTextBox.Name = "AdminEditAccNewPasswordTextBox"
         Me.AdminEditAccNewPasswordTextBox.ReadOnly = False
         Me.AdminEditAccNewPasswordTextBox.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditAccNewPasswordTextBox.TabIndex = 1
+        Me.AdminEditAccNewPasswordTextBox.TabIndex = 3
         Me.AdminEditAccNewPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditAccNewPasswordTextBox.UseSystemPasswordChar = False
         '
         'AdminEditAccNewFullnameTextBox
         '
         Me.AdminEditAccNewFullnameTextBox.BackColor = System.Drawing.Color.Transparent
-        Me.AdminEditAccNewFullnameTextBox.Location = New System.Drawing.Point(243, 212)
+        Me.AdminEditAccNewFullnameTextBox.Location = New System.Drawing.Point(225, 177)
         Me.AdminEditAccNewFullnameTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminEditAccNewFullnameTextBox.MaxLength = 32767
         Me.AdminEditAccNewFullnameTextBox.Multiline = False
         Me.AdminEditAccNewFullnameTextBox.Name = "AdminEditAccNewFullnameTextBox"
         Me.AdminEditAccNewFullnameTextBox.ReadOnly = False
         Me.AdminEditAccNewFullnameTextBox.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditAccNewFullnameTextBox.TabIndex = 1
+        Me.AdminEditAccNewFullnameTextBox.TabIndex = 2
         Me.AdminEditAccNewFullnameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditAccNewFullnameTextBox.UseSystemPasswordChar = False
         '
@@ -1592,7 +1636,7 @@ Partial Class AAAAMainForm
         Me.MyLabel10.BackColor = System.Drawing.Color.Transparent
         Me.MyLabel10.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.MyLabel10.ForeColor = System.Drawing.Color.White
-        Me.MyLabel10.Location = New System.Drawing.Point(27, 112)
+        Me.MyLabel10.Location = New System.Drawing.Point(9, 78)
         Me.MyLabel10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MyLabel10.Name = "MyLabel10"
         Me.MyLabel10.Size = New System.Drawing.Size(167, 32)
@@ -1605,7 +1649,7 @@ Partial Class AAAAMainForm
         Me.MyLabel6.BackColor = System.Drawing.Color.Transparent
         Me.MyLabel6.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.MyLabel6.ForeColor = System.Drawing.Color.White
-        Me.MyLabel6.Location = New System.Drawing.Point(27, 165)
+        Me.MyLabel6.Location = New System.Drawing.Point(9, 130)
         Me.MyLabel6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MyLabel6.Name = "MyLabel6"
         Me.MyLabel6.Size = New System.Drawing.Size(177, 32)
@@ -1615,14 +1659,14 @@ Partial Class AAAAMainForm
         'AdminEditAccConfirmPasswordTextBox
         '
         Me.AdminEditAccConfirmPasswordTextBox.BackColor = System.Drawing.Color.Transparent
-        Me.AdminEditAccConfirmPasswordTextBox.Location = New System.Drawing.Point(243, 316)
+        Me.AdminEditAccConfirmPasswordTextBox.Location = New System.Drawing.Point(225, 282)
         Me.AdminEditAccConfirmPasswordTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminEditAccConfirmPasswordTextBox.MaxLength = 32767
         Me.AdminEditAccConfirmPasswordTextBox.Multiline = False
         Me.AdminEditAccConfirmPasswordTextBox.Name = "AdminEditAccConfirmPasswordTextBox"
         Me.AdminEditAccConfirmPasswordTextBox.ReadOnly = False
         Me.AdminEditAccConfirmPasswordTextBox.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditAccConfirmPasswordTextBox.TabIndex = 1
+        Me.AdminEditAccConfirmPasswordTextBox.TabIndex = 4
         Me.AdminEditAccConfirmPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditAccConfirmPasswordTextBox.UseSystemPasswordChar = False
         '
@@ -1632,7 +1676,7 @@ Partial Class AAAAMainForm
         Me.MyLabel7.BackColor = System.Drawing.Color.Transparent
         Me.MyLabel7.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.MyLabel7.ForeColor = System.Drawing.Color.White
-        Me.MyLabel7.Location = New System.Drawing.Point(27, 218)
+        Me.MyLabel7.Location = New System.Drawing.Point(9, 183)
         Me.MyLabel7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MyLabel7.Name = "MyLabel7"
         Me.MyLabel7.Size = New System.Drawing.Size(168, 32)
@@ -1645,7 +1689,7 @@ Partial Class AAAAMainForm
         Me.MyLabel8.BackColor = System.Drawing.Color.Transparent
         Me.MyLabel8.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.MyLabel8.ForeColor = System.Drawing.Color.White
-        Me.MyLabel8.Location = New System.Drawing.Point(27, 270)
+        Me.MyLabel8.Location = New System.Drawing.Point(9, 236)
         Me.MyLabel8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MyLabel8.Name = "MyLabel8"
         Me.MyLabel8.Size = New System.Drawing.Size(167, 32)
@@ -1655,21 +1699,21 @@ Partial Class AAAAMainForm
         'AdminEditAccOldUsernameTextBox
         '
         Me.AdminEditAccOldUsernameTextBox.BackColor = System.Drawing.Color.Transparent
-        Me.AdminEditAccOldUsernameTextBox.Location = New System.Drawing.Point(243, 106)
+        Me.AdminEditAccOldUsernameTextBox.Location = New System.Drawing.Point(225, 72)
         Me.AdminEditAccOldUsernameTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminEditAccOldUsernameTextBox.MaxLength = 32767
         Me.AdminEditAccOldUsernameTextBox.Multiline = False
         Me.AdminEditAccOldUsernameTextBox.Name = "AdminEditAccOldUsernameTextBox"
         Me.AdminEditAccOldUsernameTextBox.ReadOnly = False
         Me.AdminEditAccOldUsernameTextBox.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditAccOldUsernameTextBox.TabIndex = 1
+        Me.AdminEditAccOldUsernameTextBox.TabIndex = 0
         Me.AdminEditAccOldUsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditAccOldUsernameTextBox.UseSystemPasswordChar = False
         '
         'AdminEditAccNewUsernameTextBox
         '
         Me.AdminEditAccNewUsernameTextBox.BackColor = System.Drawing.Color.Transparent
-        Me.AdminEditAccNewUsernameTextBox.Location = New System.Drawing.Point(243, 159)
+        Me.AdminEditAccNewUsernameTextBox.Location = New System.Drawing.Point(225, 124)
         Me.AdminEditAccNewUsernameTextBox.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminEditAccNewUsernameTextBox.MaxLength = 32767
         Me.AdminEditAccNewUsernameTextBox.Multiline = False
@@ -1686,7 +1730,7 @@ Partial Class AAAAMainForm
         Me.MyLabel9.BackColor = System.Drawing.Color.Transparent
         Me.MyLabel9.Font = New System.Drawing.Font("Segoe UI", 12.0!)
         Me.MyLabel9.ForeColor = System.Drawing.Color.White
-        Me.MyLabel9.Location = New System.Drawing.Point(27, 322)
+        Me.MyLabel9.Location = New System.Drawing.Point(9, 288)
         Me.MyLabel9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.MyLabel9.Name = "MyLabel9"
         Me.MyLabel9.Size = New System.Drawing.Size(205, 32)
@@ -1746,7 +1790,7 @@ Partial Class AAAAMainForm
         Me.AdminRemoveBookIDTextBox.Name = "AdminRemoveBookIDTextBox"
         Me.AdminRemoveBookIDTextBox.ReadOnly = False
         Me.AdminRemoveBookIDTextBox.Size = New System.Drawing.Size(234, 38)
-        Me.AdminRemoveBookIDTextBox.TabIndex = 2
+        Me.AdminRemoveBookIDTextBox.TabIndex = 0
         Me.AdminRemoveBookIDTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminRemoveBookIDTextBox.UseSystemPasswordChar = False
         '
@@ -1790,7 +1834,7 @@ Partial Class AAAAMainForm
         Me.MyGroupBox3.Controls.Add(Me.MyLabel21)
         Me.MyGroupBox3.Controls.Add(Me.MyLabel14)
         Me.MyGroupBox3.Controls.Add(Me.MyLabel15)
-        Me.MyGroupBox3.Controls.Add(Me.MyButton3)
+        Me.MyGroupBox3.Controls.Add(Me.AdminEditBookButton)
         Me.MyGroupBox3.Font = New System.Drawing.Font("Segoe UI", 16.0!)
         Me.MyGroupBox3.Location = New System.Drawing.Point(624, 6)
         Me.MyGroupBox3.Margin = New System.Windows.Forms.Padding(4)
@@ -1809,7 +1853,7 @@ Partial Class AAAAMainForm
         Me.AdminEditBookName.Name = "AdminEditBookName"
         Me.AdminEditBookName.ReadOnly = False
         Me.AdminEditBookName.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditBookName.TabIndex = 8
+        Me.AdminEditBookName.TabIndex = 2
         Me.AdminEditBookName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditBookName.UseSystemPasswordChar = False
         '
@@ -1823,7 +1867,7 @@ Partial Class AAAAMainForm
         Me.AdminEditBookGenreTextBox.Name = "AdminEditBookGenreTextBox"
         Me.AdminEditBookGenreTextBox.ReadOnly = False
         Me.AdminEditBookGenreTextBox.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditBookGenreTextBox.TabIndex = 9
+        Me.AdminEditBookGenreTextBox.TabIndex = 4
         Me.AdminEditBookGenreTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditBookGenreTextBox.UseSystemPasswordChar = False
         '
@@ -1837,7 +1881,7 @@ Partial Class AAAAMainForm
         Me.AdminEditBookCopies.Name = "AdminEditBookCopies"
         Me.AdminEditBookCopies.ReadOnly = False
         Me.AdminEditBookCopies.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditBookCopies.TabIndex = 9
+        Me.AdminEditBookCopies.TabIndex = 5
         Me.AdminEditBookCopies.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditBookCopies.UseSystemPasswordChar = False
         '
@@ -1864,7 +1908,7 @@ Partial Class AAAAMainForm
         Me.AdminEditBookAuthor.Name = "AdminEditBookAuthor"
         Me.AdminEditBookAuthor.ReadOnly = False
         Me.AdminEditBookAuthor.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditBookAuthor.TabIndex = 11
+        Me.AdminEditBookAuthor.TabIndex = 3
         Me.AdminEditBookAuthor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditBookAuthor.UseSystemPasswordChar = False
         '
@@ -1891,7 +1935,7 @@ Partial Class AAAAMainForm
         Me.AdminEditBookID.Name = "AdminEditBookID"
         Me.AdminEditBookID.ReadOnly = False
         Me.AdminEditBookID.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditBookID.TabIndex = 12
+        Me.AdminEditBookID.TabIndex = 0
         Me.AdminEditBookID.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditBookID.UseSystemPasswordChar = False
         '
@@ -1905,7 +1949,7 @@ Partial Class AAAAMainForm
         Me.AdminEditBookISBN.Name = "AdminEditBookISBN"
         Me.AdminEditBookISBN.ReadOnly = False
         Me.AdminEditBookISBN.Size = New System.Drawing.Size(348, 38)
-        Me.AdminEditBookISBN.TabIndex = 12
+        Me.AdminEditBookISBN.TabIndex = 1
         Me.AdminEditBookISBN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminEditBookISBN.UseSystemPasswordChar = False
         '
@@ -1961,17 +2005,17 @@ Partial Class AAAAMainForm
         Me.MyLabel15.TabIndex = 7
         Me.MyLabel15.Text = "New ISBN"
         '
-        'MyButton3
+        'AdminEditBookButton
         '
-        Me.MyButton3.BackColor = System.Drawing.Color.Transparent
-        Me.MyButton3.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.MyButton3.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.MyButton3.Location = New System.Drawing.Point(150, 429)
-        Me.MyButton3.Margin = New System.Windows.Forms.Padding(4)
-        Me.MyButton3.Name = "MyButton3"
-        Me.MyButton3.Size = New System.Drawing.Size(309, 80)
-        Me.MyButton3.TabIndex = 2
-        Me.MyButton3.Text = "Edit Existing Book Record"
+        Me.AdminEditBookButton.BackColor = System.Drawing.Color.Transparent
+        Me.AdminEditBookButton.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.AdminEditBookButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+        Me.AdminEditBookButton.Location = New System.Drawing.Point(150, 429)
+        Me.AdminEditBookButton.Margin = New System.Windows.Forms.Padding(4)
+        Me.AdminEditBookButton.Name = "AdminEditBookButton"
+        Me.AdminEditBookButton.Size = New System.Drawing.Size(309, 80)
+        Me.AdminEditBookButton.TabIndex = 6
+        Me.AdminEditBookButton.Text = "Edit Existing Book Record"
         '
         'MyGroupBox4
         '
@@ -2004,7 +2048,7 @@ Partial Class AAAAMainForm
         Me.AdminAddBookButton.Margin = New System.Windows.Forms.Padding(4)
         Me.AdminAddBookButton.Name = "AdminAddBookButton"
         Me.AdminAddBookButton.Size = New System.Drawing.Size(218, 64)
-        Me.AdminAddBookButton.TabIndex = 2
+        Me.AdminAddBookButton.TabIndex = 5
         Me.AdminAddBookButton.Text = "Add Book"
         '
         'AdminAddBookName
@@ -2031,7 +2075,7 @@ Partial Class AAAAMainForm
         Me.AdminAddBookCopies.Name = "AdminAddBookCopies"
         Me.AdminAddBookCopies.ReadOnly = False
         Me.AdminAddBookCopies.Size = New System.Drawing.Size(348, 38)
-        Me.AdminAddBookCopies.TabIndex = 1
+        Me.AdminAddBookCopies.TabIndex = 4
         Me.AdminAddBookCopies.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminAddBookCopies.UseSystemPasswordChar = False
         '
@@ -2045,7 +2089,7 @@ Partial Class AAAAMainForm
         Me.AdminAddBookGenre.Name = "AdminAddBookGenre"
         Me.AdminAddBookGenre.ReadOnly = False
         Me.AdminAddBookGenre.Size = New System.Drawing.Size(348, 38)
-        Me.AdminAddBookGenre.TabIndex = 1
+        Me.AdminAddBookGenre.TabIndex = 3
         Me.AdminAddBookGenre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminAddBookGenre.UseSystemPasswordChar = False
         '
@@ -2072,7 +2116,7 @@ Partial Class AAAAMainForm
         Me.AdminAddBookAuthor.Name = "AdminAddBookAuthor"
         Me.AdminAddBookAuthor.ReadOnly = False
         Me.AdminAddBookAuthor.Size = New System.Drawing.Size(348, 38)
-        Me.AdminAddBookAuthor.TabIndex = 1
+        Me.AdminAddBookAuthor.TabIndex = 2
         Me.AdminAddBookAuthor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminAddBookAuthor.UseSystemPasswordChar = False
         '
@@ -2099,7 +2143,7 @@ Partial Class AAAAMainForm
         Me.AdminAddBookISBN.Name = "AdminAddBookISBN"
         Me.AdminAddBookISBN.ReadOnly = False
         Me.AdminAddBookISBN.Size = New System.Drawing.Size(348, 38)
-        Me.AdminAddBookISBN.TabIndex = 1
+        Me.AdminAddBookISBN.TabIndex = 0
         Me.AdminAddBookISBN.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.AdminAddBookISBN.UseSystemPasswordChar = False
         '
@@ -2142,21 +2186,54 @@ Partial Class AAAAMainForm
         Me.MyLabel19.TabIndex = 0
         Me.MyLabel19.Text = "ISBN"
         '
-        'TabPage3
+        'ApprovalsTab
         '
-        Me.TabPage3.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-        Me.TabPage3.Controls.Add(Me.AlertBox8)
-        Me.TabPage3.Controls.Add(Me.Admin)
-        Me.TabPage3.Controls.Add(Me.AdminMySQLExecuteButton)
-        Me.TabPage3.Controls.Add(Me.AdminMySQLQueryType)
-        Me.TabPage3.Controls.Add(Me.AdminMySQLQueryTextBox)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 44)
-        Me.TabPage3.Margin = New System.Windows.Forms.Padding(4)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(4)
-        Me.TabPage3.Size = New System.Drawing.Size(1224, 702)
-        Me.TabPage3.TabIndex = 2
-        Me.TabPage3.Text = "MySQL"
+        Me.ApprovalsTab.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.ApprovalsTab.ContextMenuStrip = Me.AdminApprovalContextMenu
+        Me.ApprovalsTab.Controls.Add(Me.AlertBox8)
+        Me.ApprovalsTab.Controls.Add(Me.AdminApprovalDataGrid)
+        Me.ApprovalsTab.Location = New System.Drawing.Point(4, 44)
+        Me.ApprovalsTab.Margin = New System.Windows.Forms.Padding(4)
+        Me.ApprovalsTab.Name = "ApprovalsTab"
+        Me.ApprovalsTab.Padding = New System.Windows.Forms.Padding(4)
+        Me.ApprovalsTab.Size = New System.Drawing.Size(1224, 702)
+        Me.ApprovalsTab.TabIndex = 2
+        Me.ApprovalsTab.Text = "Approvals"
+        '
+        'AdminApprovalContextMenu
+        '
+        Me.AdminApprovalContextMenu.Font = New System.Drawing.Font("Segoe UI", 8.0!)
+        Me.AdminApprovalContextMenu.ForeColor = System.Drawing.Color.White
+        Me.AdminApprovalContextMenu.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.AdminApprovalContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ApproveToolStrip, Me.DisapproveToolStripMenuItem, Me.CopyUserNameToolStrip1, Me.CopyFullNameToolStrip1})
+        Me.AdminApprovalContextMenu.Name = "BrowseBooksContextMenu"
+        Me.AdminApprovalContextMenu.ShowCheckMargin = True
+        Me.AdminApprovalContextMenu.ShowImageMargin = False
+        Me.AdminApprovalContextMenu.Size = New System.Drawing.Size(195, 108)
+        '
+        'ApproveToolStrip
+        '
+        Me.ApproveToolStrip.Name = "ApproveToolStrip"
+        Me.ApproveToolStrip.Size = New System.Drawing.Size(194, 26)
+        Me.ApproveToolStrip.Text = "Approve"
+        '
+        'DisapproveToolStripMenuItem
+        '
+        Me.DisapproveToolStripMenuItem.Name = "DisapproveToolStripMenuItem"
+        Me.DisapproveToolStripMenuItem.Size = New System.Drawing.Size(194, 26)
+        Me.DisapproveToolStripMenuItem.Text = "Disapprove"
+        '
+        'CopyUserNameToolStrip1
+        '
+        Me.CopyUserNameToolStrip1.Name = "CopyUserNameToolStrip1"
+        Me.CopyUserNameToolStrip1.Size = New System.Drawing.Size(194, 26)
+        Me.CopyUserNameToolStrip1.Text = "Copy UserName"
+        '
+        'CopyFullNameToolStrip1
+        '
+        Me.CopyFullNameToolStrip1.Name = "CopyFullNameToolStrip1"
+        Me.CopyFullNameToolStrip1.Size = New System.Drawing.Size(194, 26)
+        Me.CopyFullNameToolStrip1.Text = "Copy Full Name"
         '
         'AlertBox8
         '
@@ -2172,62 +2249,80 @@ Partial Class AAAAMainForm
         Me.AlertBox8.Text = "AlertBox"
         Me.AlertBox8.Visible = False
         '
-        'Admin
+        'AdminApprovalDataGrid
         '
-        Me.Admin.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-        Me.Admin.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.Admin.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Admin.HideSelection = False
-        Me.Admin.Location = New System.Drawing.Point(9, 126)
-        Me.Admin.Margin = New System.Windows.Forms.Padding(4)
-        Me.Admin.Name = "Admin"
-        Me.Admin.Size = New System.Drawing.Size(1192, 518)
-        Me.Admin.TabIndex = 10
-        Me.Admin.Text = ""
-        Me.Admin.WordWrap = False
-        '
-        'AdminMySQLExecuteButton
-        '
-        Me.AdminMySQLExecuteButton.BackColor = System.Drawing.Color.Transparent
-        Me.AdminMySQLExecuteButton.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.AdminMySQLExecuteButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-        Me.AdminMySQLExecuteButton.Location = New System.Drawing.Point(1042, 81)
-        Me.AdminMySQLExecuteButton.Margin = New System.Windows.Forms.Padding(4)
-        Me.AdminMySQLExecuteButton.Name = "AdminMySQLExecuteButton"
-        Me.AdminMySQLExecuteButton.Size = New System.Drawing.Size(159, 36)
-        Me.AdminMySQLExecuteButton.TabIndex = 9
-        Me.AdminMySQLExecuteButton.Text = "Execute"
-        '
-        'AdminMySQLQueryType
-        '
-        Me.AdminMySQLQueryType.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(48, Byte), Integer))
-        Me.AdminMySQLQueryType.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.AdminMySQLQueryType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.AdminMySQLQueryType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.AdminMySQLQueryType.Font = New System.Drawing.Font("Segoe UI", 8.0!)
-        Me.AdminMySQLQueryType.ForeColor = System.Drawing.Color.White
-        Me.AdminMySQLQueryType.FormattingEnabled = True
-        Me.AdminMySQLQueryType.ItemHeight = 18
-        Me.AdminMySQLQueryType.Items.AddRange(New Object() {"Execute Query", "Execute Non-Query"})
-        Me.AdminMySQLQueryType.Location = New System.Drawing.Point(762, 81)
-        Me.AdminMySQLQueryType.Margin = New System.Windows.Forms.Padding(4)
-        Me.AdminMySQLQueryType.Name = "AdminMySQLQueryType"
-        Me.AdminMySQLQueryType.Size = New System.Drawing.Size(270, 24)
-        Me.AdminMySQLQueryType.TabIndex = 8
-        '
-        'AdminMySQLQueryTextBox
-        '
-        Me.AdminMySQLQueryTextBox.BackColor = System.Drawing.Color.Transparent
-        Me.AdminMySQLQueryTextBox.Location = New System.Drawing.Point(6, 28)
-        Me.AdminMySQLQueryTextBox.Margin = New System.Windows.Forms.Padding(4)
-        Me.AdminMySQLQueryTextBox.MaxLength = 32767
-        Me.AdminMySQLQueryTextBox.Multiline = False
-        Me.AdminMySQLQueryTextBox.Name = "AdminMySQLQueryTextBox"
-        Me.AdminMySQLQueryTextBox.ReadOnly = False
-        Me.AdminMySQLQueryTextBox.Size = New System.Drawing.Size(1196, 38)
-        Me.AdminMySQLQueryTextBox.TabIndex = 7
-        Me.AdminMySQLQueryTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
-        Me.AdminMySQLQueryTextBox.UseSystemPasswordChar = False
+        Me.AdminApprovalDataGrid.AllowUserToAddRows = False
+        Me.AdminApprovalDataGrid.AllowUserToDeleteRows = False
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AdminApprovalDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Me.AdminApprovalDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.AdminApprovalDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+        Me.AdminApprovalDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        Me.AdminApprovalDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.AdminApprovalDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
+        Me.AdminApprovalDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AdminApprovalDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.AdminApprovalDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.AdminApprovalDataGrid.ContextMenuStrip = Me.AdminApprovalContextMenu
+        Me.AdminApprovalDataGrid.Cursor = System.Windows.Forms.Cursors.Default
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AdminApprovalDataGrid.DefaultCellStyle = DataGridViewCellStyle3
+        Me.AdminApprovalDataGrid.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.AdminApprovalDataGrid.GridColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer))
+        Me.AdminApprovalDataGrid.Location = New System.Drawing.Point(4, 4)
+        Me.AdminApprovalDataGrid.Margin = New System.Windows.Forms.Padding(4)
+        Me.AdminApprovalDataGrid.Name = "AdminApprovalDataGrid"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AdminApprovalDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.AdminApprovalDataGrid.RowHeadersVisible = False
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AdminApprovalDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle5
+        Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+        Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+        Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+        Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.AdminApprovalDataGrid.RowTemplate.ReadOnly = True
+        Me.AdminApprovalDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.AdminApprovalDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.AdminApprovalDataGrid.ShowCellErrors = False
+        Me.AdminApprovalDataGrid.ShowEditingIcon = False
+        Me.AdminApprovalDataGrid.ShowRowErrors = False
+        Me.AdminApprovalDataGrid.Size = New System.Drawing.Size(1216, 694)
+        Me.AdminApprovalDataGrid.TabIndex = 7
         '
         'LoginSignupTab
         '
@@ -2362,7 +2457,7 @@ Partial Class AAAAMainForm
         Me.SignupConfirmPasswordTextBox.Name = "SignupConfirmPasswordTextBox"
         Me.SignupConfirmPasswordTextBox.ReadOnly = False
         Me.SignupConfirmPasswordTextBox.Size = New System.Drawing.Size(280, 38)
-        Me.SignupConfirmPasswordTextBox.TabIndex = 2
+        Me.SignupConfirmPasswordTextBox.TabIndex = 3
         Me.SignupConfirmPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SignupConfirmPasswordTextBox.UseSystemPasswordChar = True
         '
@@ -2388,7 +2483,7 @@ Partial Class AAAAMainForm
         Me.SignupButton.Margin = New System.Windows.Forms.Padding(4)
         Me.SignupButton.Name = "SignupButton"
         Me.SignupButton.Size = New System.Drawing.Size(156, 46)
-        Me.SignupButton.TabIndex = 0
+        Me.SignupButton.TabIndex = 5
         Me.SignupButton.Text = "Signup"
         '
         'SignupPasswordTextBox
@@ -2441,7 +2536,7 @@ Partial Class AAAAMainForm
         Me.SignupFullnameTextBox.Name = "SignupFullnameTextBox"
         Me.SignupFullnameTextBox.ReadOnly = False
         Me.SignupFullnameTextBox.Size = New System.Drawing.Size(324, 38)
-        Me.SignupFullnameTextBox.TabIndex = 2
+        Me.SignupFullnameTextBox.TabIndex = 1
         Me.SignupFullnameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SignupFullnameTextBox.UseSystemPasswordChar = False
         '
@@ -2455,7 +2550,7 @@ Partial Class AAAAMainForm
         Me.SignupUsernameTextBox.Name = "SignupUsernameTextBox"
         Me.SignupUsernameTextBox.ReadOnly = False
         Me.SignupUsernameTextBox.Size = New System.Drawing.Size(324, 38)
-        Me.SignupUsernameTextBox.TabIndex = 2
+        Me.SignupUsernameTextBox.TabIndex = 0
         Me.SignupUsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.SignupUsernameTextBox.UseSystemPasswordChar = False
         '
@@ -2500,7 +2595,7 @@ Partial Class AAAAMainForm
         Me.LoginUsernameTextBox.Name = "LoginUsernameTextBox"
         Me.LoginUsernameTextBox.ReadOnly = False
         Me.LoginUsernameTextBox.Size = New System.Drawing.Size(324, 38)
-        Me.LoginUsernameTextBox.TabIndex = 2
+        Me.LoginUsernameTextBox.TabIndex = 0
         Me.LoginUsernameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.LoginUsernameTextBox.UseSystemPasswordChar = False
         '
@@ -2513,7 +2608,7 @@ Partial Class AAAAMainForm
         Me.LoginButton.Margin = New System.Windows.Forms.Padding(4)
         Me.LoginButton.Name = "LoginButton"
         Me.LoginButton.Size = New System.Drawing.Size(148, 44)
-        Me.LoginButton.TabIndex = 0
+        Me.LoginButton.TabIndex = 2
         Me.LoginButton.Text = "Login"
         '
         'AAAAALabel1
@@ -2552,7 +2647,7 @@ Partial Class AAAAMainForm
         Me.LoginPasswordTextBox.Name = "LoginPasswordTextBox"
         Me.LoginPasswordTextBox.ReadOnly = False
         Me.LoginPasswordTextBox.Size = New System.Drawing.Size(280, 38)
-        Me.LoginPasswordTextBox.TabIndex = 2
+        Me.LoginPasswordTextBox.TabIndex = 1
         Me.LoginPasswordTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
         Me.LoginPasswordTextBox.UseSystemPasswordChar = True
         '
@@ -2570,8 +2665,8 @@ Partial Class AAAAMainForm
         '
         'AAAAMainForm
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(144.0!, 144.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(1248, 936)
         Me.Controls.Add(Me.AAAAMainFormSkin)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -2580,7 +2675,6 @@ Partial Class AAAAMainForm
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Library Management System"
         Me.TransparencyKey = System.Drawing.Color.Fuchsia
-        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.AAAAMainFormSkin.ResumeLayout(False)
         Me.TabControlMain.ResumeLayout(False)
         Me.SearchBooksTab.ResumeLayout(False)
@@ -2619,7 +2713,9 @@ Partial Class AAAAMainForm
         Me.MyGroupBox3.PerformLayout()
         Me.MyGroupBox4.ResumeLayout(False)
         Me.MyGroupBox4.PerformLayout()
-        Me.TabPage3.ResumeLayout(False)
+        Me.ApprovalsTab.ResumeLayout(False)
+        Me.AdminApprovalContextMenu.ResumeLayout(False)
+        CType(Me.AdminApprovalDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.LoginSignupTab.ResumeLayout(False)
         Me.AASignupGroupBox.ResumeLayout(False)
         Me.AASignupGroupBox.PerformLayout()
@@ -2700,7 +2796,7 @@ Partial Class AAAAMainForm
 	Friend WithEvents TabPage1 As TabPage
 	Friend WithEvents AlertBox5 As MyAlertBox
 	Friend WithEvents TabPage2 As TabPage
-	Friend WithEvents TabPage3 As TabPage
+	Friend WithEvents ApprovalsTab As TabPage
 	Friend WithEvents LoginSignupTab As TabPage
 	Friend WithEvents AlertBox6 As MyAlertBox
 	Friend WithEvents AASignupGroupBox As MyGroupBox
@@ -2761,7 +2857,7 @@ Partial Class AAAAMainForm
 	Friend WithEvents MyLabel21 As MyLabel
 	Friend WithEvents MyLabel14 As MyLabel
 	Friend WithEvents MyLabel15 As MyLabel
-	Friend WithEvents MyButton3 As MyButton
+	Friend WithEvents AdminEditBookButton As MyButton
 	Friend WithEvents MyGroupBox4 As MyGroupBox
 	Friend WithEvents AdminAddBookButton As MyButton
 	Friend WithEvents AdminAddBookName As MyTextBox
@@ -2772,10 +2868,6 @@ Partial Class AAAAMainForm
 	Friend WithEvents MyLabel16 As MyLabel
 	Friend WithEvents MyLabel18 As MyLabel
 	Friend WithEvents MyLabel19 As MyLabel
-	Friend WithEvents AdminMySQLQueryTextBox As MyTextBox
-	Friend WithEvents AdminMySQLExecuteButton As MyButton
-	Friend WithEvents AdminMySQLQueryType As MyComboBox
-	Friend WithEvents Admin As RichTextBox
 	Friend WithEvents MyGroupBox5 As MyGroupBox
 	Friend WithEvents AdminDeleteAccButton As MyButton
 	Friend WithEvents MyLabel13 As MyLabel
@@ -2800,4 +2892,12 @@ Partial Class AAAAMainForm
 	Friend WithEvents MyTextBox4 As MyTextBox
 	Friend WithEvents MyLabel28 As MyLabel
 	Friend WithEvents MyLabel29 As MyLabel
+	Friend WithEvents AdminEditAccTypeDropDown As MyComboBox
+	Friend WithEvents MyLabel30 As MyLabel
+	Friend WithEvents AdminApprovalDataGrid As DataGridView
+	Friend WithEvents AdminApprovalContextMenu As MyContextMenuStrip
+	Friend WithEvents ApproveToolStrip As ToolStripMenuItem
+	Friend WithEvents CopyUserNameToolStrip1 As ToolStripMenuItem
+	Friend WithEvents CopyFullNameToolStrip1 As ToolStripMenuItem
+    Friend WithEvents DisapproveToolStripMenuItem As ToolStripMenuItem
 End Class
