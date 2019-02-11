@@ -25,11 +25,7 @@
 	End Sub
 	Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
 		Dim bookid As String = IssuedBookDataGrid.Rows(BookCurrentRow).Cells(0).Value.ToString
-		If Convert.ToUInt64(IssuedBookDataGrid.Rows(BookCurrentRow).Cells(5).Value) <= 0 Then
-			Alert("Error", "Book not available for issue")
-			Exit Sub
-		End If
-		IssueBookByID(bookid)
+        SQLInterface.ReturnBook(bookid)
 	End Sub
 	Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles IssuedBookDataGrid.CellMouseEnter
 		BookCurrentRow = e.RowIndex

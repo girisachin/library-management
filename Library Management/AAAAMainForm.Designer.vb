@@ -259,7 +259,7 @@ Partial Class AAAAMainForm
 		Me.AAAALogoutButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
 		Me.AAAALogoutButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AAAALogoutButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.AAAALogoutButton.Location = New System.Drawing.Point(581, 593)
+		Me.AAAALogoutButton.Location = New System.Drawing.Point(570, 591)
 		Me.AAAALogoutButton.Name = "AAAALogoutButton"
 		Me.AAAALogoutButton.Size = New System.Drawing.Size(88, 27)
 		Me.AAAALogoutButton.TabIndex = 4
@@ -270,7 +270,7 @@ Partial Class AAAAMainForm
 		Me.AAAAExitButton.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
 		Me.AAAAExitButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AAAAExitButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.AAAAExitButton.Location = New System.Drawing.Point(675, 593)
+		Me.AAAAExitButton.Location = New System.Drawing.Point(664, 591)
 		Me.AAAAExitButton.Name = "AAAAExitButton"
 		Me.AAAAExitButton.Size = New System.Drawing.Size(68, 27)
 		Me.AAAAExitButton.TabIndex = 4
@@ -2423,8 +2423,8 @@ Partial Class AAAAMainForm
 		'
 		'AAAAMainForm
 		'
-		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
 		Me.ClientSize = New System.Drawing.Size(832, 624)
 		Me.Controls.Add(Me.AAAAMainFormSkin)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None

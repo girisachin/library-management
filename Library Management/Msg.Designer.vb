@@ -82,8 +82,8 @@
 		'
 		'Msg
 		'
-		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
 		Me.ClientSize = New System.Drawing.Size(638, 321)
 		Me.Controls.Add(Me.FormSkin1)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None

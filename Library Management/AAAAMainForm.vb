@@ -343,7 +343,7 @@ Public Class AAAAMainForm
 			Exit Sub
 		End If
 		If result = True Then
-			If diff < 0 Then
+			If diff <= 0 Then
 				Alert("Success", "Book was Returned Successfully")
 			Else
 				Alert("Warning", "Book Returned Late. Due =" + Convert.ToInt32(diff.ToString).ToString)
@@ -546,9 +546,12 @@ Public Class AAAAMainForm
 		'      BrowseBooksDataGrid.ClearSelection()
 		'      AdminAddAccDropDown.SelectedIndex = 0
 		If e.TabPage.Name = "LoginSignupTab" Then
-		ElseIf e.TabPage.Name = "AASummaryGroupBox" Then
+        ElseIf e.TabPage.Name = "SummaryTab" Then
 			MyTextBox3.Text = GLogin.Fullname
 			MyTextBox4.Text = GLogin.Username
+            CalculateDue()
+            SummaryDueTextBox.Text = GLogin.Due.ToString
+            SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
 		ElseIf e.TabPage.Name = "BrowseBooksTab" Then
 			BrowseBooksDataGrid.ClearSelection()
 			SQLInterface.PopulateBrowseBooksTable()
@@ -573,7 +576,11 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub SummaryViewIssuedBooks_Click(sender As Object, e As EventArgs) Handles SummaryViewIssuedBooks.Click
-		IssuedBooks.Show()
+		If GLogin.BooksIssued = 0 Then
+			Alert("Warning", "No Books Issued")
+		Else
+			IssuedBooks.Show()
+		End If
 	End Sub
 End Class
 

@@ -370,14 +370,28 @@ Public Class SQLInterface
 
 
 	'ASSUMING GLOGIN BOOKS ARRAY IS ALREADY UPDATED.
-	Public Shared Function UpdateIssueBookTable() As Boolean
+	Public Shared Function UpdateIssueBookTable(ByVal id As String) As Boolean
 		Dim result As Integer = -1
-		'''''''''''' todo: check if book is available
 		Try
 			con.Open()
 			With cmd
 				.Connection = con
 				.CommandText = "UPDATE users SET NoOfBooks='" & GLogin.BooksIssued & "', Book1 ='" + GLogin.books(1, 0) + " " + GLogin.books(1, 1) + "', Book2 ='" + GLogin.books(2, 0) + " " & GLogin.books(2, 1) & "', Book3 ='" + GLogin.books(3, 0) + " " & GLogin.books(3, 1) & "',Book4 ='" + GLogin.books(4, 0) + " " & GLogin.books(4, 1) & "',Book5 ='" + GLogin.books(5, 0) + " " & GLogin.books(5, 1) & "',Book6 = '" + GLogin.books(6, 0) + " " & GLogin.books(6, 1) & "',Book7 ='" + GLogin.books(7, 0) + " " & GLogin.books(7, 1) & "',Book8 ='" + GLogin.books(8, 0) + " " & GLogin.books(8, 1) & "',Book9 ='" + GLogin.books(9, 0) + " " & GLogin.books(9, 1) & "',Book10 ='" + GLogin.books(10, 0) + " " & GLogin.books(10, 1) & "' WHERE BINARY Username='" + GLogin.Username + "'"
+			End With
+
+			result = cmd.ExecuteNonQuery
+
+			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+
+			con.Close()
+			If result <> 1 Then
+				Return False
+			End If
+			con.Open()
+			result = -1
+			With cmd
+				.Connection = con
+				.CommandText = "UPDATE books Set `Left` = `Left` -1 where ID = '" + id + "'"
 			End With
 
 			result = cmd.ExecuteNonQuery
