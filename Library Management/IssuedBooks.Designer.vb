@@ -28,11 +28,17 @@ Partial Class IssuedBooks
 		Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Me.FormSkin1 = New Library_Management.FormSkin()
-		Me.IssuedBookDataGrid = New System.Windows.Forms.DataGridView()
-		Me.MyClose1 = New Library_Management.MyClose()
 		Me.MyMini1 = New Library_Management.MyMini()
+		Me.MyClose1 = New Library_Management.MyClose()
+		Me.IssuedBookDataGrid = New System.Windows.Forms.DataGridView()
+		Me.IssuedBooksContextMenu = New Library_Management.MyContextMenuStrip()
+		Me.IssueSelectedBookToolStrip = New System.Windows.Forms.ToolStripMenuItem()
+		Me.CopyBookNameToolStrip = New System.Windows.Forms.ToolStripMenuItem()
+		Me.CopyISBNNumberToolStrip = New System.Windows.Forms.ToolStripMenuItem()
+		Me.CopyBookIDToolStrip = New System.Windows.Forms.ToolStripMenuItem()
 		Me.FormSkin1.SuspendLayout()
 		CType(Me.IssuedBookDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.IssuedBooksContextMenu.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'FormSkin1
@@ -48,6 +54,28 @@ Partial Class IssuedBooks
 		Me.FormSkin1.Size = New System.Drawing.Size(800, 450)
 		Me.FormSkin1.TabIndex = 0
 		Me.FormSkin1.Text = "Issued Books"
+		'
+		'MyMini1
+		'
+		Me.MyMini1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.MyMini1.BackColor = System.Drawing.Color.White
+		Me.MyMini1.Font = New System.Drawing.Font("Marlett", 12.0!)
+		Me.MyMini1.Location = New System.Drawing.Point(746, 12)
+		Me.MyMini1.Name = "MyMini1"
+		Me.MyMini1.Size = New System.Drawing.Size(18, 18)
+		Me.MyMini1.TabIndex = 5
+		Me.MyMini1.Text = "MyMini1"
+		'
+		'MyClose1
+		'
+		Me.MyClose1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.MyClose1.BackColor = System.Drawing.Color.White
+		Me.MyClose1.Font = New System.Drawing.Font("Marlett", 10.0!)
+		Me.MyClose1.Location = New System.Drawing.Point(770, 12)
+		Me.MyClose1.Name = "MyClose1"
+		Me.MyClose1.Size = New System.Drawing.Size(18, 18)
+		Me.MyClose1.TabIndex = 4
+		Me.MyClose1.Text = "MyClose1"
 		'
 		'IssuedBookDataGrid
 		'
@@ -121,27 +149,40 @@ Partial Class IssuedBooks
 		Me.IssuedBookDataGrid.Size = New System.Drawing.Size(800, 399)
 		Me.IssuedBookDataGrid.TabIndex = 3
 		'
-		'MyClose1
+		'IssuedBooksContextMenu
 		'
-		Me.MyClose1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.MyClose1.BackColor = System.Drawing.Color.White
-		Me.MyClose1.Font = New System.Drawing.Font("Marlett", 10.0!)
-		Me.MyClose1.Location = New System.Drawing.Point(770, 12)
-		Me.MyClose1.Name = "MyClose1"
-		Me.MyClose1.Size = New System.Drawing.Size(18, 18)
-		Me.MyClose1.TabIndex = 4
-		Me.MyClose1.Text = "MyClose1"
+		Me.IssuedBooksContextMenu.Font = New System.Drawing.Font("Segoe UI", 8.0!)
+		Me.IssuedBooksContextMenu.ForeColor = System.Drawing.Color.White
+		Me.IssuedBooksContextMenu.ImageScalingSize = New System.Drawing.Size(20, 20)
+		Me.IssuedBooksContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IssueSelectedBookToolStrip, Me.CopyBookNameToolStrip, Me.CopyISBNNumberToolStrip, Me.CopyBookIDToolStrip})
+		Me.IssuedBooksContextMenu.Name = "BrowseBooksContextMenu"
+		Me.IssuedBooksContextMenu.ShowCheckMargin = True
+		Me.IssuedBooksContextMenu.ShowImageMargin = False
+		Me.IssuedBooksContextMenu.Size = New System.Drawing.Size(186, 114)
 		'
-		'MyMini1
+		'IssueSelectedBookToolStrip
 		'
-		Me.MyMini1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.MyMini1.BackColor = System.Drawing.Color.White
-		Me.MyMini1.Font = New System.Drawing.Font("Marlett", 12.0!)
-		Me.MyMini1.Location = New System.Drawing.Point(746, 12)
-		Me.MyMini1.Name = "MyMini1"
-		Me.MyMini1.Size = New System.Drawing.Size(18, 18)
-		Me.MyMini1.TabIndex = 5
-		Me.MyMini1.Text = "MyMini1"
+		Me.IssueSelectedBookToolStrip.Name = "IssueSelectedBookToolStrip"
+		Me.IssueSelectedBookToolStrip.Size = New System.Drawing.Size(185, 22)
+		Me.IssueSelectedBookToolStrip.Text = "Return Selected Book"
+		'
+		'CopyBookNameToolStrip
+		'
+		Me.CopyBookNameToolStrip.Name = "CopyBookNameToolStrip"
+		Me.CopyBookNameToolStrip.Size = New System.Drawing.Size(185, 22)
+		Me.CopyBookNameToolStrip.Text = "Copy Book Name"
+		'
+		'CopyISBNNumberToolStrip
+		'
+		Me.CopyISBNNumberToolStrip.Name = "CopyISBNNumberToolStrip"
+		Me.CopyISBNNumberToolStrip.Size = New System.Drawing.Size(185, 22)
+		Me.CopyISBNNumberToolStrip.Text = "Copy ISBN Number"
+		'
+		'CopyBookIDToolStrip
+		'
+		Me.CopyBookIDToolStrip.Name = "CopyBookIDToolStrip"
+		Me.CopyBookIDToolStrip.Size = New System.Drawing.Size(185, 22)
+		Me.CopyBookIDToolStrip.Text = "Copy Book ID"
 		'
 		'IssuedBooks
 		'
@@ -156,6 +197,7 @@ Partial Class IssuedBooks
 		Me.TransparencyKey = System.Drawing.Color.Fuchsia
 		Me.FormSkin1.ResumeLayout(False)
 		CType(Me.IssuedBookDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.IssuedBooksContextMenu.ResumeLayout(False)
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -164,4 +206,9 @@ Partial Class IssuedBooks
 	Friend WithEvents MyMini1 As MyMini
 	Friend WithEvents MyClose1 As MyClose
 	Friend WithEvents IssuedBookDataGrid As DataGridView
+	Friend WithEvents IssuedBooksContextMenu As MyContextMenuStrip
+	Friend WithEvents IssueSelectedBookToolStrip As ToolStripMenuItem
+	Friend WithEvents CopyBookNameToolStrip As ToolStripMenuItem
+	Friend WithEvents CopyISBNNumberToolStrip As ToolStripMenuItem
+	Friend WithEvents CopyBookIDToolStrip As ToolStripMenuItem
 End Class

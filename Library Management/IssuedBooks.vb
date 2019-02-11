@@ -1,17 +1,43 @@
 ﻿Public Class IssuedBooks
 	Private Sub IssuedBooks_Load(sender As Object, e As EventArgs) Handles Me.Load
 		SQLInterface.PopulateIssuedBooks()
-		Dim DueDate As New System.Windows.Forms.DataGridViewTextBoxColumn()
-		DueDate.HeaderText = "Due Date"
-		IssuedBookDataGrid.Columns.Insert(4, DueDate)
-		'IssuedBookDataGrid.Column
-		For i As Integer = 1 To 10
-			For j As Integer = 0 To IssuedBookDataGrid.Rows.Count - 1
-				If GLogin.books(i, 0).ToString.Trim <> "" AndAlso IssuedBookDataGrid.Rows(j).Cells(0).Value.ToString = GLogin.books(i, 0).ToString Then
-					IssuedBookDataGrid.Rows(j).Cells(5).Value = GLogin.books(i, 1).ToString
-					Exit For
-				End If
-			Next
-		Next
+	End Sub
+	Private BookCurrentRow As Integer = -1
+
+	Private Sub BookList_Load(sender As Object, e As EventArgs) Handles Me.Load
+		IssuedBookDataGrid.ClearSelection()
+	End Sub
+
+	Private Sub MyClose1_Click(sender As Object, e As EventArgs) Handles MyClose1.Click
+		Me.Close()
+	End Sub
+	Private Sub CopyBookNameToolStrip_Click(sender As Object, e As EventArgs) Handles CopyBookNameToolStrip.Click
+		Dim s As String = IssuedBookDataGrid.Rows(BookCurrentRow).Cells(1).Value.ToString
+		Clipboard.SetText(s)
+	End Sub
+	Private Sub CopyISBNNumberToolStrip_Click(sender As Object, e As EventArgs) Handles CopyISBNNumberToolStrip.Click
+		Dim s As String = IssuedBookDataGrid.Rows(BookCurrentRow).Cells(3).Value.ToString
+		Clipboard.SetText(s)
+	End Sub
+	Private Sub CopyBookIDToolStrip_Click(sender As Object, e As EventArgs) Handles CopyBookIDToolStrip.Click
+		Dim s As String = IssuedBookDataGrid.Rows(BookCurrentRow).Cells(0).Value.ToString
+		Clipboard.SetText(s)
+	End Sub
+	Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
+		Dim bookid As String = IssuedBookDataGrid.Rows(BookCurrentRow).Cells(0).Value.ToString
+		If Convert.ToUInt64(IssuedBookDataGrid.Rows(BookCurrentRow).Cells(5).Value) <= 0 Then
+			Alert("Error", "Book not available for issue")
+			Exit Sub
+		End If
+		IssueBookByID(bookid)
+	End Sub
+	Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles IssuedBookDataGrid.CellMouseEnter
+		BookCurrentRow = e.RowIndex
+		If e.RowIndex >= 0 Then
+			IssuedBookDataGrid.ClearSelection()
+			IssuedBookDataGrid.Rows(e.RowIndex).Selected = True
+		Else
+			IssuedBookDataGrid.ClearSelection()
+		End If
 	End Sub
 End Class

@@ -303,6 +303,7 @@ Public Class AAAAMainForm
 			Alert("Warning", "Incorrect Book ID ( Only Numbers Allowed )")
 			Exit Sub
 		End If
+
 		' TODO: Search using BookID here and issue the book
 		IssueBookByID(IssueBookInfoTextBox.Text)
 
@@ -321,7 +322,7 @@ Public Class AAAAMainForm
 		Dim diff As Long
 		For i = 1 To 10
 			If GLogin.books(i, 0) = ReturnBookInfoTextBox.Text Then
-				diff = DateAndTime.DateDiff("d", GLogin.books(i, 1), DateAndTime.Now())
+				diff = DateAndTime.DateDiff("s", GLogin.books(i, 1), DateAndTime.Now())
 				GLogin.books(i, 0) = ""
 				GLogin.books(i, 1) = ""
 				GLogin.BooksIssued -= 1
@@ -329,8 +330,9 @@ Public Class AAAAMainForm
 				Exit For
 			End If
 		Next
-		If diff > 0 Then
+		If diff > 4 Then
 			GLogin.Due += Convert.ToInt32(diff.ToString)
+			SummaryDueTextBox.Text = GLogin.Due
 		End If
 		If BookFound = False Then 'if not in list of books issued
 			Alert("Error", "You did not issued this book in the first place")
@@ -338,7 +340,6 @@ Public Class AAAAMainForm
 		End If
 		Dim result As Boolean = SQLInterface.ReturnBook(ReturnBookInfoTextBox.Text)
 		If result = False Then ' some due added by late submission of this book
-			Alert("Error", "Could not return book")
 			Exit Sub
 		End If
 		If result = True Then

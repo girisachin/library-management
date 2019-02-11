@@ -8,6 +8,10 @@
 					Exit Sub
 				End If
 			Next
+			If SQLInterface.IsCorrectBookID(bookid) = False Then
+				Alert("Error", "Book ID Incorrect")
+				Exit Sub
+			End If
 			If SQLInterface.AreCopiesLeft(bookid) = False Then
 				Alert("Error", "Book Not Available for Issue")
 				Exit Sub

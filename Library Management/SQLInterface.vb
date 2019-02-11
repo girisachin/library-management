@@ -43,8 +43,9 @@ Public Class SQLInterface
 						GLogin.books(i, 0) = bookinfo(0)
 						GLogin.books(i, 1) = bookinfo(1)
 					Else
-						GLogin.books(i, 0) = " "
-						GLogin.books(i, 1) = " "
+						i = i + 1
+						GLogin.books(i, 0) = ""
+						GLogin.books(i, 1) = ""
 					End If
 				Next
 		Else
@@ -396,31 +397,51 @@ Public Class SQLInterface
 	End Function
 	Public Shared Function AreCopiesLeft(ByVal id As String) As Boolean
 		Dim res As Integer = -1
+		Dim dt As DataTable = New DataTable
 		Try
 			con.Open()
 			cmd.Connection = con
 			cmd.CommandText = "SELECT `Left` FROM books where ID = '" + id + "'"
 			da.SelectCommand = cmd
-			Dim dt As DataTable = New DataTable
 			da.Fill(dt)
-			res = Convert.ToUInt64(dt.Rows(0).Item(0).ToString)
 			con.Close()
 		Catch ex As MySqlException
 			Return False
 		End Try
+		res = Convert.ToUInt64(dt.Rows(0).Item(0).ToString)
+
 		If res > 0 Then
 			Return True
 		End If
 		Return False
 	End Function
+	Public Shared Function IsCorrectBookID(ByVal id As String) As Boolean
+		Dim res As Integer = -1
+		Dim dt As DataTable = New DataTable
+		Try
+			con.Open()
+			cmd.Connection = con
+			cmd.CommandText = "SELECT `Left` FROM books where ID = '" + id + "'"
+			da.SelectCommand = cmd
+			da.Fill(dt)
+			con.Close()
+		Catch ex As MySqlException
+			Return False
+		End Try
+		res = dt.Rows.Count
 
+		If res > 0 Then
+			Return True
+		End If
+		Return False
+	End Function
 	Public Shared Function ReturnBook(ByVal id As String) As Boolean
 		Dim result As Integer = -1
 		Try
 			con.Open()
 			With cmd
 				.Connection = con
-				.CommandText = "UPDATE users SET NoOfBooks='" & GLogin.BooksIssued & "', Book1 ='" + GLogin.books(1, 0) + " " + GLogin.books(1, 1) + "', Book2 ='" + GLogin.books(2, 0) + " " & GLogin.books(2, 1) & "', Book3 ='" + GLogin.books(3, 0) + " " & GLogin.books(3, 1) & "',Book4 ='" + GLogin.books(4, 0) + " " & GLogin.books(4, 1) & "',Book5 ='" + GLogin.books(5, 0) + " " & GLogin.books(5, 1) & "',Book6 = '" + GLogin.books(6, 0) + " " & GLogin.books(6, 1) & "',Book7 ='" + GLogin.books(7, 0) + " " & GLogin.books(7, 1) & "',Book8 ='" + GLogin.books(8, 0) + " " & GLogin.books(8, 1) & "',Book9 ='" + GLogin.books(9, 0) + " " & GLogin.books(9, 1) & "',Book10 ='" + GLogin.books(10, 0) + " " & GLogin.books(10, 1) & "' WHERE BINARY Username='" + GLogin.Username + "'"
+				.CommandText = "UPDATE users SET Due = " + GLogin.Due.ToString + ",NoOfBooks='" & GLogin.BooksIssued & "', Book1 ='" + GLogin.books(1, 0) + " " + GLogin.books(1, 1) + "', Book2 ='" + GLogin.books(2, 0) + " " & GLogin.books(2, 1) & "', Book3 ='" + GLogin.books(3, 0) + " " & GLogin.books(3, 1) & "',Book4 ='" + GLogin.books(4, 0) + " " & GLogin.books(4, 1) & "',Book5 ='" + GLogin.books(5, 0) + " " & GLogin.books(5, 1) & "',Book6 = '" + GLogin.books(6, 0) + " " & GLogin.books(6, 1) & "',Book7 ='" + GLogin.books(7, 0) + " " & GLogin.books(7, 1) & "',Book8 ='" + GLogin.books(8, 0) + " " & GLogin.books(8, 1) & "',Book9 ='" + GLogin.books(9, 0) + " " & GLogin.books(9, 1) & "',Book10 ='" + GLogin.books(10, 0) + " " & GLogin.books(10, 1) & "' WHERE BINARY Username='" + GLogin.Username + "'"
 				'.CommandText = "UPDATE users SET Due = " + GLogin.Due + ", NoOfBooks=" + GLogin.BooksIssued + ", Book1 ='" + GLogin.books(1, 0) + " " + GLogin.books(1, 1) + "', Book2 ='" + GLogin.books(2, 0) + " " + GLogin.books(2, 1) + "', Book3 ='" + GLogin.books(3, 0) + " " + GLogin.books(3, 1) + "', Book4 ='" + GLogin.books(4, 0) + " " + GLogin.books(4, 1) + "', Book5 ='" + GLogin.books(5, 0) + " " + GLogin.books(5, 1) + "', Book6 ='" + GLogin.books(6, 0) + " " + GLogin.books(6, 1) + "', Book7 ='" + GLogin.books(7, 0) + " " + GLogin.books(7, 1) + "', Book8 ='" + GLogin.books(8, 0) + " " + GLogin.books(8, 1) + "', Book9 ='" + GLogin.books(9, 0) + " " + GLogin.books(9, 1) + "', Book10='" + GLogin.books(10, 0) + " " + GLogin.books(10, 1) + "' WHERE Username='" + GLogin.Username + "'"
 				Console.WriteLine(cmd.CommandText)
 			End With
@@ -468,12 +489,47 @@ Public Class SQLInterface
 			da.SelectCommand = cmd
 			Dim dt As DataTable = New DataTable
 			Dim dt2 As DataTable = New DataTable
+			Dim dc1, dc2, dc3, dc4, dc5, dc6 As New DataColumn
+			dc1.DataType = System.Type.GetType("System.String")
+			dc1.Caption = "ID"
+			dc1.ColumnName = "ID"
+			dc2.DataType = System.Type.GetType("System.String")
+			dc2.Caption = "Name"
+			dc2.ColumnName = "Name"
+			dc3.DataType = System.Type.GetType("System.String")
+			dc3.Caption = "Author"
+			dc3.ColumnName = "Author"
+			dc4.DataType = System.Type.GetType("System.String")
+			dc4.Caption = "ISBN"
+			dc4.ColumnName = "ISBN"
+			dc5.DataType = System.Type.GetType("System.String")
+			dc5.Caption = "Genre"
+			dc5.ColumnName = "Genre"
+			dc6.DataType = System.Type.GetType("System.String")
+			dc6.Caption = "DueDate"
+			dc6.ColumnName = "DueDate"
 			da.Fill(dt)
-			For i As Integer = 1 To dt.Rows.Count
-				Dim dr As DataRow
-				dr.
+			dt2.Columns.AddRange(New DataColumn() {dc1, dc2, dc3, dc4, dc5, dc6})
+			Dim dr As DataRow
+			For i As Integer = 0 To dt.Rows.Count - 1
+				dr = dt2.NewRow
+				dr("ID") = dt.Rows(i).Item(0).ToString
+				dr("Name") = dt.Rows(i).Item(1).ToString
+				dr("Author") = dt.Rows(i).Item(2).ToString
+				dr("ISBN") = dt.Rows(i).Item(3).ToString
+				dr("Genre") = dt.Rows(i).Item(4).ToString
+				For j As Integer = 1 To 10
+					If IsNothing(GLogin.books(j, 0)) = False AndAlso GLogin.books(j, 0).ToString.Trim = dt.Rows(i).Item(0).ToString Then
+						dr("DueDate") = GLogin.books(j, 1).ToString.Trim
+						Exit For
+					End If
+				Next
+				dt2.Rows.Add(dr)
 			Next
-			'IssuedBooks.IssuedBookDataGrid.DataSource = bs
+			Dim bs As BindingSource = New BindingSource With {
+				.DataSource = dt2
+			}
+			IssuedBooks.IssuedBookDataGrid.DataSource = bs
 		Catch ex As Exception
 			Msg.Err("SQL Error6: " + ex.Message)
 		End Try
