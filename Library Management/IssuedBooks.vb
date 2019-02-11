@@ -23,11 +23,17 @@
 		Dim s As String = IssuedBookDataGrid.Rows(BookCurrentRow).Cells(0).Value.ToString
 		Clipboard.SetText(s)
 	End Sub
-	Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
-		Dim bookid As String = IssuedBookDataGrid.Rows(BookCurrentRow).Cells(0).Value.ToString
-        SQLInterface.ReturnBook(bookid)
-	End Sub
-	Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles IssuedBookDataGrid.CellMouseEnter
+    Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
+        Dim bookid As String = IssuedBookDataGrid.Rows(BookCurrentRow).Cells(0).Value.ToString
+        'If SQLInterface.DoesBookIDExists(bookid) = True Then
+        '    GLogin.BooksIssued = GLogin.BooksIssued - 1
+        '    SQLInterface.ReturnBook(bookid)
+        '    updateDueIssueText()
+        'End If
+        ReturnBookByID(bookid)
+
+    End Sub
+    Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles IssuedBookDataGrid.CellMouseEnter
 		BookCurrentRow = e.RowIndex
 		If e.RowIndex >= 0 Then
 			IssuedBookDataGrid.ClearSelection()

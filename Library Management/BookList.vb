@@ -21,9 +21,12 @@
 		Clipboard.SetText(s)
 	End Sub
 	Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
-		Dim bookid As String = SearchBookDataGrid.Rows(SearchBookCurrentRow).Cells(0).Value.ToString
+        Dim bookid As String = SearchBookDataGrid.Rows(SearchBookCurrentRow).Cells(0).Value.ToString
+        IssueBookByID(bookid)
 
-	End Sub
+        SQLInterface.PopulateSearchBooksTable(AAAAMainForm.SearchBookIDTextBox.Text, AAAAMainForm.SearchBookISBNTextBox.Text, AAAAMainForm.SearchBookNameTextBox.Text, AAAAMainForm.SearchBookGenreTextBox.Text, AAAAMainForm.SearchBookAuthorTextBox.Text)
+
+    End Sub
 	Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles SearchBookDataGrid.CellMouseEnter
 		SearchBookCurrentRow = e.RowIndex
 		If e.RowIndex >= 0 Then
