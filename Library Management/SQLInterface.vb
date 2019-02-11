@@ -480,12 +480,16 @@ Public Class SQLInterface
 		End If
 	End Function
 	Public Shared Sub PopulateIssuedBooks()
+		If GLogin.BooksIssued = 0 Then
+			IssuedBooks.Close()
+			Exit Sub
+		End If
 		Try
 			con.Open()
 			Dim str As String = "SELECT ID, name, Author, ISBN, Genre FROM books where Id in ("
 			Dim first As Boolean = True
 			For i As Integer = 1 To 10
-				If GLogin.books(i, 0) <> "" And GLogin.books(i, 0) <> " " Then
+				If GLogin.books(i, 0).Trim <> "" Then
 					If first = True Then
 						first = False
 						str = str + GLogin.books(i, 0)
@@ -549,4 +553,97 @@ Public Class SQLInterface
 		End Try
 		con.Close()
 	End Sub
+	Public Shared Function AdminEditAccount(ByVal NewUsername As String, ByVal NewFullname As String, ByVal NewPassword As String, ByVal OldUsername As String, ByVal acctype As String) As Boolean
+		Dim str As String = "UPDATE users SET Username ='" + NewUsername + "' "
+		If NewFullname <> "" Then
+			str = str + ", Name = '" + NewFullname + "' "
+		End If
+		If NewPassword <> "" Then
+			str = str + ", Pass= '" + NewPassword + "', Salt = '" + GAdmin.Salt + "' "
+		End If
+		str = str + ", AccType= '" + acctype + "' "
+		str = str + "where Username = '" + OldUsername + "'"
+		Dim result As Integer = -1
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = str
+			End With
+			result = cmd.ExecuteNonQuery
+			con.Close()
+		Catch ex As MySqlException
+			Msg.Err("SQL Error4: " + ex.Message)
+			Return False
+		End Try
+		If result = 1 Then
+			Return True
+		Else
+			Return False
+		End If
+
+	End Function
+	Public Shared Function AdminEditBook(ByVal id As String, ByVal isbn As String, ByVal name As String, ByVal author As String, ByVal genre As String, ByVal copies As String, ByVal left As String) As Boolean
+		Dim str As String = "UPDATE books SET ID ='" + id + "' "
+		If isbn <> "" Then
+			str = str + ", ISBN = '" + isbn + "' "
+		End If
+		If name <> "" Then
+			str = str + ", Name= '" + name + "' "
+		End If
+		If author <> "" Then
+			str = str + ", Author= '" + author + "' "
+		End If
+		If genre <> "" Then
+			str = str + ", Genre= '" + genre + "' "
+		End If
+		If genre <> "" Then
+			str = str + ", Genre= '" + genre + "' "
+		End If
+		If copies <> "" Then
+			str = str + ", Copies= '" + copies + "' "
+			str = str + ", Left= '" + left + "' "
+		End If
+		str = str + "where ID = '" + id + "'"
+		Dim result As Integer = -1
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = str
+			End With
+			result = cmd.ExecuteNonQuery
+			con.Close()
+		Catch ex As MySqlException
+			Msg.Err("SQL Error4: " + ex.Message)
+			Return False
+		End Try
+		If result = 1 Then
+			Return True
+		Else
+			Return False
+		End If
+
+
+	End Function
+	Public Shared Function BooksCopiesMinusLeft(ByVal id As String) As Integer
+		Dim Res As Integer = 0
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "SELECT Copies, `Left` FROM tables"
+			End With
+			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+			da.SelectCommand = cmd
+			Dim dt As DataTable = New DataTable
+			da.Fill(dt)
+			con.Close()
+			Res = Integer.Parse(dt.Rows(0).Item(0)) - Integer.Parse(dt.Rows(0).Item(1))
+		Catch ex As Exception
+			Msg.Err("SQL Error6: " + ex.Message)
+			Return 0
+		End Try
+		Return Res
+	End Function
 End Class

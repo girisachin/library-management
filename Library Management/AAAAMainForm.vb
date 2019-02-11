@@ -215,17 +215,21 @@ Public Class AAAAMainForm
 		Dim s As String = BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(0).Value.ToString
 		Clipboard.SetText(s)
     End Sub
-    Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
+	Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
+		If GLogin.LoggedIn = False Then
+			TabControlMain.SelectedTab = LoginSignupTab
+			Alert("Warning", "Please Login to continue")
+		End If
 		Dim bookid As String = BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(0).Value.ToString
 		If Convert.ToUInt64(BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(5).Value) <= 0 Then
 			Alert("Error", "Book not available for issue")
 			Exit Sub
 		End If
-        IssueBookByID(bookid)
-        SQLInterface.PopulateBrowseBooksTable()
-        ' Todo: Issue Book Here using bookid
-    End Sub
-    Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles BrowseBooksDataGrid.CellMouseEnter
+		IssueBookByID(bookid)
+		SQLInterface.PopulateBrowseBooksTable()
+		' Todo: Issue Book Here using bookid
+	End Sub
+	Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles BrowseBooksDataGrid.CellMouseEnter
 		BrowseBookCurrentRow = e.RowIndex
 		BrowseBooksDataGrid.ClearSelection()
 		If e.RowIndex >= 0 Then
@@ -351,7 +355,7 @@ Public Class AAAAMainForm
 		End If
 	End Sub
 	Private Sub AdminEditAccButton_Click(sender As Object, e As EventArgs) Handles AdminEditAccButton.Click
-		If AdminAddAccPasswordTextBox.Text <> AdminAddAccConfirmPasswordTextBox.Text Then
+		If AdminEditAccNewPasswordTextBox.Text <> AdminEditAccConfirmPasswordTextBox.Text Then
 			Alert("Error", "Passwords do not match! Enter passwords again carefully!")
 			AdminEditAccConfirmPasswordTextBox.Text = ""
 			AdminEditAccConfirmPasswordTextBox.Text = ""
@@ -369,9 +373,33 @@ Public Class AAAAMainForm
 			Alert("Warning", "Use only alphanumerics or space in new fullname")
 			Exit Sub
 		End If
-		MyTextBox3.Text = GLogin.Fullname
-		MyTextBox4.Text = GLogin.Username
-		' TODO: Admin Update function
+		If AdminEditAccOldUsernameTextBox.Text = GLogin.Username Then
+			Alert("Warning", "Edit your own Accoubnt from Dashboard")
+			Exit Sub
+		End If
+		Dim NewUsername As String = ""
+		Dim NewFullname As String = ""
+		Dim NewPassword As String = ""
+		NewUsername = AdminEditAccNewUsernameTextBox.Text
+		NewPassword = AdminEditAccNewPasswordTextBox.Text
+		NewFullname = AdminEditAccNewFullnameTextBox.Text
+		If NewUsername = "" Then
+			NewUsername = AdminEditAccOldUsernameTextBox.Text
+		End If
+		If NewPassword <> "" Then
+			NewPassword = Encrypt_Sha512(NewPassword)
+			NewPassword = AdminEncryptNewPassword(NewPassword)
+		End If
+		If SQLInterface.DoesUsernameExists(AdminEditAccOldUsernameTextBox.Text) = False Then
+			Alert("Warning", "Username does not exist")
+			Exit Sub
+		End If
+
+		If SQLInterface.AdminEditAccount(NewUsername, NewFullname, NewPassword, AdminEditAccOldUsernameTextBox.Text, AdminEditAccTypeDropDown.Text) = False Then
+			Alert("Error", "Counld not edit Account")
+			Exit Sub
+		End If
+		Alert("Success", "Account Edited Successfully")
 	End Sub
 	Private Sub SummaryEditProfileButton_Click(sender As Object, e As EventArgs) Handles SummaryEditProfileButton.Click
 		If ValidateUsername(SummaryUsernameTextBox.Text) = False Then
@@ -445,6 +473,28 @@ Public Class AAAAMainForm
 		End If
 		If SQLInterface.DoesUsernameExists(AdminDeleteAccUsernameTextBox.Text) = False Then
 			Alert("Error", "Username does not exists")
+			Exit Sub
+		End If
+		If AdminDeleteAccUsernameTextBox.Text = GLogin.Username Then
+			If SQLInterface.AdminDeleteAccount(AdminDeleteAccUsernameTextBox.Text) = False Then
+				Alert("Error", "Could not delete account. Try Again Later")
+				Exit Sub
+			End If
+			Alert("Success", "Account Deleted Successfully")
+			If GLogin.AccType = "Admin" Then
+				DisablePage(AdminOptionsTab)
+			End If
+			GLogin.LogOut()
+			StatusBar.Text = "Not Logged In"
+			Alert("Success", "Logged Out !")
+			EnablePage(LoginSignupTab)
+			DisablePage(IssueBookTab)
+			DisablePage(SummaryTab)
+			AAAALogoutButton.Visible = False
+			SummaryDueTextBox.Text = "0"
+			SummaryBooksIssuedTextBox.Text = "0"
+			SummaryUsernameTextBox.Text = ""
+			SummaryProfileDropDownBox.SelectedIndex = 0
 			Exit Sub
 		End If
 		If SQLInterface.AdminDeleteAccount(AdminDeleteAccUsernameTextBox.Text) = False Then
@@ -551,6 +601,53 @@ Public Class AAAAMainForm
 		Else
 			IssuedBooks.Show()
 		End If
+	End Sub
+
+	Private Sub AdminEditBookButton_Click(sender As Object, e As EventArgs) Handles AdminEditBookButton.Click
+		If ValidateInteger(AdminEditBookID.Text) = False Then
+			Alert("Warning", "Use integers in Book ID")
+			Exit Sub
+		End If
+		If ValidateInteger(AdminEditBookISBN.Text) = False Then
+			Alert("Warning", "Use only integers in ISBN")
+			Exit Sub
+		End If
+		If ValidateISBN(AdminEditBookISBN.Text) = False Then
+			Alert("Error", "ISBN checksum Failed")
+			Exit Sub
+		End If
+		If ValidateBookname(AdminEditBookName.Text) = False Then
+			Alert("Warning", "Invalid Chars in BookName")
+			Exit Sub
+		End If
+		If ValidateBookAuthor(AdminEditBookAuthor.Text) = False Then
+			Alert("Warning", "Invalid Chars in Book Author Name")
+			Exit Sub
+		End If
+		If ValidateBookGenre(AdminEditBookGenreTextBox.Text) = False Then
+			Alert("Warning", "Invalid Chars in Genre")
+			Exit Sub
+		End If
+		If ValidateInteger(AdminEditBookCopies.Text) = False Then
+			Alert("Warning", "Use integers in number of Copies")
+			Exit Sub
+		End If
+		If SQLInterface.IsCorrectBookID(AdminEditBookID.Text) = False Then
+			Alert("Error", "Book Does not Exist")
+		End If
+		Dim issued As String = ""
+		Dim left As String = ""
+		issued = SQLInterface.BooksCopiesMinusLeft(AdminEditBookID.Text).ToString
+		left = (Convert.ToUInt64(AdminEditBookCopies.Text) - Convert.ToUInt64(issued)).ToString
+		If left < 0 Then
+			Alert("Error", "More number of copies are already issued")
+			Exit Sub
+		End If
+		If SQLInterface.AdminEditBook(AdminEditBookID.Text, AdminEditBookISBN.Text, AdminEditBookName.Text, AdminEditBookAuthor.Text, AdminEditBookGenreTextBox.Text, AdminEditBookCopies.Text, left) = False Then
+			Alert("Error", "Could Not Edit bookinfo")
+			Exit Sub
+		End If
+		Alert("Success", "Book Edited Successfully")
 	End Sub
 End Class
 
