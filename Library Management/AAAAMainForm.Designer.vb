@@ -2675,6 +2675,7 @@ Partial Class AAAAMainForm
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Library Management System"
         Me.TransparencyKey = System.Drawing.Color.Fuchsia
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.AAAAMainFormSkin.ResumeLayout(False)
         Me.TabControlMain.ResumeLayout(False)
         Me.SearchBooksTab.ResumeLayout(False)
