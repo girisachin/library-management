@@ -30,7 +30,7 @@
                 If GLogin.books(i, 0) = "" Then
                     GLogin.books(i, 0) = bookid
                     GLogin.books(i, 1) = String.Format("{0:dd/MM/yyyy}", Now().AddDays(45))
-                    MessageBox.Show("Book Issued , Due date = " + GLogin.books(i, 1), "Issued!")
+                    'MessageBox.Show("Book Issued , Due date = " + GLogin.books(i, 1), "Issued!")
                     GLogin.BooksIssued = GLogin.BooksIssued + 1
                     If SQLInterface.UpdateIssueBookTable(GLogin.books(i, 0)) = False Then
                         Alert("Error", "Could not issue book")
