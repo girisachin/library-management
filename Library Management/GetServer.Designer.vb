@@ -26,6 +26,7 @@ Partial Class GetServer
 		Me.MyAlertBox1 = New Library_Management.MyAlertBox()
 		Me.MyLabel1 = New Library_Management.MyLabel()
 		Me.MyTextBox1 = New Library_Management.MyTextBox()
+		Me.MyButton2 = New Library_Management.MyButton()
 		Me.MyButton1 = New Library_Management.MyButton()
 		Me.MyClose1 = New Library_Management.MyClose()
 		Me.FormSkin1.SuspendLayout()
@@ -37,6 +38,7 @@ Partial Class GetServer
 		Me.FormSkin1.Controls.Add(Me.MyAlertBox1)
 		Me.FormSkin1.Controls.Add(Me.MyLabel1)
 		Me.FormSkin1.Controls.Add(Me.MyTextBox1)
+		Me.FormSkin1.Controls.Add(Me.MyButton2)
 		Me.FormSkin1.Controls.Add(Me.MyButton1)
 		Me.FormSkin1.Controls.Add(Me.MyClose1)
 		Me.FormSkin1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -85,12 +87,23 @@ Partial Class GetServer
 		Me.MyTextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
 		Me.MyTextBox1.UseSystemPasswordChar = False
 		'
+		'MyButton2
+		'
+		Me.MyButton2.BackColor = System.Drawing.Color.Transparent
+		Me.MyButton2.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.MyButton2.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.MyButton2.Location = New System.Drawing.Point(283, 244)
+		Me.MyButton2.Name = "MyButton2"
+		Me.MyButton2.Size = New System.Drawing.Size(106, 32)
+		Me.MyButton2.TabIndex = 1
+		Me.MyButton2.Text = "Exit"
+		'
 		'MyButton1
 		'
 		Me.MyButton1.BackColor = System.Drawing.Color.Transparent
 		Me.MyButton1.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.MyButton1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.MyButton1.Location = New System.Drawing.Point(236, 249)
+		Me.MyButton1.Location = New System.Drawing.Point(171, 244)
 		Me.MyButton1.Name = "MyButton1"
 		Me.MyButton1.Size = New System.Drawing.Size(106, 32)
 		Me.MyButton1.TabIndex = 1
@@ -109,8 +122,8 @@ Partial Class GetServer
 		'
 		'GetServer
 		'
-		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+		Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
 		Me.ClientSize = New System.Drawing.Size(578, 341)
 		Me.Controls.Add(Me.FormSkin1)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -129,4 +142,5 @@ Partial Class GetServer
 	Friend WithEvents MyButton1 As MyButton
 	Friend WithEvents MyClose1 As MyClose
 	Friend WithEvents MyAlertBox1 As MyAlertBox
+	Friend WithEvents MyButton2 As MyButton
 End Class

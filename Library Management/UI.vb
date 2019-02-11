@@ -123,6 +123,7 @@ Class MyClose : Inherits Control
 		x = e.X : Invalidate()
 	End Sub
 	Protected Overrides Sub OnClick(e As EventArgs)
+		FindForm.Close()
 		MyBase.OnClick(e)
 	End Sub
 
@@ -245,7 +246,6 @@ End Class
 Class MyButton : Inherits Control
 
 	Private W, H As Integer
-	Private _Rounded As Boolean = False
 	Private State As MouseState = MouseState.None
 
 
@@ -471,19 +471,20 @@ End Class
 		SetStyle(ControlStyles.AllPaintingInWmPaint Or ControlStyles.UserPaint Or ControlStyles.ResizeRedraw Or ControlStyles.OptimizedDoubleBuffer Or ControlStyles.SupportsTransparentBackColor, True)
 		DoubleBuffered = True
 		BackColor = Color.Transparent
-		TB = New Windows.Forms.TextBox
-		TB.Font = New Font("Segoe UI", 10)
-		TB.Text = Text
-		TB.BackColor = Color2
-		TB.ForeColor = Color9
-		TB.MaxLength = _MaxLength
-		TB.Multiline = _Multiline
-		TB.ReadOnly = _ReadOnly
-		TB.UseSystemPasswordChar = _UseSystemPasswordChar
-		TB.BorderStyle = BorderStyle.None
-		TB.Location = New Point(5, 5)
-		TB.Width = Width - 10
-		TB.Cursor = Cursors.IBeam
+		TB = New TextBox With {
+			.Font = New Font("Segoe UI", 10),
+			.Text = Text,
+			.BackColor = Color2,
+			.ForeColor = Color9,
+			.MaxLength = _MaxLength,
+			.Multiline = _Multiline,
+			.ReadOnly = _ReadOnly,
+			.UseSystemPasswordChar = _UseSystemPasswordChar,
+			.BorderStyle = BorderStyle.None,
+			.Location = New Point(5, 5),
+			.Width = Width - 10,
+			.Cursor = Cursors.IBeam
+		}
 		If _Multiline Then
 			TB.Height = Height - 11
 		Else
@@ -660,9 +661,10 @@ Class MyAlertBox : Inherits Control
 		K = Kind
 		Text = Str
 		Me.Visible = True
-		T = New Timer
-		T.Interval = Interval
-		T.Enabled = True
+		T = New Timer With {
+			.Interval = Interval,
+			.Enabled = True
+		}
 	End Sub
 	Private Sub T_Tick(sender As Object, e As EventArgs) Handles T.Tick
 		Me.Visible = False
@@ -764,7 +766,6 @@ Class MyAlertBox : Inherits Control
 End Class
 Class MyComboBox : Inherits Windows.Forms.ComboBox
 	Private W, H As Integer
-	Private _StartIndex As Integer = 0
 	Private x, y As Integer
 	Private State As MouseState = MouseState.None
 	Protected Overrides Sub OnMouseDown(e As MouseEventArgs)
@@ -804,19 +805,6 @@ Class MyComboBox : Inherits Windows.Forms.ComboBox
 		MyBase.OnClick(e) : Invalidate()
 	End Sub
 
-	Private Property StartIndex As Integer
-		Get
-			Return _StartIndex
-		End Get
-		Set(ByVal value As Integer)
-			_StartIndex = value
-			Try
-				MyBase.SelectedIndex = value
-			Catch
-			End Try
-			Invalidate()
-		End Set
-	End Property
 	Sub DrawItem_(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles Me.DrawItem
 		If e.Index < 0 Then Exit Sub
 		e.DrawBackground()
@@ -850,7 +838,6 @@ Class MyComboBox : Inherits Windows.Forms.ComboBox
 		ForeColor = Color.White
 		DropDownStyle = ComboBoxStyle.DropDownList
 		Cursor = Cursors.Hand
-		StartIndex = 0
 		ItemHeight = 18
 		Font = New Font("Segoe UI", 8, FontStyle.Regular)
 	End Sub
