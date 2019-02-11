@@ -481,6 +481,12 @@ Public Class AAAAMainForm
             Alert("Error", "Username does not exists")
             Exit Sub
         End If
+
+        If SQLInterface.returnissuedbooksofuser(AdminDeleteAccUsernameTextBox.Text) <> 0 Then
+            Alert("Warning", "Cannot Delete Acount!, User has to return the issued.")
+            Exit Sub
+        End If
+
         If AdminDeleteAccUsernameTextBox.Text = GLogin.Username Then
             If SQLInterface.AdminDeleteAccount(AdminDeleteAccUsernameTextBox.Text) = False Then
                 Alert("Error", "Could not delete account. Try Again Later")
@@ -553,6 +559,12 @@ Public Class AAAAMainForm
             Alert("Error", "Can not add book")
             Exit Sub
         End If
+        AdminAddBookName.Text = ""
+        AdminAddBookAuthor.Text = ""
+        AdminAddBookISBN.Text = ""
+        AdminAddBookGenre.Text = ""
+        AdminAddBookCopies.Text = ""
+
         Alert("Success", "Book Added")
     End Sub
     Private Sub TabControlMain_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlMain.Selected

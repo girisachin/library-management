@@ -202,33 +202,67 @@ Public Class SQLInterface
 		End If
 		Return False
 	End Function
-	Public Shared Function DoesBookIDExists(ByVal Str As String) As Boolean
-		Dim maxrow As Integer = -1
-		Try
-			con.Open()
-			With cmd
-				.Connection = con
-				.CommandText = "SELECT * FROM books WHERE ID ='" & Str & "'"
-			End With
-			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
-			da.SelectCommand = cmd
-			Dim dt As DataTable = New DataTable
-			da.Fill(dt)
-			'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
-			maxrow = dt.Rows.Count
-		Catch ex As Exception
+    Public Shared Function DoesBookIDExists(ByVal Str As String) As Boolean
+        Dim maxrow As Integer = -1
+        Try
+            con.Open()
+            With cmd
+                .Connection = con
+                .CommandText = "SELECT * FROM books WHERE ID ='" & Str & "'"
+            End With
+            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+            da.SelectCommand = cmd
+            Dim dt As DataTable = New DataTable
+            da.Fill(dt)
+            'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
+            maxrow = dt.Rows.Count
+        Catch ex As Exception
 
-			Msg.Err("SQL Error6: " + ex.Message)
+            Msg.Err("SQL Error6: " + ex.Message)
 
-		End Try
-		con.Close()
+        End Try
+        con.Close()
 
-		If maxrow <> 0 And maxrow <> -1 Then
-			Return True
-		End If
-		Return False
-	End Function
-	Public Shared Function AdminDeleteAccount(ByVal Username As String) As Boolean
+        If maxrow <> 0 And maxrow <> -1 Then
+            Return True
+        End If
+        Return False
+    End Function
+    Public Shared Function returnissuedbooksofuser(ByVal username As String) As Integer
+        Dim issuednum As Integer
+        Dim maxrow As Integer = -1
+        Try
+            con.Open()
+            With cmd
+                .Connection = con
+                .CommandText = "select NoOfBooks FROM users WHERE BINARY Username = '" + username + "'"
+            End With
+            'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
+            maxrow = cmd.ExecuteNonQuery
+
+            da.SelectCommand = cmd
+            Dim dt As DataTable = New DataTable
+            da.Fill(dt)
+            'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
+            maxrow = dt.Rows.Count
+            'CHECKING IF THE DATA IS EXIST IN THE ROW OF THE TABLE
+
+            If maxrow = 1 Then
+                issuednum = dt.Rows(0).Item(0)
+
+                con.Close()
+                Return issuednum
+            Else
+                Return 1
+            End If
+        Catch ex As Exception
+            Msg.Err("SQL Error6: " + ex.Message)
+        End Try
+        con.Close()
+
+        Return 1
+    End Function
+    Public Shared Function AdminDeleteAccount(ByVal Username As String) As Boolean
 		Dim maxrow As Integer = -100
 		Try
 			con.Open()
