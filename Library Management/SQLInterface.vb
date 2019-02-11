@@ -34,14 +34,28 @@ Public Class SQLInterface
 				GLogin.AccType = dt.Rows(0).Item(4).ToString()
 				GLogin.BooksIssued = Integer.Parse(dt.Rows(0).Item(6).ToString())
 				GLogin.Due = Integer.Parse(dt.Rows(0).Item(7).ToString())
-			Else
+				Dim i As Integer = 0
+				Dim bookinfo() As String
+			For j As Integer = 9 To 18
+					If String.IsNullOrEmpty(dt.Rows(0).Item(j).ToString().Trim) = False Or dt.Rows(0).Item(j).ToString.Trim <> Nothing Or dt.Rows(0).Item(j).ToString.Trim <> "" Then
+						i = i + 1
+						bookinfo = dt.Rows(0).Item(j).ToString().Split(" ", 2, StringSplitOptions.RemoveEmptyEntries)
+						GLogin.books(i, 0) = bookinfo(0)
+						GLogin.books(i, 1) = bookinfo(1)
+					Else
+						GLogin.books(i, 0) = " "
+						GLogin.books(i, 1) = " "
+					End If
+				Next
+		Else
 				GLogin.LogOut()
 				con.Close()
 				Return False
 			End If
 		Catch ex As Exception
-			Msg.Err("SQL Error1: " + ex.StackTrace)
-			GLogin.LogOut()
+		Msg.Err("SQL Error1: " + ex.Message)
+		GLogin.LogOut()
+		Return False
 		End Try
 		con.Close()
 		Dim temp As String = CheckOldPassword(Encrypt_Sha512(GLogin.UnhashedPassword))
@@ -93,7 +107,7 @@ Public Class SQLInterface
 			con.Open()
 			With cmd
 				.Connection = con
-				.CommandText = "UPDATE users SET Username ='" + NewUsername + "', Name ='" + NewFullname + "', AccType ='" + NewAccType + "' WHERE Username='" + GLogin.Username + "'"
+				.CommandText = "UPDATE users SET Username ='" + NewUsername + "', Name ='" + NewFullname + "', AccType ='" + NewAccType + "' WHERE BINARY Username='" + GLogin.Username + "'"
 			End With
 
 			result = cmd.ExecuteNonQuery
@@ -151,8 +165,9 @@ Public Class SQLInterface
 			da.SelectCommand = cmd
 			Dim dt As DataTable = New DataTable
 			da.Fill(dt)
-			Dim bs As BindingSource = New BindingSource()
-			bs.DataSource = dt
+			Dim bs As BindingSource = New BindingSource With {
+				.DataSource = dt
+			}
 			AAAAMainForm.BrowseBooksDataGrid.DataSource = bs
 		Catch ex As Exception
 			Msg.Err("SQL Error6: " + ex.Message)
@@ -217,7 +232,7 @@ Public Class SQLInterface
 			con.Open()
 			With cmd
 				.Connection = con
-				.CommandText = "DELETE FROM users WHERE Username = '" + Username + "'"
+				.CommandText = "DELETE FROM users WHERE BINARY Username = '" + Username + "'"
 			End With
 			'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
 			maxrow = cmd.ExecuteNonQuery
@@ -316,15 +331,16 @@ Public Class SQLInterface
 
             With cmd
                 .Connection = con
-                .CommandText = "SELECT * FROM books where Id like '%" & bookid & "%' and isbn like '%" & isbn & "%' and name like '%" & bookname & "%' and genre like '%" & genre & "%' and author like '%" & author & "%' "
-            End With
+				.CommandText = "SELECT * FROM books where Id like '%" + bookid + "%' and isbn like '%" & isbn & "%' and name like '%" + bookname + "%' and genre like '%" & genre & "%' and author like '%" & author & "%' "
+			End With
             'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
             da.SelectCommand = cmd
             Dim dt As DataTable = New DataTable
-            da.Fill(dt)
-            Dim bs As BindingSource = New BindingSource()
-            bs.DataSource = dt
-            BookList.SearchBookDataGrid.DataSource = bs
+			da.Fill(dt)
+			Dim bs As BindingSource = New BindingSource With {
+				.DataSource = dt
+			}
+			BookList.SearchBookDataGrid.DataSource = bs
         Catch ex As Exception
 			Msg.Err("SQL Error6: " + ex.Message)
 		End Try
@@ -349,65 +365,118 @@ Public Class SQLInterface
 		End If
 		Return False
 	End Function
-	   Public Shared Sub loadissuedbooks(ByRef books(,) As String)
-        Dim bookinfo() As String
-        Try
-            con.Open()
-            With cmd
-                .Connection = con
-                .CommandText = "SELECT book1,book2,book3,book4,book5,book6,book7,book8,book9,book10 FROM users WHERE BINARY Username ='" & GLogin.Username & "'"
-            End With
-            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
-            da.SelectCommand = cmd
-            Dim dt As DataTable = New DataTable
-            da.Fill(dt)
-            'DECLARING AN INTEGER TO SET THE MAXROWS OF THE TABLE
-            Dim maxrow As Integer = dt.Rows.Count
-            'CHECKING IF THE DATA IS EXIST IN THE ROW OF THE TABLE
-            Dim i As Integer = 1
-            If maxrow = 1 Then
-                For j As Integer = 0 To 10
-                    If String.IsNullOrEmpty(dt.Rows(0).Item(j).ToString()) = False Or dt.Rows(0).Item(j).ToString <> Nothing Then
-
-                        bookinfo = dt.Rows(0).Item(j).ToString().Split("|")
-                        books(i, 0) = bookinfo(0)
-                        books(i, 1) = bookinfo(1)
-                        i = i + 1
-
-                    End If
-                Next
-            End If
-        Catch ex As Exception
-            Msg.Err("SQL Error1: " + ex.StackTrace)
-            GLogin.LogOut()
-        End Try
-        con.Close()
-    End Sub
 
 
-    'ASSUMING GLOGIN BOOKS ARRAY IS ALREADY UPDATED.
-    Public Shared Sub updateissuebooktable(ByVal bookid As Integer)
-        Dim result As Integer = -1
 
-        Try
-            con.Open()
-            With cmd
-                .Connection = con
-                .CommandText = "UPDATE users SET Book1 ='" + GLogin.books(1, 0) + "'|'" & GLogin.books(1, 1) & "',  Book2 ='" + GLogin.books(2, 0) + "'|'" & GLogin.books(2, 1) & "', Book3 ='" + GLogin.books(3, 0) + "'|'" & GLogin.books(3, 1) & "',Book4 ='" + GLogin.books(4, 0) + "'|'" & GLogin.books(4, 1) & "',Book5 ='" + GLogin.books(5, 0) + "'|'" & GLogin.books(5, 1) & "',Book6 ='" + GLogin.books(6, 0) + "'|'" & GLogin.books(6, 1) & "',Book7 ='" + GLogin.books(7, 0) + "'|'" & GLogin.books(7, 1) & "',Book8 ='" + GLogin.books(8, 0) + "'|'" & GLogin.books(8, 1) & "',Book9 ='" + GLogin.books(9, 0) + "'|'" & GLogin.books(9, 1) & "',Book10 ='" + GLogin.books(10, 0) + "'|'" & GLogin.books(10, 1) & "' WHERE Username='" + GLogin.Username + "'"
-            End With
+	'ASSUMING GLOGIN BOOKS ARRAY IS ALREADY UPDATED.
+	Public Shared Function UpdateIssueBookTable() As Boolean
+		Dim result As Integer = -1
+		'''''''''''' todo: check if book is available
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "UPDATE users SET NoOfBooks='" & GLogin.BooksIssued & "', Book1 ='" + GLogin.books(1, 0) + " " + GLogin.books(1, 1) + "', Book2 ='" + GLogin.books(2, 0) + " " & GLogin.books(2, 1) & "', Book3 ='" + GLogin.books(3, 0) + " " & GLogin.books(3, 1) & "',Book4 ='" + GLogin.books(4, 0) + " " & GLogin.books(4, 1) & "',Book5 ='" + GLogin.books(5, 0) + " " & GLogin.books(5, 1) & "',Book6 = '" + GLogin.books(6, 0) + " " & GLogin.books(6, 1) & "',Book7 ='" + GLogin.books(7, 0) + " " & GLogin.books(7, 1) & "',Book8 ='" + GLogin.books(8, 0) + " " & GLogin.books(8, 1) & "',Book9 ='" + GLogin.books(9, 0) + " " & GLogin.books(9, 1) & "',Book10 ='" + GLogin.books(10, 0) + " " & GLogin.books(10, 1) & "' WHERE BINARY Username='" + GLogin.Username + "'"
+			End With
 
-            result = cmd.ExecuteNonQuery
-            If result = 1 Then
+			result = cmd.ExecuteNonQuery
 
-            Else
-            End If
-            con.Close()
-            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
 
-        Catch ex As MySqlException
-            Msg.Err("SQL Error4: " + ex.Message)
-        End Try
+			con.Close()
+		Catch ex As MySqlException
+			Msg.Err("SQL Error4: " + ex.Message)
+			Return False
+		End Try
+		If result = 1 Then
+			Return True
+		Else
+			Return False
+		End If
+	End Function
+	Public Shared Function AreCopiesLeft(ByVal id As String) As Boolean
+		Dim res As Integer = -1
+		Try
+			con.Open()
+			cmd.Connection = con
+			cmd.CommandText = "SELECT `Left` FROM books where ID = '" + id + "'"
+			da.SelectCommand = cmd
+			Dim dt As DataTable = New DataTable
+			da.Fill(dt)
+			res = Convert.ToUInt64(dt.Rows(0).Item(0).ToString)
+			con.Close()
+		Catch ex As MySqlException
+			Return False
+		End Try
+		If res > 0 Then
+			Return True
+		End If
+		Return False
+	End Function
 
-    End Sub
-
+	Public Shared Function ReturnBook(ByVal id As String) As Boolean
+		Dim result As Integer = -1
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "UPDATE users SET NoOfBooks='" & GLogin.BooksIssued & "', Book1 ='" + GLogin.books(1, 0) + " " + GLogin.books(1, 1) + "', Book2 ='" + GLogin.books(2, 0) + " " & GLogin.books(2, 1) & "', Book3 ='" + GLogin.books(3, 0) + " " & GLogin.books(3, 1) & "',Book4 ='" + GLogin.books(4, 0) + " " & GLogin.books(4, 1) & "',Book5 ='" + GLogin.books(5, 0) + " " & GLogin.books(5, 1) & "',Book6 = '" + GLogin.books(6, 0) + " " & GLogin.books(6, 1) & "',Book7 ='" + GLogin.books(7, 0) + " " & GLogin.books(7, 1) & "',Book8 ='" + GLogin.books(8, 0) + " " & GLogin.books(8, 1) & "',Book9 ='" + GLogin.books(9, 0) + " " & GLogin.books(9, 1) & "',Book10 ='" + GLogin.books(10, 0) + " " & GLogin.books(10, 1) & "' WHERE BINARY Username='" + GLogin.Username + "'"
+				'.CommandText = "UPDATE users SET Due = " + GLogin.Due + ", NoOfBooks=" + GLogin.BooksIssued + ", Book1 ='" + GLogin.books(1, 0) + " " + GLogin.books(1, 1) + "', Book2 ='" + GLogin.books(2, 0) + " " + GLogin.books(2, 1) + "', Book3 ='" + GLogin.books(3, 0) + " " + GLogin.books(3, 1) + "', Book4 ='" + GLogin.books(4, 0) + " " + GLogin.books(4, 1) + "', Book5 ='" + GLogin.books(5, 0) + " " + GLogin.books(5, 1) + "', Book6 ='" + GLogin.books(6, 0) + " " + GLogin.books(6, 1) + "', Book7 ='" + GLogin.books(7, 0) + " " + GLogin.books(7, 1) + "', Book8 ='" + GLogin.books(8, 0) + " " + GLogin.books(8, 1) + "', Book9 ='" + GLogin.books(9, 0) + " " + GLogin.books(9, 1) + "', Book10='" + GLogin.books(10, 0) + " " + GLogin.books(10, 1) + "' WHERE Username='" + GLogin.Username + "'"
+				Console.WriteLine(cmd.CommandText)
+			End With
+			result = cmd.ExecuteNonQuery
+			con.Close()
+			result = -1
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "UPDATE books SET `Left`=`Left`+1 where ID = '" + id + "'"
+			End With
+			result = cmd.ExecuteNonQuery
+			con.Close()
+		Catch ex As MySqlException
+			Msg.Err("SQL Error4: " + ex.Message)
+			Return False
+		End Try
+		If result = 1 Then
+			Return True
+		Else
+			Return False
+		End If
+	End Function
+	Public Shared Sub PopulateIssuedBooks()
+		Try
+			con.Open()
+			Dim str As String = "SELECT ID, name, Author, ISBN, Genre FROM books where Id in ("
+			Dim first As Boolean = True
+			For i As Integer = 1 To 10
+				If GLogin.books(i, 0) <> "" And GLogin.books(i, 0) <> " " Then
+					If first = True Then
+						first = False
+						str = str + GLogin.books(i, 0)
+					Else
+						str = str + "," + GLogin.books(i, 0)
+					End If
+				End If
+			Next
+			str = str + ")"
+			With cmd
+				.Connection = con
+				.CommandText = str
+			End With
+			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+			da.SelectCommand = cmd
+			Dim dt As DataTable = New DataTable
+			Dim dt2 As DataTable = New DataTable
+			da.Fill(dt)
+			For i As Integer = 1 To dt.Rows.Count
+				Dim dr As DataRow
+				dr.
+			Next
+			'IssuedBooks.IssuedBookDataGrid.DataSource = bs
+		Catch ex As Exception
+			Msg.Err("SQL Error6: " + ex.Message)
+		End Try
+		con.Close()
+	End Sub
 End Class

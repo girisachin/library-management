@@ -22,11 +22,11 @@ Partial Class AAAAMainForm
 	'Do not modify it using the code editor.
 	<System.Diagnostics.DebuggerStepThrough()>
 	Private Sub InitializeComponent()
-		Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Me.AAAAMainFormSkin = New Library_Management.FormSkin()
 		Me.AAAAMiniButtonMain = New Library_Management.MyMini()
 		Me.AAAALogoutButton = New Library_Management.MyButton()
@@ -61,12 +61,10 @@ Partial Class AAAAMainForm
 		Me.ReturnBookInfoTextBox = New Library_Management.MyTextBox()
 		Me.AAAAALabel18 = New Library_Management.MyLabel()
 		Me.ReturnButton = New Library_Management.MyButton()
-		Me.ReturnBookSearchDropDown = New Library_Management.MyComboBox()
 		Me.AAIssueGroupBox = New Library_Management.MyGroupBox()
 		Me.IssueBookInfoTextBox = New Library_Management.MyTextBox()
 		Me.MyLabel1 = New Library_Management.MyLabel()
 		Me.IssueButton = New Library_Management.MyButton()
-		Me.IssueBookSearchDropDown = New Library_Management.MyComboBox()
 		Me.SummaryTab = New System.Windows.Forms.TabPage()
 		Me.AlertBox4 = New Library_Management.MyAlertBox()
 		Me.AASummaryChangePasswordGroupBox = New Library_Management.MyGroupBox()
@@ -521,60 +519,60 @@ Partial Class AAAAMainForm
 		'
 		Me.BrowseBooksDataGrid.AllowUserToAddRows = False
 		Me.BrowseBooksDataGrid.AllowUserToDeleteRows = False
-		DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+		DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle6.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle6
 		Me.BrowseBooksDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
 		Me.BrowseBooksDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
 		Me.BrowseBooksDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
 		Me.BrowseBooksDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.BrowseBooksDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
 		Me.BrowseBooksDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-		DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-		DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-		DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+		DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+		DataGridViewCellStyle7.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle7
 		Me.BrowseBooksDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
 		Me.BrowseBooksDataGrid.ContextMenuStrip = Me.BrowseBooksContextMenu
 		Me.BrowseBooksDataGrid.Cursor = System.Windows.Forms.Cursors.Default
-		DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-		DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.DefaultCellStyle = DataGridViewCellStyle3
+		DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle8.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.DefaultCellStyle = DataGridViewCellStyle8
 		Me.BrowseBooksDataGrid.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.BrowseBooksDataGrid.GridColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer))
 		Me.BrowseBooksDataGrid.Location = New System.Drawing.Point(3, 3)
 		Me.BrowseBooksDataGrid.Name = "BrowseBooksDataGrid"
-		DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+		DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle9.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle9
 		Me.BrowseBooksDataGrid.RowHeadersVisible = False
-		DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.BrowseBooksDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle5
+		DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle10.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		DataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.BrowseBooksDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle10
 		Me.BrowseBooksDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
 		Me.BrowseBooksDataGrid.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
 		Me.BrowseBooksDataGrid.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 10.0!)
@@ -658,7 +656,6 @@ Partial Class AAAAMainForm
 		Me.ReturnGroupbox.Controls.Add(Me.ReturnBookInfoTextBox)
 		Me.ReturnGroupbox.Controls.Add(Me.AAAAALabel18)
 		Me.ReturnGroupbox.Controls.Add(Me.ReturnButton)
-		Me.ReturnGroupbox.Controls.Add(Me.ReturnBookSearchDropDown)
 		Me.ReturnGroupbox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.ReturnGroupbox.Location = New System.Drawing.Point(442, 85)
 		Me.ReturnGroupbox.Name = "ReturnGroupbox"
@@ -669,7 +666,7 @@ Partial Class AAAAMainForm
 		'ReturnBookInfoTextBox
 		'
 		Me.ReturnBookInfoTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.ReturnBookInfoTextBox.Location = New System.Drawing.Point(73, 132)
+		Me.ReturnBookInfoTextBox.Location = New System.Drawing.Point(60, 132)
 		Me.ReturnBookInfoTextBox.MaxLength = 32767
 		Me.ReturnBookInfoTextBox.Multiline = False
 		Me.ReturnBookInfoTextBox.Name = "ReturnBookInfoTextBox"
@@ -685,38 +682,22 @@ Partial Class AAAAMainForm
 		Me.AAAAALabel18.BackColor = System.Drawing.Color.Transparent
 		Me.AAAAALabel18.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAAAALabel18.ForeColor = System.Drawing.Color.White
-		Me.AAAAALabel18.Location = New System.Drawing.Point(46, 82)
+		Me.AAAAALabel18.Location = New System.Drawing.Point(108, 82)
 		Me.AAAAALabel18.Name = "AAAAALabel18"
-		Me.AAAAALabel18.Size = New System.Drawing.Size(101, 21)
+		Me.AAAAALabel18.Size = New System.Drawing.Size(104, 21)
 		Me.AAAAALabel18.TabIndex = 0
-		Me.AAAAALabel18.Text = "Return Using"
+		Me.AAAAALabel18.Text = "Enter Book ID"
 		'
 		'ReturnButton
 		'
 		Me.ReturnButton.BackColor = System.Drawing.Color.Transparent
 		Me.ReturnButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.ReturnButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.ReturnButton.Location = New System.Drawing.Point(92, 177)
+		Me.ReturnButton.Location = New System.Drawing.Point(79, 177)
 		Me.ReturnButton.Name = "ReturnButton"
 		Me.ReturnButton.Size = New System.Drawing.Size(162, 48)
 		Me.ReturnButton.TabIndex = 3
 		Me.ReturnButton.Text = "Return Book"
-		'
-		'ReturnBookSearchDropDown
-		'
-		Me.ReturnBookSearchDropDown.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(48, Byte), Integer))
-		Me.ReturnBookSearchDropDown.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.ReturnBookSearchDropDown.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-		Me.ReturnBookSearchDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.ReturnBookSearchDropDown.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.ReturnBookSearchDropDown.ForeColor = System.Drawing.Color.White
-		Me.ReturnBookSearchDropDown.FormattingEnabled = True
-		Me.ReturnBookSearchDropDown.ItemHeight = 18
-		Me.ReturnBookSearchDropDown.Items.AddRange(New Object() {"ISBN", "BookID"})
-		Me.ReturnBookSearchDropDown.Location = New System.Drawing.Point(153, 80)
-		Me.ReturnBookSearchDropDown.Name = "ReturnBookSearchDropDown"
-		Me.ReturnBookSearchDropDown.Size = New System.Drawing.Size(121, 24)
-		Me.ReturnBookSearchDropDown.TabIndex = 1
 		'
 		'AAIssueGroupBox
 		'
@@ -724,7 +705,6 @@ Partial Class AAAAMainForm
 		Me.AAIssueGroupBox.Controls.Add(Me.IssueBookInfoTextBox)
 		Me.AAIssueGroupBox.Controls.Add(Me.MyLabel1)
 		Me.AAIssueGroupBox.Controls.Add(Me.IssueButton)
-		Me.AAIssueGroupBox.Controls.Add(Me.IssueBookSearchDropDown)
 		Me.AAIssueGroupBox.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.AAIssueGroupBox.Location = New System.Drawing.Point(61, 85)
 		Me.AAIssueGroupBox.Name = "AAIssueGroupBox"
@@ -735,7 +715,7 @@ Partial Class AAAAMainForm
 		'IssueBookInfoTextBox
 		'
 		Me.IssueBookInfoTextBox.BackColor = System.Drawing.Color.Transparent
-		Me.IssueBookInfoTextBox.Location = New System.Drawing.Point(73, 132)
+		Me.IssueBookInfoTextBox.Location = New System.Drawing.Point(60, 132)
 		Me.IssueBookInfoTextBox.MaxLength = 32767
 		Me.IssueBookInfoTextBox.Multiline = False
 		Me.IssueBookInfoTextBox.Name = "IssueBookInfoTextBox"
@@ -751,38 +731,22 @@ Partial Class AAAAMainForm
 		Me.MyLabel1.BackColor = System.Drawing.Color.Transparent
 		Me.MyLabel1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.MyLabel1.ForeColor = System.Drawing.Color.White
-		Me.MyLabel1.Location = New System.Drawing.Point(58, 81)
+		Me.MyLabel1.Location = New System.Drawing.Point(108, 82)
 		Me.MyLabel1.Name = "MyLabel1"
-		Me.MyLabel1.Size = New System.Drawing.Size(89, 21)
+		Me.MyLabel1.Size = New System.Drawing.Size(104, 21)
 		Me.MyLabel1.TabIndex = 0
-		Me.MyLabel1.Text = "Issue Using"
+		Me.MyLabel1.Text = "Enter Book ID"
 		'
 		'IssueButton
 		'
 		Me.IssueButton.BackColor = System.Drawing.Color.Transparent
 		Me.IssueButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.IssueButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.IssueButton.Location = New System.Drawing.Point(92, 177)
+		Me.IssueButton.Location = New System.Drawing.Point(79, 177)
 		Me.IssueButton.Name = "IssueButton"
 		Me.IssueButton.Size = New System.Drawing.Size(162, 48)
 		Me.IssueButton.TabIndex = 3
 		Me.IssueButton.Text = "Issue Book"
-		'
-		'IssueBookSearchDropDown
-		'
-		Me.IssueBookSearchDropDown.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(48, Byte), Integer))
-		Me.IssueBookSearchDropDown.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.IssueBookSearchDropDown.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-		Me.IssueBookSearchDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.IssueBookSearchDropDown.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.IssueBookSearchDropDown.ForeColor = System.Drawing.Color.White
-		Me.IssueBookSearchDropDown.FormattingEnabled = True
-		Me.IssueBookSearchDropDown.ItemHeight = 18
-		Me.IssueBookSearchDropDown.Items.AddRange(New Object() {"ISBN", "BookID"})
-		Me.IssueBookSearchDropDown.Location = New System.Drawing.Point(153, 79)
-		Me.IssueBookSearchDropDown.Name = "IssueBookSearchDropDown"
-		Me.IssueBookSearchDropDown.Size = New System.Drawing.Size(121, 24)
-		Me.IssueBookSearchDropDown.TabIndex = 1
 		'
 		'SummaryTab
 		'
@@ -1014,7 +978,7 @@ Partial Class AAAAMainForm
 		Me.SummaryProfileDropDownBox.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.SummaryProfileDropDownBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
 		Me.SummaryProfileDropDownBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.SummaryProfileDropDownBox.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.SummaryProfileDropDownBox.Font = New System.Drawing.Font("Segoe UI", 8.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.SummaryProfileDropDownBox.ForeColor = System.Drawing.Color.White
 		Me.SummaryProfileDropDownBox.FormattingEnabled = True
 		Me.SummaryProfileDropDownBox.ItemHeight = 18
@@ -2554,7 +2518,6 @@ Partial Class AAAAMainForm
 	Friend WithEvents AAIssueGroupBox As MyGroupBox
 	Friend WithEvents IssueBookInfoTextBox As MyTextBox
 	Friend WithEvents AAAAALabel18 As MyLabel
-	Friend WithEvents ReturnBookSearchDropDown As MyComboBox
 	Friend WithEvents IssueButton As MyButton
 	Friend WithEvents SummaryTab As TabPage
 	Friend WithEvents AlertBox4 As MyAlertBox
@@ -2613,7 +2576,6 @@ Partial Class AAAAMainForm
 	Friend WithEvents AAAAALabel5 As MyLabel
 	Friend WithEvents LoginPasswordTextBox As MyTextBox
 	Friend WithEvents MyLabel1 As MyLabel
-	Friend WithEvents IssueBookSearchDropDown As MyComboBox
 	Friend WithEvents AlertBox7 As MyAlertBox
 	Friend WithEvents AlertBox8 As MyAlertBox
 	Friend WithEvents SummaryViewIssuedBooks As MyButton

@@ -25,7 +25,7 @@
 		<System.Diagnostics.DebuggerStepThrough()>
 			_
 			Private Sub InitializeComponent()
-			Me.FormSkin1 = New Library_Management.FormSkin()
+		Me.FormSkin1 = New Library_Management.FormSkin()
 		Me.OK = New Library_Management.MyButton()
 		Me.ErrorLabel = New Library_Management.MyLabel()
 		Me.MyClose1 = New Library_Management.MyClose()
@@ -42,7 +42,7 @@
 		Me.FormSkin1.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.FormSkin1.Location = New System.Drawing.Point(0, 0)
 		Me.FormSkin1.Name = "FormSkin1"
-		Me.FormSkin1.Size = New System.Drawing.Size(457, 225)
+		Me.FormSkin1.Size = New System.Drawing.Size(638, 321)
 		Me.FormSkin1.TabIndex = 0
 		Me.FormSkin1.Text = "Error"
 		'
@@ -51,7 +51,7 @@
 		Me.OK.BackColor = System.Drawing.Color.Transparent
 		Me.OK.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.OK.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.OK.Location = New System.Drawing.Point(376, 180)
+		Me.OK.Location = New System.Drawing.Point(557, 276)
 		Me.OK.Name = "OK"
 		Me.OK.Size = New System.Drawing.Size(69, 33)
 		Me.OK.TabIndex = 2
@@ -64,7 +64,7 @@
 		Me.ErrorLabel.ForeColor = System.Drawing.Color.White
 		Me.ErrorLabel.Location = New System.Drawing.Point(12, 66)
 		Me.ErrorLabel.Name = "ErrorLabel"
-		Me.ErrorLabel.Size = New System.Drawing.Size(433, 104)
+		Me.ErrorLabel.Size = New System.Drawing.Size(614, 207)
 		Me.ErrorLabel.TabIndex = 1
 		Me.ErrorLabel.Text = "MyLabel1"
 		Me.ErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
@@ -74,7 +74,7 @@
 		Me.MyClose1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.MyClose1.BackColor = System.Drawing.Color.White
 		Me.MyClose1.Font = New System.Drawing.Font("Marlett", 10.0!)
-		Me.MyClose1.Location = New System.Drawing.Point(427, 12)
+		Me.MyClose1.Location = New System.Drawing.Point(608, 12)
 		Me.MyClose1.Name = "MyClose1"
 		Me.MyClose1.Size = New System.Drawing.Size(18, 18)
 		Me.MyClose1.TabIndex = 0
@@ -84,7 +84,7 @@
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.ClientSize = New System.Drawing.Size(457, 225)
+		Me.ClientSize = New System.Drawing.Size(638, 321)
 		Me.Controls.Add(Me.FormSkin1)
 		Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
 		Me.Name = "Msg"

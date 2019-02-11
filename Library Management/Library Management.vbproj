@@ -85,6 +85,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Alert.vb" />
+    <Compile Include="bookissuescript.vb" />
     <Compile Include="BookList.Designer.vb">
       <DependentUpon>BookList.vb</DependentUpon>
     </Compile>
@@ -100,6 +101,12 @@
     </Compile>
     <Compile Include="Glogin.vb" />
     <Compile Include="ISBN.vb" />
+    <Compile Include="IssuedBooks.Designer.vb">
+      <DependentUpon>IssuedBooks.vb</DependentUpon>
+    </Compile>
+    <Compile Include="IssuedBooks.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Msg.Designer.vb">
       <DependentUpon>Msg.vb</DependentUpon>
     </Compile>
@@ -137,6 +144,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GetServer.resx">
       <DependentUpon>GetServer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IssuedBooks.resx">
+      <DependentUpon>IssuedBooks.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Msg.resx">
+      <DependentUpon>Msg.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

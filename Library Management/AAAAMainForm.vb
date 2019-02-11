@@ -86,6 +86,7 @@ Public Class AAAAMainForm
 		GLogin.Username = LoginUsernameTextBox.Text
 		GLogin.UnhashedPassword = LoginPasswordTextBox.Text 'CheckOldPassword(PasswordTextBox.Text)
 		If SQLInterface.Login() = True Then
+			' Logged in successfully
 			StatusBar.Text = "Logged in as " + GLogin.Username + "(" + GLogin.AccType + ")"
 			Alert("Success", "Logged In !")
 			DisablePage(LoginSignupTab)
@@ -99,6 +100,8 @@ Public Class AAAAMainForm
 			SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
 			SummaryUsernameTextBox.Text = GLogin.Username
 			SummaryFullnameTextBox.Text = GLogin.Fullname
+			MyTextBox3.Text = GLogin.Fullname
+			MyTextBox4.Text = GLogin.Username
 			If GLogin.AccType = "Admin" Then
 				SummaryProfileDropDownBox.SelectedIndex = 2
 			ElseIf GLogin.AccType = "Teacher" Then
@@ -106,6 +109,7 @@ Public Class AAAAMainForm
 			Else
 				SummaryProfileDropDownBox.SelectedIndex = 0
 			End If
+			'SQLInterface.loadissuedbooks(GLogin.books)
 		Else
 			Alert("Error", "Username and Password do not match")
 			GLogin.LogOut()
@@ -166,25 +170,22 @@ Public Class AAAAMainForm
 		DisablePage(AdminOptionsTab)
 		DisablePage(SummaryTab)
 		DisablePage(IssueBookTab)
-		IssueBookSearchDropDown.SelectedIndex = 0
-		ReturnBookSearchDropDown.SelectedIndex = 0
 		AdminAddAccDropDown.SelectedIndex = 0
 		StatusBar.Text = "Not Logged In"
 		While SQLInterface.GetSysDateTime() = False
 			GetServer.ShowDialog()
 		End While
 	End Sub
-
 	Private Sub SummaryOldPasswordPicture_Click(sender As Object, e As EventArgs) Handles SummaryOldPasswordPicture.Click
-        If SummaryOldPasswordTextbox.UseSystemPasswordChar = True Then
-            SummaryOldPasswordTextbox.UseSystemPasswordChar = False
-            SummaryOldPasswordPicture.Image = My.Resources.ResourceManager.GetObject("show")
-        Else
-            SummaryOldPasswordTextbox.UseSystemPasswordChar = True
-            SummaryOldPasswordPicture.Image = My.Resources.ResourceManager.GetObject("hide")
-        End If
-    End Sub
-    Private Sub SummaryNewPasswordPicture_Click(sender As Object, e As EventArgs) Handles AAASummaryNewPasswordPicture.Click
+		If SummaryOldPasswordTextbox.UseSystemPasswordChar = True Then
+			SummaryOldPasswordTextbox.UseSystemPasswordChar = False
+			SummaryOldPasswordPicture.Image = My.Resources.ResourceManager.GetObject("show")
+		Else
+			SummaryOldPasswordTextbox.UseSystemPasswordChar = True
+			SummaryOldPasswordPicture.Image = My.Resources.ResourceManager.GetObject("hide")
+		End If
+	End Sub
+	Private Sub SummaryNewPasswordPicture_Click(sender As Object, e As EventArgs) Handles AAASummaryNewPasswordPicture.Click
         If SummaryNewPasswordTextBox.UseSystemPasswordChar = True Then
             SummaryNewPasswordTextBox.UseSystemPasswordChar = False
             AAASummaryNewPasswordPicture.Image = My.Resources.ResourceManager.GetObject("show")
@@ -203,33 +204,30 @@ Public Class AAAAMainForm
         End If
     End Sub
     Private Sub CopyBookNameToolStrip_Click(sender As Object, e As EventArgs) Handles CopyBookNameToolStrip.Click
-        Dim s As String = BrowseBooksDataGrid.CurrentRow.Cells(1).Value.ToString
-        Clipboard.SetText(s)
+		Dim s As String = BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(1).Value.ToString
+		Clipboard.SetText(s)
     End Sub
     Private Sub CopyISBNNumberToolStrip_Click(sender As Object, e As EventArgs) Handles CopyISBNNumberToolStrip.Click
-        Dim s As String = BrowseBooksDataGrid.CurrentRow.Cells(3).Value.ToString
-        Clipboard.SetText(s)
+		Dim s As String = BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(3).Value.ToString
+		Clipboard.SetText(s)
     End Sub
     Private Sub CopyBookIDToolStrip_Click(sender As Object, e As EventArgs) Handles CopyBookIDToolStrip.Click
-        Dim s As String = BrowseBooksDataGrid.CurrentRow.Cells(0).Value.ToString
-        Clipboard.SetText(s)
+		Dim s As String = BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(0).Value.ToString
+		Clipboard.SetText(s)
     End Sub
     Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
-        Dim bookid As String = BrowseBooksDataGrid.CurrentRow.Cells(0).Value.ToString
-        If GLogin.BooksIssued < 10 Then
-            For i As Integer = 1 To 10
-                If String.IsNullOrEmpty(GLogin.books(i, 0)) = True Then
-                    GLogin.books(i, 0) = bookid
-
-                    Exit For
-                End If
-            Next
-        End If
+		Dim bookid As String = BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(0).Value.ToString
+		If Convert.ToUInt64(BrowseBooksDataGrid.Rows(BrowseBookCurrentRow).Cells(5).Value) <= 0 Then
+			Alert("Error", "Book not available for issue")
+			Exit Sub
+		End If
+		IssueBookByID(bookid)
         ' Todo: Issue Book Here using bookid
     End Sub
     Private Sub DataGridView1_CellMouseEnter(sender As Object, e As System.Windows.Forms.DataGridViewCellEventArgs) Handles BrowseBooksDataGrid.CellMouseEnter
-        BrowseBooksDataGrid.ClearSelection()
-        If e.RowIndex >= 0 Then
+		BrowseBookCurrentRow = e.RowIndex
+		BrowseBooksDataGrid.ClearSelection()
+		If e.RowIndex >= 0 Then
             BrowseBooksDataGrid.Rows(e.RowIndex).Selected = True
         End If
     End Sub
@@ -244,8 +242,16 @@ Public Class AAAAMainForm
         BookName = SearchBookNameTextBox.Text.Trim
         Genre = SearchBookGenreTextBox.Text.Trim
         BookAuthor = SearchBookAuthorTextBox.Text.Trim
-
-        If ValidateInteger(BookID) = False AndAlso BookID <> "" Then
+		If BookID = "" And BookISBN = "" And BookName = "" And Genre = "" And BookAuthor = "" Then
+			TabControlMain.SelectedTab = BrowseBooksTab
+			SearchBookIDTextBox.Text = ""
+			SearchBookISBNTextBox.Text = ""
+			SearchBookNameTextBox.Text = ""
+			SearchBookGenreTextBox.Text = ""
+			SearchBookAuthorTextBox.Text = ""
+			Exit Sub
+		End If
+		If ValidateInteger(BookID) = False AndAlso BookID <> "" Then
             Alert("Warning", "Incorrect Book ID ( Only Numbers Allowed )")
             Exit Sub
         End If
@@ -269,9 +275,12 @@ Public Class AAAAMainForm
             Alert("Warning", "Incorrect Author Name ( Only Alphanumeric, space and symbols( _,:' ) allowed")
             Exit Sub
         End If
-        ' TODO: Search Book Here
-        SQLInterface.PopulateSearchBooksTable(BookID, BookISBN, BookName, Genre, BookAuthor)
-        BookList.Show()
+		' TODO: Search Book Here
+		BookName = BookName.Replace("'", "''")
+		Genre = Genre.Replace("'", "''")
+		BookAuthor = BookAuthor.Replace("'", "''")
+		SQLInterface.PopulateSearchBooksTable(BookID, BookISBN, BookName, Genre, BookAuthor)
+		BookList.Show()
     End Sub
     Private Sub AlertBox_Click(sender As Object, e As EventArgs) Handles AlertBox1.Click, AlertBox2.Click, AlertBox3.Click, AlertBox4.Click, AlertBox5.Click, AlertBox6.Click, AlertBox7.Click, AlertBox8.Click
         AlertBox1.Visible = False
@@ -289,104 +298,92 @@ Public Class AAAAMainForm
         ElseIf GLogin.BooksIssued = 10 Then
             Alert("Warning", "Can not issue more than 10 books")
         End If
-        If IssueBookSearchDropDown.SelectedIndex = 0 Then
-            If ValidateInteger(IssueBookInfoTextBox.Text) = False Then
-                Alert("Warning", "Incorrect ISBN Number ( Only Numbers Allowed )")
-                Exit Sub
-            End If
-            If Len(IssueBookInfoTextBox.Text) <> 13 AndAlso Len(IssueBookInfoTextBox.Text) <> 10 Then
-                Alert("Warning", "ISBN number must be 10 or 13 digits long")
-                Exit Sub
-            End If
-            If ValidateISBN(IssueBookInfoTextBox.Text) = False Then
-                Alert("Error", "ISBN checksum does not match")
-                Exit Sub
-            End If
-            ' TODO: Search using ISBN here and issue the book
-            Exit Sub
-        ElseIf IssueBookSearchDropDown.SelectedIndex = 1 Then
-            If ValidateInteger(IssueBookInfoTextBox.Text) = False Then
-                Alert("Warning", "Incorrect Book ID ( Only Numbers Allowed )")
-                Exit Sub
-            End If
-            ' TODO: Search using BookID here and issue the book
-            Alert("Success", "Book Issued(Mock)")
-            GLogin.BooksIssued += 1
-        End If
-    End Sub
-    Private Sub ReturnButton_Click(sender As Object, e As EventArgs) Handles ReturnButton.Click
-        If GLogin.BooksIssued = 0 Then
-            Alert("Error", "No books Issued")
-        End If
-        If ReturnBookSearchDropDown.SelectedIndex = 0 Then
-            If ValidateInteger(IssueBookInfoTextBox.Text) = False Then
-                Alert("Warning", "Incorrect ISBN Number ( Only Numbers Allowed )")
-                Exit Sub
-            End If
-            If Len(IssueBookInfoTextBox.Text.Trim) <> 13 AndAlso Len(IssueBookInfoTextBox.Text.Trim) <> 10 Then
-                Alert("Warning", "ISBN number must be 10 or 13 digits long")
-                Exit Sub
-            End If
-            If ValidateISBN(IssueBookInfoTextBox.Text) = False Then
-                Alert("Error", "ISBN checksum does not match")
-            End If
-            ' TODO: Search using ISBN here and issue the book
-        End If
-        ' TODO: Get list of books issued
-        '		Get time from Server
-        If False Then 'if not in list of books issued
-            Alert("Error", "You did not issued this book in the first place")
-            Exit Sub
-        End If
-        If True Then ' some due added by late submission of this book
-            Msg.Info("This book was returned late. Due = " + "(DueValue)")
-        End If
-        ' TODO: remove returned book from user account, add 1 to number of copies in ventory
-        If True Then ' Successful return
-            Alert("Success", "Book Returned")
-            GLogin.BooksIssued -= 1
-        Else
-            Alert("Error", "Can not process book return")
-        End If
-    End Sub
-    Private Sub AdminAddAccButton_Click(sender As Object, e As EventArgs) Handles AdminAddAccButton.Click
-        If AdminAddAccPasswordTextBox.Text <> AdminAddAccConfirmPasswordTextBox.Text Then
-            Alert("Error", "Passwords do not match! Enter passwords again carefully!")
-            AdminAddAccPasswordTextBox.Text = ""
-            AdminAddAccConfirmPasswordTextBox.Text = ""
-            Exit Sub
-        End If
-        If ValidateUsername(AdminAddAccUsernameTextBox.Text) = False Then
-            Alert("Warning", "Use only alphanumerics or underscores")
-            Exit Sub
-        End If
-        If ValidateFullname(AdminAddAccFullnameTextBox.Text) = False Then
-            Alert("Warning", "Use only alphanumerics or space")
-            Exit Sub
-        End If
-        If SQLInterface.DoesUsernameExists(AdminAddAccUsernameTextBox.Text) = True Then
-            Alert("Warning", "Username already exists")
-            Exit Sub
-        End If
 
-        GAdmin.Username = AdminAddAccUsernameTextBox.Text
-        GAdmin.Fullname = AdminAddAccFullnameTextBox.Text
-        GAdmin.PasswordHash = AdminEncryptNewPassword(Encrypt_Sha512(AdminAddAccPasswordTextBox.Text))
-        GAdmin.AccType = AdminAddAccDropDown.Text
+		If ValidateInteger(IssueBookInfoTextBox.Text) = False Then
+			Alert("Warning", "Incorrect Book ID ( Only Numbers Allowed )")
+			Exit Sub
+		End If
+		' TODO: Search using BookID here and issue the book
+		IssueBookByID(IssueBookInfoTextBox.Text)
 
-        If SQLInterface.AdminRegister() = True Then
-            AdminAddAccPasswordTextBox.Text = ""
-            AdminAddAccConfirmPasswordTextBox.Text = ""
-            AdminAddAccUsernameTextBox.Text = ""
-            AdminAddAccFullnameTextBox.Text = ""
-            Alert("Success", "Account successfuffy created")
-        Else
-            Alert("Error", "Could not create Account")
-        End If
-    End Sub
+	End Sub
+	Private Sub ReturnButton_Click(sender As Object, e As EventArgs) Handles ReturnButton.Click
+		If GLogin.BooksIssued = 0 Then
+			Alert("Error", "No books Issued")
+			Exit Sub
+		End If
+		If ValidateInteger(ReturnBookInfoTextBox.Text) = False Then
+			Alert("Warning", "Use only integers in book ID")
+			Exit Sub
+		End If
+		Dim BookFound As Boolean = True
+		Dim i As Integer
+		Dim diff As Long
+		For i = 1 To 10
+			If GLogin.books(i, 0) = ReturnBookInfoTextBox.Text Then
+				diff = DateAndTime.DateDiff("d", GLogin.books(i, 1), DateAndTime.Now())
+				GLogin.books(i, 0) = ""
+				GLogin.books(i, 1) = ""
+				GLogin.BooksIssued -= 1
+				BookFound = True
+				Exit For
+			End If
+		Next
+		If diff > 0 Then
+			GLogin.Due += Convert.ToInt32(diff.ToString)
+		End If
+		If BookFound = False Then 'if not in list of books issued
+			Alert("Error", "You did not issued this book in the first place")
+			Exit Sub
+		End If
+		Dim result As Boolean = SQLInterface.ReturnBook(ReturnBookInfoTextBox.Text)
+		If result = False Then ' some due added by late submission of this book
+			Alert("Error", "Could not return book")
+			Exit Sub
+		End If
+		If result = True Then
+			If diff < 0 Then
+				Alert("Success", "Book was Returned Successfully")
+			Else
+				Alert("Warning", "Book Returned Late. Due =" + Convert.ToInt32(diff.ToString).ToString)
+			End If
+		End If
+	End Sub
+	Private Sub AdminAddAccButton_Click(sender As Object, e As EventArgs) Handles AdminAddAccButton.Click
+		If AdminAddAccPasswordTextBox.Text <> AdminAddAccConfirmPasswordTextBox.Text Then
+			Alert("Error", "Passwords do not match! Enter passwords again carefully!")
+			AdminAddAccPasswordTextBox.Text = ""
+			AdminAddAccConfirmPasswordTextBox.Text = ""
+			Exit Sub
+		End If
+		If ValidateUsername(AdminAddAccUsernameTextBox.Text) = False Then
+			Alert("Warning", "Use only alphanumerics or underscores")
+			Exit Sub
+		End If
+		If ValidateFullname(AdminAddAccFullnameTextBox.Text) = False Then
+			Alert("Warning", "Use only alphanumerics or space")
+			Exit Sub
+		End If
+		If SQLInterface.DoesUsernameExists(AdminAddAccUsernameTextBox.Text) = True Then
+			Alert("Warning", "Username already exists")
+			Exit Sub
+		End If
 
+		GAdmin.Username = AdminAddAccUsernameTextBox.Text
+		GAdmin.Fullname = AdminAddAccFullnameTextBox.Text
+		GAdmin.PasswordHash = AdminEncryptNewPassword(Encrypt_Sha512(AdminAddAccPasswordTextBox.Text))
+		GAdmin.AccType = AdminAddAccDropDown.Text
 
-
+		If SQLInterface.AdminRegister() = True Then
+			AdminAddAccPasswordTextBox.Text = ""
+			AdminAddAccConfirmPasswordTextBox.Text = ""
+			AdminAddAccUsernameTextBox.Text = ""
+			AdminAddAccFullnameTextBox.Text = ""
+			Alert("Success", "Account successfuffy created")
+		Else
+			Alert("Error", "Could not create Account")
+		End If
+	End Sub
 	Private Sub AdminEditAccButton_Click(sender As Object, e As EventArgs) Handles AdminEditAccButton.Click
 		If AdminAddAccPasswordTextBox.Text <> AdminAddAccConfirmPasswordTextBox.Text Then
 			Alert("Error", "Passwords do not match! Enter passwords again carefully!")
@@ -406,6 +403,8 @@ Public Class AAAAMainForm
 			Alert("Warning", "Use only alphanumerics or space in new fullname")
 			Exit Sub
 		End If
+		MyTextBox3.Text = GLogin.Fullname
+		MyTextBox4.Text = GLogin.Username
 		' TODO: Admin Update function
 	End Sub
 	Private Sub SummaryEditProfileButton_Click(sender As Object, e As EventArgs) Handles SummaryEditProfileButton.Click
@@ -423,13 +422,9 @@ Public Class AAAAMainForm
 				Alert("Warning", "Use atleast 4 digits in username")
 				Exit Sub
 			End If
-			If Len(SummaryFullnameTextBox.Text) < 6 Then
-				Alert("Warning", "Use atleast 6 digits in password")
-				Exit Sub
-			End If
 		End If
 
-		If SQLInterface.DoesUsernameExists(SummaryUsernameTextBox.Text) = True Then
+		If SummaryUsernameTextBox.Text <> "" AndAlso GLogin.Username <> SummaryUsernameTextBox.Text AndAlso SQLInterface.DoesUsernameExists(SummaryUsernameTextBox.Text) = True Then
 			Alert("Warning", "Username already exists")
 			Exit Sub
 		End If
@@ -440,6 +435,8 @@ Public Class AAAAMainForm
 		End If
 		StatusBar.Text = "Logged in as " + GLogin.Username + "(" + GLogin.AccType + ")"
 		Alert("Success", "Profile Edited Successfully")
+		MyTextBox3.Text = GLogin.Fullname
+		MyTextBox4.Text = GLogin.Username
 	End Sub
 	Private Sub SummaryChangePasswordButton_Click(sender As Object, e As EventArgs) Handles SummaryChangePasswordButton.Click
 		If SummaryNewPasswordTextBox.Text <> SummaryConfirmPasswordTextBox.Text Then
@@ -448,7 +445,11 @@ Public Class AAAAMainForm
 			SummaryConfirmPasswordTextBox.Text = ""
 			Exit Sub
 		End If
-		If Len(SummaryConfirmPasswordTextBox.Text) < 6 Then
+		If SummaryOldPasswordTextbox.Text = SummaryNewPasswordTextBox.Text Then
+			Alert("Warning", "Old Password = new Password")
+			Exit Sub
+		End If
+		If Len(SummaryConfirmPasswordTextBox.Text) < 6 And GLogin.AccType <> "Admin" Then
 			Alert("Warning", "Use atleast 6 digits in password")
 			Exit Sub
 		End If
@@ -486,7 +487,6 @@ Public Class AAAAMainForm
 		End If
 		Alert("Success", "Account Deleted Successfully")
 	End Sub
-
 	Private Sub AdminRemoveBookButton_Click(sender As Object, e As EventArgs) Handles AdminRemoveBookButton.Click
 		If ValidateInteger(AdminRemoveBookIDTextBox.Text) = False Then
 			Alert("Warning", "Use only alphanumerics and underscore in bookid to delete")
@@ -502,7 +502,6 @@ Public Class AAAAMainForm
 		End If
 		Alert("Success", "Book Deleted Successfully")
 	End Sub
-
 	Private Sub AdminAddBookButton_Click(sender As Object, e As EventArgs) Handles AdminAddBookButton.Click
 		If ValidateInteger(AdminAddBookISBN.Text) = False Then
 			Alert("Warning", "Use ony 10 or 13 digit integers in ISBN")
@@ -534,7 +533,6 @@ Public Class AAAAMainForm
 		End If
 		Alert("Success", "Book Added")
 	End Sub
-
 	Private Sub TabControlMain_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlMain.Selected
 		'      SignupDropDownBox.SelectedIndex = 0
 		'      AAAALogoutButton.Visible = False
@@ -547,17 +545,34 @@ Public Class AAAAMainForm
 		'      BrowseBooksDataGrid.ClearSelection()
 		'      AdminAddAccDropDown.SelectedIndex = 0
 		If e.TabPage.Name = "LoginSignupTab" Then
-
+		ElseIf e.TabPage.Name = "AASummaryGroupBox" Then
+			MyTextBox3.Text = GLogin.Fullname
+			MyTextBox4.Text = GLogin.Username
 		ElseIf e.TabPage.Name = "BrowseBooksTab" Then
 			BrowseBooksDataGrid.ClearSelection()
 			SQLInterface.PopulateBrowseBooksTable()
 		End If
 		'e.TabPage.Name
 	End Sub
-
-	Private Sub AAAACloseButtonMain_Click(sender As Object, e As EventArgs) Handles AAAACloseButtonMain.Click
-		Environment.Exit(0)
+	Private Sub AAAALogoutButton_Click(sender As Object, e As EventArgs) Handles AAAALogoutButton.Click
+		If GLogin.AccType = "Admin" Then
+			DisablePage(AdminOptionsTab)
+		End If
+		GLogin.LogOut()
+		StatusBar.Text = "Not Logged In"
+		Alert("Success", "Logged Out !")
+		EnablePage(LoginSignupTab)
+		DisablePage(IssueBookTab)
+		DisablePage(SummaryTab)
+		AAAALogoutButton.Visible = False
+		SummaryDueTextBox.Text = "0"
+		SummaryBooksIssuedTextBox.Text = "0"
+		SummaryUsernameTextBox.Text = ""
+		SummaryProfileDropDownBox.SelectedIndex = 0
 	End Sub
 
+	Private Sub SummaryViewIssuedBooks_Click(sender As Object, e As EventArgs) Handles SummaryViewIssuedBooks.Click
+		IssuedBooks.Show()
+	End Sub
 End Class
 

@@ -1,14 +1,7 @@
 ﻿Public Class BookList
 	Private SearchBookCurrentRow As Integer = -1
-	Private Sub FormSkin1_Click(sender As Object, e As EventArgs) Handles FormSkin1.Click
 
-    End Sub
-
-    Private Sub Book_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Private Sub BookList_Load(sender As Object, e As EventArgs) Handles Me.Load
+	Private Sub BookList_Load(sender As Object, e As EventArgs) Handles Me.Load
 		SearchBookDataGrid.ClearSelection()
 	End Sub
 

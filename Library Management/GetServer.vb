@@ -22,4 +22,8 @@
 		My.Settings.Save()
 		Me.Close()
 	End Sub
+
+	Private Sub MyButton2_Click(sender As Object, e As EventArgs) Handles MyButton2.Click
+		Environment.Exit(0)
+	End Sub
 End Class
