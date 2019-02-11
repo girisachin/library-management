@@ -33,8 +33,9 @@ Public Class SQLInterface
 				GLogin.Salt = dt.Rows(0).Item(3).ToString()
 				GLogin.AccType = dt.Rows(0).Item(4).ToString()
 				GLogin.BooksIssued = Integer.Parse(dt.Rows(0).Item(6).ToString())
-				GLogin.Due = Integer.Parse(dt.Rows(0).Item(7).ToString())
-				Dim i As Integer = 0
+                GLogin.Due = Integer.Parse(dt.Rows(0).Item(7).ToString())
+                GLogin.confirmed = dt.Rows(0).Item(8).ToString()
+                Dim i As Integer = 0
 				Dim bookinfo() As String
 			For j As Integer = 9 To 18
 					If String.IsNullOrEmpty(dt.Rows(0).Item(j).ToString().Trim) = False Or dt.Rows(0).Item(j).ToString.Trim <> Nothing Or dt.Rows(0).Item(j).ToString.Trim <> "" Then
@@ -480,170 +481,246 @@ Public Class SQLInterface
 		End If
 	End Function
 	Public Shared Sub PopulateIssuedBooks()
-		If GLogin.BooksIssued = 0 Then
-			IssuedBooks.Close()
-			Exit Sub
-		End If
-		Try
-			con.Open()
-			Dim str As String = "SELECT ID, name, Author, ISBN, Genre FROM books where Id in ("
-			Dim first As Boolean = True
-			For i As Integer = 1 To 10
-				If GLogin.books(i, 0).Trim <> "" Then
-					If first = True Then
-						first = False
-						str = str + GLogin.books(i, 0)
-					Else
-						str = str + "," + GLogin.books(i, 0)
-					End If
-				End If
-			Next
-			str = str + ")"
-			With cmd
-				.Connection = con
-				.CommandText = str
-			End With
-			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
-			da.SelectCommand = cmd
-			Dim dt As DataTable = New DataTable
-			Dim dt2 As DataTable = New DataTable
-			Dim dc1, dc2, dc3, dc4, dc5, dc6 As New DataColumn
-			dc1.DataType = System.Type.GetType("System.String")
-			dc1.Caption = "ID"
-			dc1.ColumnName = "ID"
-			dc2.DataType = System.Type.GetType("System.String")
-			dc2.Caption = "Name"
-			dc2.ColumnName = "Name"
-			dc3.DataType = System.Type.GetType("System.String")
-			dc3.Caption = "Author"
-			dc3.ColumnName = "Author"
-			dc4.DataType = System.Type.GetType("System.String")
-			dc4.Caption = "ISBN"
-			dc4.ColumnName = "ISBN"
-			dc5.DataType = System.Type.GetType("System.String")
-			dc5.Caption = "Genre"
-			dc5.ColumnName = "Genre"
-			dc6.DataType = System.Type.GetType("System.String")
-			dc6.Caption = "DueDate"
-			dc6.ColumnName = "DueDate"
-			da.Fill(dt)
-			dt2.Columns.AddRange(New DataColumn() {dc1, dc2, dc3, dc4, dc5, dc6})
-			Dim dr As DataRow
-			For i As Integer = 0 To dt.Rows.Count - 1
-				dr = dt2.NewRow
-				dr("ID") = dt.Rows(i).Item(0).ToString
-				dr("Name") = dt.Rows(i).Item(1).ToString
-				dr("Author") = dt.Rows(i).Item(2).ToString
-				dr("ISBN") = dt.Rows(i).Item(3).ToString
-				dr("Genre") = dt.Rows(i).Item(4).ToString
-				For j As Integer = 1 To 10
-					If IsNothing(GLogin.books(j, 0)) = False AndAlso GLogin.books(j, 0).ToString.Trim = dt.Rows(i).Item(0).ToString Then
-						dr("DueDate") = GLogin.books(j, 1).ToString.Trim
-						Exit For
-					End If
-				Next
-				dt2.Rows.Add(dr)
-			Next
-			Dim bs As BindingSource = New BindingSource With {
-				.DataSource = dt2
-			}
-			IssuedBooks.IssuedBookDataGrid.DataSource = bs
-		Catch ex As Exception
-			Msg.Err("SQL Error6: " + ex.Message)
-		End Try
-		con.Close()
-	End Sub
-	Public Shared Function AdminEditAccount(ByVal NewUsername As String, ByVal NewFullname As String, ByVal NewPassword As String, ByVal OldUsername As String, ByVal acctype As String) As Boolean
-		Dim str As String = "UPDATE users SET Username ='" + NewUsername + "' "
-		If NewFullname <> "" Then
-			str = str + ", Name = '" + NewFullname + "' "
-		End If
-		If NewPassword <> "" Then
-			str = str + ", Pass= '" + NewPassword + "', Salt = '" + GAdmin.Salt + "' "
-		End If
-		str = str + ", AccType= '" + acctype + "' "
-		str = str + "where Username = '" + OldUsername + "'"
-		Dim result As Integer = -1
-		Try
-			con.Open()
-			With cmd
-				.Connection = con
-				.CommandText = str
-			End With
-			result = cmd.ExecuteNonQuery
-			con.Close()
-		Catch ex As MySqlException
-			Msg.Err("SQL Error4: " + ex.Message)
-			Return False
-		End Try
-		If result = 1 Then
-			Return True
-		Else
-			Return False
-		End If
+        If GLogin.BooksIssued = 0 Then
+            IssuedBooks.Close()
+            Exit Sub
+        End If
+        Try
+            con.Open()
+            Dim str As String = "SELECT ID, name, Author, ISBN, Genre FROM books where Id in ("
+            Dim first As Boolean = True
+            For i As Integer = 1 To 10
+                If GLogin.books(i, 0).Trim <> "" Then
+                    If first = True Then
+                        first = False
+                        str = str + GLogin.books(i, 0)
+                    Else
+                        str = str + "," + GLogin.books(i, 0)
+                    End If
+                End If
+            Next
+            str = str + ")"
+            With cmd
+                .Connection = con
+                .CommandText = str
+            End With
+            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+            da.SelectCommand = cmd
+            Dim dt As DataTable = New DataTable
+            Dim dt2 As DataTable = New DataTable
+            Dim dc1, dc2, dc3, dc4, dc5, dc6 As New DataColumn
+            dc1.DataType = System.Type.GetType("System.String")
+            dc1.Caption = "ID"
+            dc1.ColumnName = "ID"
+            dc2.DataType = System.Type.GetType("System.String")
+            dc2.Caption = "Name"
+            dc2.ColumnName = "Name"
+            dc3.DataType = System.Type.GetType("System.String")
+            dc3.Caption = "Author"
+            dc3.ColumnName = "Author"
+            dc4.DataType = System.Type.GetType("System.String")
+            dc4.Caption = "ISBN"
+            dc4.ColumnName = "ISBN"
+            dc5.DataType = System.Type.GetType("System.String")
+            dc5.Caption = "Genre"
+            dc5.ColumnName = "Genre"
+            dc6.DataType = System.Type.GetType("System.String")
+            dc6.Caption = "DueDate"
+            dc6.ColumnName = "DueDate"
+            da.Fill(dt)
+            dt2.Columns.AddRange(New DataColumn() {dc1, dc2, dc3, dc4, dc5, dc6})
+            Dim dr As DataRow
+            For i As Integer = 0 To dt.Rows.Count - 1
+                dr = dt2.NewRow
+                dr("ID") = dt.Rows(i).Item(0).ToString
+                dr("Name") = dt.Rows(i).Item(1).ToString
+                dr("Author") = dt.Rows(i).Item(2).ToString
+                dr("ISBN") = dt.Rows(i).Item(3).ToString
+                dr("Genre") = dt.Rows(i).Item(4).ToString
+                For j As Integer = 1 To 10
+                    If IsNothing(GLogin.books(j, 0)) = False AndAlso GLogin.books(j, 0).ToString.Trim = dt.Rows(i).Item(0).ToString Then
+                        dr("DueDate") = GLogin.books(j, 1).ToString.Trim
+                        Exit For
+                    End If
+                Next
+                dt2.Rows.Add(dr)
+            Next
+            Dim bs As BindingSource = New BindingSource With {
+                .DataSource = dt2
+            }
+            IssuedBooks.IssuedBookDataGrid.DataSource = bs
+        Catch ex As Exception
+            Msg.Err("SQL Error6: " + ex.Message)
+        End Try
+        con.Close()
+    End Sub
+    Public Shared Function AdminEditAccount(ByVal NewUsername As String, ByVal NewFullname As String, ByVal NewPassword As String, ByVal OldUsername As String, ByVal acctype As String) As Boolean
+        Dim str As String = "UPDATE users SET Username ='" + NewUsername + "' "
+        If NewFullname <> "" Then
+            str = str + ", Name = '" + NewFullname + "' "
+        End If
+        If NewPassword <> "" Then
+            str = str + ", Pass= '" + NewPassword + "', Salt = '" + GAdmin.Salt + "' "
+        End If
+        str = str + ", AccType= '" + acctype + "' "
+        str = str + "where Username = '" + OldUsername + "'"
+        Dim result As Integer = -1
+        Try
+            con.Open()
+            With cmd
+                .Connection = con
+                .CommandText = str
+            End With
+            result = cmd.ExecuteNonQuery
+            con.Close()
+        Catch ex As MySqlException
+            Msg.Err("SQL Error4: " + ex.Message)
+            Return False
+        End Try
+        If result = 1 Then
+            Return True
+        Else
+            Return False
+        End If
 
-	End Function
-	Public Shared Function AdminEditBook(ByVal id As String, ByVal isbn As String, ByVal name As String, ByVal author As String, ByVal genre As String, ByVal copies As String, ByVal left As String) As Boolean
-		Dim str As String = "UPDATE books SET ID ='" + id + "' "
-		If isbn <> "" Then
-			str = str + ", ISBN = '" + isbn + "' "
-		End If
-		If name <> "" Then
-			str = str + ", Name= '" + name + "' "
-		End If
-		If author <> "" Then
-			str = str + ", Author= '" + author + "' "
-		End If
-		If genre <> "" Then
-			str = str + ", Genre= '" + genre + "' "
-		End If
-		If genre <> "" Then
-			str = str + ", Genre= '" + genre + "' "
-		End If
-		If copies <> "" Then
-			str = str + ", Copies= '" + copies + "' "
-			str = str + ", Left= '" + left + "' "
-		End If
-		str = str + "where ID = '" + id + "'"
-		Dim result As Integer = -1
-		Try
-			con.Open()
-			With cmd
-				.Connection = con
-				.CommandText = str
-			End With
-			result = cmd.ExecuteNonQuery
-			con.Close()
-		Catch ex As MySqlException
-			Msg.Err("SQL Error4: " + ex.Message)
-			Return False
-		End Try
-		If result = 1 Then
-			Return True
-		Else
-			Return False
-		End If
+    End Function
+    Public Shared Function AdminEditBook(ByVal id As String, ByVal isbn As String, ByVal name As String, ByVal author As String, ByVal genre As String, ByVal copies As String, ByVal left As String) As Boolean
+        Dim str As String = "UPDATE books SET ID ='" + id + "' "
+        If isbn <> "" Then
+            str = str + ", ISBN = '" + isbn + "' "
+        End If
+        If name <> "" Then
+            str = str + ", Name= '" + name + "' "
+        End If
+        If author <> "" Then
+            str = str + ", Author= '" + author + "' "
+        End If
+        If genre <> "" Then
+            str = str + ", Genre= '" + genre + "' "
+        End If
+        If genre <> "" Then
+            str = str + ", Genre= '" + genre + "' "
+        End If
+        If copies <> "" Then
+            str = str + ", Copies= '" + copies + "' "
+            str = str + ", Left= '" + left + "' "
+        End If
+        str = str + "where ID = '" + id + "'"
+        Dim result As Integer = -1
+        Try
+            con.Open()
+            With cmd
+                .Connection = con
+                .CommandText = str
+            End With
+            result = cmd.ExecuteNonQuery
+            con.Close()
+        Catch ex As MySqlException
+            Msg.Err("SQL Error4: " + ex.Message)
+            Return False
+        End Try
+        If result = 1 Then
+            Return True
+        Else
+            Return False
+        End If
 
 
-	End Function
-	Public Shared Function BooksCopiesMinusLeft(ByVal id As String) As Integer
-		Dim Res As Integer = 0
-		Try
-			con.Open()
-			With cmd
-				.Connection = con
-				.CommandText = "SELECT Copies, `Left` FROM tables"
-			End With
-			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
-			da.SelectCommand = cmd
-			Dim dt As DataTable = New DataTable
-			da.Fill(dt)
-			con.Close()
-			Res = Integer.Parse(dt.Rows(0).Item(0)) - Integer.Parse(dt.Rows(0).Item(1))
-		Catch ex As Exception
-			Msg.Err("SQL Error6: " + ex.Message)
-			Return 0
-		End Try
-		Return Res
-	End Function
+    End Function
+    Public Shared Function BooksCopiesMinusLeft(ByVal id As String) As Integer
+        Dim Res As Integer = 0
+        Try
+            con.Open()
+            With cmd
+                .Connection = con
+                .CommandText = "SELECT Copies, `Left` FROM tables"
+            End With
+            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+            da.SelectCommand = cmd
+            Dim dt As DataTable = New DataTable
+            da.Fill(dt)
+            con.Close()
+            Res = Integer.Parse(dt.Rows(0).Item(0)) - Integer.Parse(dt.Rows(0).Item(1))
+        Catch ex As Exception
+            Msg.Err("SQL Error6: " + ex.Message)
+            Return 0
+        End Try
+        Return Res
+    End Function
+
+    Public Shared Sub PopulateApprovalDataGrid()
+        Try
+            con.Open()
+            With cmd
+                .Connection = con
+                .CommandText = "SELECT username,name,acctype as 'promote to' FROM users where confirmed = 'NO'"
+            End With
+            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+            da.SelectCommand = cmd
+            Dim dt As DataTable = New DataTable
+            da.Fill(dt)
+            Dim bs As BindingSource = New BindingSource With {
+                .DataSource = dt
+            }
+            AAAAMainForm.AdminApprovalDataGrid.DataSource = bs
+        Catch ex As Exception
+            Msg.Err("SQL Error6: " + ex.Message)
+        End Try
+        con.Close()
+    End Sub
+
+    Public Shared Sub approveuser(ByVal username As String)
+        Dim result As Integer = -1
+
+        Try
+            con.Open()
+            With cmd
+                .Connection = con
+                .CommandText = "UPDATE users SET confirmed = 'YES' where username = '" & username & "'"
+            End With
+
+            result = cmd.ExecuteNonQuery
+            Alert("Success", "User is approved !")
+
+            If result = 1 Then
+            Else
+            End If
+            con.Close()
+
+
+            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+
+        Catch ex As MySqlException
+            Msg.Err("SQL Error4: " + ex.Message)
+
+        End Try
+    End Sub
+
+    Public Shared Sub disapproveuser(ByVal username As String)
+        Dim result As Integer = -1
+
+        Try
+            con.Open()
+            With cmd
+                .Connection = con
+                .CommandText = "DELETE from users where username = '" & username & "'"
+            End With
+
+            result = cmd.ExecuteNonQuery
+            Alert("Success", "User Deleted!")
+            If result = 1 Then
+            Else
+            End If
+            con.Close()
+
+
+            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+
+        Catch ex As MySqlException
+            Msg.Err("SQL Error4: " + ex.Message)
+
+        End Try
+    End Sub
+
+
 End Class

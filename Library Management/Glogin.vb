@@ -12,6 +12,7 @@
 	Public Shared Salt As String = ""
 	Public Shared TempSalt As String = ""
     Public Shared TempHash As String = ""
+    Public Shared confirmed As String = ""
 
     Public Shared due_array(10) As Integer
     Public Shared books(10, 10) As String    '1ST INDEX CONTAINS BOOKID AND 2ND INDEX CONTAINS DATE.
@@ -28,8 +29,9 @@
 		Salt = ""
 		Due = 0
 		BooksIssued = 0
-		lib_id = 0
-		LoggedIn = False
+        lib_id = 0
+        confirmed = ""
+        LoggedIn = False
 		'ParentForm = ""
 	End Sub
 End Class
