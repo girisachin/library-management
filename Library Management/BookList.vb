@@ -21,8 +21,12 @@
 		Clipboard.SetText(s)
 	End Sub
 	Private Sub IssueSelectedBookToolStrip_Click(sender As Object, e As EventArgs) Handles IssueSelectedBookToolStrip.Click
-        Dim bookid As String = SearchBookDataGrid.Rows(SearchBookCurrentRow).Cells(0).Value.ToString
-        IssueBookByID(bookid)
+		Dim bookid As String = SearchBookDataGrid.Rows(SearchBookCurrentRow).Cells(0).Value.ToString
+		If GLogin.LoggedIn = False Then
+			Alert("Warning", "LogIn To Continue")
+			Exit Sub
+		End If
+		IssueBookByID(bookid)
 
         SQLInterface.PopulateSearchBooksTable(AAAAMainForm.SearchBookIDTextBox.Text, AAAAMainForm.SearchBookISBNTextBox.Text, AAAAMainForm.SearchBookNameTextBox.Text, AAAAMainForm.SearchBookGenreTextBox.Text, AAAAMainForm.SearchBookAuthorTextBox.Text)
 

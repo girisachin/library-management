@@ -1,5 +1,6 @@
 ﻿Public Class IssuedBooks
 	Private Sub IssuedBooks_Load(sender As Object, e As EventArgs) Handles Me.Load
+
 		SQLInterface.PopulateIssuedBooks()
 	End Sub
 	Private BookCurrentRow As Integer = -1

@@ -95,8 +95,8 @@
 
         For i As Integer = 1 To 10
             If GLogin.books(i, 0).Trim <> "" Then
-                datediffval = DateDiff("d", GLogin.books(i, 1), DateAndTime.Now())
-                If datediffval > 45 Then
+				datediffval = DateDiff("d", DateTime.ParseExact(GLogin.books(i, 1), "dd/MM/yyyy", System.Globalization.DateTimeFormatInfo.InvariantInfo), DateAndTime.Now())
+				If datediffval > 45 Then
                     due = due + (datediffval - 45) * 1
                     GLogin.due_array(i) = (datediffval - 45) * 1
                 End If
