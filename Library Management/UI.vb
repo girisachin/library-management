@@ -786,14 +786,7 @@ Class MyComboBox : Inherits Windows.Forms.ComboBox
 	End Sub
 	Protected Overrides Sub OnMouseMove(e As MouseEventArgs)
 		MyBase.OnMouseMove(e)
-		x = e.Location.X
-		y = e.Location.Y
-		Invalidate()
-		If e.X < Width - 41 Then
-			Cursor = Cursors.IBeam
-		Else
 			Cursor = Cursors.Hand
-		End If
 	End Sub
 	Protected Overrides Sub OnDrawItem(e As DrawItemEventArgs)
 		MyBase.OnDrawItem(e) : Invalidate()

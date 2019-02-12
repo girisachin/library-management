@@ -868,6 +868,10 @@ Public Class AAAAMainForm
 
 	Private Sub DeleteUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteUserToolStripMenuItem.Click
 		Dim s As String = UserListDataGrid.Rows(UserListCurrentRow).Cells(0).Value.ToString
+        If SQLInterface.returnissuedbooksofuser(s) <> 0 Then
+            Alert("Warning", "Cannot Delete Acount!, User has to return the issued.")
+            Exit Sub
+        End If
 		If SQLInterface.AdminDeleteAccount(s) = False Then
 			Alert("Error", "Can not delete account")
 			Exit Sub
@@ -877,8 +881,25 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub BrowseBooksDataGrid_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles BrowseBooksDataGrid.CellDoubleClick
-		Console.WriteLine(e.RowIndex)
+		If e.RowIndex >= 0 Then
 		ShowBookInfo.ShowBook(BrowseBooksDataGrid.Rows(e.RowIndex).Cells(0).ToString)
+		End if
+	End Sub
+
+    Private Sub UserListDataGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles UserListDataGrid.CellContentClick
+        UserListCurrentRow = e.RowIndex
+    End Sub
+
+    Private Sub AdminApprovalDataGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles AdminApprovalDataGrid.CellContentClick
+
+    End Sub
+
+    Private Sub UserListDataGrid_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles UserListDataGrid.CellMouseEnter
+        UserListCurrentRow = e.RowIndex
+        UserListDataGrid.ClearSelection()
+        If e.RowIndex >= 0 Then
+            UserListDataGrid.Rows(e.RowIndex).Selected = True
+		End If
 	End Sub
 End Class
 

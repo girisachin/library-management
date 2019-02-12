@@ -502,7 +502,7 @@ Public Class SQLInterface
 				.Connection = con
 				.CommandText = "UPDATE users SET Due = " + GLogin.Due.ToString + ",NoOfBooks='" & GLogin.BooksIssued & "', Book1 ='" + GLogin.books(1, 0) + " " + GLogin.books(1, 1) + "', Book2 ='" + GLogin.books(2, 0) + " " & GLogin.books(2, 1) & "', Book3 ='" + GLogin.books(3, 0) + " " & GLogin.books(3, 1) & "',Book4 ='" + GLogin.books(4, 0) + " " & GLogin.books(4, 1) & "',Book5 ='" + GLogin.books(5, 0) + " " & GLogin.books(5, 1) & "',Book6 = '" + GLogin.books(6, 0) + " " & GLogin.books(6, 1) & "',Book7 ='" + GLogin.books(7, 0) + " " & GLogin.books(7, 1) & "',Book8 ='" + GLogin.books(8, 0) + " " & GLogin.books(8, 1) & "',Book9 ='" + GLogin.books(9, 0) + " " & GLogin.books(9, 1) & "',Book10 ='" + GLogin.books(10, 0) + " " & GLogin.books(10, 1) & "' WHERE BINARY Username='" + GLogin.Username + "'"
 				'.CommandText = "UPDATE users SET Due = " + GLogin.Due + ", NoOfBooks=" + GLogin.BooksIssued + ", Book1 ='" + GLogin.books(1, 0) + " " + GLogin.books(1, 1) + "', Book2 ='" + GLogin.books(2, 0) + " " + GLogin.books(2, 1) + "', Book3 ='" + GLogin.books(3, 0) + " " + GLogin.books(3, 1) + "', Book4 ='" + GLogin.books(4, 0) + " " + GLogin.books(4, 1) + "', Book5 ='" + GLogin.books(5, 0) + " " + GLogin.books(5, 1) + "', Book6 ='" + GLogin.books(6, 0) + " " + GLogin.books(6, 1) + "', Book7 ='" + GLogin.books(7, 0) + " " + GLogin.books(7, 1) + "', Book8 ='" + GLogin.books(8, 0) + " " + GLogin.books(8, 1) + "', Book9 ='" + GLogin.books(9, 0) + " " + GLogin.books(9, 1) + "', Book10='" + GLogin.books(10, 0) + " " + GLogin.books(10, 1) + "' WHERE Username='" + GLogin.Username + "'"
-				Console.WriteLine(cmd.CommandText)
+				'Console.WriteLine(cmd.CommandText)
 			End With
 			result = cmd.ExecuteNonQuery
 			con.Close()
@@ -765,6 +765,35 @@ Public Class SQLInterface
 
         End Try
     End Sub
+    Public Shared Sub UpdateDueinTable(ByVal username As String)
+
+
+        Dim result As Integer = -1
+
+        Try
+            con.Open()
+            With cmd
+                .Connection = con
+                .CommandText = "UPDATE users set Due = '" & GLogin.Due & "' where username = '" & username & "'"
+            End With
+
+
+            result = cmd.ExecuteNonQuery
+            con.Close()
+
+
+            'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+
+        Catch ex As MySqlException
+            Msg.Err("SQL Error4: " + ex.Message)
+
+        End Try
+        If result = 1 Then
+
+        Else
+
+        End If
+        End Sub
 	Public Shared Function ClearDue(ByVal username As String) As Boolean
 		Dim result As Integer = -1
 

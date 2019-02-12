@@ -67,4 +67,11 @@
         SQLInterface.PopulateIssuedBooks()
 
     End Sub
+    Private Sub IssuedBookDataGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles IssuedBookDataGrid.CellContentClick
+
+    End Sub
+
+    Private Sub IssuedBookDataGrid_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles IssuedBookDataGrid.CellDoubleClick
+        ShowBookInfo.ShowBook(IssuedBookDataGrid.Rows(e.RowIndex).Cells(0).ToString)
+    End Sub
 End Class
