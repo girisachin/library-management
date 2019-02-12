@@ -1,4 +1,4 @@
-﻿Public Class GLogin
+﻿Public Class GLogin ' global vars to store login vars
 
 	Public Shared Username As String = ""
 	Public Shared Fullname As String = ""
@@ -6,22 +6,22 @@
 	Public Shared AccType As String = ""
 	Public Shared UnhashedPassword As String = ""
 	Public Shared Due As Integer = 0
-    Public Shared currentdue As Integer = 0
+	Public Shared currentdue As Integer = 0
 	Public Shared BooksIssued As Integer = 0
 	Public Shared lib_id As Integer = 0
 	Public Shared LoggedIn As Boolean = False
 	Public Shared Salt As String = ""
 	Public Shared TempSalt As String = ""
-    Public Shared TempHash As String = ""
+	Public Shared TempHash As String = ""
 	Public Shared confirmed As String = ""
 
 	Public Shared due_array(10) As Integer
-    Public Shared books(10, 10) As String    '1ST INDEX CONTAINS BOOKID AND 2ND INDEX CONTAINS DATE.
+	Public Shared books(10, 10) As String    '1ST INDEX CONTAINS BOOKID AND 2ND INDEX CONTAINS DATE.
 
 
 
-    'Public Shared ParentForm As String = ""
-    Public Shared Sub LogOut()
+	'Public Shared ParentForm As String = ""
+	Public Shared Sub LogOut() ' clears all global vars
 		Username = ""
 		Fullname = ""
 		UnhashedPassword = ""
@@ -30,14 +30,14 @@
 		Salt = ""
 		Due = 0
 		BooksIssued = 0
-        lib_id = 0
-        confirmed = ""
-        LoggedIn = False
+		lib_id = 0
+		confirmed = ""
+		LoggedIn = False
 		'ParentForm = ""
 	End Sub
 End Class
 
-Public Class GAdmin
+Public Class GAdmin ' Global vars for admin administration
 
 	Public Shared Username As String = ""
 	Public Shared Fullname As String = ""

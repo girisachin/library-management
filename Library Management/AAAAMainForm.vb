@@ -19,6 +19,7 @@ Public Class AAAAMainForm
 			AlertBox6.ShowControl(MyAlertBox._Kind.Success, str, 2000)
 			AlertBox7.ShowControl(MyAlertBox._Kind.Success, str, 2000)
 			AlertBox8.ShowControl(MyAlertBox._Kind.Success, str, 2000)
+			AlertBox9.ShowControl(MyAlertBox._Kind.Success, str, 2000)
 		ElseIf status = "Warning" Then
 			AlertBox1.ShowControl(MyAlertBox._Kind.Info, str, 2000)
 			AlertBox2.ShowControl(MyAlertBox._Kind.Info, str, 2000)
@@ -28,6 +29,7 @@ Public Class AAAAMainForm
 			AlertBox6.ShowControl(MyAlertBox._Kind.Info, str, 2000)
 			AlertBox7.ShowControl(MyAlertBox._Kind.Info, str, 2000)
 			AlertBox8.ShowControl(MyAlertBox._Kind.Info, str, 2000)
+			AlertBox9.ShowControl(MyAlertBox._Kind.Info, str, 2000)
 		Else
 			AlertBox1.ShowControl(MyAlertBox._Kind.Error, str, 2000)
 			AlertBox2.ShowControl(MyAlertBox._Kind.Error, str, 2000)
@@ -37,6 +39,7 @@ Public Class AAAAMainForm
 			AlertBox6.ShowControl(MyAlertBox._Kind.Error, str, 2000)
 			AlertBox7.ShowControl(MyAlertBox._Kind.Error, str, 2000)
 			AlertBox8.ShowControl(MyAlertBox._Kind.Error, str, 2000)
+			AlertBox9.ShowControl(MyAlertBox._Kind.Error, str, 2000)
 		End If
 	End Sub
 
@@ -111,38 +114,44 @@ Public Class AAAAMainForm
 		GLogin.Username = LoginUsernameTextBox.Text
 		GLogin.UnhashedPassword = LoginPasswordTextBox.Text 'CheckOldPassword(PasswordTextBox.Text)
 		If SQLInterface.Login() = True Then
+
 			If GLogin.confirmed = "No" Then
 				Alert("Warning", "Admin has not confirmed your account")
 				GLogin.LogOut()
 				Exit Sub
 			End If
+			If StaySignedIn.Checked = True Then
+				My.Settings.savedusername = LoginUsernameTextBox.Text
+				My.Settings.savedpassword = LoginPasswordTextBox.Text
+				My.Settings.Save()
+			End If
 			' Logged in successfully
-			StatusBar.Text = "Logged in as " + GLogin.Username + "(" + GLogin.AccType + ")"
+			StatusBar.Text = "Logged in as " + GLogin.Fullname + "(" + GLogin.AccType + ")"
 			Alert("Success", "Logged In !")
-			DisablePage(LoginSignupTab)
-			EnablePage(IssueBookTab)
-			EnablePage(SummaryTab)
-			AAAALogoutButton.Visible = True
-			If GLogin.AccType = "Admin" Then
-				EnablePage(AdminOptionsTab)
-			End If
-			SummaryDueTextBox.Text = GLogin.Due.ToString
-			SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
-			SummaryUsernameTextBox.Text = GLogin.Username
-			SummaryFullnameTextBox.Text = GLogin.Fullname
-			MyTextBox3.Text = GLogin.Fullname
-			MyTextBox4.Text = GLogin.Username
-			If GLogin.AccType = "Admin" Then
-				SummaryProfileDropDownBox.SelectedIndex = 2
-			ElseIf GLogin.AccType = "Teacher" Then
-				SummaryProfileDropDownBox.SelectedIndex = 1
+				DisablePage(LoginSignupTab)
+				EnablePage(IssueBookTab)
+				EnablePage(SummaryTab)
+				AAAALogoutButton.Visible = True
+				If GLogin.AccType = "Admin" Then
+					EnablePage(AdminOptionsTab)
+				End If
+				SummaryDueTextBox.Text = GLogin.Due.ToString
+				SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
+				SummaryUsernameTextBox.Text = GLogin.Username
+				SummaryFullnameTextBox.Text = GLogin.Fullname
+				MyTextBox3.Text = GLogin.Fullname
+				MyTextBox4.Text = GLogin.Username
+				If GLogin.AccType = "Admin" Then
+					SummaryProfileDropDownBox.SelectedIndex = 2
+				ElseIf GLogin.AccType = "Teacher" Then
+					SummaryProfileDropDownBox.SelectedIndex = 1
+				Else
+					SummaryProfileDropDownBox.SelectedIndex = 0
+				End If
+				'SQLInterface.loadissuedbooks(GLogin.books)
 			Else
-				SummaryProfileDropDownBox.SelectedIndex = 0
-			End If
-			'SQLInterface.loadissuedbooks(GLogin.books)
-		Else
-			' Incorrect login
-			Alert("Error", "Username and Password do not match")
+				' Incorrect login
+				Alert("Error", "Username and Password do not match")
 			GLogin.LogOut()
 		End If
 	End Sub
@@ -218,6 +227,36 @@ Public Class AAAAMainForm
 		If servertime <> clienttime Then
 			Msg.Err("Client Time is " + clienttime + " but server time is " + servertime + ". Correct you date and time settings")
 			Environment.Exit(0)
+		End If
+		If My.Settings.savedusername <> "" Then
+			GLogin.Username = My.Settings.savedusername
+			GLogin.UnhashedPassword = My.Settings.savedpassword
+			If SQLInterface.Login() = True Then
+				Alert("Success", "Auto-logged you in as " + GLogin.Fullname + "(" + GLogin.AccType + ")")
+				StatusBar.Text = "Logged in as " + GLogin.Fullname + "(" + GLogin.AccType + ")"
+				DisablePage(LoginSignupTab)
+				EnablePage(IssueBookTab)
+				EnablePage(SummaryTab)
+				AAAALogoutButton.Visible = True
+				If GLogin.AccType = "Admin" Then
+					EnablePage(AdminOptionsTab)
+				End If
+				SummaryDueTextBox.Text = GLogin.Due.ToString
+				SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
+				SummaryUsernameTextBox.Text = GLogin.Username
+				SummaryFullnameTextBox.Text = GLogin.Fullname
+				MyTextBox3.Text = GLogin.Fullname
+				MyTextBox4.Text = GLogin.Username
+				If GLogin.AccType = "Admin" Then
+					SummaryProfileDropDownBox.SelectedIndex = 2
+				ElseIf GLogin.AccType = "Teacher" Then
+					SummaryProfileDropDownBox.SelectedIndex = 1
+				Else
+					SummaryProfileDropDownBox.SelectedIndex = 0
+				End If
+			Else
+				Alert("Error", "Could not Auto Login, Sign in manually")
+			End If
 		End If
 	End Sub
 
@@ -358,7 +397,7 @@ Public Class AAAAMainForm
 		SQLInterface.PopulateSearchBooksTable(BookID, BookISBN, BookName, Genre, BookAuthor)
 	End Sub
 
-	Private Sub AlertBox_Click(sender As Object, e As EventArgs) Handles AlertBox1.Click, AlertBox2.Click, AlertBox3.Click, AlertBox4.Click, AlertBox5.Click, AlertBox6.Click, AlertBox7.Click, AlertBox8.Click
+	Private Sub AlertBox_Click(sender As Object, e As EventArgs) Handles AlertBox1.Click, AlertBox2.Click, AlertBox3.Click, AlertBox4.Click, AlertBox5.Click, AlertBox6.Click, AlertBox7.Click, AlertBox8.Click, AlertBox9.Click
 		' close all alerts if we click on one of them
 		AlertBox1.Visible = False
 		AlertBox2.Visible = False
@@ -368,6 +407,7 @@ Public Class AAAAMainForm
 		AlertBox6.Visible = False
 		AlertBox7.Visible = False
 		AlertBox8.Visible = False
+		AlertBox9.Visible = False
 	End Sub
 
 	Private Sub IssueButton_Click(sender As Object, e As EventArgs) Handles IssueButton.Click
@@ -493,6 +533,7 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub SummaryEditProfileButton_Click(sender As Object, e As EventArgs) Handles SummaryEditProfileButton.Click
+		' validate contents and call sql function to change them
 		If SummaryUsernameTextBox.Text.Trim = "" AndAlso SummaryFullnameTextBox.Text.Trim <> "" AndAlso SummaryProfileDropDownBox.Text = GLogin.AccType Then
 			Alert("Warning", "Nothing to change")
 			Exit Sub
@@ -522,13 +563,15 @@ Public Class AAAAMainForm
 			Alert("Error", "Edit Profile Failed")
 			Exit Sub
 		End If
-		StatusBar.Text = "Logged in as " + GLogin.Username + "(" + GLogin.AccType + ")"
+		StatusBar.Text = "Logged in as " + GLogin.Fullname + "(" + GLogin.AccType + ")"
 		Alert("Success", "Profile Edited Successfully")
 		MyTextBox3.Text = GLogin.Fullname
 		MyTextBox4.Text = GLogin.Username
 	End Sub
 
 	Private Sub SummaryChangePasswordButton_Click(sender As Object, e As EventArgs) Handles SummaryChangePasswordButton.Click
+		' validate contents and call sql function to change them
+
 		If SummaryNewPasswordTextBox.Text <> SummaryConfirmPasswordTextBox.Text Then
 			Alert("Warning", "New Passwords do not match. Try Again")
 			SummaryNewPasswordTextBox.Text = ""
@@ -564,6 +607,7 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub AdminDeleteAccButton_Click(sender As Object, e As EventArgs) Handles AdminDeleteAccButton.Click
+		' validate contents and call sql function to change them
 		If AdminDeleteAccUsernameTextBox.Text = "" Then
 			Alert("Error", "Username is empty")
 			Exit Sub
@@ -612,6 +656,7 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub AdminRemoveBookButton_Click(sender As Object, e As EventArgs) Handles AdminRemoveBookButton.Click
+		' validate contents and call sql function to change them
 		If AdminRemoveBookIDTextBox.Text.Trim = "" Then
 			Alert("Error", "Book ID Required")
 			Exit Sub
@@ -637,6 +682,7 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub AdminAddBookButton_Click(sender As Object, e As EventArgs) Handles AdminAddBookButton.Click
+		' validate contents and call sql function to change them
 		If AdminAddBookISBN.Text = "" Or AdminAddBookName.Text = "" Or AdminAddBookAuthor.Text = "" Or AdminAddBookGenre.Text = "" Or AdminAddBookCopies.Text = "" Then
 			Alert("Warning", "Provide all details First")
 			Exit Sub
@@ -679,33 +725,24 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub TabControlMain_Selected(sender As Object, e As TabControlEventArgs) Handles TabControlMain.Selected
-		'      SignupDropDownBox.SelectedIndex = 0
-		'      AAAALogoutButton.Visible = False
-		''DisablePage(AdminOptionsTab)
-		''DisablePage(SummaryTab)
-		''DisablePage(IssueBookTab)
-		'IssueBookSearchDropDown.SelectedIndex = 0
-		'      ReturnBookSearchDropDown.SelectedIndex = 0
-		'      SQLInterface.PopulateBrowseBooksTable()
-		'      BrowseBooksDataGrid.ClearSelection()
-		'      AdminAddAccDropDown.SelectedIndex = 0
-		If e.TabPage.Name = "LoginSignupTab" Then
-		ElseIf e.TabPage.Name = "SummaryTab" Then
+		' reset everything when we open that tab
+		If e.TabPage.Name = "SummaryTab" Then
 			MyTextBox3.Text = GLogin.Fullname
 			MyTextBox4.Text = GLogin.Username
-			'CalculateDue()
-			'SummaryDueTextBox.Text = GLogin.Due.ToString
-			'SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
 			updateDueIssueText()
 
 		ElseIf e.TabPage.Name = "BrowseBooksTab" Then
 			BrowseBooksDataGrid.ClearSelection()
 			SQLInterface.PopulateBrowseBooksTable()
 		End If
-		'e.TabPage.Name
 	End Sub
 
 	Private Sub AAAALogoutButton_Click(sender As Object, e As EventArgs) Handles AAAALogoutButton.Click
+		' reset EVERYTHING in the form
+		My.Settings.savedpassword = ""
+		My.Settings.savedusername = ""
+		My.Settings.Save()
+		ClearTextBoxesFromAControl(Me)
 		If GLogin.AccType = "Admin" Then
 			DisablePage(AdminOptionsTab)
 		End If
@@ -715,6 +752,11 @@ Public Class AAAAMainForm
 		EnablePage(LoginSignupTab)
 		DisablePage(IssueBookTab)
 		DisablePage(SummaryTab)
+		SignupUsernameTextBox.Text = ""
+		SignupPasswordTextBox.Text = ""
+		SignupFullnameTextBox.Text = ""
+		SignupConfirmPasswordTextBox.Text = ""
+		SignupDropDownBox.SelectedIndex = 0
 		LoginUsernameTextBox.Text = ""
 		LoginPasswordTextBox.Text = ""
 		AAAALogoutButton.Visible = False
@@ -723,8 +765,17 @@ Public Class AAAAMainForm
 		SummaryUsernameTextBox.Text = ""
 		SummaryProfileDropDownBox.SelectedIndex = 0
 	End Sub
-
+	Public Sub ClearTextBoxesFromAControl(ctl As Control)
+		' Clears a=everything recursively
+		For Each MyControl As Control In ctl.Controls
+			If TypeOf MyControl Is TextBox Then
+				MyControl.Text = ""
+			End If
+			If MyControl.HasChildren Then ClearTextBoxesFromAControl(MyControl)
+		Next
+	End Sub
 	Private Sub SummaryViewIssuedBooks_Click(sender As Object, e As EventArgs) Handles SummaryViewIssuedBooks.Click
+		' Opens a table with list of issued books
 		If GLogin.BooksIssued = 0 Then
 			Alert("Warning", "No Books Issued")
 		Else
@@ -733,6 +784,8 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub AdminEditBookButton_Click(sender As Object, e As EventArgs) Handles AdminEditBookButton.Click
+		' validate contents and call sql function to change them
+
 		If AdminEditBookID.Text = "" Then
 			Alert("Error", "BookID required")
 			Exit Sub
@@ -745,11 +798,11 @@ Public Class AAAAMainForm
 			Alert("Warning", "Use integers in Book ID")
 			Exit Sub
 		End If
-		If ValidateInteger(AdminEditBookISBN.Text) = False Then
+		If ValidateInteger(AdminEditBookISBN.Text) = False And AdminEditBookISBN.Text <> "" Then
 			Alert("Warning", "Use only integers in ISBN")
 			Exit Sub
 		End If
-		If ValidateISBN(AdminEditBookISBN.Text) = False Then
+		If ValidateISBN(AdminEditBookISBN.Text) = False And AdminEditBookISBN.Text <> "" Then
 			Alert("Error", "ISBN checksum Failed")
 			Exit Sub
 		End If
@@ -771,12 +824,14 @@ Public Class AAAAMainForm
 		End If
 		If SQLInterface.IsCorrectBookID(AdminEditBookID.Text) = False Then
 			Alert("Error", "Book Does not Exist")
+			Exit Sub
 		End If
-		Dim issued As String = ""
-		Dim left As String = ""
-		issued = SQLInterface.BooksCopiesMinusLeft(AdminEditBookID.Text).ToString
+		Dim issued As Integer = 0
+		Dim left As Integer = 0
+
+		issued = SQLInterface.BooksCopiesMinusLeft(AdminEditBookID.Text)
 		Try
-			left = (Convert.ToInt32(AdminEditBookCopies.Text) - Convert.ToInt32(issued)).ToString
+			left = (Convert.ToInt32(AdminEditBookCopies.Text) - issued)
 		Catch ex As Exception
 			Alert("Error", "Cannot Edit, Enter Valid number of Copies")
 			Exit Sub
@@ -785,7 +840,7 @@ Public Class AAAAMainForm
 			Alert("Error", "More number of copies are already issued")
 			Exit Sub
 		End If
-		If SQLInterface.AdminEditBook(AdminEditBookID.Text, AdminEditBookISBN.Text, AdminEditBookName.Text, AdminEditBookAuthor.Text, AdminEditBookGenreTextBox.Text, AdminEditBookCopies.Text, left) = False Then
+		If SQLInterface.AdminEditBook(AdminEditBookID.Text, AdminEditBookISBN.Text, AdminEditBookName.Text, AdminEditBookAuthor.Text, AdminEditBookGenreTextBox.Text, AdminEditBookCopies.Text, left.ToString) = False Then
 			Alert("Error", "Could Not Edit bookinfo")
 			Exit Sub
 		End If
@@ -796,10 +851,6 @@ Public Class AAAAMainForm
 		Dim username As String = AdminApprovalDataGrid.Rows(approvalgridcurrentrow).Cells(0).Value.ToString
 		SQLInterface.approveuser(username)
 		SQLInterface.PopulateApprovalDataGrid()
-
-	End Sub
-
-	Private Sub CopyBookIDToolStrip1_Click(sender As Object, e As EventArgs)
 
 	End Sub
 
@@ -818,15 +869,17 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub AdminApprovalDataGrid_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles AdminApprovalDataGrid.CellMouseEnter
-		approvalgridcurrentrow = e.RowIndex
 		AdminApprovalDataGrid.ClearSelection()
 		If e.RowIndex >= 0 Then
+			approvalgridcurrentrow = e.RowIndex
 			AdminApprovalDataGrid.Rows(e.RowIndex).Selected = True
 		End If
 
 	End Sub
 
 	Private Sub MyButton1_Click(sender As Object, e As EventArgs) Handles MyButton1.Click
+		' validate contents and call sql function to change them
+		' clears due
 		If MyTextBox5.Text = "" Then
 			Alert("Error", "Username is empty")
 			Exit Sub
@@ -867,11 +920,12 @@ Public Class AAAAMainForm
 	End Sub
 
 	Private Sub DeleteUserToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DeleteUserToolStripMenuItem.Click
+		' delete a user
 		Dim s As String = UserListDataGrid.Rows(UserListCurrentRow).Cells(0).Value.ToString
-        If SQLInterface.returnissuedbooksofuser(s) <> 0 Then
-            Alert("Warning", "Cannot Delete Acount!, User has to return the issued.")
-            Exit Sub
-        End If
+		If SQLInterface.returnissuedbooksofuser(s) <> 0 Then
+			Alert("Warning", "Cannot Delete Acount!, User has to return the issued.")
+			Exit Sub
+		End If
 		If SQLInterface.AdminDeleteAccount(s) = False Then
 			Alert("Error", "Can not delete account")
 			Exit Sub
@@ -882,19 +936,15 @@ Public Class AAAAMainForm
 
 	Private Sub BrowseBooksDataGrid_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles BrowseBooksDataGrid.CellDoubleClick
 		If e.RowIndex >= 0 Then
-		ShowBookInfo.ShowBook(BrowseBooksDataGrid.Rows(e.RowIndex).Cells(0).ToString)
+			ShowBookInfo.ShowBook(BrowseBooksDataGrid.Rows(e.RowIndex).Cells(0).Value.ToString)
 		End if
 	End Sub
 
-    Private Sub UserListDataGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles UserListDataGrid.CellContentClick
-        UserListCurrentRow = e.RowIndex
-    End Sub
+	Private Sub UserListDataGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles UserListDataGrid.CellContentClick
+		UserListCurrentRow = e.RowIndex
+	End Sub
 
-    Private Sub AdminApprovalDataGrid_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles AdminApprovalDataGrid.CellContentClick
-
-    End Sub
-
-    Private Sub UserListDataGrid_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles UserListDataGrid.CellMouseEnter
+	Private Sub UserListDataGrid_CellMouseEnter(sender As Object, e As DataGridViewCellEventArgs) Handles UserListDataGrid.CellMouseEnter
         UserListCurrentRow = e.RowIndex
         UserListDataGrid.ClearSelection()
         If e.RowIndex >= 0 Then

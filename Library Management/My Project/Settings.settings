@@ -14,5 +14,11 @@
     <Setting Name="database" Type="System.String" Scope="User">
       <Value Profile="(Default)">lib</Value>
     </Setting>
+    <Setting Name="savedusername" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="savedpassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -92,7 +92,6 @@
     <Compile Include="BookList.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="duescript.vb" />
     <Compile Include="GetServer.Designer.vb">
       <DependentUpon>GetServer.vb</DependentUpon>
     </Compile>

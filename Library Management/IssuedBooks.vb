@@ -72,6 +72,6 @@
     End Sub
 
     Private Sub IssuedBookDataGrid_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles IssuedBookDataGrid.CellDoubleClick
-        ShowBookInfo.ShowBook(IssuedBookDataGrid.Rows(e.RowIndex).Cells(0).ToString)
-    End Sub
+		ShowBookInfo.ShowBook(IssuedBookDataGrid.Rows(e.RowIndex).Cells(0).Value.ToString)
+	End Sub
 End Class

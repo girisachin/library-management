@@ -23,6 +23,8 @@ Partial Class ShowBookInfo
 	<System.Diagnostics.DebuggerStepThrough()> _
 	Private Sub InitializeComponent()
 		Me.FormSkin1 = New Library_Management.FormSkin()
+		Me.GoButton = New Library_Management.MyButton()
+		Me.Action = New Library_Management.MyComboBox()
 		Me.MyLabel5 = New Library_Management.MyLabel()
 		Me.MyLabel4 = New Library_Management.MyLabel()
 		Me.MyLabel3 = New Library_Management.MyLabel()
@@ -35,8 +37,8 @@ Partial Class ShowBookInfo
 		Me.BookID = New Library_Management.MyTextBox()
 		Me.MyMini1 = New Library_Management.MyMini()
 		Me.MyClose1 = New Library_Management.MyClose()
-		Me.Action = New Library_Management.MyComboBox()
-		Me.GoButton = New Library_Management.MyButton()
+		Me.Genre = New Library_Management.MyTextBox()
+		Me.Label = New Library_Management.MyLabel()
 		Me.FormSkin1.SuspendLayout()
 		Me.SuspendLayout()
 		'
@@ -46,11 +48,13 @@ Partial Class ShowBookInfo
 		Me.FormSkin1.Controls.Add(Me.GoButton)
 		Me.FormSkin1.Controls.Add(Me.Action)
 		Me.FormSkin1.Controls.Add(Me.MyLabel5)
+		Me.FormSkin1.Controls.Add(Me.Label)
 		Me.FormSkin1.Controls.Add(Me.MyLabel4)
 		Me.FormSkin1.Controls.Add(Me.MyLabel3)
 		Me.FormSkin1.Controls.Add(Me.MyLabel2)
 		Me.FormSkin1.Controls.Add(Me.MyLabel1)
 		Me.FormSkin1.Controls.Add(Me.CopiesLeft)
+		Me.FormSkin1.Controls.Add(Me.Genre)
 		Me.FormSkin1.Controls.Add(Me.BookISBN)
 		Me.FormSkin1.Controls.Add(Me.BookAuthor)
 		Me.FormSkin1.Controls.Add(Me.BookName)
@@ -65,13 +69,39 @@ Partial Class ShowBookInfo
 		Me.FormSkin1.TabIndex = 0
 		Me.FormSkin1.Text = "Book Info"
 		'
+		'GoButton
+		'
+		Me.GoButton.BackColor = System.Drawing.Color.Transparent
+		Me.GoButton.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.GoButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.GoButton.Location = New System.Drawing.Point(359, 411)
+		Me.GoButton.Name = "GoButton"
+		Me.GoButton.Size = New System.Drawing.Size(106, 32)
+		Me.GoButton.TabIndex = 5
+		Me.GoButton.Text = "Go"
+		'
+		'Action
+		'
+		Me.Action.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(48, Byte), Integer))
+		Me.Action.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.Action.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+		Me.Action.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.Action.Font = New System.Drawing.Font("Segoe UI", 8.0!)
+		Me.Action.ForeColor = System.Drawing.Color.White
+		Me.Action.FormattingEnabled = True
+		Me.Action.ItemHeight = 18
+		Me.Action.Location = New System.Drawing.Point(325, 381)
+		Me.Action.Name = "Action"
+		Me.Action.Size = New System.Drawing.Size(175, 24)
+		Me.Action.TabIndex = 4
+		'
 		'MyLabel5
 		'
 		Me.MyLabel5.AutoSize = True
 		Me.MyLabel5.BackColor = System.Drawing.Color.Transparent
 		Me.MyLabel5.Font = New System.Drawing.Font("Segoe UI", 12.0!)
 		Me.MyLabel5.ForeColor = System.Drawing.Color.White
-		Me.MyLabel5.Location = New System.Drawing.Point(250, 275)
+		Me.MyLabel5.Location = New System.Drawing.Point(250, 310)
 		Me.MyLabel5.Name = "MyLabel5"
 		Me.MyLabel5.Size = New System.Drawing.Size(87, 21)
 		Me.MyLabel5.TabIndex = 3
@@ -128,7 +158,7 @@ Partial Class ShowBookInfo
 		'CopiesLeft
 		'
 		Me.CopiesLeft.BackColor = System.Drawing.Color.Transparent
-		Me.CopiesLeft.Location = New System.Drawing.Point(348, 271)
+		Me.CopiesLeft.Location = New System.Drawing.Point(348, 306)
 		Me.CopiesLeft.MaxLength = 32767
 		Me.CopiesLeft.Multiline = False
 		Me.CopiesLeft.Name = "CopiesLeft"
@@ -212,31 +242,30 @@ Partial Class ShowBookInfo
 		Me.MyClose1.TabIndex = 0
 		Me.MyClose1.Text = "MyClose1"
 		'
-		'Action
+		'Genre
 		'
-		Me.Action.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(48, Byte), Integer))
-		Me.Action.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.Action.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-		Me.Action.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.Action.Font = New System.Drawing.Font("Segoe UI", 8.0!)
-		Me.Action.ForeColor = System.Drawing.Color.White
-		Me.Action.FormattingEnabled = True
-		Me.Action.ItemHeight = 18
-		Me.Action.Location = New System.Drawing.Point(324, 343)
-		Me.Action.Name = "Action"
-		Me.Action.Size = New System.Drawing.Size(175, 24)
-		Me.Action.TabIndex = 4
+		Me.Genre.BackColor = System.Drawing.Color.Transparent
+		Me.Genre.Location = New System.Drawing.Point(348, 271)
+		Me.Genre.MaxLength = 32767
+		Me.Genre.Multiline = False
+		Me.Genre.Name = "Genre"
+		Me.Genre.ReadOnly = True
+		Me.Genre.Size = New System.Drawing.Size(225, 29)
+		Me.Genre.TabIndex = 2
+		Me.Genre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left
+		Me.Genre.UseSystemPasswordChar = False
 		'
-		'GoButton
+		'Label
 		'
-		Me.GoButton.BackColor = System.Drawing.Color.Transparent
-		Me.GoButton.Cursor = System.Windows.Forms.Cursors.Hand
-		Me.GoButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.GoButton.Location = New System.Drawing.Point(358, 373)
-		Me.GoButton.Name = "GoButton"
-		Me.GoButton.Size = New System.Drawing.Size(106, 32)
-		Me.GoButton.TabIndex = 5
-		Me.GoButton.Text = "Go"
+		Me.Label.AutoSize = True
+		Me.Label.BackColor = System.Drawing.Color.Transparent
+		Me.Label.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.Label.ForeColor = System.Drawing.Color.White
+		Me.Label.Location = New System.Drawing.Point(250, 275)
+		Me.Label.Name = "Label"
+		Me.Label.Size = New System.Drawing.Size(52, 21)
+		Me.Label.TabIndex = 3
+		Me.Label.Text = "Genre"
 		'
 		'ShowBookInfo
 		'
@@ -270,4 +299,6 @@ Partial Class ShowBookInfo
 	Friend WithEvents BookID As MyTextBox
 	Friend WithEvents GoButton As MyButton
 	Friend WithEvents Action As MyComboBox
+	Friend WithEvents Label As MyLabel
+	Friend WithEvents Genre As MyTextBox
 End Class
