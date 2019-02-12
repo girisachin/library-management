@@ -467,15 +467,16 @@ Public Class SQLInterface
 	Public Shared Function IsCorrectBookID(ByVal id As String) As Boolean
 		Dim res As Integer = -1
 		Dim dt As DataTable = New DataTable
-		Try
-			con.Open()
-			cmd.Connection = con
-			cmd.CommandText = "SELECT `Left` FROM books where ID = '" + id + "'"
-			da.SelectCommand = cmd
-			da.Fill(dt)
-			con.Close()
-		Catch ex As MySqlException
-			Return False
+        Try
+            con.Open()
+            cmd.Connection = con
+            cmd.CommandText = "SELECT `Left` FROM books where ID = '" + id + "'"
+            da.SelectCommand = cmd
+            da.Fill(dt)
+            con.Close()
+        Catch ex As MySqlException
+            MsgBox(ex.Message)
+            Return False
 		End Try
 		res = dt.Rows.Count
 
@@ -619,7 +620,7 @@ Public Class SQLInterface
 
     End Function
     Public Shared Function AdminEditBook(ByVal id As String, ByVal isbn As String, ByVal name As String, ByVal author As String, ByVal genre As String, ByVal copies As String, ByVal left As String) As Boolean
-        Dim str As String = "UPDATE books SET ID ='" + id + "' "
+        Dim str As String = "UPDATE books SET ID = '" + id + "' "
         If isbn <> "" Then
             str = str + ", ISBN = '" + isbn + "' "
         End If
@@ -637,9 +638,9 @@ Public Class SQLInterface
         End If
         If copies <> "" Then
             str = str + ", Copies= '" + copies + "' "
-            str = str + ", Left= '" + left + "' "
+            str = str + ", `Left`= '" + left + "' "
         End If
-        str = str + "where ID = '" + id + "'"
+        str = str + " where ID = '" + id.ToString + "'"
         Dim result As Integer = -1
         Try
             con.Open()
@@ -667,7 +668,7 @@ Public Class SQLInterface
             con.Open()
             With cmd
                 .Connection = con
-                .CommandText = "SELECT Copies, `Left` FROM tables"
+                .CommandText = "SELECT Copies, `Left` FROM books"
             End With
             'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
             da.SelectCommand = cmd

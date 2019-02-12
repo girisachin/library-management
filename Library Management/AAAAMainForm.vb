@@ -651,7 +651,12 @@ Public Class AAAAMainForm
         Dim issued As String = ""
         Dim left As String = ""
         issued = SQLInterface.BooksCopiesMinusLeft(AdminEditBookID.Text).ToString
-        left = (Convert.ToUInt64(AdminEditBookCopies.Text) - Convert.ToUInt64(issued)).ToString
+        Try
+            left = (Convert.ToUInt64(AdminEditBookCopies.Text) - Convert.ToUInt64(issued)).ToString
+        Catch ex As Exception
+            Alert("error", "Cannot Edit, Enter Valid number of Copies")
+            Exit Sub
+        End Try
         If left < 0 Then
             Alert("Error", "More number of copies are already issued")
             Exit Sub
