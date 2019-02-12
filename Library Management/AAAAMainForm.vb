@@ -198,6 +198,10 @@ Public Class AAAAMainForm
 		While SQLInterface.GetSysDateTime() = False
 			GetServer.ShowDialog()
 		End While
+		If servertime <> clienttime Then
+			Msg.Err("Client Time is " + clienttime + " but server time is " + servertime + ". Correct you date and time settings")
+			Environment.Exit(0)
+		End If
 	End Sub
 	Private Sub SummaryOldPasswordPicture_Click(sender As Object, e As EventArgs) Handles SummaryOldPasswordPicture.Click
 		' hide/show password
@@ -585,6 +589,11 @@ Public Class AAAAMainForm
 			Alert("Error", "Book does not exist")
 			Exit Sub
 		End If
+		Dim issued As Integer = SQLInterface.BooksCopiesMinusLeft(AdminRemoveBookIDTextBox.Text)
+		If issued > 0 Then
+			Alert("Warning", "Someone has issued this book, can not remove")
+			Exit Sub
+		End If
 		If SQLInterface.AdminDeleteBook(AdminRemoveBookIDTextBox.Text) = False Then
 			Alert("Error", "Could not delete book. Try Again Later")
 			Exit Sub
@@ -668,6 +677,8 @@ Public Class AAAAMainForm
 		EnablePage(LoginSignupTab)
 		DisablePage(IssueBookTab)
 		DisablePage(SummaryTab)
+		LoginUsernameTextBox.Text = ""
+		LoginPasswordTextBox.Text = ""
 		AAAALogoutButton.Visible = False
 		SummaryDueTextBox.Text = "0"
 		SummaryBooksIssuedTextBox.Text = "0"
@@ -725,9 +736,9 @@ Public Class AAAAMainForm
 		Dim left As String = ""
 		issued = SQLInterface.BooksCopiesMinusLeft(AdminEditBookID.Text).ToString
 		Try
-			left = (Convert.ToUInt64(AdminEditBookCopies.Text) - Convert.ToUInt64(issued)).ToString
+			left = (Convert.ToInt32(AdminEditBookCopies.Text) - Convert.ToInt32(issued)).ToString
 		Catch ex As Exception
-			Alert("error", "Cannot Edit, Enter Valid number of Copies")
+			Alert("Error", "Cannot Edit, Enter Valid number of Copies")
 			Exit Sub
 		End Try
 		If left < 0 Then

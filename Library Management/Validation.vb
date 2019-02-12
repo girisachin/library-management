@@ -1,4 +1,7 @@
 ﻿Module Validation
+	Public servertime As String
+	Public clienttime As String
+
 	Public Function ValidateUsername(ByVal Str As String) As Boolean
 		For Each C As Char In Str
 			If AscW(C) >= AscW("a") AndAlso AscW("z") >= AscW(C) Then
@@ -37,7 +40,7 @@
 				Continue For
 			ElseIf AscW("A") <= AscW(C) AndAlso AscW(C) <= AscW("Z") Then
 				Continue For
-			ElseIf AscW("_") = AscW(C) Or AscW(C) = AscW(" ") Or AscW(":") = AscW(C) Or AscW(C) = AscW("'") Or AscW(C) = AscW(",") Or AscW(C) = AscW("(") Or AscW(C) = AscW(")") Then
+			ElseIf AscW("_") = AscW(C) Or AscW(C) = AscW(" ") Or AscW(":") = AscW(C) Or AscW(C) = AscW("'") Or AscW(C) = AscW(",") Or AscW(C) = AscW("(") Or AscW(C) = AscW(")") Or AscW(C) = AscW("+") Then
 				Continue For
 			Else
 				Return False

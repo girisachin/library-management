@@ -317,7 +317,7 @@ Partial Class AAAAMainForm
 		Me.TabControlMain.Multiline = True
 		Me.TabControlMain.Name = "TabControlMain"
 		Me.TabControlMain.SelectedIndex = 0
-		Me.TabControlMain.Size = New System.Drawing.Size(900, 609)
+		Me.TabControlMain.Size = New System.Drawing.Size(900, 611)
 		Me.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
 		Me.TabControlMain.TabIndex = 0
 		Me.TabControlMain.Tag = ""
@@ -341,7 +341,7 @@ Partial Class AAAAMainForm
 		Me.SearchBooksTab.Location = New System.Drawing.Point(4, 44)
 		Me.SearchBooksTab.Name = "SearchBooksTab"
 		Me.SearchBooksTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.SearchBooksTab.Size = New System.Drawing.Size(892, 561)
+		Me.SearchBooksTab.Size = New System.Drawing.Size(892, 563)
 		Me.SearchBooksTab.TabIndex = 0
 		Me.SearchBooksTab.Text = "Search Books"
 		'
@@ -514,7 +514,7 @@ Partial Class AAAAMainForm
 		Me.BrowseBooksTab.Location = New System.Drawing.Point(4, 44)
 		Me.BrowseBooksTab.Name = "BrowseBooksTab"
 		Me.BrowseBooksTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.BrowseBooksTab.Size = New System.Drawing.Size(892, 561)
+		Me.BrowseBooksTab.Size = New System.Drawing.Size(892, 563)
 		Me.BrowseBooksTab.TabIndex = 1
 		Me.BrowseBooksTab.Text = "Browse Books"
 		'
@@ -602,7 +602,7 @@ Partial Class AAAAMainForm
 		Me.BrowseBooksDataGrid.ShowCellErrors = False
 		Me.BrowseBooksDataGrid.ShowEditingIcon = False
 		Me.BrowseBooksDataGrid.ShowRowErrors = False
-		Me.BrowseBooksDataGrid.Size = New System.Drawing.Size(886, 555)
+		Me.BrowseBooksDataGrid.Size = New System.Drawing.Size(886, 557)
 		Me.BrowseBooksDataGrid.TabIndex = 0
 		'
 		'BrowseBooksContextMenu
@@ -649,7 +649,7 @@ Partial Class AAAAMainForm
 		Me.IssueBookTab.Location = New System.Drawing.Point(4, 44)
 		Me.IssueBookTab.Name = "IssueBookTab"
 		Me.IssueBookTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.IssueBookTab.Size = New System.Drawing.Size(892, 561)
+		Me.IssueBookTab.Size = New System.Drawing.Size(892, 563)
 		Me.IssueBookTab.TabIndex = 2
 		Me.IssueBookTab.Text = "Issue/Return Book"
 		'
@@ -774,7 +774,7 @@ Partial Class AAAAMainForm
 		Me.SummaryTab.Location = New System.Drawing.Point(4, 44)
 		Me.SummaryTab.Name = "SummaryTab"
 		Me.SummaryTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.SummaryTab.Size = New System.Drawing.Size(892, 561)
+		Me.SummaryTab.Size = New System.Drawing.Size(892, 563)
 		Me.SummaryTab.TabIndex = 6
 		Me.SummaryTab.Text = "DashBoard"
 		'
@@ -1206,7 +1206,7 @@ Partial Class AAAAMainForm
 		Me.AdminOptionsTab.Location = New System.Drawing.Point(4, 44)
 		Me.AdminOptionsTab.Name = "AdminOptionsTab"
 		Me.AdminOptionsTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.AdminOptionsTab.Size = New System.Drawing.Size(892, 561)
+		Me.AdminOptionsTab.Size = New System.Drawing.Size(892, 563)
 		Me.AdminOptionsTab.TabIndex = 5
 		Me.AdminOptionsTab.Text = "Admin Options"
 		'
@@ -1222,7 +1222,7 @@ Partial Class AAAAMainForm
 		Me.AdminTabControl.Multiline = True
 		Me.AdminTabControl.Name = "AdminTabControl"
 		Me.AdminTabControl.SelectedIndex = 0
-		Me.AdminTabControl.Size = New System.Drawing.Size(886, 555)
+		Me.AdminTabControl.Size = New System.Drawing.Size(886, 557)
 		Me.AdminTabControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
 		Me.AdminTabControl.TabIndex = 6
 		'
@@ -1237,7 +1237,7 @@ Partial Class AAAAMainForm
 		Me.TabPage1.Location = New System.Drawing.Point(4, 44)
 		Me.TabPage1.Name = "TabPage1"
 		Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-		Me.TabPage1.Size = New System.Drawing.Size(878, 507)
+		Me.TabPage1.Size = New System.Drawing.Size(878, 509)
 		Me.TabPage1.TabIndex = 0
 		Me.TabPage1.Text = "User Management"
 		'
@@ -1709,7 +1709,7 @@ Partial Class AAAAMainForm
 		Me.TabPage2.Location = New System.Drawing.Point(4, 44)
 		Me.TabPage2.Name = "TabPage2"
 		Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-		Me.TabPage2.Size = New System.Drawing.Size(878, 507)
+		Me.TabPage2.Size = New System.Drawing.Size(878, 509)
 		Me.TabPage2.TabIndex = 1
 		Me.TabPage2.Text = "Books Management"
 		'
@@ -2125,7 +2125,7 @@ Partial Class AAAAMainForm
 		Me.ApprovalsTab.Location = New System.Drawing.Point(4, 44)
 		Me.ApprovalsTab.Name = "ApprovalsTab"
 		Me.ApprovalsTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.ApprovalsTab.Size = New System.Drawing.Size(878, 507)
+		Me.ApprovalsTab.Size = New System.Drawing.Size(878, 509)
 		Me.ApprovalsTab.TabIndex = 2
 		Me.ApprovalsTab.Text = "Approvals"
 		'
@@ -2248,7 +2248,7 @@ Partial Class AAAAMainForm
 		Me.AdminApprovalDataGrid.ShowCellErrors = False
 		Me.AdminApprovalDataGrid.ShowEditingIcon = False
 		Me.AdminApprovalDataGrid.ShowRowErrors = False
-		Me.AdminApprovalDataGrid.Size = New System.Drawing.Size(872, 501)
+		Me.AdminApprovalDataGrid.Size = New System.Drawing.Size(872, 503)
 		Me.AdminApprovalDataGrid.TabIndex = 7
 		'
 		'LoginSignupTab
@@ -2260,7 +2260,7 @@ Partial Class AAAAMainForm
 		Me.LoginSignupTab.Location = New System.Drawing.Point(4, 44)
 		Me.LoginSignupTab.Name = "LoginSignupTab"
 		Me.LoginSignupTab.Padding = New System.Windows.Forms.Padding(3)
-		Me.LoginSignupTab.Size = New System.Drawing.Size(892, 561)
+		Me.LoginSignupTab.Size = New System.Drawing.Size(892, 563)
 		Me.LoginSignupTab.TabIndex = 4
 		Me.LoginSignupTab.Text = "Login/Signup"
 		'
