@@ -791,5 +791,24 @@ Public Class SQLInterface
 			Return False
 		End If
 	End Function
-
+	Public Shared Sub PopulateUsersList()
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "SELECT Username,Name as 'Fullname' ,AccType as 'Account Type', NoOfBooks as 'Books Issued' ,Due FROM users where ( confirmed = 'Yes' and username <> '" + GLogin.Username + "')"
+			End With
+			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+			da.SelectCommand = cmd
+			Dim dt As DataTable = New DataTable
+			da.Fill(dt)
+			Dim bs As BindingSource = New BindingSource With {
+				.DataSource = dt
+			}
+			AAAAMainForm.UserListDataGrid.DataSource = bs
+		Catch ex As Exception
+			Msg.Err("SQL Error6: " + ex.Message)
+		End Try
+		con.Close()
+	End Sub
 End Class
