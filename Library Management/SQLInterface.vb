@@ -395,7 +395,7 @@ Public Class SQLInterface
 		Try
 			con.Open()
 			cmd.Connection = con
-			cmd.CommandText = "SELECT date_format(sysdate(), '%d/%m/%Y') FROM DUAL"
+            cmd.CommandText = "SELECT date_format(sysdate(), '%e/%c/%Y') FROM DUAL"
 			da.SelectCommand = cmd
 			da.Fill(dt)
 			res = dt.Rows.Count
@@ -405,7 +405,7 @@ Public Class SQLInterface
 		End Try
 		If res = 1 Then
 			servertime = dt.Rows(0).Item(0)
-			clienttime = String.Format("{0:dd/MM/yyyy}", Now())
+            clienttime = Now.Day.ToString + "/" + Now.Month.ToString + "/" + Now.Year.ToString 'String.Format("{0:dd/MM/yyyy}", Now().Date.)
 			Return True
 		End If
 		Return False
