@@ -100,38 +100,39 @@ Public Class AAAAMainForm
 		GLogin.LogOut()
 		GLogin.Username = LoginUsernameTextBox.Text
         GLogin.UnhashedPassword = LoginPasswordTextBox.Text 'CheckOldPassword(PasswordTextBox.Text)
-        If GLogin.confirmed = "No" Then
-            Alert("Warning", "Admin has not confirmed your account")
-            Exit Sub
-        End If
-        If GLogin.LoggedIn = True Then
-            ' Logged in successfully
-            StatusBar.Text = "Logged in as " + GLogin.Username + "(" + GLogin.AccType + ")"
-            Alert("Success", "Logged In !")
-            DisablePage(LoginSignupTab)
-            EnablePage(IssueBookTab)
-            EnablePage(SummaryTab)
-            AAAALogoutButton.Visible = True
-            If GLogin.AccType = "Admin" Then
-                EnablePage(AdminOptionsTab)
-            End If
-            SummaryDueTextBox.Text = GLogin.Due.ToString
-            SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
-            SummaryUsernameTextBox.Text = GLogin.Username
-            SummaryFullnameTextBox.Text = GLogin.Fullname
-            MyTextBox3.Text = GLogin.Fullname
-            MyTextBox4.Text = GLogin.Username
-            If GLogin.AccType = "Admin" Then
-                SummaryProfileDropDownBox.SelectedIndex = 2
-            ElseIf GLogin.AccType = "Teacher" Then
-                SummaryProfileDropDownBox.SelectedIndex = 1
-            Else
-                SummaryProfileDropDownBox.SelectedIndex = 0
-            End If
-            'SQLInterface.loadissuedbooks(GLogin.books)
-        Else
-            ' Incorrect login
-            Alert("Error", "Username and Password do not match")
+		If SQLInterface.Login() = True Then
+			If GLogin.confirmed = "No" Then
+				Alert("Warning", "Admin has not confirmed your account")
+				GLogin.LogOut()
+				Exit Sub
+			End If
+			' Logged in successfully
+			StatusBar.Text = "Logged in as " + GLogin.Username + "(" + GLogin.AccType + ")"
+			Alert("Success", "Logged In !")
+			DisablePage(LoginSignupTab)
+			EnablePage(IssueBookTab)
+			EnablePage(SummaryTab)
+			AAAALogoutButton.Visible = True
+			If GLogin.AccType = "Admin" Then
+				EnablePage(AdminOptionsTab)
+			End If
+			SummaryDueTextBox.Text = GLogin.Due.ToString
+			SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
+			SummaryUsernameTextBox.Text = GLogin.Username
+			SummaryFullnameTextBox.Text = GLogin.Fullname
+			MyTextBox3.Text = GLogin.Fullname
+			MyTextBox4.Text = GLogin.Username
+			If GLogin.AccType = "Admin" Then
+				SummaryProfileDropDownBox.SelectedIndex = 2
+			ElseIf GLogin.AccType = "Teacher" Then
+				SummaryProfileDropDownBox.SelectedIndex = 1
+			Else
+				SummaryProfileDropDownBox.SelectedIndex = 0
+			End If
+			'SQLInterface.loadissuedbooks(GLogin.books)
+		Else
+			' Incorrect login
+			Alert("Error", "Username and Password do not match")
             GLogin.LogOut()
         End If
 	End Sub

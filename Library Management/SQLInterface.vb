@@ -16,7 +16,7 @@ Public Class SQLInterface
 			con.Open()
 			With cmd
 				.Connection = con
-				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & GLogin.Username & "' and confirmed = 'YES'"
+				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & GLogin.Username & "' and confirmed = 'Yes'"
 			End With
 			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
 			da.SelectCommand = cmd
@@ -182,7 +182,7 @@ Public Class SQLInterface
 			con.Open()
 			With cmd
 				.Connection = con
-				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & Str & "' and confirmed='YES'"
+				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & Str & "' and confirmed='Yes'"
 			End With
 			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
 			da.SelectCommand = cmd
@@ -296,7 +296,7 @@ Public Class SQLInterface
 
 
 			cmd.Connection = con
-			cmd.CommandText = "INSERT INTO users(Name,Username,Pass,Salt,AccType,Confirmed)" & "VALUES ('" & GAdmin.Fullname & "','" & GAdmin.Username & "','" & GAdmin.PasswordHash & "','" & GAdmin.Salt & "','" & GAdmin.AccType & "','YES')"
+			cmd.CommandText = "INSERT INTO users(Name,Username,Pass,Salt,AccType,Confirmed)" & "VALUES ('" & GAdmin.Fullname & "','" & GAdmin.Username & "','" & GAdmin.PasswordHash & "','" & GAdmin.Salt & "','" & GAdmin.AccType & "','Yes')"
 
 			'EXECUTE THE DATA
 			result = cmd.ExecuteNonQuery
@@ -697,7 +697,7 @@ Public Class SQLInterface
             con.Open()
             With cmd
                 .Connection = con
-				.CommandText = "SELECT Username,Name,AccType as 'Promote To' FROM users where confirmed = 'NO'"
+				.CommandText = "SELECT Username,Name,AccType as 'Promote To' FROM users where confirmed = 'No'"
 			End With
             'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
             da.SelectCommand = cmd
@@ -720,7 +720,7 @@ Public Class SQLInterface
             con.Open()
             With cmd
                 .Connection = con
-				.CommandText = "UPDATE users SET confirmed = 'YES' where BINARY Username = '" & username & "'"
+				.CommandText = "UPDATE users SET confirmed = 'Yes' where BINARY Username = '" & username & "'"
 			End With
 
             result = cmd.ExecuteNonQuery
