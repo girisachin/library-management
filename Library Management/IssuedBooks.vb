@@ -52,8 +52,8 @@
                 GLogin.books(i, 1) = String.Format("{0:dd/MM/yyyy}", Now().AddDays(45))
                 'MessageBox.Show("Book Renewed , Due date = " + GLogin.books(i, 1), "Renewed!")
                 Alert("Success", "Book Renewed , Due date = " + GLogin.books(i, 1))
-                GLogin.BooksIssued = GLogin.BooksIssued + 1
-                If SQLInterface.UpdateIssueBookTable(GLogin.books(i, 0)) = False Then
+				'GLogin.BooksIssued = GLogin.BooksIssued + 1
+				If SQLInterface.UpdateIssueBookTable(GLogin.books(i, 0)) = False Then
                     Alert("Error", "Could not Renewed book")
                     Exit Sub
                 Else

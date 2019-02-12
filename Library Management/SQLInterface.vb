@@ -16,7 +16,7 @@ Public Class SQLInterface
 			con.Open()
 			With cmd
 				.Connection = con
-				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & GLogin.Username & "'"
+				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & GLogin.Username & "' and confirmed = 'YES'"
 			End With
 			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
 			da.SelectCommand = cmd
@@ -182,7 +182,7 @@ Public Class SQLInterface
 			con.Open()
 			With cmd
 				.Connection = con
-				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & Str & "'"
+				.CommandText = "SELECT * FROM users WHERE BINARY Username ='" & Str & "' and confirmed='YES'"
 			End With
 			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
 			da.SelectCommand = cmd
@@ -296,7 +296,7 @@ Public Class SQLInterface
 
 
 			cmd.Connection = con
-			cmd.CommandText = "INSERT INTO users(Name,Username,Pass,Salt,AccType)" & "VALUES ('" & GAdmin.Fullname & "','" & GAdmin.Username & "','" & GAdmin.PasswordHash & "','" & GAdmin.Salt & "','" & GAdmin.AccType & "')"
+			cmd.CommandText = "INSERT INTO users(Name,Username,Pass,Salt,AccType,Confirmed)" & "VALUES ('" & GAdmin.Fullname & "','" & GAdmin.Username & "','" & GAdmin.PasswordHash & "','" & GAdmin.Salt & "','" & GAdmin.AccType & "','YES')"
 
 			'EXECUTE THE DATA
 			result = cmd.ExecuteNonQuery
@@ -373,11 +373,18 @@ Public Class SQLInterface
             da.SelectCommand = cmd
             Dim dt As DataTable = New DataTable
 			da.Fill(dt)
+			con.Close()
+
+			If dt.Rows.Count = 0 Then
+				Alert("Warning", "No Books for given search criteria")
+				Exit Sub
+			End If
 			Dim bs As BindingSource = New BindingSource With {
 				.DataSource = dt
 			}
 			BookList.SearchBookDataGrid.DataSource = bs
-        Catch ex As Exception
+			BookList.Show()
+		Catch ex As Exception
 			Msg.Err("SQL Error6: " + ex.Message)
 		End Try
         con.Close()
@@ -387,7 +394,7 @@ Public Class SQLInterface
 		Try
 			con.Open()
 			cmd.Connection = con
-			cmd.CommandText = "SELECT 1 FROM DUAL"
+			cmd.CommandText = "SELECT sysdate() FROM DUAL"
 			da.SelectCommand = cmd
 			Dim dt As DataTable = New DataTable
 			da.Fill(dt)
@@ -594,11 +601,13 @@ Public Class SQLInterface
         If NewFullname <> "" Then
             str = str + ", Name = '" + NewFullname + "' "
         End If
-        If NewPassword <> "" Then
-            str = str + ", Pass= '" + NewPassword + "', Salt = '" + GAdmin.Salt + "' "
-        End If
-        str = str + ", AccType= '" + acctype + "' "
-        str = str + "where Username = '" + OldUsername + "'"
+		If NewPassword <> "" Then
+			str = str + ", Pass= '" + NewPassword + "', Salt = '" + GAdmin.Salt + "' "
+		End If
+		If acctype.Trim <> "" Then
+			str = str + ", AccType= '" + acctype + "' "
+		End If
+		str = str + "where Username = '" + OldUsername + "'"
         Dim result As Integer = -1
         Try
             con.Open()
@@ -688,8 +697,8 @@ Public Class SQLInterface
             con.Open()
             With cmd
                 .Connection = con
-                .CommandText = "SELECT username,name,acctype as 'promote to' FROM users where confirmed = 'NO'"
-            End With
+				.CommandText = "SELECT username,name,acctype as 'Promote To' FROM users where confirmed = 'NO'"
+			End With
             'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
             da.SelectCommand = cmd
             Dim dt As DataTable = New DataTable
@@ -711,8 +720,8 @@ Public Class SQLInterface
             con.Open()
             With cmd
                 .Connection = con
-                .CommandText = "UPDATE users SET confirmed = 'YES' where username = '" & username & "'"
-            End With
+				.CommandText = "UPDATE users SET confirmed = 'YES' where BINARY Username = '" & username & "'"
+			End With
 
             result = cmd.ExecuteNonQuery
             Alert("Success", "User is approved !")
@@ -756,6 +765,31 @@ Public Class SQLInterface
 
         End Try
     End Sub
+	Public Shared Function ClearDue(ByVal username As String) As Boolean
+		Dim result As Integer = -1
 
+		Try
+			con.Open()
+			With cmd
+				.Connection = con
+				.CommandText = "UPDATE users set Due = 0 where username = '" & username & "'"
+			End With
+
+			result = cmd.ExecuteNonQuery
+			con.Close()
+
+
+			'FILLING THE DATA IN A SPICIFIC TABLE OF THE Library_Management
+
+		Catch ex As MySqlException
+			Msg.Err("SQL Error4: " + ex.Message)
+			Return False
+		End Try
+		If result = 1 Then
+			Return True
+		Else
+			Return False
+		End If
+	End Function
 
 End Class
