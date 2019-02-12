@@ -1,6 +1,15 @@
 ﻿Module bookissuescript
 
-    Sub IssueBookByID(ByVal bookid As String)
+    Sub IssueBookByID(ByVal bookid As String)   'Issued the book, we search the book by its bookid.
+        If GLogin.LoggedIn = False Then
+            AAAAMainForm.TabControlMain.SelectedTab = AAAAMainForm.LoginSignupTab
+            Alert("Warning", "You need to login first")
+            Exit Sub
+        End If
+        If GLogin.confirmed = "No" Then
+            Alert("Error", "Your account is not Confirmed yet. Contact Admin.")
+            Exit Sub
+        End If
         If (GLogin.BooksIssued < 7 AndAlso GLogin.AccType = "Student") Or (GLogin.BooksIssued < 10) Then
             For i As Integer = 1 To 10
                 If GLogin.books(i, 0) = bookid Then
@@ -21,7 +30,7 @@
                 If GLogin.books(i, 0) = "" Then
                     GLogin.books(i, 0) = bookid
                     GLogin.books(i, 1) = String.Format("{0:dd/MM/yyyy}", Now().AddDays(45))
-                    MessageBox.Show(GLogin.books(i, 1))
+                    'MessageBox.Show("Book Issued , Due date = " + GLogin.books(i, 1), "Issued!")
                     GLogin.BooksIssued = GLogin.BooksIssued + 1
                     If SQLInterface.UpdateIssueBookTable(GLogin.books(i, 0)) = False Then
                         Alert("Error", "Could not issue book")
@@ -39,7 +48,7 @@
         Exit Sub
     End Sub
 
-    Sub ReturnBookByID(ByVal bookid As String)
+    Sub ReturnBookByID(ByVal bookid As String)      'returns the book by its book id.
 
         If GLogin.BooksIssued = 0 Then
             Alert("Error", "No books Issued")
@@ -95,8 +104,8 @@
 
         For i As Integer = 1 To 10
             If GLogin.books(i, 0).Trim <> "" Then
-				datediffval = DateDiff("d", DateTime.ParseExact(GLogin.books(i, 1), "dd/MM/yyyy", System.Globalization.DateTimeFormatInfo.InvariantInfo), DateAndTime.Now())
-				If datediffval > 45 Then
+                datediffval = DateDiff("d", GLogin.books(i, 1), DateAndTime.Now())
+                If datediffval > 45 Then
                     due = due + (datediffval - 45) * 1
                     GLogin.due_array(i) = (datediffval - 45) * 1
                 End If
@@ -120,6 +129,8 @@
         AAAAMainForm.SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
 
     End Sub
+
+
 
 
 End Module
