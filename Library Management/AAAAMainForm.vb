@@ -472,50 +472,50 @@ Public Class AAAAMainForm
         End If
         GLogin.LoggedIn = True
     End Sub
-    Private Sub AdminDeleteAccButton_Click(sender As Object, e As EventArgs) Handles AdminDeleteAccButton.Click
-        If ValidateUsername(AdminDeleteAccUsernameTextBox.Text) = False Then
-            Alert("Warning", "Use only alphanumerics and underscore in username to delete")
-            Exit Sub
-        End If
-        If SQLInterface.DoesUsernameExists(AdminDeleteAccUsernameTextBox.Text) = False Then
-            Alert("Error", "Username does not exists")
-            Exit Sub
-        End If
+	Private Sub AdminDeleteAccButton_Click(sender As Object, e As EventArgs) Handles AdminDeleteAccButton.Click, MyButton1.Click
+		If ValidateUsername(AdminDeleteAccUsernameTextBox.Text) = False Then
+			Alert("Warning", "Use only alphanumerics and underscore in username to delete")
+			Exit Sub
+		End If
+		If SQLInterface.DoesUsernameExists(AdminDeleteAccUsernameTextBox.Text) = False Then
+			Alert("Error", "Username does not exists")
+			Exit Sub
+		End If
 
-        If SQLInterface.returnissuedbooksofuser(AdminDeleteAccUsernameTextBox.Text) <> 0 Then
-            Alert("Warning", "Cannot Delete Acount!, User has to return the issued.")
-            Exit Sub
-        End If
+		If SQLInterface.returnissuedbooksofuser(AdminDeleteAccUsernameTextBox.Text) <> 0 Then
+			Alert("Warning", "Cannot Delete Acount!, User has to return the issued.")
+			Exit Sub
+		End If
 
-        If AdminDeleteAccUsernameTextBox.Text = GLogin.Username Then
-            If SQLInterface.AdminDeleteAccount(AdminDeleteAccUsernameTextBox.Text) = False Then
-                Alert("Error", "Could not delete account. Try Again Later")
-                Exit Sub
-            End If
-            Alert("Success", "Account Deleted Successfully")
-            If GLogin.AccType = "Admin" Then
-                DisablePage(AdminOptionsTab)
-            End If
-            GLogin.LogOut()
-            StatusBar.Text = "Not Logged In"
-            Alert("Success", "Logged Out !")
-            EnablePage(LoginSignupTab)
-            DisablePage(IssueBookTab)
-            DisablePage(SummaryTab)
-            AAAALogoutButton.Visible = False
-            SummaryDueTextBox.Text = "0"
-            SummaryBooksIssuedTextBox.Text = "0"
-            SummaryUsernameTextBox.Text = ""
-            SummaryProfileDropDownBox.SelectedIndex = 0
-            Exit Sub
-        End If
-        If SQLInterface.AdminDeleteAccount(AdminDeleteAccUsernameTextBox.Text) = False Then
-            Alert("Error", "Could not delete account. Try Again Later")
-            Exit Sub
-        End If
-        Alert("Success", "Account Deleted Successfully")
-    End Sub
-    Private Sub AdminRemoveBookButton_Click(sender As Object, e As EventArgs) Handles AdminRemoveBookButton.Click
+		If AdminDeleteAccUsernameTextBox.Text = GLogin.Username Then
+			If SQLInterface.AdminDeleteAccount(AdminDeleteAccUsernameTextBox.Text) = False Then
+				Alert("Error", "Could not delete account. Try Again Later")
+				Exit Sub
+			End If
+			Alert("Success", "Account Deleted Successfully")
+			If GLogin.AccType = "Admin" Then
+				DisablePage(AdminOptionsTab)
+			End If
+			GLogin.LogOut()
+			StatusBar.Text = "Not Logged In"
+			Alert("Success", "Logged Out !")
+			EnablePage(LoginSignupTab)
+			DisablePage(IssueBookTab)
+			DisablePage(SummaryTab)
+			AAAALogoutButton.Visible = False
+			SummaryDueTextBox.Text = "0"
+			SummaryBooksIssuedTextBox.Text = "0"
+			SummaryUsernameTextBox.Text = ""
+			SummaryProfileDropDownBox.SelectedIndex = 0
+			Exit Sub
+		End If
+		If SQLInterface.AdminDeleteAccount(AdminDeleteAccUsernameTextBox.Text) = False Then
+			Alert("Error", "Could not delete account. Try Again Later")
+			Exit Sub
+		End If
+		Alert("Success", "Account Deleted Successfully")
+	End Sub
+	Private Sub AdminRemoveBookButton_Click(sender As Object, e As EventArgs) Handles AdminRemoveBookButton.Click
         If ValidateInteger(AdminRemoveBookIDTextBox.Text) = False Then
             Alert("Warning", "Use only alphanumerics and underscore in bookid to delete")
             Exit Sub
