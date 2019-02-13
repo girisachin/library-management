@@ -3,6 +3,7 @@
 ' This class can never see password (except when initial encrypt_sha512 call )
 Module SHA512
 	Public Function Encrypt_Sha512(ByVal StrToHash As String) As String
+		' encrypts a string to sha512
 		Dim SHA512Obj As System.Security.Cryptography.SHA512 = New System.Security.Cryptography.SHA512Managed()
 
 		Dim BytesToHash() As Byte = System.Text.Encoding.UTF8.GetBytes(StrToHash)
@@ -17,6 +18,7 @@ Module SHA512
 	End Function
 
 	Public Function EncryptNewPassword(ByVal PasswordHash As String) As String
+		' generates salt in glogin and returns final hash
 		Dim Charset As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-"
 		Dim Chars() As Char = Charset.ToCharArray
 		Dim bytes() As Byte
@@ -30,6 +32,7 @@ Module SHA512
 		Return Encrypt_Sha512(GLogin.Salt + PasswordHash + "d5eba9b008f69bd56e")
 	End Function
 	Public Function AdminEncryptNewPassword(ByVal PasswordHash As String) As String
+		' returns final hash and salt
 		Dim Charset As String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-"
 		Dim Chars() As Char = Charset.ToCharArray
 		Dim bytes() As Byte
@@ -44,6 +47,7 @@ Module SHA512
 	End Function
 
 	Public Function CheckOldPassword(ByVal PasswordHash As String) As String
+		' makes hash using old salt
 		If GLogin.LoggedIn = True Then
 			Alert("Error", "Already logged in")
 			Return ""

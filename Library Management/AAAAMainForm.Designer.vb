@@ -27,11 +27,16 @@ Partial Class AAAAMainForm
 		Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-		Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+		Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
 		Me.AAAAMainFormSkin = New Library_Management.FormSkin()
 		Me.AAAAMiniButtonMain = New Library_Management.MyMini()
 		Me.AAAALogoutButton = New Library_Management.MyButton()
@@ -180,6 +185,14 @@ Partial Class AAAAMainForm
 		Me.CopyFullNameToolStrip1 = New System.Windows.Forms.ToolStripMenuItem()
 		Me.AlertBox8 = New Library_Management.MyAlertBox()
 		Me.AdminApprovalDataGrid = New System.Windows.Forms.DataGridView()
+		Me.UsersListTab = New System.Windows.Forms.TabPage()
+		Me.AlertBox9 = New Library_Management.MyAlertBox()
+		Me.UserListDataGrid = New System.Windows.Forms.DataGridView()
+		Me.UserInfoContextMenu = New Library_Management.MyContextMenuStrip()
+		Me.EditUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+		Me.DeleteUserToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+		Me.CopyUsernameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+		Me.CopyFullnameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 		Me.LoginSignupTab = New System.Windows.Forms.TabPage()
 		Me.AlertBox6 = New Library_Management.MyAlertBox()
 		Me.AASignupGroupBox = New Library_Management.MyGroupBox()
@@ -197,6 +210,8 @@ Partial Class AAAAMainForm
 		Me.SignupFullnameTextBox = New Library_Management.MyTextBox()
 		Me.SignupUsernameTextBox = New Library_Management.MyTextBox()
 		Me.AALoginGroupBox = New Library_Management.MyGroupBox()
+		Me.StaySignedIn = New Library_Management.MyToggle()
+		Me.MyLabel32 = New Library_Management.MyLabel()
 		Me.AAALoginPasswordPicture = New System.Windows.Forms.PictureBox()
 		Me.LoginUsernameTextBox = New Library_Management.MyTextBox()
 		Me.LoginButton = New Library_Management.MyButton()
@@ -234,6 +249,9 @@ Partial Class AAAAMainForm
 		Me.ApprovalsTab.SuspendLayout()
 		Me.AdminApprovalContextMenu.SuspendLayout()
 		CType(Me.AdminApprovalDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.UsersListTab.SuspendLayout()
+		CType(Me.UserListDataGrid, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.UserInfoContextMenu.SuspendLayout()
 		Me.LoginSignupTab.SuspendLayout()
 		Me.AASignupGroupBox.SuspendLayout()
 		CType(Me.AAASignupConfirmPasswordPicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -351,7 +369,7 @@ Partial Class AAAAMainForm
 		Me.AlertBox1.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox1.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox1.Location = New System.Drawing.Point(45, 513)
+		Me.AlertBox1.Location = New System.Drawing.Point(45, 506)
 		Me.AlertBox1.Name = "AlertBox1"
 		Me.AlertBox1.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox1.TabIndex = 3
@@ -524,7 +542,7 @@ Partial Class AAAAMainForm
 		Me.AlertBox2.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox2.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox2.Location = New System.Drawing.Point(45, 513)
+		Me.AlertBox2.Location = New System.Drawing.Point(45, 506)
 		Me.AlertBox2.Name = "AlertBox2"
 		Me.AlertBox2.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox2.TabIndex = 4
@@ -659,7 +677,7 @@ Partial Class AAAAMainForm
 		Me.AlertBox3.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox3.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox3.Location = New System.Drawing.Point(45, 513)
+		Me.AlertBox3.Location = New System.Drawing.Point(45, 506)
 		Me.AlertBox3.Name = "AlertBox3"
 		Me.AlertBox3.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox3.TabIndex = 6
@@ -784,7 +802,7 @@ Partial Class AAAAMainForm
 		Me.AlertBox4.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox4.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox4.Location = New System.Drawing.Point(45, 513)
+		Me.AlertBox4.Location = New System.Drawing.Point(45, 506)
 		Me.AlertBox4.Name = "AlertBox4"
 		Me.AlertBox4.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox4.TabIndex = 5
@@ -1215,6 +1233,7 @@ Partial Class AAAAMainForm
 		Me.AdminTabControl.Controls.Add(Me.TabPage1)
 		Me.AdminTabControl.Controls.Add(Me.TabPage2)
 		Me.AdminTabControl.Controls.Add(Me.ApprovalsTab)
+		Me.AdminTabControl.Controls.Add(Me.UsersListTab)
 		Me.AdminTabControl.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.AdminTabControl.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AdminTabControl.ItemSize = New System.Drawing.Size(120, 40)
@@ -1568,9 +1587,9 @@ Partial Class AAAAMainForm
 		Me.AdminEditAccButton.BackColor = System.Drawing.Color.Transparent
 		Me.AdminEditAccButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AdminEditAccButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.AdminEditAccButton.Location = New System.Drawing.Point(122, 253)
+		Me.AdminEditAccButton.Location = New System.Drawing.Point(105, 261)
 		Me.AdminEditAccButton.Name = "AdminEditAccButton"
-		Me.AdminEditAccButton.Size = New System.Drawing.Size(145, 43)
+		Me.AdminEditAccButton.Size = New System.Drawing.Size(179, 43)
 		Me.AdminEditAccButton.TabIndex = 6
 		Me.AdminEditAccButton.Text = "Edit Existing Account"
 		'
@@ -2181,60 +2200,60 @@ Partial Class AAAAMainForm
 		'
 		Me.AdminApprovalDataGrid.AllowUserToAddRows = False
 		Me.AdminApprovalDataGrid.AllowUserToDeleteRows = False
-		DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle11.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminApprovalDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle11
+		DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle16.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle16.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminApprovalDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle16
 		Me.AdminApprovalDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
 		Me.AdminApprovalDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
 		Me.AdminApprovalDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
 		Me.AdminApprovalDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.AdminApprovalDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
 		Me.AdminApprovalDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-		DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-		DataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
-		DataGridViewCellStyle12.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminApprovalDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+		DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+		DataGridViewCellStyle17.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle17.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminApprovalDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle17
 		Me.AdminApprovalDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
 		Me.AdminApprovalDataGrid.ContextMenuStrip = Me.AdminApprovalContextMenu
 		Me.AdminApprovalDataGrid.Cursor = System.Windows.Forms.Cursors.Default
-		DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-		DataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle13.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminApprovalDataGrid.DefaultCellStyle = DataGridViewCellStyle13
+		DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminApprovalDataGrid.DefaultCellStyle = DataGridViewCellStyle18
 		Me.AdminApprovalDataGrid.Dock = System.Windows.Forms.DockStyle.Fill
 		Me.AdminApprovalDataGrid.GridColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer))
 		Me.AdminApprovalDataGrid.Location = New System.Drawing.Point(3, 3)
 		Me.AdminApprovalDataGrid.Name = "AdminApprovalDataGrid"
-		DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle14.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-		DataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminApprovalDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+		DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle19.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminApprovalDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle19
 		Me.AdminApprovalDataGrid.RowHeadersVisible = False
-		DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-		DataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
-		DataGridViewCellStyle15.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		DataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
-		DataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
-		DataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-		Me.AdminApprovalDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle15
+		DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle20.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		DataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.AdminApprovalDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle20
 		Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
 		Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
 		Me.AdminApprovalDataGrid.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 10.0!)
@@ -2250,6 +2269,138 @@ Partial Class AAAAMainForm
 		Me.AdminApprovalDataGrid.ShowRowErrors = False
 		Me.AdminApprovalDataGrid.Size = New System.Drawing.Size(872, 503)
 		Me.AdminApprovalDataGrid.TabIndex = 7
+		'
+		'UsersListTab
+		'
+		Me.UsersListTab.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		Me.UsersListTab.Controls.Add(Me.AlertBox9)
+		Me.UsersListTab.Controls.Add(Me.UserListDataGrid)
+		Me.UsersListTab.Location = New System.Drawing.Point(4, 44)
+		Me.UsersListTab.Name = "UsersListTab"
+		Me.UsersListTab.Padding = New System.Windows.Forms.Padding(3)
+		Me.UsersListTab.Size = New System.Drawing.Size(878, 509)
+		Me.UsersListTab.TabIndex = 3
+		Me.UsersListTab.Text = "Users List"
+		'
+		'AlertBox9
+		'
+		Me.AlertBox9.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		Me.AlertBox9.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.AlertBox9.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		Me.AlertBox9.Kind = Library_Management.MyAlertBox._Kind.Success
+		Me.AlertBox9.Location = New System.Drawing.Point(38, 459)
+		Me.AlertBox9.Name = "AlertBox9"
+		Me.AlertBox9.Size = New System.Drawing.Size(802, 42)
+		Me.AlertBox9.TabIndex = 9
+		Me.AlertBox9.Text = "AlertBox"
+		Me.AlertBox9.Visible = False
+		'
+		'UserListDataGrid
+		'
+		Me.UserListDataGrid.AllowUserToAddRows = False
+		Me.UserListDataGrid.AllowUserToDeleteRows = False
+		DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.UserListDataGrid.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+		Me.UserListDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+		Me.UserListDataGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
+		Me.UserListDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+		Me.UserListDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None
+		Me.UserListDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken
+		Me.UserListDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+		DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(47, Byte), Integer), CType(CType(49, Byte), Integer))
+		DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.UserListDataGrid.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+		Me.UserListDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+		Me.UserListDataGrid.ContextMenuStrip = Me.UserInfoContextMenu
+		Me.UserListDataGrid.Cursor = System.Windows.Forms.Cursors.Default
+		DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+		DataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.UserListDataGrid.DefaultCellStyle = DataGridViewCellStyle3
+		Me.UserListDataGrid.Dock = System.Windows.Forms.DockStyle.Fill
+		Me.UserListDataGrid.GridColor = System.Drawing.Color.FromArgb(CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer), CType(CType(127, Byte), Integer))
+		Me.UserListDataGrid.Location = New System.Drawing.Point(3, 3)
+		Me.UserListDataGrid.Name = "UserListDataGrid"
+		DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		DataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.UserListDataGrid.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+		Me.UserListDataGrid.RowHeadersVisible = False
+		DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		DataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.UserListDataGrid.RowsDefaultCellStyle = DataGridViewCellStyle5
+		Me.UserListDataGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+		Me.UserListDataGrid.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(70, Byte), Integer), CType(CType(73, Byte), Integer))
+		Me.UserListDataGrid.RowTemplate.DefaultCellStyle.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		Me.UserListDataGrid.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		Me.UserListDataGrid.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(168, Byte), Integer), CType(CType(109, Byte), Integer))
+		Me.UserListDataGrid.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer), CType(CType(234, Byte), Integer))
+		Me.UserListDataGrid.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+		Me.UserListDataGrid.RowTemplate.ReadOnly = True
+		Me.UserListDataGrid.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+		Me.UserListDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+		Me.UserListDataGrid.ShowCellErrors = False
+		Me.UserListDataGrid.ShowEditingIcon = False
+		Me.UserListDataGrid.ShowRowErrors = False
+		Me.UserListDataGrid.Size = New System.Drawing.Size(872, 503)
+		Me.UserListDataGrid.TabIndex = 8
+		'
+		'UserInfoContextMenu
+		'
+		Me.UserInfoContextMenu.Font = New System.Drawing.Font("Segoe UI", 8.0!)
+		Me.UserInfoContextMenu.ForeColor = System.Drawing.Color.White
+		Me.UserInfoContextMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EditUserToolStripMenuItem, Me.DeleteUserToolStripMenuItem, Me.CopyUsernameToolStripMenuItem, Me.CopyFullnameToolStripMenuItem})
+		Me.UserInfoContextMenu.Name = "UserInfoContextMenu"
+		Me.UserInfoContextMenu.ShowImageMargin = False
+		Me.UserInfoContextMenu.Size = New System.Drawing.Size(130, 92)
+		'
+		'EditUserToolStripMenuItem
+		'
+		Me.EditUserToolStripMenuItem.Name = "EditUserToolStripMenuItem"
+		Me.EditUserToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+		Me.EditUserToolStripMenuItem.Text = "Edit User"
+		'
+		'DeleteUserToolStripMenuItem
+		'
+		Me.DeleteUserToolStripMenuItem.Name = "DeleteUserToolStripMenuItem"
+		Me.DeleteUserToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+		Me.DeleteUserToolStripMenuItem.Text = "Delete User"
+		'
+		'CopyUsernameToolStripMenuItem
+		'
+		Me.CopyUsernameToolStripMenuItem.Name = "CopyUsernameToolStripMenuItem"
+		Me.CopyUsernameToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+		Me.CopyUsernameToolStripMenuItem.Text = "Copy Username"
+		'
+		'CopyFullnameToolStripMenuItem
+		'
+		Me.CopyFullnameToolStripMenuItem.Name = "CopyFullnameToolStripMenuItem"
+		Me.CopyFullnameToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
+		Me.CopyFullnameToolStripMenuItem.Text = "Copy Fullname"
 		'
 		'LoginSignupTab
 		'
@@ -2270,7 +2421,7 @@ Partial Class AAAAMainForm
 		Me.AlertBox6.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.AlertBox6.Font = New System.Drawing.Font("Segoe UI", 10.0!)
 		Me.AlertBox6.Kind = Library_Management.MyAlertBox._Kind.Success
-		Me.AlertBox6.Location = New System.Drawing.Point(45, 513)
+		Me.AlertBox6.Location = New System.Drawing.Point(45, 506)
 		Me.AlertBox6.Name = "AlertBox6"
 		Me.AlertBox6.Size = New System.Drawing.Size(802, 42)
 		Me.AlertBox6.TabIndex = 5
@@ -2279,6 +2430,9 @@ Partial Class AAAAMainForm
 		'
 		'AASignupGroupBox
 		'
+		Me.AASignupGroupBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+			Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.AASignupGroupBox.BackColor = System.Drawing.Color.Transparent
 		Me.AASignupGroupBox.Controls.Add(Me.AAAAALabel12)
 		Me.AASignupGroupBox.Controls.Add(Me.SignupDropDownBox)
@@ -2470,7 +2624,12 @@ Partial Class AAAAMainForm
 		'
 		'AALoginGroupBox
 		'
+		Me.AALoginGroupBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+			Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.AALoginGroupBox.BackColor = System.Drawing.Color.Transparent
+		Me.AALoginGroupBox.Controls.Add(Me.StaySignedIn)
+		Me.AALoginGroupBox.Controls.Add(Me.MyLabel32)
 		Me.AALoginGroupBox.Controls.Add(Me.AAALoginPasswordPicture)
 		Me.AALoginGroupBox.Controls.Add(Me.LoginUsernameTextBox)
 		Me.AALoginGroupBox.Controls.Add(Me.LoginButton)
@@ -2483,6 +2642,30 @@ Partial Class AAAAMainForm
 		Me.AALoginGroupBox.Size = New System.Drawing.Size(387, 348)
 		Me.AALoginGroupBox.TabIndex = 3
 		Me.AALoginGroupBox.Text = "Login"
+		'
+		'StaySignedIn
+		'
+		Me.StaySignedIn.BackColor = System.Drawing.Color.Transparent
+		Me.StaySignedIn.Checked = True
+		Me.StaySignedIn.Cursor = System.Windows.Forms.Cursors.Hand
+		Me.StaySignedIn.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+		Me.StaySignedIn.Location = New System.Drawing.Point(226, 241)
+		Me.StaySignedIn.Name = "StaySignedIn"
+		Me.StaySignedIn.Size = New System.Drawing.Size(76, 33)
+		Me.StaySignedIn.TabIndex = 6
+		Me.StaySignedIn.Text = "MyToggle1"
+		'
+		'MyLabel32
+		'
+		Me.MyLabel32.AutoSize = True
+		Me.MyLabel32.BackColor = System.Drawing.Color.Transparent
+		Me.MyLabel32.Font = New System.Drawing.Font("Segoe UI", 12.0!)
+		Me.MyLabel32.ForeColor = System.Drawing.Color.White
+		Me.MyLabel32.Location = New System.Drawing.Point(86, 249)
+		Me.MyLabel32.Name = "MyLabel32"
+		Me.MyLabel32.Size = New System.Drawing.Size(108, 21)
+		Me.MyLabel32.TabIndex = 5
+		Me.MyLabel32.Text = "Stay Signed In"
 		'
 		'AAALoginPasswordPicture
 		'
@@ -2516,7 +2699,7 @@ Partial Class AAAAMainForm
 		Me.LoginButton.BackColor = System.Drawing.Color.Transparent
 		Me.LoginButton.Cursor = System.Windows.Forms.Cursors.Hand
 		Me.LoginButton.Font = New System.Drawing.Font("Segoe UI", 12.0!)
-		Me.LoginButton.Location = New System.Drawing.Point(142, 248)
+		Me.LoginButton.Location = New System.Drawing.Point(144, 282)
 		Me.LoginButton.Name = "LoginButton"
 		Me.LoginButton.Size = New System.Drawing.Size(99, 29)
 		Me.LoginButton.TabIndex = 2
@@ -2625,6 +2808,9 @@ Partial Class AAAAMainForm
 		Me.ApprovalsTab.ResumeLayout(False)
 		Me.AdminApprovalContextMenu.ResumeLayout(False)
 		CType(Me.AdminApprovalDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.UsersListTab.ResumeLayout(False)
+		CType(Me.UserListDataGrid, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.UserInfoContextMenu.ResumeLayout(False)
 		Me.LoginSignupTab.ResumeLayout(False)
 		Me.AASignupGroupBox.ResumeLayout(False)
 		Me.AASignupGroupBox.PerformLayout()
@@ -2808,9 +2994,19 @@ Partial Class AAAAMainForm
 	Friend WithEvents ApproveToolStrip As ToolStripMenuItem
 	Friend WithEvents CopyUserNameToolStrip1 As ToolStripMenuItem
 	Friend WithEvents CopyFullNameToolStrip1 As ToolStripMenuItem
-    Friend WithEvents DisapproveToolStripMenuItem As ToolStripMenuItem
+	Friend WithEvents DisapproveToolStripMenuItem As ToolStripMenuItem
 	Friend WithEvents MyGroupBox7 As MyGroupBox
 	Friend WithEvents MyButton1 As MyButton
 	Friend WithEvents MyLabel31 As MyLabel
 	Friend WithEvents MyTextBox5 As MyTextBox
+	Friend WithEvents UsersListTab As TabPage
+	Friend WithEvents UserListDataGrid As DataGridView
+	Friend WithEvents UserInfoContextMenu As MyContextMenuStrip
+	Friend WithEvents EditUserToolStripMenuItem As ToolStripMenuItem
+	Friend WithEvents DeleteUserToolStripMenuItem As ToolStripMenuItem
+	Friend WithEvents CopyUsernameToolStripMenuItem As ToolStripMenuItem
+	Friend WithEvents CopyFullnameToolStripMenuItem As ToolStripMenuItem
+	Friend WithEvents MyLabel32 As MyLabel
+	Friend WithEvents StaySignedIn As MyToggle
+	Friend WithEvents AlertBox9 As MyAlertBox
 End Class

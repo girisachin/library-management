@@ -79,6 +79,9 @@
         If BookFound = True AndAlso SQLInterface.DoesBookIDExists(bookid) = True Then
             GLogin.BooksIssued -= 1
             result = SQLInterface.ReturnBook(bookid)
+            GLogin.Due += bookdue
+
+            SQLInterface.UpdateDueinTable(GLogin.Username)
             updateDueIssueText()
         End If
 
@@ -118,14 +121,15 @@
             End If
         Next
 
-        GLogin.Due = due
+        'GLogin.Due = due
+        GLogin.currentdue = due
 
         Return due
     End Function
 
     Sub updateDueIssueText()
 
-        CalculateDue()
+        'CalculateDue()
         AAAAMainForm.SummaryDueTextBox.Text = GLogin.Due.ToString
         AAAAMainForm.SummaryBooksIssuedTextBox.Text = GLogin.BooksIssued.ToString
 

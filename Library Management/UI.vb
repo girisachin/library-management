@@ -1,5 +1,5 @@
 ﻿Imports System.Drawing.Drawing2D, System.ComponentModel, System.Windows.Forms
-Module FaltuVariables
+Module Faltu_Ke_Variables_Jo_Shayad_Kabhi_Kaam_Bhi_Na_Aaye
 	Friend G As Graphics, B As Bitmap
 	Friend NearSF As New StringFormat() With {.Alignment = StringAlignment.Near, .LineAlignment = StringAlignment.Near}
 	Friend CenterSF As New StringFormat() With {.Alignment = StringAlignment.Center, .LineAlignment = StringAlignment.Center}
@@ -22,6 +22,7 @@ Module FaltuVariables
 	Friend Color16 As Color = Color.FromArgb(25, 27, 29)
 	Friend Color17 As Color = Color.FromArgb(45, 45, 48)
 	Friend Color18 As Color = Color.FromArgb(35, 37, 39)
+	Friend Color19 As Color = Color.FromArgb(220, 85, 96)
 End Module
 
 Enum MouseState As Byte
@@ -786,14 +787,7 @@ Class MyComboBox : Inherits Windows.Forms.ComboBox
 	End Sub
 	Protected Overrides Sub OnMouseMove(e As MouseEventArgs)
 		MyBase.OnMouseMove(e)
-		x = e.Location.X
-		y = e.Location.Y
-		Invalidate()
-		If e.X < Width - 41 Then
-			Cursor = Cursors.IBeam
-		Else
 			Cursor = Cursors.Hand
-		End If
 	End Sub
 	Protected Overrides Sub OnDrawItem(e As DrawItemEventArgs)
 		MyBase.OnDrawItem(e) : Invalidate()
@@ -1046,4 +1040,88 @@ Class MyLabel : Inherits Label
 		Text = Text
 	End Sub
 
+
+End Class
+<DefaultEvent("CheckedChanged")> Class MyToggle : Inherits Control
+	Private W, H As Integer
+	Private _Checked As Boolean = True
+	Private State As MouseState = MouseState.None
+	Public Event CheckedChanged(ByVal sender As Object)
+	<Category("Options")>
+	Public Property Checked As Boolean
+		Get
+			Return _Checked
+		End Get
+		Set(value As Boolean)
+			_Checked = value
+		End Set
+	End Property
+	Protected Overrides Sub OnTextChanged(e As EventArgs)
+		MyBase.OnTextChanged(e) : Invalidate()
+	End Sub
+	Protected Overrides Sub OnResize(e As EventArgs)
+		MyBase.OnResize(e)
+		Width = 76
+		Height = 33
+	End Sub
+	Protected Overrides Sub OnMouseEnter(ByVal e As System.EventArgs)
+		MyBase.OnMouseEnter(e)
+		State = MouseState.Over : Invalidate()
+	End Sub
+	Protected Overrides Sub OnMouseDown(ByVal e As System.Windows.Forms.MouseEventArgs)
+		MyBase.OnMouseDown(e)
+		State = MouseState.Down : Invalidate()
+	End Sub
+	Protected Overrides Sub OnMouseLeave(ByVal e As System.EventArgs)
+		MyBase.OnMouseLeave(e)
+		State = MouseState.None : Invalidate()
+	End Sub
+	Protected Overrides Sub OnMouseUp(ByVal e As System.Windows.Forms.MouseEventArgs)
+		MyBase.OnMouseUp(e)
+		State = MouseState.Over : Invalidate()
+	End Sub
+	Protected Overrides Sub OnClick(e As EventArgs)
+		MyBase.OnClick(e)
+		_Checked = Not _Checked
+		RaiseEvent CheckedChanged(Me)
+	End Sub
+	Sub New()
+		SetStyle(ControlStyles.AllPaintingInWmPaint Or ControlStyles.UserPaint Or ControlStyles.ResizeRedraw Or ControlStyles.OptimizedDoubleBuffer Or ControlStyles.SupportsTransparentBackColor, True)
+		DoubleBuffered = True
+		BackColor = Color.Transparent
+		Cursor = Cursors.Hand
+		Font = New Font("Segoe UI", 10)
+		Size = New Size(76, 33)
+	End Sub
+	Protected Overrides Sub OnPaint(e As PaintEventArgs)
+		B = New Bitmap(Width, Height) : G = Graphics.FromImage(B)
+		W = Width - 1 : H = Height - 1
+		Dim GP, GP2 As New GraphicsPath
+		Dim Base As New Rectangle(0, 0, W, H)
+		Dim Toggle As Rectangle
+		With G
+			.SmoothingMode = 2
+			.PixelOffsetMode = 2
+			.TextRenderingHint = 5
+			.Clear(BackColor)
+			If _Checked = False Then
+				Toggle = New Rectangle(W - 28, 4, 22, H - 8)
+				.FillRectangle(New SolidBrush(Color2), Base)
+				.FillRectangle(New SolidBrush(Color19), Toggle)
+				'-- Text
+				.DrawString("OFF", Font, New SolidBrush(Color19), New Rectangle(-12, 2, W, H), CenterSF)
+			Else
+				Toggle = New Rectangle(6, 4, 22, H - 8)
+				.FillRectangle(New SolidBrush(Color2), Base)
+				.FillRectangle(New SolidBrush(Color6), Toggle)
+				'-- Text
+				.DrawString("ON", Font, New SolidBrush(Color6), New Rectangle(12, 2, W, H), CenterSF)
+			End If
+		End With
+		MyBase.OnPaint(e)
+		G.Dispose()
+		e.Graphics.InterpolationMode = 7
+		e.Graphics.DrawImageUnscaled(B, 0, 0)
+		B.Dispose()
+	End Sub
 End Class
